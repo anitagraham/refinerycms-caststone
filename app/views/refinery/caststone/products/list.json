@@ -1,0 +1,53 @@
+[
+	{
+		"component": {
+			"type": "Refinery::Caststone::Capital",
+			"name": "Composite Ionic Capital"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Capital",
+			"name": "Corinthian Capital"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Capital",
+			"name": "Corinthian Capital 2"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Capital",
+			"name": "Doric Capital"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Capital",
+			"name": "Ionic Capital"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Capital",
+			"name": "Long Doric capital"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Capital",
+			"name": "Modern Capital"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Base",
+			"name": "Tuscan 2 Base"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Base",
+			"name": "Tuscan 3 Octagonal Base"
+		}
+	}, {
+		"component": {
+			"type": "Refinery::Caststone::Base",
+			"name": "Tuscan Base"
+		}
+	}
+]

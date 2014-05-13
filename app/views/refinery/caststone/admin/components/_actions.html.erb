@@ -1,0 +1,26 @@
+<ul>
+  <% if ::Refinery::Caststone::Admin::ComponentsController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.caststone_admin_components_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_caststone_admin_component_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Caststone::Admin::ComponentsController.sortable? && ::Refinery::Caststone::Component.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Components"),
+                 refinery.caststone_admin_components_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Components"),
+                 refinery.caststone_admin_components_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+ 
+</ul>

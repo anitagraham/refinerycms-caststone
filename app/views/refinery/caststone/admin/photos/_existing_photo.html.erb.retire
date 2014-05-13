@@ -1,0 +1,19 @@
+<div id='existing_photo_area' class='dialog_area' <%= "style='display:none;'" if @photo.errors.any? %>>
+  <%= render '/refinery/admin/search', :url => refinery.insert_caststone_admin_photos_path(params.dup.except('photo')) %>
+  <input type='hidden' name='selected_photo' id='selected_photo' />
+  <div id='existing_photo_area_content' class='clearfix'>
+		<% if @photos.any? %>
+			<%= collection_select @page, :photos, Refinery::Caststone::Photo.all, :id, :name, :html=>{:multiple=>:true} %>
+		<% end %>
+  </div>
+
+  <%= will_paginate @photos, :params => params.dup %>
+
+  <%= render '/refinery/admin/form_actions', :f => nil,
+             :cancel_url => '',
+             :submit_button_text => t('.button_text'),
+             :hide_submit => @photos.empty?,
+             :hide_cancel => false,
+             :hide_delete => true,
+             :cancel_title => nil if @app_dialog or @photos.any? or searching? %>
+</div>

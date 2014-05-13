@@ -1,0 +1,28 @@
+form {
+  div#fields {
+    @include column(6);
+    float:left;
+    span.checkbox {
+      label {
+        display:inline-block;
+        margin-right:1em;
+      }
+    }
+  }
+  div#drawing {
+    @include column(4);
+    float:left;
+    img.drawing {float:left}
+  }
+  div.row {
+    @include clearfix;
+  }
+  #records ul li{
+    div.photo {
+       float:left;
+    }
+    span.ready, span.wall {
+      @include column(1)
+    }
+  }
+}

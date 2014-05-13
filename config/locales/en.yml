@@ -1,0 +1,158 @@
+en:
+  refinery:
+    plugins:
+      tags:
+        title: Tags
+      photos:
+        title: Photos
+        description: Manage photos
+      components:
+        title: Components
+      products:
+        title: Series
+    caststone:
+      admin:
+        filter:
+          button_text: Filter
+        tags:
+          actions:
+            create_new: Add New Tag
+            reorder: Reorder Tags
+            reorder_done: Done Reordering Tags
+          records:
+            title: Tags
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Tags yet. Click "Add New Tag" to add your first
+              tag.
+          tag:
+            view_live_html: View this tag live <br/><em>(opens in a new window)</em>
+            edit: Edit this tag
+            delete: Remove this tag forever
+        photos:
+          actions:
+            create_new: Add New Photo
+            reorder: Reorder Photos
+            reorder_done: Done Reordering Photos
+          records:
+            title: Photos
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Photos yet. Click "Add New Photo" to add your
+              first photo.
+          photo:
+            view_live_html: View this photo live <br/><em>(opens in a new window)</em>
+            edit: Edit this photo
+            delete: Remove this photo forever
+        delete: Remove this photo forever
+        edit: Edit this photo
+        form:
+          photo: Photo
+          use_current_photo: Use current photo
+          or: or
+          replace_photo: ! ' replace it with this one...'
+          current_photo: Current Photo
+          maximum_photo_size: The maximum photo size is %{bytes}.
+        actions:
+          create_new_photo: Add new photo
+        records:
+          no_photos_yet: There are no photos yet. Click "Add new photo" to add your
+            first photo.
+        index:
+          view:
+            switch_to: Switch to %{view_name} view
+            list: list
+            grid: grid
+        grid_view:
+          view_live_html: View this photo <br/><em>Opens in a new window</em>
+        existing_photo:
+          button_text: Insert
+          resize_photo: Resize the photo?
+          size: Size
+        insert:
+          existing_photo: Library
+          new_photo: Upload
+        components:
+          actions:
+            create_new: Add New Component
+            reorder: Reorder Components
+            reorder_done: Done Reordering Components
+          records:
+            title: Components
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Components yet. Click "Add New Component" to
+              add your first component.
+          component:
+            view_live_html: View this component live <br/><em>(opens in a new window)</em>
+            edit: Edit this component
+            delete: Remove this component forever
+        products:
+          actions:
+            create_new: Add New Series
+            reorder: Reorder Seriess
+            reorder_done: Done Reordering Seriess
+          records:
+            title: Series
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Series yet. Click "Add New Series" to add your
+              first product.
+          product:
+            view_live_html: View this series live <br/><em>(opens in a new window)</em>
+            edit: Edit this series
+            delete: Remove this series forever
+      tags:
+        show:
+          other: Other Tags
+      photos:
+        show:
+          other: Other Photos
+      displays:
+        show:
+          other: Other Displays
+      components:
+        show:
+          other: Other Components
+      products:
+        show:
+          other: Other Series
+    js:
+      admin:
+        photos:
+          add_caption: Add Caption
+          done: Done
+    admin:
+      photos:
+        tabs:
+          images_bar:
+            add: Add Image
+  activerecord:
+    attributes:
+      refinery/caststone/tag:
+        name: Name
+      refinery/caststone/photo:
+        name: Name
+        caption: Caption
+        image_uid: Image Uid
+        product_id: Product
+        photo: Photo
+      refinery/caststone/display:
+        name: Name
+        caption: Caption
+        photo: Photo
+        product_id: Product
+      refinery/caststone/component:
+        name: Name
+        type: Type
+        note: Note
+        height: Height
+        drawing: Drawing
+        product_id: Product
+      refinery/caststone/product:
+        name: Name
+        blurb: Blurb
+    models:
+      refinery/caststone/photo: photo
+    errors:
+      models:
+        refinery/caststone/photo:
+          blank: You must specify an photo for upload
+          too_big: Photo should be smaller than %{size} bytes in size
+          incorrect_format: Your photo must be either a JPG, PNG or GIF

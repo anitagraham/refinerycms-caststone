@@ -1,0 +1,35 @@
+var html = "<%= escape_javascript(render 'details-like-orbit', :mustache => {:photo => @photo}) %>";
+
+var div = document.createElement('div');
+div.innerHTML = html;
+var drawing = div.firstChild,
+    table = drawing.next(),
+    photo = $("#thumbsWrapper").find('.visible_image > img'),
+    caption = photo.next(),
+ 		pandt = $(photo,caption).wrap('<div class="photo-and-table"></div>');  
+ pandt.prepend(drawing);
+ caption.append(table);
+
+/*
+ * html returns
+ * <img class="drawing"/>
+ * <table class="dimension"></table>
+ *
+ *
+ * already have
+ *
+ * <div visible_image>
+ *   photo
+ *   caption
+ * </div> 
+ *
+ * finish with
+ * <div visible_image>
+ *   drawing
+ *   <div class="photo-and-table">
+ *     photo
+ *     caption
+ *     table
+ *   </div>
+ * </div>  
+ */  

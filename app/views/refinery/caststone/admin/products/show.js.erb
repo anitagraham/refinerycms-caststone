@@ -1,0 +1,2 @@
+$("div#selectComponents").
+  replaceWith("<%= escape_javascript(render '/refinery/caststone/admin/shared/product_components', :series => @series, :format=> :html) %>")

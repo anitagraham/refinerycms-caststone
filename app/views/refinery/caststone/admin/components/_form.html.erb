@@ -1,0 +1,25 @@
+<%= simple_form_for [refinery, :caststone, :admin, @component] do |f| %>
+
+  <%= render '/refinery/admin/error_messages', :object => @component, :include_object_name => true %>
+
+  <div class="row">
+    <div id="drawing">
+   	  <%= f.input :drawing, :as=>:file, :label=>"Choose a drawing file", :accept => 'image/png'  %>
+      <%= render 'component_drawing', :component => @component%>
+    </div>
+
+	  <div id="fields">
+      <h2><%= @component.name %></h2>
+      <%= f.input :type, :collection => Refinery::Caststone::Component.select_options %>
+      <%= f.input :name, :class=>'widest' %>
+      <%= f.association :products, :label => 'Series', :as => :check_boxes, :class=>'photo_product_select' %>
+      <%= f.input :note %>
+      <%= f.input :height, :label=>"Height (mm)", :pattern=>"\\d+" %>
+    </div>
+
+  </div>
+  <%= render '/refinery/admin/form_actions', :f => f,
+    :continue_editing => false,
+    :delete_title => t('delete', :scope => 'refinery.components.admin.components.component'),
+    :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @component.name) %>
+<% end %>

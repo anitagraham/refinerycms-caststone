@@ -1,0 +1,129 @@
+nl:
+  refinery:
+    plugins:
+      tags:
+        title: Tags
+      photos:
+        title: Photos
+      displays:
+        title: Displays
+      components:
+        title: Components
+      products:
+        title: Products
+    caststone:
+      admin:
+        tags:
+          actions:
+            create_new: Maak een nieuwe Tag
+            reorder: Wijzig de volgorde van de Tags
+            reorder_done: Klaar met het wijzingen van de volgorde van de Tags
+          records:
+            title: Tags
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Tags. Druk op 'Maak een nieuwe Tag' om
+              de eerste aan te maken.
+          tag:
+            view_live_html: Bekijk deze tag op de website <br/><em>(opent een nieuw
+              venster)</em>
+            edit: Bewerk deze tag
+            delete: Verwijder deze tag voor eeuwig
+        photos:
+          actions:
+            create_new: Maak een nieuwe Photo
+            reorder: Wijzig de volgorde van de Photos
+            reorder_done: Klaar met het wijzingen van de volgorde van de Photos
+          records:
+            title: Photos
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Photos. Druk op 'Maak een nieuwe Photo'
+              om de eerste aan te maken.
+          photo:
+            view_live_html: Bekijk deze photo op de website <br/><em>(opent een nieuw
+              venster)</em>
+            edit: Bewerk deze photo
+            delete: Verwijder deze photo voor eeuwig
+        displays:
+          actions:
+            create_new: Maak een nieuwe Display
+            reorder: Wijzig de volgorde van de Displays
+            reorder_done: Klaar met het wijzingen van de volgorde van de Displays
+          records:
+            title: Displays
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Displays. Druk op 'Maak een nieuwe Display'
+              om de eerste aan te maken.
+          display:
+            view_live_html: Bekijk deze display op de website <br/><em>(opent een
+              nieuw venster)</em>
+            edit: Bewerk deze display
+            delete: Verwijder deze display voor eeuwig
+        components:
+          actions:
+            create_new: Maak een nieuwe Component
+            reorder: Wijzig de volgorde van de Components
+            reorder_done: Klaar met het wijzingen van de volgorde van de Components
+          records:
+            title: Components
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Components. Druk op 'Maak een nieuwe Component'
+              om de eerste aan te maken.
+          component:
+            view_live_html: Bekijk deze component op de website <br/><em>(opent een
+              nieuw venster)</em>
+            edit: Bewerk deze component
+            delete: Verwijder deze component voor eeuwig
+        products:
+          actions:
+            create_new: Maak een nieuwe Product
+            reorder: Wijzig de volgorde van de Products
+            reorder_done: Klaar met het wijzingen van de volgorde van de Products
+          records:
+            title: Products
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Products. Druk op 'Maak een nieuwe Product'
+              om de eerste aan te maken.
+          product:
+            view_live_html: Bekijk deze product op de website <br/><em>(opent een
+              nieuw venster)</em>
+            edit: Bewerk deze product
+            delete: Verwijder deze product voor eeuwig
+      tags:
+        show:
+          other: Andere Tags
+      photos:
+        show:
+          other: Andere Photos
+      displays:
+        show:
+          other: Andere Displays
+      components:
+        show:
+          other: Andere Components
+      products:
+        show:
+          other: Andere Products
+  activerecord:
+    attributes:
+      refinery/caststone/tag:
+        name: Name
+      refinery/caststone/photo:
+        name: Name
+        caption: Caption
+        image_uid: Image Uid
+        product_id: Product
+      refinery/caststone/display:
+        name: Name
+        caption: Caption
+        photo: Photo
+        product_id: Product
+      refinery/caststone/component:
+        name: Name
+        type: Type
+        note: Note
+        height: Height
+        drawing: Drawing
+        product_id: Product
+      refinery/caststone/product:
+        name: Name
+        blurb: Blurb

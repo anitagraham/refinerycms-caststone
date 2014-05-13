@@ -1,0 +1,13 @@
+<div class='wym_skin_refinery page_part' id='page_photo_picker'>
+	<% #photos = Refinery::Caststone::Photo.order(:name)    
+	%>
+	<% if !@photos.nil? %>
+	 <%= select :page, :photo_ids, 
+	 						@photos.map{ |p| [p.name, p.id, { 'data-url' => p.thumbnail('250x')} ] },
+	 						{},
+	 						{:multiple=>true, :class=>:multiselect, :id=>:photo_multiselect}
+   %>
+   <% end%>
+	</div>
+</div>
+

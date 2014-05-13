@@ -1,0 +1,21 @@
+<ul id="photo_grid" class="<%= ['clearfix', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
+  <% @photos.each_with_index do |photo, index| -%>
+    <li id="photo_<%= photo.id %>" class='photo_<%= index % 5 %>'>
+      <%= image_fu photo, '135x135#c', :title => photo.title %>
+      <span class='actions'>
+        <%= link_to refinery_icon_tag('eye.png'), photo.url,
+                    :target => "_blank",
+                    :title => t('.view_live_html') %>
+        <%= link_to refinery_icon_tag('application_edit.png'),
+                    refinery.edit_admin_caststone_photo_path(photo),
+                    :title => t('edit', :scope => 'refinery.admin.photos') %>
+        <%= link_to refinery_icon_tag('delete.png'),
+                    refinery.admin_caststone_photo_path(photo),
+                    :class => "cancel confirm-delete",
+                    :title => t('delete', :scope => 'refinery.admin.photos'),
+                    :confirm => t('message', :scope => 'refinery.admin.delete', :title => photo.title),
+                    :method => :delete %>
+      </span>
+    </li>
+  <% end -%>
+</ul>

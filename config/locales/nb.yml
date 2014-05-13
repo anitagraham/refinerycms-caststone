@@ -1,0 +1,129 @@
+nb:
+  refinery:
+    plugins:
+      tags:
+        title: Tags
+      photos:
+        title: Photos
+      displays:
+        title: Displays
+      components:
+        title: Components
+      products:
+        title: Products
+    caststone:
+      admin:
+        tags:
+          actions:
+            create_new: Lag en ny Tag
+            reorder: Endre rekkefølgen på Tags
+            reorder_done: Ferdig å endre rekkefølgen Tags
+          records:
+            title: Tags
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Tags enda. Klikk på "Lag en ny Tag" for å legge
+              til din første tag.
+          tag:
+            view_live_html: Vis hvordan denne tag ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne tag
+            delete: Fjern denne tag permanent
+        photos:
+          actions:
+            create_new: Lag en ny Photo
+            reorder: Endre rekkefølgen på Photos
+            reorder_done: Ferdig å endre rekkefølgen Photos
+          records:
+            title: Photos
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Photos enda. Klikk på "Lag en ny Photo" for
+              å legge til din første photo.
+          photo:
+            view_live_html: Vis hvordan denne photo ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne photo
+            delete: Fjern denne photo permanent
+        displays:
+          actions:
+            create_new: Lag en ny Display
+            reorder: Endre rekkefølgen på Displays
+            reorder_done: Ferdig å endre rekkefølgen Displays
+          records:
+            title: Displays
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Displays enda. Klikk på "Lag en ny Display"
+              for å legge til din første display.
+          display:
+            view_live_html: Vis hvordan denne display ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne display
+            delete: Fjern denne display permanent
+        components:
+          actions:
+            create_new: Lag en ny Component
+            reorder: Endre rekkefølgen på Components
+            reorder_done: Ferdig å endre rekkefølgen Components
+          records:
+            title: Components
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Components enda. Klikk på "Lag en ny Component"
+              for å legge til din første component.
+          component:
+            view_live_html: Vis hvordan denne component ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne component
+            delete: Fjern denne component permanent
+        products:
+          actions:
+            create_new: Lag en ny Product
+            reorder: Endre rekkefølgen på Products
+            reorder_done: Ferdig å endre rekkefølgen Products
+          records:
+            title: Products
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Products enda. Klikk på "Lag en ny Product"
+              for å legge til din første product.
+          product:
+            view_live_html: Vis hvordan denne product ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne product
+            delete: Fjern denne product permanent
+      tags:
+        show:
+          other: Andre Tags
+      photos:
+        show:
+          other: Andre Photos
+      displays:
+        show:
+          other: Andre Displays
+      components:
+        show:
+          other: Andre Components
+      products:
+        show:
+          other: Andre Products
+  activerecord:
+    attributes:
+      refinery/caststone/tag:
+        name: Name
+      refinery/caststone/photo:
+        name: Name
+        caption: Caption
+        image_uid: Image Uid
+        product_id: Product
+      refinery/caststone/display:
+        name: Name
+        caption: Caption
+        photo: Photo
+        product_id: Product
+      refinery/caststone/component:
+        name: Name
+        type: Type
+        note: Note
+        height: Height
+        drawing: Drawing
+        product_id: Product
+      refinery/caststone/product:
+        name: Name
+        blurb: Blurb

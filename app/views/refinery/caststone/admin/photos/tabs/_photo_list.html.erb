@@ -1,0 +1,10 @@
+<div class="list_header">
+	<span class='title'>Title</span>
+	<span class="preview">Preview</span>
+	<span class="checkbox">Select</span>
+</div>
+
+<ul id='photo_list'>
+	<%= will_paginate @photos if Refinery::Caststone::Admin::PhotosController.pageable? %>
+  <%= render 'refinery/caststone/admin/photos/tabs/photo', :collection => @photos %>
+</ul>

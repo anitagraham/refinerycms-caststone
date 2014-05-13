@@ -1,0 +1,22 @@
+<li class='clearfix record components-<%=component.type.demodulize%> <%= cycle("on", "on-hover") %>' id="<%= dom_id(component) %>">
+	
+  <span class='title'>
+    <%= component.name %>
+  </span>
+
+  <span class="hasdrawing">
+ 		<%= component.ready ?  refinery_icon_tag("tick.png") : refinery_icon_tag("cross.png") %>
+	</span>
+  <span class="series"><%= component.products.to_sentence %></span>
+  <span class='actions'>
+    
+    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_caststone_admin_component_path(component),
+         :title => t('.edit') %>
+    <%= link_to refinery_icon_tag("delete.png"), refinery.caststone_admin_component_path(component),
+        :class => "cancel confirm-delete",
+        :title => t('.delete'),
+        :confirm => t('message', :scope => 'refinery.admin.delete', :title => component.name),
+        :method => :delete %>
+  </span>
+</li>
+  

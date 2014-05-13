@@ -1,0 +1,27 @@
+{{#photo}}
+	<img class="drawing" src="data:image/png;base64,{{drawing}}" />
+	<table class="dimensions">
+	  <thead>
+	    <tr>
+	      <th></th>
+	      <th>Height (mm)</th>
+	    </tr>
+	  </thead>
+	  <tfoot>
+	    <tr>
+	    	<td>
+	    		Total height (mm)
+	    	</td>
+	    	<td class="height">{{height}}</td>
+	    </tr>
+	  </tfoot>
+	  <tbody>
+    {{#components}}
+		  <tr>
+		    <td>{{name}}</td>
+		    <td class="height">{{height}}</td>
+	 		</tr>
+   {{/components}}
+	 </tbody>
+	</table>
+{{/photo}}

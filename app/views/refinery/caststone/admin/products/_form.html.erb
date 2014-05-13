@@ -1,0 +1,22 @@
+<%= form_for [refinery, :caststone_admin, @product] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @product,
+              :include_object_name => true %>
+
+  
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest'  -%>
+
+  </div>
+  <%= render :partial => '/refinery/caststone/admin/tabbed_fields',
+      :locals => { :f => f,
+                   :tabbed_fields =>[:blurb],
+                   :custom_fields => ["components"] } %>
+
+                        
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.products.admin.products.product'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @product.name) %>
+<% end -%>

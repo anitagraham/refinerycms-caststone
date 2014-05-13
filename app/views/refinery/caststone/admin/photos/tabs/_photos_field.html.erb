@@ -1,0 +1,13 @@
+<div class='wym_box field photos_field'>
+  <ul id='page_photos' class='clearfix'>
+    <%= f.fields_for :photos do |photo_form| %>
+      <li id='photo_<%= photo_form.object_id %>'>
+        <%= photo_form.hidden_field :id %>
+        <%= image_fu photo_form.object, '100x100' %>
+        <% index = photo_form.object_name.split('[').last.split(']').first.to_i %>
+    </li>
+    <% end %>
+    <li class='empty'>
+    </li>
+  </ul>
+</div>

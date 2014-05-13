@@ -1,0 +1,5 @@
+<div class="photo_checkbox"> 
+  <span class="title"> <%= photo.name %> </span>
+  <%= link_to refinery_icon_tag('eye.png'), photo.image.thumb("250x").url, :class=>'preview' %>
+	<%= check_box_tag 'page[photo_ids][]', photo.id,  photo.page_id==@page.id, :name => 'page[photo_ids][]', :class => 'checkbox' %>  
+</div>
