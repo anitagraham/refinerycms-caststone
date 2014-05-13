@@ -7,7 +7,8 @@ module Refinery
       scope :by_series, order(:product_id)
       default_scope order(:name)
 
-      acts_as_indexed :fields => [:name, :caption]
+      acts_as_indexed :fields => [:title, :caption]
+      alias_attribute :title, :name
 
       validates :name, :presence => true, :uniqueness => true
       photo_accessor :image
