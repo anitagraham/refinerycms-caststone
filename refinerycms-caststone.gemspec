@@ -1,14 +1,14 @@
 # Encoding: UTF-8
 # Encoding: UTF-8
-$:.push File.expand_path('../lib', __FILE__)
-require 'refinery/caststone/version'
-
-version = Refinery::Caststone::Version.to_s
+# $:.push File.expand_path('../lib', __FILE__)
+# require 'refinery/caststone/version'
+#
+# version = Refinery::Caststone::Version.to_s
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-caststone'
-  # s.version           = '1.0'
+  s.version           = '1.0'
   s.description       = 'Ruby on Rails Caststone extension for Refinery CMS'
   s.date              = '2012-05-07'
   s.summary           = 'Caststone extension for Refinery CMS'
