@@ -27,12 +27,33 @@ module Refinery
 
         describe "products association" do
 
-          it "have a product attribute" do
+          it "has associated products" do
             expect(component).to respond_to(:products)
           end
         end
+      end
+
+      describe '#ready' do
 
       end
+
+      describe '.filter_by_product' do
+        before do
+          @series = FactoryGirl.create(:series, :name=>'TestSeries')
+          FactoryGirl.create(:component)
+           @comp3  = FactoryGirl.create(:component, :name => 'comp3', :type => 'Shaft', :height =>300, :products=>[:NotherSeries])
+          @inTestSeries = described_class.filter_by_product(@series.id)
+        end
+        it 'returns all the components in a series' do
+          expect(@inTestSeries).to include('comp1', 'comp2')
+        end
+
+        it "doesn't return a component not in the series" do
+          expect(@inTestSeries).to not_include('comp3')
+        end
+
+      end
+
     end
   end
 end

@@ -60,9 +60,6 @@ module Refinery
       end
 
       def thumbnail(geometry = nil)
-        ap "Getting thumbnail"
-        ap image_uid
-        ap geometry
         if geometry.is_a?(Symbol) and Refinery::Caststone::Photos.sizes.keys.include?(geometry)
           geometry = Refinery::Caststone::Photos.sizes[geometry]
         end
@@ -77,7 +74,6 @@ module Refinery
       end
 
       def copyright_image
-        ap "Getting copyright image"
         pointsize = 16
         image.convert("-gravity southeast -pointsize #{pointsize} -fill white -annotate 0 '(c) www.caststone.com.au #{Time.now.year}'")
       end
