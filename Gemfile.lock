@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     refinerycms-caststone (1.0)
-      refinerycms-core (~> 2.0.10)
+      refinerycms-core
 
 GEM
   remote: http://rubygems.org/

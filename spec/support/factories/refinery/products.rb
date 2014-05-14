@@ -1,7 +1,7 @@
 
 FactoryGirl.define do
   factory :product, :class => Refinery::Caststone::Product do
-    sequence(:name) { |n| "refinery#{n}" }
+    sequence(:name) { |n| "Series #{n}" }
   end
 end
 

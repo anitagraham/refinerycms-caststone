@@ -1,3 +1,4 @@
+# This migration comes from refinery_caststone (originally 4)
 class CreateCaststoneAssignments < ActiveRecord::Migration
 
   def change

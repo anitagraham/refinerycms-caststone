@@ -8,11 +8,11 @@ module Refinery
       describe "validations" do
 
         it "requires a name" do
-          expect(FactoryGirl.build(:component, :title => "")).to be_invalid
+          expect(FactoryGirl.build(:component, :name => "")).to be_invalid
         end
 
         it "won't allow a duplicate name" do
-          expect(FactoryGirl.build(:component, :title => component.title)).to be_invalid
+          expect(FactoryGirl.build(:component, :name => component.title)).to be_invalid
         end
 
         it "requires a valid type" do

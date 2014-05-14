@@ -36,7 +36,7 @@ Refinery::Images.configure do |config|
   # Configure Dragonfly
   # This is where in the middleware stack to insert the Dragonfly middleware
   # config.dragonfly_insert_before = "ActionDispatch::Callbacks"
-  # config.dragonfly_secret = "6ef8b8d61a98ddc38e5992d06f9dead3aa6233c67051118e"
+  # config.dragonfly_secret = "f2419fbf1e31df0668d1fb8f57b392e5cffa4c7a0075c050"
   # If you decide to trust file extensions replace :ext below with :format
   # config.dragonfly_url_format = "/system/images/:job/:basename.:ext"
   # config.datastore_root_path = "/Applications/MAMP/www/refinerycms-caststone/spec/dummy/public/system/refinery/images"
