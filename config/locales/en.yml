@@ -36,7 +36,7 @@ en:
           records:
             title: Photos
             sorry_no_results: Sorry! There are no results found.
-            no_items_yet: There are no Photos yet. Click "Add New Photo" to add your
+            no_photos_yet: There are no Photos yet. Click "Add New Photo" to add your
               first photo.
           photo:
             view_live_html: View this photo live <br/><em>(opens in a new window)</em>

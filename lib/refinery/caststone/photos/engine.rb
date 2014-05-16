@@ -13,36 +13,25 @@ module Refinery
         ::Refinery::Caststone::Photos::Dragonfly.attach!(app)
       end
 
-
-      def self.register_photos(tab)
-        tab.name = "photos"
-        tab.partial = "/refinery/caststone/admin/photos/tabs/photos"
-      end
-
-      initializer "register refinerycms_photos plugin" do
+      initializer "register refinery_caststone_photos plugin" do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "photos"
+          plugin.name = "caststone_photos"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_photos_path }
           plugin.pathname = root
           plugin.activity = {
-            :class_name => :'refinery/caststone/photo',
+            :class_name => Refinery::Caststone::Photo,
             :title => 'name'
           }
-          plugin.menu_match = %r{refinery/caststone/photos(/.*)?$}
         end
       end
-      config.to_prepare do
-        require 'refinerycms-pages'
-        Refinery::Page.send :photo_relationships
-      end
-       config.after_initialize do
 
+      config.after_initialize do
+        Refinery.register_extension(Refinery::Caststone::Photos)
         Refinery::Pages::Tab.register do |tab|
-          register_photos tab
+          register_testimonials tab
         end
-
-        Refinery.register_extension(Refinery::Photos)
       end
+
     end
   end
 end
