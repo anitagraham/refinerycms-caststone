@@ -1,3 +1,4 @@
+en.refinery.plugins.caststone_photos.title
 en:
   refinery:
     plugins:
@@ -10,6 +11,11 @@ en:
         title: Components
       products:
         title: Series
+    caststone_photos:
+      records:
+        title: Photos
+        sorry_no_results: Sorry! There are no results found.
+        no_photos_yet: There are no Photos yet. Click "Add New Photo" to add your first photo.
     caststone:
       admin:
         filter:
