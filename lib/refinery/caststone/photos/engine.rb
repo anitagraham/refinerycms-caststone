@@ -20,7 +20,7 @@ module Refinery
 
       before_inclusion do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "caststone_photos"
+          plugin.name = "caststone.photos"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_photos_path }
           plugin.pathname = root
           plugin.activity = {

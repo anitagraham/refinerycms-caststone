@@ -19,7 +19,7 @@ module Refinery
 
       initializer "register refinerycms_components plugin" do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "components"
+          plugin.name = "caststone.components"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_components_path }
           plugin.pathname = root
           plugin.activity = {
