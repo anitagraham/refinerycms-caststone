@@ -3,12 +3,12 @@ en:
     plugins:
       tags:
         title: Tags
-      photos:
+      caststone_photos:
         title: Photos
         description: Manage photos
-      components:
+      caststone_components:
         title: Components
-      products:
+      caststone_products:
         title: Series
     caststone:
       admin:
