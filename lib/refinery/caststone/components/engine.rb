@@ -13,13 +13,13 @@ module Refinery
       end
 
       def self.register_components(tab)
-        tab.name = "caststone_components"
+        tab.name = "components"
         tab.partial = "/refinery/caststone/admin/components/tabs/components"
       end
 
       initializer "register refinerycms_components plugin" do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "components"
+          plugin.name = "caststone_components"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_components_path }
           plugin.pathname = root
           plugin.activity = {
