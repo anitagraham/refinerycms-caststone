@@ -13,7 +13,7 @@ module Refinery
       end
 
       def self.register_components(tab)
-        tab.name = "components"
+        tab.name = "caststone_components"
         tab.partial = "/refinery/caststone/admin/components/tabs/components"
       end
 
