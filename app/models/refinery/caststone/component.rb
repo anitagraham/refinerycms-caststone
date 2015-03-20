@@ -4,7 +4,7 @@ module Refinery
       ::Refinery::Caststone::Components::Dragonfly.setup!
       include Rails.application.routes.url_helpers
 
-      drawing_accessor :drawing
+      dragonfly_accessor :drawing, app: :caststone_component
       default_scope :order => 'name ASC'
       acts_as_indexed :fields => [:name]
 
@@ -18,8 +18,6 @@ module Refinery
 
       has_many :compatibles
       has_many :series, :through => :compatibles, :class_name=>'Product'
-
-      attr_accessible :type, :name, :note, :height, :drawing, :drawing_uid, :product_ids, :position
 
       scope :filter_by_product, lambda{ |product_id| includes(:components).where(:products => {:id => product_id}) }
 

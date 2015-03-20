@@ -26,6 +26,11 @@ module Refinery
         def find_all_series
           @products = Refinery::Caststone::Product.all
         end
+
+        def component_params
+          params.require(:photo).permit(:name, :caption,  :page, :position, :drawing, :image, :page_id, :product_id,
+                                        component_ids: [], base_ids: [], shaft_ids: [], capital_ids: [], column_ids: [], letterbox_ids: [])
+        end
       end
     end
   end

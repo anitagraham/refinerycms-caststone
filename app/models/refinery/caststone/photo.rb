@@ -11,7 +11,7 @@ module Refinery
       alias_attribute :title, :name
 
       validates :name, :presence => true, :uniqueness => true
-      photo_accessor :image
+      dragonfly_accessor :image, app: :caststone_photos
 
       belongs_to :product
       belongs_to :page, :inverse_of => :photos,  :foreign_key => 'page_id'
@@ -30,9 +30,6 @@ module Refinery
       before_update :save_drawing
       before_save   :save_drawing
 
-      attr_accessible :name, :caption,  :page, :position, :drawing
-      attr_accessible :component_ids, :base_ids, :shaft_ids, :capital_ids, :column_ids, :letterbox_ids
-      attr_accessible :image, :page_id, :product_id
       self.per_page = 30
 
       def as_json(options={})

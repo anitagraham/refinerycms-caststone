@@ -11,10 +11,6 @@ module Refinery
           plugin.name = "caststone_products"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_products_path }
           plugin.pathname = root
-          plugin.activity = {
-            :class_name => :'refinery/caststone/product',
-            :title => 'name'
-          }
           plugin.menu_match = %r{refinery/caststone/products(/.*)?$}
         end
       end

@@ -10,7 +10,7 @@ $(function() {
   if (seriesSelect.length)  {
     $('div.fields').on('click', 'a#redraw_button', function (){
       updateDrawing();
-      return false; })
+      return false; });
     $('select#photo_product_id').change(function() {
       $.get('/refinery/caststone/products/' + this.value + '.js');
     });
@@ -29,9 +29,9 @@ $(function() {
   if (clearRadioButton.length) {
     clearRadioButton.on('click', function () {
       $(this).parent().find('input').each(function() {
-        this.checked =  false
-      })
-    })
+        this.checked =  false;
+      });
+    });
   }
 
   if (redrawButton.length) {
@@ -58,9 +58,9 @@ $(function() {
     $('form.edit_photo').on('click', 'a#copyright_button', function() {
       $.when( $.ajax({'url': '/refinery/caststone/photos/' + copyrightButton.data('photoid') + '/add_copyright.js'}))
        .then( function(data) {
-        $('#photo.img').attr('src', data)  // replace the photo with the new copyright showing.
-      })
-    })
+        $('#photo.img').attr('src', data);ß  // replace the photo with the new copyright showing.
+      });
+    });
   };
 
   $('#photo_multiselect, #component_multiselect').multiselect({

@@ -1,9 +1,9 @@
 Refinery::Core::Engine.routes.draw do
 
-  match '/system/drawings/*dragonfly', :to => Dragonfly[:caststone_drawings]
-  match '/system/photos/*dragonfly', :to => Dragonfly[:caststone_photos]
-  match '/templates/:path/:name', :to =>  "caststone/templates#serve"
-  match '/refinery/caststone/products/:id/:type/list', :to =>  "caststone/products#list"
+  get '/system/drawings/*dragonfly', :to => Dragonfly.app(:caststone_drawings)
+  get '/system/photos/*dragonfly', :to => Dragonfly.app(:caststone_photos)
+  get '/templates/:path/:name', :to =>  "caststone/templates#serve"
+  get '/refinery/caststone/products/:id/:type/list', :to =>  "caststone/products#list"
 
 # ------------- Products = Series --------------
 
