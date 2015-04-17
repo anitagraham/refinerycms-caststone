@@ -29,7 +29,7 @@ module Refinery
       self.pages_per_dialog_that_have_size_options = 12
       self.pages_per_admin_index = 20
       self.sizes = {
-        :home => '673x380!',
+        :home => '960x690!',
         :pillars => '640x425>',
         :columns => '890x600>',
         :letterboxes => '700x400>',

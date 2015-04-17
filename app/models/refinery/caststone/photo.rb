@@ -1,11 +1,12 @@
 module Refinery
   module Caststone
     class Photo < Refinery::Core::BaseModel
-      ::Refinery::Caststone::Photos::Dragonfly.setup!
       include Rails.application.routes.url_helpers
       include ActionView::Helpers::UrlHelper
-      scope :by_series, order(:product_id)
-      default_scope order(:name)
+      include Refinery::ThumbnailDimensions
+
+      scope :by_series, -> {order(:product_id)}
+      default_scope { order(:name) }
 
       acts_as_indexed :fields => [:title, :caption]
       alias_attribute :title, :name
@@ -15,8 +16,6 @@ module Refinery
 
       belongs_to :product
       belongs_to :page, :inverse_of => :photos,  :foreign_key => 'page_id'
-      # validates_presence_of :page
-
 
       has_many :assignments
       has_many :components,  :through => :assignments
@@ -56,18 +55,28 @@ module Refinery
         image.url
       end
 
-      def thumbnail(geometry = nil)
-        if geometry.is_a?(Symbol) and Refinery::Caststone::Photos.sizes.keys.include?(geometry)
-          geometry = Refinery::Caststone::Photos.sizes[geometry]
-        end
+      # Get a thumbnail job object given a geometry and whether to strip image profiles and comments.
+      def thumbnail(options = {})
+        options = { :geometry => nil, :strip => false }.merge(options)
+        geometry = convert_to_geometry(options[:geometry])
+        thumbnail = image
+        thumbnail = thumbnail.thumb(geometry) if geometry
+        thumbnail = thumbnail.strip if options[:strip]
+        thumbnail
+      end
 
-        if geometry.present? && !geometry.is_a?(Symbol)
-          # copyright_image.thumb(geometry).url
-          image.thumb(geometry).url
-        else
-          # copyright_image.url
-          image.url
-        end
+      # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
+      def thumbnail_dimensions(geometry)
+        dimensions = ThumbnailDimensions.new(geometry, image.width, image.height)
+        { :width => dimensions.width, :height => dimensions.height }
+      end
+
+     def convert_to_geometry(geometry)
+          if geometry.is_a?(Symbol) && Refinery::Images.user_image_sizes.keys.include?(geometry)
+            Refinery::Images.user_image_sizes[geometry]
+          else
+            geometry
+          end
       end
 
       def copyright_image
@@ -84,7 +93,7 @@ module Refinery
         #       always save the drawing - won't be changed that often.
         #       bonus: saves the height too.
         component_ids = self.base_ids + self.shaft_ids + self.column_ids + self.capital_ids + self.letterbox_ids
-        self.drawing = Refinery::Caststone::Component.construct(component_ids) unless component_ids.empty?
+        self.drawing = component_ids.present? ? Refinery::Caststone::Component.construct(component_ids) : nil
         self.height = self.components.sum('height')
       end
     end

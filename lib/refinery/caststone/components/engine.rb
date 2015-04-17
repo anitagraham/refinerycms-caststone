@@ -23,16 +23,15 @@ module Refinery
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_components_path }
           plugin.pathname = root
           plugin.menu_match = %r{refinery/caststone/components(/.*)?$}
-          # plugin.menu_match =  Refinery::Core::Engine.routes.url_helpers.caststone_admin_components_path
         end
       end
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Caststone::Components)
         # Register the components tab. We use this with the Photos definition
-        Refinery::Pages::Tab.register do |tab|
-          register_components tab
-        end
+        # Refinery::Pages::Tab.register do |tab|
+          # register_components tab
+        # end
       end
     end
   end

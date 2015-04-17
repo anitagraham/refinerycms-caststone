@@ -1,11 +1,10 @@
 module Refinery
   module Caststone
     class Component < Refinery::Core::BaseModel
-      ::Refinery::Caststone::Components::Dragonfly.setup!
       include Rails.application.routes.url_helpers
 
       dragonfly_accessor :drawing, app: :caststone_component
-      default_scope :order => 'name ASC'
+      # default_scope {where(order: 'name ASC')}
       acts_as_indexed :fields => [:name]
 
       COMP_TYPES = %w(Base Shaft Column Capital Letterbox)

@@ -8,7 +8,6 @@ module Refinery
         respond_to :png, :only=>:draw
 
          before_filter :find_all_series, :only => [:edit, :new]
-         # before_filter :find_series_components, :only => [:edit]
 
         crudify :'refinery/caststone/photo',
                 :title_attribute => 'name', :paging => true
@@ -27,7 +26,7 @@ module Refinery
           @products = Refinery::Caststone::Product.all
         end
 
-        def component_params
+        def photo_params
           params.require(:photo).permit(:name, :caption,  :page, :position, :drawing, :image, :page_id, :product_id,
                                         component_ids: [], base_ids: [], shaft_ids: [], capital_ids: [], column_ids: [], letterbox_ids: [])
         end

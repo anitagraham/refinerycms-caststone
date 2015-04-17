@@ -4,8 +4,11 @@ gemspec
 
 gem 'refinerycms', github: 'refinery/refinerycms', branch: 'master'
 gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n'
-
+gem "rmagick", :require => 'RMagick'
 gem "mime-types", "~> 1.25"
+gem "mustache"
+gem "stache"
+
 
 group :test do
   gem 'poltergeist'
