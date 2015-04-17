@@ -3,7 +3,6 @@ module Refinery
     class Photo < Refinery::Core::BaseModel
       include Rails.application.routes.url_helpers
       include ActionView::Helpers::UrlHelper
-      include Refinery::ThumbnailDimensions
 
       scope :by_series, -> {order(:product_id)}
       default_scope { order(:name) }
@@ -33,7 +32,7 @@ module Refinery
 
       def as_json(options={})
         json = super(options)
-        json['src'] = thumbnail(options[:size])    #thumbnail returns a url
+        json['src'] = thumbnail(options)    #thumbnail returns a url
         json['imageurl'] = copyright_image.url
         json['label'] = caption || name
         json
@@ -62,7 +61,7 @@ module Refinery
         thumbnail = image
         thumbnail = thumbnail.thumb(geometry) if geometry
         thumbnail = thumbnail.strip if options[:strip]
-        thumbnail
+        thumbnail.url
       end
 
       # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
@@ -72,11 +71,11 @@ module Refinery
       end
 
      def convert_to_geometry(geometry)
-          if geometry.is_a?(Symbol) && Refinery::Images.user_image_sizes.keys.include?(geometry)
-            Refinery::Images.user_image_sizes[geometry]
-          else
-            geometry
-          end
+        if geometry.is_a?(Symbol) && Refinery::Images.user_image_sizes.keys.include?(geometry)
+          Refinery::Images.user_image_sizes[geometry]
+        else
+          geometry
+        end
       end
 
       def copyright_image
