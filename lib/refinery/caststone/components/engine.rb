@@ -8,8 +8,8 @@ module Refinery
       config.autoload_paths += %W( #{config.root}/lib )
 
       initializer 'attach-caststone-drawings-with-dragonfly', :before => :finisher_hook do |app|
-        ::CaststoneDragonfly.configure!(:caststone_photos)
-        ::CaststoneDragonfly.attach!(app, :caststone_photos)
+        ::CaststoneDragonfly.configure!(:caststone_components)
+        ::CaststoneDragonfly.attach!(app, :caststone_components)
       end
 
       def self.register_components(tab)
@@ -18,7 +18,7 @@ module Refinery
       end
 
       before_inclusion do
-        Refinery::Plugin.register do |plugin|
+         Refinery::Plugin.register do |plugin|
           plugin.name = "caststone_components"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_components_path }
           plugin.pathname = root
@@ -28,10 +28,6 @@ module Refinery
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Caststone::Components)
-        # Register the components tab. We use this with the Photos definition
-        # Refinery::Pages::Tab.register do |tab|
-          # register_components tab
-        # end
       end
     end
   end

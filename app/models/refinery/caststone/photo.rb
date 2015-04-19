@@ -1,3 +1,5 @@
+require 'dragonfly'
+
 module Refinery
   module Caststone
     class Photo < Refinery::Core::BaseModel
@@ -71,8 +73,8 @@ module Refinery
       end
 
      def convert_to_geometry(geometry)
-        if geometry.is_a?(Symbol) && Refinery::Images.user_image_sizes.keys.include?(geometry)
-          Refinery::Images.user_image_sizes[geometry]
+        if geometry.is_a?(Symbol) && Refinery::Caststone::Photos.sizes.keys.include?(geometry)
+          Refinery::Caststone::Photos.sizes[geometry]
         else
           geometry
         end

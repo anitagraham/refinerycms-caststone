@@ -8,19 +8,16 @@ module CaststoneDragonfly
 
       app = ::Dragonfly.app(app_name)
 
+      # Use Refinery::Images configuration settings
       app.configure do
         plugin :imagemagick
         datastore :file, {
           :root_path => Refinery::Images.datastore_root_path
         }
-#       Use Refinery configuration settings where possible
         url_format Refinery::Images.dragonfly_url_format
-        url_host Refinery::Images.dragonfly_url_host
-        secret Refinery::Images.dragonfly_secret
+        url_host   Refinery::Images.dragonfly_url_host
+        secret     Refinery::Images.dragonfly_secret
         dragonfly_url nil
-        # processor :strip do |content|
-          # content.process!(:convert, '-strip')
-        # end
       end
 
       if ::Refinery::Images.s3_backend

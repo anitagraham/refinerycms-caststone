@@ -3,7 +3,7 @@ module Refinery
     class Component < Refinery::Core::BaseModel
       include Rails.application.routes.url_helpers
 
-      dragonfly_accessor :drawing, app: :caststone_component
+      dragonfly_accessor :drawing, app: :caststone_components
       # default_scope {where(order: 'name ASC')}
       acts_as_indexed :fields => [:name]
 
@@ -20,14 +20,6 @@ module Refinery
 
       scope :filter_by_product, lambda{ |product_id| includes(:components).where(:products => {:id => product_id}) }
 
-#     if there's no name then set it from the file name
-      # before_validation :default_name
-      # before_validation :default_name
-#
-      # def default_name
-        # self.name = name.presence || File.basename(drawing.name, '.*').titleize
-      # end
-#
       def ready
         not(self.drawing_uid.blank? or self.products.empty? or self.height.nil? or self.height==0)
       end
@@ -48,11 +40,11 @@ module Refinery
 
       def self.select_options
         [
-        ["Base","Refinery::Caststone::Base"],
-        ["Capital","Refinery::Caststone::Capital"],
-        ["Colummn","Refinery::Caststone::Column"],
-        ["Letterbox","Refinery::Caststone::Letterbox"],
-        ["Shaft","Refinery::Caststone::Shaft"]
+          ["Base","Refinery::Caststone::Base"],
+          ["Capital","Refinery::Caststone::Capital"],
+          ["Colummn","Refinery::Caststone::Column"],
+          ["Letterbox","Refinery::Caststone::Letterbox"],
+          ["Shaft","Refinery::Caststone::Shaft"]
         ]
       end
 

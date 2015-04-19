@@ -5,12 +5,6 @@ module Refinery
   autoload :CaststoneGenerator, 'generators/refinery/caststone_generator'
   module Caststone
     module Components
-      require 'refinery/caststone/components/engine'
-      require 'refinery/caststone/components/configuration'
-      require 'refinery/caststone/caststone_dragonfly'
-
-      # autoload :Dragonfly, 'refinery/caststone/components/dragonfly'
-      # autoload :Validators, 'refinery/images/validators'
 
       class << self
         def root
@@ -20,6 +14,9 @@ module Refinery
         def factory_paths
           @factory_paths ||= [ root.join('spec', 'factories').to_s ]
         end
+
+        require 'refinery/caststone/components/engine'
+        require 'refinery/caststone/components/configuration'
       end
     end
   end

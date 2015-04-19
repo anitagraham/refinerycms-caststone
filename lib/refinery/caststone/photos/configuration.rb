@@ -14,7 +14,7 @@ module Refinery
                     :custom_backend_class, :custom_backend_opts
 
       self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
-      self.dragonfly_secret = Refinery::Core.dragonfly_secret
+      self.dragonfly_secret = Refinery::Images.dragonfly_secret
       self.dragonfly_url_format = '/system/refinery/images/:job/:basename.:ext'
       self.dragonfly_url_format = '/system/images/:job/:basename.:ext'
       self.dragonfly_url_host = ''
