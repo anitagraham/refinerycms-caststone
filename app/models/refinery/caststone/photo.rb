@@ -6,7 +6,10 @@ module Refinery
       include Rails.application.routes.url_helpers
       include ActionView::Helpers::UrlHelper
 
+      attr_accessor :height, :src, :copyright_image_url, :label
+
       scope :by_series, -> {order(:product_id)}
+
       default_scope { order(:name) }
 
       acts_as_indexed :fields => [:title, :caption]
@@ -34,26 +37,24 @@ module Refinery
 
       def as_json(options={})
         json = super(options)
-        json['src'] = thumbnail(options)    #thumbnail returns a url
-        json['imageurl'] = copyright_image.url
+        json['src_small'] = thumbnail(geometry: :small)
+        json['src_large'] = thumbnail(options)
+        json['imageurl'] = copyright_image_url
         json['label'] = caption || name
         json
       end
+
 
       def height
         self.components.sum(:height)
       end
 
-      def Label
+      def with_geometry(size)
+        thumbnail({geometry: size})
+      end
+
+      def label
         caption || name
-      end
-
-      def ready?
-        components.count>0
-      end
-
-      def imageurl
-        image.url
       end
 
       # Get a thumbnail job object given a geometry and whether to strip image profiles and comments.
@@ -80,14 +81,15 @@ module Refinery
         end
       end
 
-      def copyright_image
+      def copyright_image_url
         pointsize = 16
-        image.convert("-gravity southeast -pointsize #{pointsize} -fill white -annotate 0 '(c) www.caststone.com.au #{Time.now.year}'")
+        image.convert("-gravity southeast -pointsize #{pointsize} -fill white -annotate 0 '(c) www.caststone.com.au #{Time.now.year}'").url
       end
 
       def popup_image
          name thumbnail('250x')
       end
+
       private
 
       def save_drawing

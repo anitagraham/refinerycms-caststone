@@ -26,6 +26,10 @@ module Refinery
         end
       end
 
+      # config.to_prepare do
+        # ApplicationController.helper(Refinery::Caststone.PhotosHelper)
+      # end
+
       config.after_initialize do
         Refinery.register_extension(Refinery::Caststone::Photos)
         Refinery::Pages::Tab.register do |tab|

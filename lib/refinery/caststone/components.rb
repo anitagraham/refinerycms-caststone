@@ -7,6 +7,7 @@ module Refinery
     module Components
       require 'refinery/caststone/components/engine'
       require 'refinery/caststone/components/configuration'
+
       class << self
         def root
           @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
