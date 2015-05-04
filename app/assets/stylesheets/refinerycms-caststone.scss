@@ -1,17 +1,6 @@
 @import 'base';
 @import 'blankwork';
-@import 'compass';
-// @import 'foundation/settings';
-// @import 'foundation_settings';  //local overrides
-// @import 'foundation';
-
-// @import 'jquery';
-// @import 'multi-select';
 @import 'caststone-multi-select';
-// @import 'jquery.uix.multiselect';
-
-
-// textarea.wymeditor, .wym_skin_refinery .wym_iframe iframe { height: auto; }
 
 #photo_details {
   @include column(12);
