@@ -14,7 +14,6 @@ module CaststoneDragonfly
         datastore :file, {
           :root_path => Refinery::Images.datastore_root_path
         }
-        url_format Refinery::Images.dragonfly_url_format
         url_host   Refinery::Images.dragonfly_url_host
         secret     Refinery::Images.dragonfly_secret
         dragonfly_url nil
