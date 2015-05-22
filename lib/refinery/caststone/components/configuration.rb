@@ -16,7 +16,7 @@ module Refinery
       config.dragonfly_allow_fetch_file = true
       config.dragonfly_protect_from_dos_attacks = true
       config.whitelisted_mime_types = %w[image/png]
-      config.dragonfly_url_format = '/system/refinery/images/:job/:basename.:ext'
+      config.dragonfly_url_format = '/system/refinery/drawings/:job/:basename.:ext'
 
 
       # We have to configure these settings after Rails is available.

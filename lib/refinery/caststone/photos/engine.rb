@@ -8,7 +8,7 @@ module Refinery
       config.autoload_paths += %W( #{config.root}/lib )
 
       initializer 'attach-caststone-photos-with-dragonfly', :before => :finisher_hook do |app|
-        ::CaststoneDragonfly.configure!(:caststone_photos)
+        ::CaststoneDragonfly.configure!(:caststone_photos, :photos)
         ::CaststoneDragonfly.attach!(app, :caststone_photos)
       end
 

@@ -6,7 +6,7 @@ module Refinery
 				respond_to :html, :js
 
 				crudify :'refinery/caststone/component',
-                :title_attribute => 'name', :xhr_paging => true,
+                :title_attribute => 'name',
                 :order => 'name ASC'
 
 				def list_for_product

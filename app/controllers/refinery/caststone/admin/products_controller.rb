@@ -5,7 +5,7 @@ module Refinery
 
 				before_filter :list_components
         crudify :'refinery/caststone/product',
-                :title_attribute => 'name', :xhr_paging => true
+                :title_attribute => 'name'
 
 				def show
 					@series = Refinery::Caststone::Product.find(params[:id], :include => :components)

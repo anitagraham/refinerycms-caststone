@@ -2,7 +2,7 @@ require 'dragonfly'
 
 module CaststoneDragonfly
   class << self
-    def configure!(app_name)
+    def configure!(app_name, url_segment='images')
       ActiveRecord::Base.extend ::Dragonfly::Model
       ActiveRecord::Base.extend ::Dragonfly::Model::Validations
 
@@ -15,6 +15,7 @@ module CaststoneDragonfly
           :root_path => Refinery::Images.datastore_root_path
         }
         url_host   Refinery::Images.dragonfly_url_host
+        url_format "/system/refinery/#{url_segment}/:job/:basename.:ext"
         secret     Refinery::Images.dragonfly_secret
         dragonfly_url nil
       end
@@ -31,14 +32,13 @@ module CaststoneDragonfly
         app.use_datastore :s3, options
       end
 
+      # Logger
+      Dragonfly.logger = Rails.logger
+
       if ::Refinery::Images.custom_backend?
         app.datastore = Images.custom_backend_class.new(Images.custom_backend_opts)
       end
     end
-
-    ##
-    # Logger
-    Dragonfly.logger = Rails.logger
 
 
     # Injects Dragonfly::Middleware into the stack
