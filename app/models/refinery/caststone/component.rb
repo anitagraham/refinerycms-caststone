@@ -16,7 +16,7 @@ module Refinery
       validates_associated :products
 
       has_many :compatibles
-      has_many :series, :through => :compatibles, :class_name=>'Product'
+      has_many :products, :through => :compatibles, source: 'Product'
 
       scope :filter_by_product, lambda{ |product_id| includes(:components).where(:products => {:id => product_id}) }
 
