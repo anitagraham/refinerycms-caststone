@@ -12,7 +12,7 @@
       <h2><%= @component.name %></h2>
       <%= f.input :type, :collection => Refinery::Caststone::Component.select_options %>
       <%= f.input :name, :class=>'widest' %>
-      <%= f.association :products, :label => 'Series', :as => :check_boxes, :class=>'photo_product_select' %>
+      <%= f.association :series, :label => 'Series', :as => :check_boxes, :class=>'photo_product_select' %>
       <%= f.input :note %>
       <%= f.input :height, :label=>"Height (mm)", :pattern=>"\\d+" %>
     </div>

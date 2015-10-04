@@ -29,6 +29,10 @@ module Refinery
       self.pages_per_dialog_that_have_size_options = 12
       self.pages_per_admin_index = 20
       self.sizes = {
+#        % Interpret width and height as a percentage of the current size.
+#        ! Resize to width and height exactly, loosing original aspect ratio.
+#        < Resize only if the image is smaller than the geometry specification.
+#        > Resize only if the image is greater than the geometry specificatio
         home: '980x680!',
         pillars: '780x520!',
         columns: '890x600!',
@@ -39,6 +43,7 @@ module Refinery
         mini: 'x100',
         photowallThumb: 'x150'
       }
+
 
       config.captions = true
 
