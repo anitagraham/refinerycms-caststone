@@ -5,20 +5,20 @@ module Refinery
 
       dragonfly_accessor :drawing, app: :caststone_components
       # default_scope {where(order: 'name ASC')}
-      acts_as_indexed :fields => [:name]
+      acts_as_indexed fields: [:name]
 
       COMP_TYPES = %w(Base Shaft Column Capital Letterbox)
 
-      validates :name, :presence => true, :uniqueness => true
-      validates :type, :presence => true
-      validates :height, :numericality => { :only_integer => true, :greater_than => 0}, :presence=> true
-      validates_presence_of :products, :message => "You must choose a series"
+      validates :name, presence: true, uniqueness: true
+      validates :type, presence: true
+      validates :height, numericality: { only_integer: true, greater_than: 0}, :presence=> true
+      validates_presence_of :products, message: "You must choose a series"
       validates_associated :products
 
       has_many :compatibles
-      has_many :products, :through => :compatibles, source: 'Product'
+      has_many :series, through: :compatibles, source: :product
 
-      scope :filter_by_product, lambda{ |product_id| includes(:components).where(:products => {:id => product_id}) }
+      scope :filter_by_product, lambda{ |product_id| includes(:components).where(products: {id: product_id}) }
 
       def ready
         not(self.drawing_uid.blank? or self.products.empty? or self.height.nil? or self.height==0)
