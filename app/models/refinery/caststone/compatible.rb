@@ -1,7 +1,7 @@
 module Refinery
   module Caststone
     class Compatible < Refinery::Core::BaseModel
-      belongs_to :series
+      belongs_to :product
       belongs_to :component
       belongs_to :base,       :foreign_key=>'component_id'
       belongs_to :shaft,      :foreign_key=>'component_id'

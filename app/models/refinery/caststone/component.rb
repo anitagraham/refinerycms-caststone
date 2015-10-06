@@ -12,16 +12,16 @@ module Refinery
       validates :name, presence: true, uniqueness: true
       validates :type, presence: true
       validates :height, numericality: { only_integer: true, greater_than: 0}, :presence=> true
-      validates_presence_of :series, message: "You must choose a series"
-      validates_associated :series
+      validates_presence_of :product, message: "You must choose a series"
+      validates_associated :product
 
       has_many :compatibles
-      has_many :series, through: :compatibles, source: :series
+      has_many :product, through: :compatibles, source: :product
 
-      scope :filter_by_series, lambda{ |series_id| includes(:components).where(series: {id: series_id}) }
+      scope :filter_by_product, lambda{ |product_id| includes(:components).where(product: {id: product_id}) }
 
       def ready
-        not(self.drawing_uid.blank? or self.series.empty? or self.height.nil? or self.height==0)
+        not(self.drawing_uid.blank? or self.product.empty? or self.height.nil? or self.height==0)
       end
 
       def to_s
