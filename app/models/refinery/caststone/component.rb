@@ -12,7 +12,7 @@ module Refinery
       validates :name, presence: true, uniqueness: true
       validates :type, presence: true
       validates :height, numericality: { only_integer: true, greater_than: 0}, :presence=> true
-      validates_presence_of :product, message: "You must choose a series"
+      validates_presence_of :product_id, message: "You must choose a series"
       validates_associated :product
 
       has_many :compatibles
