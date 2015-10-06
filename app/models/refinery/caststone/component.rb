@@ -16,12 +16,12 @@ module Refinery
       validates_associated :series
 
       has_many :compatibles
-      has_many :series, through: :compatibles, source: :product
+      has_many :series, through: :compatibles, source: :series
 
-      scope :filter_by_product, lambda{ |product_id| includes(:components).where(products: {id: product_id}) }
+      scope :filter_by_series, lambda{ |series_id| includes(:components).where(series: {id: series_id}) }
 
       def ready
-        not(self.drawing_uid.blank? or self.products.empty? or self.height.nil? or self.height==0)
+        not(self.drawing_uid.blank? or self.series.empty? or self.height.nil? or self.height==0)
       end
 
       def to_s

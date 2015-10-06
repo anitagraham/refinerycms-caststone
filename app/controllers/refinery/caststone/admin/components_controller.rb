@@ -9,8 +9,8 @@ module Refinery
                 :title_attribute => 'name',
                 :order => 'name ASC'
 
-				def list_for_product
-					Refinery::Caststone::Component.filter_by_product(params[:id])
+				def list_for_series
+					Refinery::Caststone::Component.filter_by_series(params[:id])
 				end
 
 				def draw
@@ -19,7 +19,7 @@ module Refinery
 
         protected
         def component_params
-          params.require(:component).permit(:type, :name, :note, :height, :drawing, :drawing_uid, product_ids: [])
+          params.require(:component).permit(:type, :name, :note, :height, :drawing, :drawing_uid, series_ids: [])
         end
 			end
 		end
