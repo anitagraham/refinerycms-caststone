@@ -95,5 +95,4 @@ $(function() {
 
   $('.multiselect').each(setup_multiSelect);
 
-// $('form').validatr();
 });

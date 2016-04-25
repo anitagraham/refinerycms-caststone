@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
-
+source 'https://rails-assets.org' do
+  gem 'rails-assets-multiselect'
+end
 gemspec
 
 gem 'refinerycms', github: 'refinery/refinerycms', branch: 'master'
