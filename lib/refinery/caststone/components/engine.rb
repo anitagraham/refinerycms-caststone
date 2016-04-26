@@ -19,7 +19,7 @@ module Refinery
 
       before_inclusion do
          Refinery::Plugin.register do |plugin|
-          plugin.name = "caststone_components"
+          plugin.name = "caststone.components"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_components_path }
           plugin.pathname = root
           plugin.menu_match = %r{refinery/caststone/components(/.*)?$}
