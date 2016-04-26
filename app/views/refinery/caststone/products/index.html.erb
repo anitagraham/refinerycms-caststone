@@ -1,0 +1,14 @@
+<% content_for :body do %>
+<section id="products">
+  <% @products.each do |product| %>
+  <figure class='product'>
+    <%= link_to image_tag(product.preview.image.thumbnail({geometry: :medium}).url), refinery.products_product_path(product), class: 'product-image'%>
+    <figcaption>
+      <%= link_to product.title, refinery.products_product_path(product), class: 'product-name' %>
+    </figcaption>
+  </figure>
+  <% end %>
+</section>
+<% end %>
+
+<%= render '/refinery/content_page' %>
