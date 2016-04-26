@@ -1,6 +1,6 @@
 @import 'base';
 @import 'blankwork';
-@import 'multiselect';
+@import 'multi-select';
 @import 'caststone-multi-select';
 
 #photo_details {
@@ -18,7 +18,7 @@ section#records {
         display:inline-table;
       }
       &.components {width:5em}
-      &.ready, &.wall {@inlcude colummn(1)}
+      &.ready, &.wall {@inlcude column(1)}
     }
   }
   div.photo {float:left}
