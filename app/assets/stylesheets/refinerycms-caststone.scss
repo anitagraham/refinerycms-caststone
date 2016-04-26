@@ -18,7 +18,7 @@ section#records {
         display:inline-table;
       }
       &.components {width:5em}
-      &.ready, &.wall {@inlcude column(1)}
+      &.ready, &.wall {@include column(1)}
     }
   }
   div.photo {float:left}

@@ -3,31 +3,37 @@ en:
     plugins:
       tags:
         title: Tags
+      caststone:
+        photos:
+          title: Photos
+          description: Manage photos
+        components:
+          title: Components
+        products:
+          title: Series
       caststone_photos:
-        title: Photos
-        description: Manage photos
-      caststone_components:
-        title: Components
-      caststone_products:
-        title: Series
+        admin:
+          photos:
+            actions:
+              create_new: Add New Photo
+              reorder: Reorder Photos
+              reorder_done: Done Reordering Photos
+            records:
+              title: Photos
+              sorry_no_results: Sorry! There are no results found.
+              no_photos_yet: There are no Photos yet. Click "Add New Photo" to add your  first photo.
+            photo:
+              view_live_html: View this photo live <br/><em>(opens in a new window)</em>
+              edit: Edit this photo
+              delete: Remove this photo forever
+        records:
+          title: Photos
+          sorry_no_results: Sorry! There are no results found.
+          no_photos_yet: There are no Photos yet. Click "Add New Photo" to add your first photo.
     caststone:
       admin:
         filter:
           button_text: Filter
-        tags:
-          actions:
-            create_new: Add New Tag
-            reorder: Reorder Tags
-            reorder_done: Done Reordering Tags
-          records:
-            title: Tags
-            sorry_no_results: Sorry! There are no results found.
-            no_items_yet: There are no Tags yet. Click "Add New Tag" to add your first
-              tag.
-          tag:
-            view_live_html: View this tag live <br/><em>(opens in a new window)</em>
-            edit: Edit this tag
-            delete: Remove this tag forever
         photos:
           actions:
             create_new: Add New Photo
@@ -36,8 +42,7 @@ en:
           records:
             title: Photos
             sorry_no_results: Sorry! There are no results found.
-            no_photos_yet: There are no Photos yet. Click "Add New Photo" to add your
-              first photo.
+            no_photos_yet: There are no Photos yet. Click "Add New Photo" to add your first photo.
           photo:
             view_live_html: View this photo live <br/><em>(opens in a new window)</em>
             edit: Edit this photo
@@ -125,19 +130,12 @@ en:
             add: Add Image
   activerecord:
     attributes:
-      refinery/caststone/tag:
-        name: Name
       refinery/caststone/photo:
         name: Name
         caption: Caption
         image_uid: Image Uid
         product_id: Product
         photo: Photo
-      refinery/caststone/display:
-        name: Name
-        caption: Caption
-        photo: Photo
-        product_id: Product
       refinery/caststone/component:
         name: Name
         type: Type
