@@ -1,11 +1,7 @@
 @import 'base';
 @import 'blankwork';
-@import 'compass';
-@import 'jquery.uix.multiselect';
-
-
-// textarea.wymeditor, .wym_skin_refinery .wym_iframe iframe { height: auto; }
-
+@import 'multi-select';
+@import 'caststone-multi-select';
 
 #photo_details {
   @include column(12);
@@ -22,7 +18,7 @@ section#records {
         display:inline-table;
       }
       &.components {width:5em}
-      &.ready, &.wall {@inlcude colummn(1)}
+      &.ready, &.wall {@include column(1)}
     }
   }
   div.photo {float:left}
@@ -129,11 +125,6 @@ input:required:valid {
   background-repeat: no-repeat;
   background-color: rgba(0, 255, 0, 0.2) }
 
-
-
-
-
-
-
-
-
+#page_photo_picker {
+  padding: 5px;
+}

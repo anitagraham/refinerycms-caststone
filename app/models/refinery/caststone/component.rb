@@ -1,38 +1,27 @@
 module Refinery
   module Caststone
     class Component < Refinery::Core::BaseModel
-      ::Refinery::Caststone::Components::Dragonfly.setup!
       include Rails.application.routes.url_helpers
 
-      drawing_accessor :drawing
-      default_scope :order => 'name ASC'
-      acts_as_indexed :fields => [:name]
+      dragonfly_accessor :drawing, app: :caststone_components
+      # default_scope {where(order: 'name ASC')}
+      acts_as_indexed fields: [:name]
 
       COMP_TYPES = %w(Base Shaft Column Capital Letterbox)
 
-      validates :name, :presence => true, :uniqueness => true
-      validates :type, :presence => true
-      validates :height, :numericality => { :only_integer => true, :greater_than => 0}, :presence=> true
-      validates_presence_of :products, :message => "You must choose a series"
-      validates_associated :products
+      validates :name, presence: true, uniqueness: true
+      validates :type, presence: true
+      validates :height, numericality: { only_integer: true, greater_than: 0}, :presence=> true
+      validates_presence_of :product_ids, message: "You must choose a series"
+      validates_associated :product
 
       has_many :compatibles
-      has_many :series, :through => :compatibles, :class_name=>'Product'
+      has_many :product, through: :compatibles, source: :product
 
-      attr_accessible :type, :name, :note, :height, :drawing, :drawing_uid, :product_ids, :position
+      scope :filter_by_product, lambda{ |product_id| includes(:components).where(product: {id: product_id}) }
 
-      scope :filter_by_product, lambda{ |product_id| includes(:components).where(:products => {:id => product_id}) }
-
-#     if there's no name then set it from the file name
-      # before_validation :default_name
-      # before_validation :default_name
-#
-      # def default_name
-        # self.name = name.presence || File.basename(drawing.name, '.*').titleize
-      # end
-#
       def ready
-        not(self.drawing_uid.blank? or self.products.empty? or self.height.nil? or self.height==0)
+        not(self.drawing_uid.blank? or self.product.empty? or self.height.nil? or self.height==0)
       end
 
       def to_s
@@ -51,11 +40,11 @@ module Refinery
 
       def self.select_options
         [
-        ["Base","Refinery::Caststone::Base"],
-        ["Capital","Refinery::Caststone::Capital"],
-        ["Colummn","Refinery::Caststone::Column"],
-        ["Letterbox","Refinery::Caststone::Letterbox"],
-        ["Shaft","Refinery::Caststone::Shaft"]
+          ["Base","Refinery::Caststone::Base"],
+          ["Capital","Refinery::Caststone::Capital"],
+          ["Colummn","Refinery::Caststone::Column"],
+          ["Letterbox","Refinery::Caststone::Letterbox"],
+          ["Shaft","Refinery::Caststone::Shaft"]
         ]
       end
 

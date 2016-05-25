@@ -1,4 +1,3 @@
-
 $(function() {
 
   var seriesSelect = $('#photo_product_id'),
@@ -10,7 +9,7 @@ $(function() {
   if (seriesSelect.length)  {
     $('div.fields').on('click', 'a#redraw_button', function (){
       updateDrawing();
-      return false; })
+      return false; });
     $('select#photo_product_id').change(function() {
       $.get('/refinery/caststone/products/' + this.value + '.js');
     });
@@ -29,16 +28,16 @@ $(function() {
   if (clearRadioButton.length) {
     clearRadioButton.on('click', function () {
       $(this).parent().find('input').each(function() {
-        this.checked =  false
-      })
-    })
+        this.checked =  false;
+      });
+    });
   }
 
   if (redrawButton.length) {
 
     $('form.edit_photo').on('click', 'a#redraw_button', function() {
 
-      var componentList = $('input:checked').map(function() { return this.value });
+      var componentList = $('input:checked').map(function() { return this.value;});
       $.when(
         $.ajax({
         'url': '/refinery/caststone/components/draw.png',
@@ -48,50 +47,52 @@ $(function() {
        .then(function( data){
          $('img.drawing').attr('src', 'data:image/png;base64,' + data);
          // this second copy is used to save the latest drawing back to the db
-         $('#photo_drawing').val(data)
+         $('#photo_drawing').val(data);
        }));
       return false;
-    })
+    });
   };
 
   if (copyrightButton.length) {
     $('form.edit_photo').on('click', 'a#copyright_button', function() {
       $.when( $.ajax({'url': '/refinery/caststone/photos/' + copyrightButton.data('photoid') + '/add_copyright.js'}))
        .then( function(data) {
-        $('#photo.img').attr('src', data)  // replace the photo with the new copyright showing.
-      })
-    })
+        $('#photo.img').attr('src', data);  // replace the photo with the new copyright showing.
+      });
+    });
   };
 
-  $('#photo_multiselect, #component_multiselect').multiselect({
-    optionRenderer: function (el, grp){
-    //transfer the data-url from the original select to the one created by multiselect
-      return $('<div></div>').text(el.text()).addClass('image_popup').data('url', el.data('url'));
+  function setup_multiSelect() {
+    function counts(el) {
+      all = el.find('option').length;
+      sel = el.find('option').filter(':selected').length;
+      return {
+        available: all -sel,
+        selected: sel
+      };
     }
-  });
 
-  $('.multiselect').parent().on('mouseover', '.image_popup', function(){
-    var img = new Image(),
-      src;
-    if (this.nodeName == 'A') {
-      src = this.href;
+    function updateHeader(counts) {
+      available_text = counts['available'] + ' Available Items';
+      selected_text =  counts['selected'] + ' Selected Items';
+      mu.next('.ms-container').find('.ms-selectable .custom-header').text(available_text);
+      mu.next('.ms-container').find('.ms-selection  .custom-header').text(selected_text);
+      return this;
     }
-    src = $(this).data('url') || '';
-    img.src = src;
-    var pup = $(img).addClass('popup');
-    $(this).on('mouseout blur', function(){
-      pup.hide();
-      pup.remove();
+
+    var mu = $(this);
+    mu.multiSelect({
+      selectableHeader: "<div class='custom-header'/>",
+      selectionHeader:  "<div class='custom-header'/>",
+      selectableFooter: "<div class='custom-header'>Available</div>",
+      selectionFooter:  "<div class='custom-header'>Selected</div>",
+      afterInit: function()     {updateHeader(counts(mu));},
+      afterSelect: function()   {updateHeader(counts(mu));},
+      afterDeselect: function() {updateHeader(counts(mu));}
     });
-    $(this).after(pup);
-    pup.show();
-    img.focus();
-    return false;
-  });
-  $('.image_popup').on('click', false);
+    return this;
+  };
 
-  $('#page_photo_picker').on('multiselectChange', function(e,ui){
-    $('img.popup').hide().remove();
-  });
-  // $('form').validatr();
+  $('.multiselect').each(setup_multiSelect);
+
 });

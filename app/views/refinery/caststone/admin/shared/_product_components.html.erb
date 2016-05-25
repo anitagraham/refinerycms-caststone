@@ -1,6 +1,7 @@
 <!-- show a set of components for a series selected for a photo  -->
 <!-- series=product, photo -->
-<div id="selectComponents">
+<div id="selectComponents"
+
   <%= simple_fields_for :photo	 do |f| %>
     <h1>Select <%= series.name%> Components</h1>
     <% Refinery::Caststone::Component::COMP_TYPES.each do |comp_type|

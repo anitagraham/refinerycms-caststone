@@ -1,7 +1,6 @@
-module Refinery::Caststone::Admin::PhotosHelper
-  # def photoImage (photo)
-    # image_tag photo.image.thumb('100x100').url
-  # end
-#   
-
+module Refinery
+  module Caststone
+    class PhotosHelper
+    end
+  end
 end

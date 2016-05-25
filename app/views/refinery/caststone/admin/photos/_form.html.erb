@@ -11,7 +11,7 @@
   </div>
   <!--  If there is a photo assigned, then put it up there and try to draw its components  -->
   <div id='photo'>
-    <%= image_tag @photo.thumbnail(:edit), :class=>:photo, :id=>@photo.id if @photo.image_uid %>
+    <%= image_tag @photo.thumbnail(geometry: :edit), :class=>:photo, :id=>@photo.id if @photo.image_uid %>
   </div>
 
 </div>

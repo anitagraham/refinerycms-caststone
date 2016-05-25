@@ -5,17 +5,16 @@ module Refinery
       isolate_namespace Refinery::Caststone
 
       engine_name :refinery_caststone
-
       config.autoload_paths += %W( #{config.root}/lib )
+
+      initializer 'attach-caststone-photos-with-dragonfly', :before => :finisher_hook do |app|
+        ::CaststoneDragonfly.configure!(:caststone_photos, :photos)
+        ::CaststoneDragonfly.attach!(app, :caststone_photos)
+      end
 
       def self.register_photos(tab)
         tab.name = 'photos'
         tab.partial = '/refinery/caststone/admin/photos/tabs/photos'
-      end
-
-      initializer 'attach-caststone-photos-with-dragonfly', :after => :load_config_initializers do |app|
-        ::Refinery::Caststone::Photos::Dragonfly.configure!
-        ::Refinery::Caststone::Photos::Dragonfly.attach!(app)
       end
 
       before_inclusion do
@@ -23,17 +22,13 @@ module Refinery
           plugin.name = "caststone.photos"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_photos_path }
           plugin.pathname = root
-          plugin.activity = {
-            :class_name => Refinery::Caststone::Photo,
-            :title => 'name'
-          }
+          plugin.menu_match = %r{refinery/caststone/photos(/.*)?$}
         end
       end
-      config.to_prepare do
-        require 'refinerycms-pages'
-        Refinery::Page.send :has_many_photos
-        # Refinery::Blog::Post.send :has_many_photos, class_name: "Refinery::Caststone::Photo" if defined?(::Refinery::Blog)
-      end
+
+      # config.to_prepare do
+        # ApplicationController.helper(Refinery::Caststone.PhotosHelper)
+      # end
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Caststone::Photos)
@@ -41,7 +36,6 @@ module Refinery
           register_photos tab
         end
       end
-
     end
   end
 end

@@ -14,7 +14,7 @@ module Refinery
                     :custom_backend_class, :custom_backend_opts
 
       self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
-      self.dragonfly_secret = Refinery::Core.dragonfly_secret
+      self.dragonfly_secret = Refinery::Images.dragonfly_secret
       self.dragonfly_url_format = '/system/refinery/images/:job/:basename.:ext'
       self.dragonfly_url_format = '/system/images/:job/:basename.:ext'
       self.dragonfly_url_host = ''
@@ -29,13 +29,21 @@ module Refinery
       self.pages_per_dialog_that_have_size_options = 12
       self.pages_per_admin_index = 20
       self.sizes = {
-        :home => '673x380!',
-        :pillars => '640x425>',
-        :columns => '890x600>',
-        :letterboxes => '700x400>',
-        :edit => '500x500',
-        :mini => 'x100'
+#        % Interpret width and height as a percentage of the current size.
+#        ! Resize to width and height exactly, loosing original aspect ratio.
+#        < Resize only if the image is smaller than the geometry specification.
+#        > Resize only if the image is greater than the geometry specificatio
+        home: '980x680!',
+        pillars: '780x520!',
+        columns: '890x600!',
+        letterboxes: '700x400!',
+        trim: '640x425>',
+        edit: '500x500',
+        small: '480x644',
+        mini: 'x100',
+        photowallThumb: 'x150'
       }
+
 
       config.captions = true
 

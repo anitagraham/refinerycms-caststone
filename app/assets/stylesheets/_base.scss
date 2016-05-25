@@ -83,5 +83,3 @@ $fpSliderHeight: 355px;
   >li {@include icon($colour, $bullet)}
 }
 
-@import 'diamonds/*.png';
-@include all-diamonds-sprites;
