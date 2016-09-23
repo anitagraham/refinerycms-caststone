@@ -1,7 +1,7 @@
 @import 'base';
 @import 'blankwork';
-@import 'multiselect';
-@import 'caststone-multi-select';
+@import 'multi-select';
+// @import 'caststone-multi-select';
 
 #photo_details {
   @include column(12);
