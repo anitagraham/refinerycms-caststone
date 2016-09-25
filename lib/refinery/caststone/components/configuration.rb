@@ -11,7 +11,7 @@ module Refinery
 
       config.captions = true
       config.dragonfly_insert_before = 'ActionDispatch::Callbacks'
-      config.dragonfly_secret = Refinery::Images.dragonfly_secret
+      config.dragonfly_secret = Refinery::Core.dragonfly_secret
       config.dragonfly_trust_file_extensions = true
       config.dragonfly_allow_fetch_file = true
       config.dragonfly_protect_from_dos_attacks = true
