@@ -1,5 +1,5 @@
 .ms-container{
-  // background: transparent url('../img/switch.png') no-repeat 50% 50%;
+  background: transparent asset-data-url('switch.png') no-repeat 50% 50%;
   width:100%;
   // width: 370px;
 }
@@ -102,5 +102,5 @@
 }
 
 
-.ms-selectable .custom-header {background-color: rgba(256,128,128,1)}
-.ms-selection  .custom-header {background-color: rgba(128,256,128,1)}
+.ms-selectable .custom-header {background-color: rgba(210,237,252,1)}
+.ms-selection  .custom-header {background-color: rgba(13,140,213,1); color:#ddd;}
