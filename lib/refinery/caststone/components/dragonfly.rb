@@ -8,35 +8,35 @@ module Refinery
             ActiveRecord::Base.extend ::Dragonfly::Model
             ActiveRecord::Base.extend ::Dragonfly::Model::Validations
 
-            app_images = ::Dragonfly.app(:caststone_drawings)
+            app = ::Dragonfly.app(:caststone_drawings)
 
-            app_images.configure do
+            app.configure do
               plugin :imagemagick
               datastore :file, {
-                :root_path => Refinery::Images.datastore_root_path
+                :root_path => Refinery::Caststone::Components.datastore_root_path
               }
-              url_host Refinery::Images.dragonfly_url_host
-              secret Refinery::Images.dragonfly_secret
+              url_host Refinery::Caststone::Components.dragonfly_url_host
+              secret Refinery::Caststone::Components.dragonfly_secret
               dragonfly_url nil
               processor :strip do |content|
                 content.process!(:convert, '-strip')
               end
             end
 
-            if ::Refinery::Images.s3_backend
+            if ::Refinery::Caststone::Photos.s3_backend
               require 'dragonfly/s3_data_store'
               options = {
-                bucket_name: Refinery::Images.s3_bucket_name,
-                access_key_id: Refinery::Images.s3_access_key_id,
-                secret_access_key: Refinery::Images.s3_secret_access_key
+                bucket_name: Refinery::Caststone::Photos.s3_bucket_name,
+                access_key_id: Refinery::Caststone::Photos.s3_access_key_id,
+                secret_access_key: Refinery::Caststone::Photos.s3_secret_access_key
               }
               # S3 Region otherwise defaults to 'us-east-1'
-              options.update(region: Refinery::Images.s3_region) if Refinery::Images.s3_region
-              app_images.use_datastore :s3, options
+              options.update(region: Refinery::Caststone::Photos.s3_region) if Refinery::Caststone::Photos.s3_region
+              apps.use_datastore :s3, options
             end
 
-            if Refinery::Images.custom_backend?
-              app_images.datastore = Refinery::Images.custom_backend_class.new(Refinery::Images.custom_backend_opts)
+            if Refinery::Caststone::Components.custom_backend?
+              app.datastore = Refinery::Caststone::Components.custom_backend_class.new(Refinery::Caststone::Components.custom_backend_opts)
             end
           end
 
