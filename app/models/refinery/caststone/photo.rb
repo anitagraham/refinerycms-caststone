@@ -44,12 +44,25 @@ module Refinery
         json
       end
 
+			def status(part)
+				case part
+					when 'components'
+						components.count > 0 ? 'OK' : 'warning'
+					when 'page'
+						page.present? ? 'OK' : 'warning'
+					when 'record'
+						components.count >0 && page.present? ? 'OK' : 'warning'
+					else
+						'OK'
+				end
+			end
 
       def height
         self.components.sum(:height)
       end
 
       def with_geometry(size)
+      	Rails.logger.debug "Getting Geometry #{size.to_s}"
         thumbnail({geometry: size})
       end
 
@@ -59,7 +72,7 @@ module Refinery
 
       # Get a thumbnail job object given a geometry and whether to strip image profiles and comments.
       def thumbnail(options = {})
-        options = { :geometry => nil, :strip => false }.merge(options)
+        options = { geometry: '600x400', :strip => false }.merge(options)
         geometry = convert_to_geometry(options[:geometry])
         thumbnail = image
         thumbnail = thumbnail.thumb(geometry) if geometry
@@ -69,8 +82,11 @@ module Refinery
 
       # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
       def thumbnail_dimensions(geometry)
+      	Rails.logger.debug "beginning thumbnail dimensions"
         dimensions = ThumbnailDimensions.new(geometry, image.width, image.height)
+        Rails.logger.debug "Ended thumbnail dimensions"
         { :width => dimensions.width, :height => dimensions.height }
+
       end
 
      def convert_to_geometry(geometry)

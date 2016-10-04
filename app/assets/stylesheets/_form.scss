@@ -1,6 +1,6 @@
 form {
-  div#fields {
-    @include column(6);
+  div#fields{
+    @include column(5);
     float:left;
     span.checkbox {
       label {
@@ -9,11 +9,18 @@ form {
       }
     }
   }
-  div#drawing {
-    @include column(4);
+  div#photo-and-drawing {
+    @include columns(7);
     float:left;
-    img.drawing {float:left}
+    img {
+      float:left;
+      margin:0;
+    }
   }
+  div#selectComponents {
+    @include columns(12)
+  }
+
   div.row {
     @include clearfix;
   }

@@ -1,44 +1,43 @@
-<%= simple_form_for [refinery, :caststone_admin, @photo], :html => {:multipart=>true} do |f| %>
-<%= render '/refinery/admin/error_messages', :object => @photo, :include_object_name => true %>
-
-<div class='row'>
-  <div id='fields'>
-    <%= f.association :page %>
-    <%= f.input :image, :as=>:file  %>
-    <%= f.input :name, :class => 'larger widest'  %>
-    <%= f.input :caption  %>
-    <%= f.association :product, :collection =>@products, :prompt => 'Choose a Series', :label => 'Series', :include_blank => true %>
-  </div>
-  <!--  If there is a photo assigned, then put it up there and try to draw its components  -->
-  <div id='photo'>
-    <%= image_tag @photo.thumbnail(geometry: :edit), :class=>:photo, :id=>@photo.id if @photo.image_uid %>
-  </div>
-
-</div>
-
-<div class='row'>
+<%= simple_form_for [refinery, :caststone_admin, @photo], html: {multipart: true} do |f| %>
+<!-- This part of the form is for the photo upload -->
+  <%= render '/refinery/admin/error_messages', object: @photo, include_object_name: true %>
+  <div class="row">
+    <div id="fields">
+      <%= f.input :image, as: :file  %>
+      <%= f.input :name, class: 'larger widest'  %>
+      <%= f.input :caption, input_html: {size:40}  %>
+      <%= f.association :page %>
+      <%= f.association :product, collection: @products, prompt: 'Choose a Series', label: 'Series', include_blank: true %>
       <p>Total height of components <%= @photo.height%> mm</p>
-    <%= render  'refinery/caststone/admin/shared/product_components', :series => @photo.product if @photo.product %>
+    </div>
+    <div id='photo-and-drawing'>
+      <%if @photo.image_uid %>
+        <%= image_tag @photo.thumbnail(geometry: :edit), class: :photo, id: @photo.id %>
+      <%else%>
 
-  <%if @photo.drawing %>
+        <!-- # set up a place to put the photo -->
+        <img alt = 'Photo'  class='photo'>
 
-    <img src='data:image/png;base64,<%= @photo.drawing%>' alt = 'Drawing of <%= @photo.name%>' class='drawing' />
+      <%end%>
+      <%if @photo.drawing %>
 
-  <%else%>
+        <img src='data:image/png;base64,<%= @photo.drawing%>' alt = 'Drawing of <%= @photo.name%>' class='drawing' />
 
-    <!-- # set up a place to put the drawing -->
-    <img alt = 'Drawing of <%= @photo.name%>' class='drawing'>
+      <%else%>
 
-  <%end%>
+        <!-- # set up a place to put the drawing -->
+        <img alt = 'Drawing of <%= @photo.name%>' class='drawing'>
 
+      <%end%>
+      <%= f.hidden_field :drawing, value: @photo.drawing, id: 'photo_drawing' %>
+    </div>
+  </div>
+  <div class='row'>
+    <%= render  'refinery/caststone/admin/shared/product_components', series: @photo.product if @photo.product %>
+  </div>
 
-  <%= f.hidden_field :drawing, :value => @photo.drawing, :id => 'photo_drawing' %>
-
-</div>
-
-<%= render '/refinery/admin/form_actions', :f => f,
-  :continue_editing => false,
-  :delete_title => t('delete', :scope => 'refinery.photos.admin.photos.photo'),
-  :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @photo.name) %>
+<%= render '/refinery/admin/form_actions', f: f,
+  continue_editing: false,
+  delete_title: t('delete', scope: 'refinery.photos.admin.photos.photo'),
+  delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @photo.name) %>
 <% end %>
-

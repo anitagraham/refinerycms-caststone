@@ -1,22 +1,37 @@
 @import 'base';
 @import 'blankwork';
-@import '_caststone-multi-select';
+// @import '_caststone-multi-select';
+@import 'jquery-ui';
+@import 'jquery.uix.multiselect';
 
 #photo_details {
   @include column(12);
 }
 
-section#records {
+section#records.photosIndex {
+  li.warning {background-color: pink;}
   .list_header {font-weight:bold}
   .list_header, .record {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+    > * {
+      display: table-cell;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     span {
       &.title {
-        min-width:250px;
+        width:350px;
         color:#2d3d4d;
         text-transform:capitalize;
-        display:inline-table;
       }
-      &.components {width:5em}
+      &.components {
+        width:50px;
+        &.warning {color:red;}
+      }
+      &.assigned_page.warning {color:red}
       &.ready, &.wall {@include column(1)}
     }
   }
@@ -52,21 +67,20 @@ form {
      }
   }
 
-  div#drawing {
-    @include column(4);
-    float:left;
-    img.drawing {float:left}
-  }
+  div#photo-and-drawing {
+    @include column(6);
+    background: $adminBlue url('metre.png');
+    img {
+      &.photo {@include column(5); margin:0;}
+      &.drawing {@include column(1); margin:0;}
+      vertical-align:bottom;
+      float:left;
 
-  div.drawing img {
-    position: absolute;
-    right: 750px;
-    top: 150px;
-    background-color:#aaa;
+    }
   }
 
    #selectComponents {
-    // @include column(12);
+    margin-top:40px;
     fieldset.component_type {
       border-radius:4px;
       @include column(3,40);
@@ -89,15 +103,15 @@ form {
 // Handles the drawings of pillars and other things made up of components
 
   img.drawing {
-    background:$adminBlue url('metre.png');
-    float:right;
-    border: 1px solid $csGreen;
+    // background:$adminBlue url('metre.png');
+    // float:right;
+    // border: 1px solid $csGreen;
   }
   img.photo {
-    padding:5px;
-    background-color:$adminBlue;
-    max-width:700px;
-    float:left;
+    // padding:5px;
+    // background-color:$adminBlue;
+    // max-width:700px;
+    // float:left;
   }
 
 select.multiselect {

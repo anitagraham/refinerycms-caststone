@@ -3,4 +3,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require backend
-//= require jquery.multi-select
+//= require jquery-ui.js
+//= require jquery.uix.multiselect

@@ -5,3 +5,21 @@ img.popup {
   z-index:10000;
   box-shadow: 4px 4px 4px black;
 }
+
+
+section#records {
+  @include row();
+   li.record {
+     span.title {
+       @include columns(6);
+     }
+     span.components. span.assigned_page {
+       @include columns(1);
+     }
+     span.actions {
+       @include columns(4)
+     }
+   }
+}
+
+

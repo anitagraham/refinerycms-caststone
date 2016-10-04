@@ -35,7 +35,7 @@ module Refinery
         home: '980x680!',
         pillars: '780x520!',
         columns: '890x600!',
-        letterboxes: '700x400!',
+        letterboxes: '700x400>',
         trim: '640x425>',
         edit: '500x500',
         small: '480x644',

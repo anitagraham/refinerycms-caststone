@@ -62,37 +62,7 @@ $(function() {
     });
   };
 
-  function setup_multiSelect() {
-    function counts(el) {
-      all = el.find('option').length;
-      sel = el.find('option').filter(':selected').length;
-      return {
-        available: all -sel,
-        selected: sel
-      };
-    }
 
-    function updateHeader(counts) {
-      available_text = counts['available'] + ' Available Items';
-      selected_text =  counts['selected'] + ' Selected Items';
-      mu.next('.ms-container').find('.ms-selectable .custom-header').text(available_text);
-      mu.next('.ms-container').find('.ms-selection  .custom-header').text(selected_text);
-      return this;
-    }
-
-    var mu = $(this);
-    mu.multiSelect({
-      selectableHeader: "<div class='custom-header'/>",
-      selectionHeader:  "<div class='custom-header'/>",
-      selectableFooter: "<div class='custom-header'>Available</div>",
-      selectionFooter:  "<div class='custom-header'>Selected</div>",
-      afterInit: function()     {updateHeader(counts(mu));},
-      afterSelect: function()   {updateHeader(counts(mu));},
-      afterDeselect: function() {updateHeader(counts(mu));}
-    });
-    return this;
-  };
-
-  $('.multiselect').each(setup_multiSelect);
+  $('.multiselect').multiselect();
 
 });

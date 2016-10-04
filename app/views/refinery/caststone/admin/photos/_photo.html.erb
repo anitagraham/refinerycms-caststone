@@ -1,17 +1,18 @@
-<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(photo) -%>">
-  <span class='title'><%= photo.name %> </span>
-  <span class="components"><%= photo.components.count>0 ? photo.components.count : "None" %></span>
-  <span class="assigned_page"><%= photo.page ? photo.page.title : "Not assigned to a page" %></span>
-  
-  <span class='actions'> 
+<li class="clearfix record <%= cycle("on", "on-hover")%> <%= photo.status('record') %>" id="<%= dom_id(photo) -%>">
+
+  <span class="title"><%= photo.name %> </span>
+  <span class="components <%= photo.status('components')%>"><%=photo.components.count%></span>
+  <span class="assigned_page <%= photo.status('page')%>"><%= photo.page ? photo.page.title : "Unassigned" %></span>
+
+  <span class="actions">
   	<%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_caststone_admin_photo_path(photo),
-    	:title => t('.edit') %>
+    	:title => t(".edit") %>
     <%= link_to refinery_icon_tag("delete.png"), refinery.caststone_admin_photo_path(photo),
 	    :class => "cancel confirm-delete",
-	    :title => t('.delete'),
-	    :confirm => t('message', :scope => 'refinery.admin.delete', :title => photo.name),
+	    :title => t(".delete"),
+	    :confirm => t("message", :scope => "refinery.admin.delete", :title => photo.name),
 	    :method => :delete %>
-    <%= link_to refinery_icon_tag('eye.png'), photo.image.thumb("250x").url, :class=>'image_popup' %>
+    <%= link_to refinery_icon_tag("eye.png"), photo.image.thumb("250x").url, :class=>"image_popup" %>
 	</span>
 </li>
 
