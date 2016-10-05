@@ -33,8 +33,8 @@ module Refinery
 #        < Resize only if the image is smaller than the geometry specification.
 #        > Resize only if the image is greater than the geometry specificatio
         home: '980x680!',
-        pillars: '780x520!',
-        columns: '890x600!',
+        pillars: '780x520>',
+        columns: '890x600>',
         letterboxes: '700x400>',
         trim: '640x425>',
         edit: '500x500',
