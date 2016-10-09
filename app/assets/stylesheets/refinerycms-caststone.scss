@@ -6,6 +6,10 @@
 #photo_details {
   @include column(12);
 }
+// override jquery-ui setting.
+.wym_skin_refinery .wym_html textarea {
+  font-size: 1.5em;
+}
 
 section#records.photosIndex {
   li.warning {background-color: pink;}
