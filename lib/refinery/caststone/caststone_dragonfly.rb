@@ -18,6 +18,21 @@ module CaststoneDragonfly
         url_format "/system/refinery/#{url_segment}/:job/:basename.:ext"
         secret     Refinery::Images.dragonfly_secret
         dragonfly_url nil
+
+        define_url do | app, job, opts|
+			    thumb = Refinery::Caststone::Thumb.find_by_signature(job.signature)
+			    if thumb
+			      app.datastore.url_for(thumb.uid)
+			    else
+			      app.server.url_for(job)
+			    end
+			  end
+			  # Before serving from the local Dragonfly server...
+
+			  before_serve do |job, env|
+			    uid = job.store
+			    Refinery::Caststone::Thumb.create!(uid: uid, signature: job.signature)
+			  end
       end
 
       if ::Refinery::Images.s3_backend

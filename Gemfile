@@ -5,9 +5,11 @@ end
 source 'https://rubygems.org'
 gemspec
 
+gem 'rails'
 gem 'refinerycms', github: 'refinery/refinerycms', branch: 'master'
 gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n'
 gem "rmagick", :require => 'RMagick'
+gem 'dragonfly-s3_data_store'
 gem "mime-types", "~> 1.25"
 gem "mustache"
 # gem 'handlebars'
