@@ -15,7 +15,9 @@ gem "mustache"
 # gem 'handlebars'
 gem "stache"
 
-
+group :development do
+	gem 'i18n-tasks'
+end
 group :test do
   gem 'poltergeist'
 end

@@ -3,23 +3,32 @@ module Refinery
   module Caststone
     module Admin
       class PhotosController < ::Refinery::AdminController
+      	helper Refinery::Caststone::Engine.helpers
+
         respond_to :html,:js
         respond_to :json
         respond_to :png, :only=>:draw
 
-         before_filter :find_all_series, :only => [:edit, :new]
+	      before_action :change_list_mode_if_specified
+        before_filter :find_all_series, :only => [:edit, :new]
 
         crudify :'refinery/caststone/photo',
                 :title_attribute => 'name', :paging => true
 
-          # Finds one single result based on the id params.
-          def find_photo
-            @photo = Refinery::Caststone::Photo.includes(:product => :components).find(params[:id])
-          end
+        # Finds one single result based on the id params.
+        def find_photo
+          @photo = Refinery::Caststone::Photo.includes(:product => :components).find(params[:id])
+        end
 
-          def add_copyright
-            @photo = Refinery::Caststone::Photo.find(params[:id]).image.copyright("Hello Sailor")
-          end
+        def add_copyright
+          @photo = Refinery::Caststone::Photo.find(params[:id]).image.copyright("Hello Sailor")
+        end
+
+	      def change_list_mode_if_specified
+	        if action_name == 'index' && params[:view].present? && Refinery::Caststone::Photos.photo_views.include?(params[:view].to_sym)
+	           Refinery::Caststone::Photos.preferred_photo_view = params[:view]
+	        end
+	      end
 
         protected
         def find_all_series

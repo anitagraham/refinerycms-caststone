@@ -1,20 +1,14 @@
 <ul id="photo_grid" class="<%= ['clearfix', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
   <% @photos.each_with_index do |photo, index| -%>
-    <li id="photo_<%= photo.id %>" class='photo_<%= index % 5 %>'>
-      <%= image_fu photo, '135x135#c', :title => photo.title %>
+    <li id="photo_<%= photo.id %>">
+      <%= image_tag photo.image.thumb('140x140^').url, title:  photo.title, alt: photo.title %>
       <span class='actions'>
-        <%= link_to refinery_icon_tag('eye.png'), photo.url,
-                    :target => "_blank",
-                    :title => t('.view_live_html') %>
-        <%= link_to refinery_icon_tag('application_edit.png'),
-                    refinery.edit_admin_caststone_photo_path(photo),
-                    :title => t('edit', :scope => 'refinery.admin.photos') %>
-        <%= link_to refinery_icon_tag('delete.png'),
-                    refinery.admin_caststone_photo_path(photo),
-                    :class => "cancel confirm-delete",
-                    :title => t('delete', :scope => 'refinery.admin.photos'),
-                    :confirm => t('message', :scope => 'refinery.admin.delete', :title => photo.title),
-                    :method => :delete %>
+        <%= action_icon :preview, photo.image.remote_url, t('view_live_html', scope: 'refinery.caststone.admin.photos') %>
+        <%= action_icon :edit,    refinery.edit_caststone_admin_photo_path(photo), t('edit', scope: 'refinery.caststone.admin.photos') %>
+        <%= action_icon :delete,  refinery.caststone_admin_photo_path(photo, params.slice(:page)),  t('delete', scope: 'refinery.caststone.admin.photos'), class: 'confirm-delete',
+                           data: { confirm: t('message', scope: 'refinery.admin.delete', title: photo.title) } %>
+        <%= action_icon :info,    '#', "#{photo.title}. #{photo.components.count} components, Page: #{photo.assigned_page_name}" %>
+
       </span>
     </li>
   <% end -%>

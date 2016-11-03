@@ -9,18 +9,14 @@
                  :class => "add_icon" %>
   </li>
 <% if !searching? && ::Refinery::Caststone::Admin::PhotosController.sortable? && ::Refinery::Caststone::Photo.any? %>
-  <li>
-    <%= link_to t('.reorder', :what => "Photos"),
-                 refinery.caststone_admin_photos_path,
-                 :id => "reorder_action",
-                 :class => "reorder_icon" %>
-
-    <%= link_to t('.reorder_done', :what => "Photos"),
-                 refinery.caststone_admin_photos_path,
-                 :id => "reorder_action_done",
-                 :style => "display: none;",
-                 :class => "reorder_icon" %>
-  </li>
+  <% other_photo_views.each do |photo_view| %>
+    <li>
+      <%= action_label :"switch_view_#{photo_view}",
+        refinery.caststone_admin_photos_path(view: photo_view, page: params[:page]),
+        t('switch_to', scope: 'refinery.caststone.admin.photos.index', view_name: t("#{photo_view}", scope: 'refinery.caststone.admin.photos.index'))
+      %>
+    </li>
+  <% end %>
 <% end %>
 
 

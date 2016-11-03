@@ -1,0 +1,20 @@
+<li id="sortable_<%= list_view_photo.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%= list_view_photo.title %>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('eye.png'), list_view_photo.url,
+                :target => "_blank",
+                :data-url => p.thumbnail('250x')  %>
+    <%= link_to refinery_icon_tag('application_edit.png'),
+                refinery.edit_admin_photo_path(list_view_photo),
+                :title => t('edit', :scope => 'refinery.admin.photos') %>
+    <%= link_to refinery_icon_tag('delete.png'),
+                refinery.admin_photo_path(list_view_photo),
+                :class => "cancel confirm-delete",
+                :title => t('delete', :scope => 'refinery.admin.photos'),
+                :confirm => t('message', :scope => 'refinery.admin.delete', :title => list_view_photo.title),
+                :method => :delete %>
+  </span>
+</li>
+

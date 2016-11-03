@@ -1,0 +1,77 @@
+//   photos index grid view and list view
+$photogrid_size: 4;
+
+//list view
+section#records.photosIndex {
+  li.warning {background-color: pink;}
+  .list_header {font-weight:bold}
+  .list_header, .record {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+    > * {
+      display: table-cell;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    span {
+      &.title {
+        width:350px;
+        color:#2d3d4d;
+        text-transform:capitalize;
+      }
+      &.components {
+        width:50px;
+        &.warning {color:red;}
+      }
+      &.assigned_page.warning {color:red}
+      &.ready, &.wall {@include column(1)}
+    }
+  }
+  div.photo {float:left}
+}
+
+// grid view
+
+ul#photo_grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+
+  li {
+    flex: 1;
+    position: relative;
+    // float: left;
+    margin:10px;
+    padding: 0px;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #555;
+    min-height:140px;
+    min-width: 140px;
+    background-color: #888;
+    box-shadow: 2px 2px 2px #888;
+    img {
+      &:before {
+        color: orange;
+        content: "We're sorry, the image below is broken :(";
+      }
+    }
+    span.actions {
+      background-color:white;
+      top: auto;
+      bottom: 0px;
+      width: 100%;
+      a {
+        line-height: 24px;
+        img {
+          padding: 4px 4px 1px 4px;
+          vertical-align: top;
+        }
+      }
+    }
+  }
+}

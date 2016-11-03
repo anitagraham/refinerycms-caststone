@@ -7,7 +7,7 @@ module Refinery
                     :dragonfly_insert_before, :dragonfly_secret, :dragonfly_url_format, :dragonfly_url_host,
                     :max_image_size, :pages_per_dialog, :pages_per_admin_index,
                     :pages_per_dialog_that_have_size_options, :sizes,
-                    :image_views, :preferred_image_view, :datastore_root_path,
+                    :photo_views, :preferred_photo_view, :datastore_root_path,
                     :s3_backend, :s3_bucket_name, :s3_region,
                     :s3_access_key_id, :s3_secret_access_key, :trust_file_extensions,
                     :whitelisted_mime_types,
@@ -19,9 +19,6 @@ module Refinery
       self.dragonfly_url_host = ''
       self.trust_file_extensions = false
       self.whitelisted_mime_types = %w[image/jpeg image/png image/gif image/tiff]
-
-      self.image_views = [:grid, :list]
-      self.preferred_image_view = :grid
 
       self.max_image_size = 5242880
       self.pages_per_dialog = 18
@@ -43,6 +40,8 @@ module Refinery
         photowallThumb: 'x150'
       }
 
+			self.photo_views = [:grid, :list]
+			self.preferred_photo_view = :grid
 
       config.captions = true
 

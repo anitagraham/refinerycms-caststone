@@ -41,9 +41,7 @@ Refinery::Core::Engine.routes.draw do
     namespace :admin, :path => 'refinery/caststone' do
       resources :photos, :except => :show do
         get :view,  :on=> :member
-        # get :add_copyright, :on => :member
         post :update_positions, :on=>:collection
-        # get :insert, :on => :collection
         resources :components, :bases, :shafts, :capitals, :columns, :letterboxes, :controller=>'components'
       end
     end

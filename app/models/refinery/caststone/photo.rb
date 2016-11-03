@@ -57,12 +57,15 @@ module Refinery
 				end
 			end
 
+			def assigned_page_name
+				page.present? ? page.title : 'unassigned'
+			end
+
       def height
         self.components.sum(:height)
       end
 
       def with_geometry(size)
-      	Rails.logger.debug "Getting Geometry #{size.to_s}"
         thumbnail({geometry: size})
       end
 
