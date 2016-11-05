@@ -40,7 +40,15 @@ ul#photo_grid {
   flex-wrap: wrap;
   justify-content: space-between;
 
-
+  .brokenImage {
+    img::before {color:orange;}
+    a.preview_icon {
+      pointer-events: none !important;
+      cursor: default;
+      &::before {color:#aaa;}
+    }
+    a.edit_icon::before {color:orange; text-decoration: blink;}
+  }
   li {
     flex: 1;
     position: relative;
@@ -54,12 +62,6 @@ ul#photo_grid {
     min-width: 140px;
     background-color: #888;
     box-shadow: 2px 2px 2px #888;
-    img {
-      &:before {
-        color: orange;
-        content: "We're sorry, the image below is broken :(";
-      }
-    }
     span.actions {
       background-color:white;
       top: auto;

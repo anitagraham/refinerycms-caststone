@@ -2,11 +2,13 @@ $(function() {
 
   var seriesSelect = $('#photo_product_id'),
       uploadButton = $('#drawing'),
-      redrawButton = $('a#redraw_button');
-      copyrightButton = $('a#copyright_button');
-      clearRadioButton = $('a.clearRadioSet');
+      redrawButton = $('a#redraw_button'),
+      copyrightButton = $('a#copyright_button'),
+      clearRadioButton = $('a.clearRadioSet'),
+      photoGrid = $('#photo_grid');
 
-  if (seriesSelect.length)  {
+
+ if (seriesSelect.length)  {
     $('div.fields').on('click', 'a#redraw_button', function (){
       updateDrawing();
       return false; });
@@ -62,6 +64,30 @@ $(function() {
     });
   };
 
+  jQuery.fn.extend({
+    disablePreview: function() {
+      return this.each(function() {
+        this.find('a.preview_icon').attr('href','#').prop('disabled', true).attr('tooltip', 'Broken image. No preview');
+      });
+    },
+    warnBrokenImage: function(msg) {
+      return this.each(function() {
+        this.find('img').attr('alt', msg);
+      });
+    }
+  });
+
+  if (photoGrid.length) {
+    photoGrid.imagesLoaded().always(function (instance){
+      photoList = photoGrid.find('>li');
+      // detect which images are broken
+      for ( var i = 0, len = instance.images.length; i < len; i++ ) {
+        if (!instance.images[i].isLoaded) {
+          $(photoList[i]).addClass('brokenImage').warnBrokenImage('Warning: this image is broken. Please edit and add a photo.').disablePreview();
+        }
+      }
+    });
+  };
 
   $('.multiselect').multiselect();
 

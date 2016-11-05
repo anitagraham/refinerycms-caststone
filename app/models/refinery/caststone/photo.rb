@@ -50,6 +50,8 @@ module Refinery
 						components.count > 0 ? 'OK' : 'warning'
 					when 'page'
 						page.present? ? 'OK' : 'warning'
+					when 'image'
+						'broken'
 					when 'record'
 						components.count >0 && page.present? ? 'OK' : 'warning'
 					else
