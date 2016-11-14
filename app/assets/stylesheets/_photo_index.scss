@@ -1,58 +1,57 @@
-//   photos index grid view and list view
-$photogrid_size: 4;
 
 //list view
-section#records.photosIndex {
-  li.warning {background-color: pink;}
+section#records {
+
   .list_header {font-weight:bold}
-  .list_header, .record {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-    white-space: nowrap;
-    > * {
-      display: table-cell;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    span {
-      &.title {
-        width:350px;
-        color:#2d3d4d;
-        text-transform:capitalize;
+  .actions {width: auto}
+
+  #list_view {
+    .list_header, .record {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      white-space: nowrap;
+      &.warning {background-color: #FFC0C0; }
+      > * {
+        display: table-cell;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-      &.components {
-        width:50px;
-        &.warning {color:red;}
+      span {
+        &.warning {color: red}
+        &.title {
+          width:350px;
+          color: $textColour;
+          text-transform:capitalize;
+        }
+        &.components { width:50px; }
+        &.ready, &.wall { width:20px;}
       }
-      &.assigned_page.warning {color:red}
-      &.ready, &.wall {@include column(1)}
     }
   }
-  div.photo {float:left}
+  #grid_view {}
 }
-
 // grid view
 
-ul#photo_grid {
+ul#grid_view {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 
   .brokenImage {
-    img::before {color:orange;}
+    background-color: #888;
+    img::before {color:#ff530D;}
     a.preview_icon {
       pointer-events: none !important;
       cursor: default;
       &::before {color:#aaa;}
     }
-    a.edit_icon::before {color:orange; text-decoration: blink;}
+    a.edit_icon::before {color:#ff530D; text-decoration: blink;}
   }
   li {
     flex: 1;
     position: relative;
-    // float: left;
     margin:10px;
     padding: 0px;
     text-align: center;
@@ -60,15 +59,13 @@ ul#photo_grid {
     border: 1px solid #555;
     min-height:140px;
     min-width: 140px;
-    background-color: #888;
     box-shadow: 2px 2px 2px #888;
     span.actions {
-      background-color:white;
+      background-color: #eee;
       top: auto;
-      bottom: 0px;
-      width: 100%;
+      bottom: -5px;
       a {
-        line-height: 24px;
+        line-height: 18px;
         img {
           padding: 4px 4px 1px 4px;
           vertical-align: top;

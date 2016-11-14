@@ -1,11 +1,11 @@
-$(function() {
+  $(function() {
 
   var seriesSelect = $('#photo_product_id'),
       uploadButton = $('#drawing'),
       redrawButton = $('a#redraw_button'),
       copyrightButton = $('a#copyright_button'),
       clearRadioButton = $('a.clearRadioSet'),
-      photoGrid = $('#photo_grid');
+      photoGrid = $('#grid_view');
 
 
  if (seriesSelect.length)  {
@@ -67,12 +67,12 @@ $(function() {
   jQuery.fn.extend({
     disablePreview: function() {
       return this.each(function() {
-        this.find('a.preview_icon').attr('href','#').prop('disabled', true).attr('tooltip', 'Broken image. No preview');
+        $(this).find('a.preview_icon').attr('href','#').prop('disabled', true).attr('tooltip', 'Broken image. No preview');
       });
     },
     warnBrokenImage: function(msg) {
       return this.each(function() {
-        this.find('img').attr('alt', msg);
+        $(this).find('img').attr('alt', msg);
       });
     }
   });
@@ -88,7 +88,6 @@ $(function() {
       }
     });
   };
-
-  $('.multiselect').multiselect();
+  $('.multiselect').multiSelect();
 
 });
