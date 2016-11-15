@@ -16,6 +16,7 @@ module CaststoneDragonfly
         }
         url_host   Refinery::Images.dragonfly_url_host
         url_format "/system/refinery/#{url_segment}/:job/:basename.:ext"
+        url_scheme "https"
         secret     Refinery::Images.dragonfly_secret
         dragonfly_url nil
 
