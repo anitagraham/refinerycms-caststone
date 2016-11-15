@@ -16,7 +16,6 @@ module CaststoneDragonfly
         }
         url_host   Refinery::Images.dragonfly_url_host
         url_format "/system/refinery/#{url_segment}/:job/:basename.:ext"
-        url_scheme "https"
         secret     Refinery::Images.dragonfly_secret
         dragonfly_url nil
 
@@ -41,7 +40,8 @@ module CaststoneDragonfly
         options = {
           bucket_name: Refinery::Images.s3_bucket_name,
           access_key_id: Refinery::Images.s3_access_key_id,
-          secret_access_key: Refinery::Images.s3_secret_access_key
+          secret_access_key: Refinery::Images.s3_secret_access_key,
+          url_scheme: :https
         }
         # S3 Region otherwise defaults to 'us-east-1'
         options.update(region: Refinery::Images.s3_region) if Refinery::Images.s3_region
