@@ -49,7 +49,7 @@
        .then(function( data){
          $('img.drawing').attr('src', 'data:image/png;base64,' + data);
          // this second copy is used to save the latest drawing back to the db
-         $('#photo_drawing').val(data);
+         $('#photo_drawing').val(data)
        }));
       return false;
     });
@@ -59,9 +59,9 @@
     $('form.edit_photo').on('click', 'a#copyright_button', function() {
       $.when( $.ajax({'url': '/refinery/caststone/photos/' + copyrightButton.data('photoid') + '/add_copyright.js'}))
        .then( function(data) {
-        $('#photo.img').attr('src', data);  // replace the photo with the new copyright showing.
-      });
-    });
+        $('#photo.img').attr('src', data)  // replace the photo with the new copyright showing.
+      })
+    })
   };
 
   jQuery.fn.extend({
@@ -90,4 +90,8 @@
   };
   $('.multiselect').multiSelect();
 
+  $('#page_photo_picker').on('multiselectChange', function(e,ui){
+    $('img.popup').hide().remove();
+  });
+  // $('form').validatr();
 });

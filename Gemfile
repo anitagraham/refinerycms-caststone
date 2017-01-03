@@ -1,38 +1,59 @@
+source "http://rubygems.org"
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-multiselect'
-end
-source 'https://rubygems.org'
 gemspec
 
-gem 'rails'
-gem 'refinerycms', github: 'refinery/refinerycms', branch: 'master'
-gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n'
-gem "rmagick", :require => 'RMagick'
-gem 'dragonfly-s3_data_store'
-gem "mime-types", "~> 1.25"
-gem "mustache"
-# gem 'handlebars'
-gem "stache"
+gem 'refinerycms'
 
-group :development do
-	gem 'i18n-tasks'
-end
-group :test do
-  gem 'poltergeist'
+# Refinery/rails should pull in the proper versions of these
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
-# Database Configuration
-unless ENV['TRAVIS']
-  gem 'activerecord-jdbcsqlite3-adapter', platform: :jruby
-  gem 'sqlite3', platform: :ruby
-end
+# gem 'jquery-rails'
 
-if !ENV['TRAVIS'] || ENV['DB'] == 'mysql'
-  gem 'activerecord-jdbcmysql-adapter', platform: :jruby
-  gem 'jdbc-mysql', '= 5.1.13', platform: :jruby
-  gem 'mysql2', platform: :ruby
-end
+group :development, :test do
+  gem 'refinerycms-testing', '~> 2.0.0'
+  gem 'factory_girl_rails'
+  gem 'generator_spec'
+
+  require 'rbconfig'
+
+  platforms :jruby do
+    gem 'activerecord-jdbcsqlite3-adapter'
+    gem 'activerecord-jdbcmysql-adapter'
+    gem 'activerecord-jdbcpostgresql-adapter'
+    gem 'jruby-openssl'
+  end
+
+  unless defined?(JRUBY_VERSION)
+    gem 'sqlite3'
+    gem 'mysql2'
+    gem 'pg'
+  end
+
+  platforms :mswin, :mingw do
+    gem 'win32console'
+    gem 'rb-fchange', '~> 0.0.5'
+    gem 'rb-notifu', '~> 0.0.4'
+  end
+
+  platforms :ruby do
+    gem 'spork', '0.9.0.rc9'
+    gem 'guard-spork'
+
+    unless ENV['TRAVIS']
+      if RbConfig::CONFIG['target_os'] =~ /darwin/i
+        gem 'rb-fsevent', '>= 0.3.9'
+        gem 'growl',      '~> 1.0.3'
+      end
+      if RbConfig::CONFIG['target_os'] =~ /linux/i
+        gem 'rb-inotify', '>= 0.5.1'
+        gem 'libnotify',  '~> 0.1.3'
+      end
+    end
+  end
 
 if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   gem 'activerecord-jdbcpostgresql-adapter', platform: :jruby
