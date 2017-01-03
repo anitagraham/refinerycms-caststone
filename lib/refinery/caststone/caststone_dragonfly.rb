@@ -8,15 +8,15 @@ module CaststoneDragonfly
 
       app = ::Dragonfly.app(app_name)
 
-      # Use Refinery::Images configuration settings
+      # Use Refinery::Core configuration settings
       app.configure do
         plugin :imagemagick
         datastore :file, {
-          :root_path => Refinery::Images.datastore_root_path
+          :root_path => Refinery::Core.datastore_root_path
         }
-        url_host   Refinery::Images.dragonfly_url_host
+        url_host   Refinery::Core.dragonfly_url_host
         url_format "/system/refinery/#{url_segment}/:job/:basename.:ext"
-        secret     Refinery::Images.dragonfly_secret
+        secret     Refinery::Core.dragonfly_secret
         dragonfly_url nil
 
         define_url do | app, job, opts|
@@ -35,23 +35,23 @@ module CaststoneDragonfly
 			  end
       end
 
-      if ::Refinery::Images.s3_backend
+      if ::Refinery::Core.s3_backend
         require 'dragonfly/s3_data_store'
         options = {
-          bucket_name: Refinery::Images.s3_bucket_name,
-          access_key_id: Refinery::Images.s3_access_key_id,
-          secret_access_key: Refinery::Images.s3_secret_access_key,
+          bucket_name: Refinery::Core.s3_bucket_name,
+          access_key_id: Refinery::Core.s3_access_key_id,
+          secret_access_key: Refinery::Core.s3_secret_access_key,
           url_scheme: :https
         }
         # S3 Region otherwise defaults to 'us-east-1'
-        options.update(region: Refinery::Images.s3_region) if Refinery::Images.s3_region
+        options.update(region: Refinery::Core.s3_region) if Refinery::Core.s3_region
         app.use_datastore :s3, options
       end
 
       # Logger
       Dragonfly.logger = Rails.logger
 
-      if ::Refinery::Images.custom_backend?
+      if ::Refinery::Core.custom_backend?
         app.datastore = Images.custom_backend_class.new(Images.custom_backend_opts)
       end
     end
