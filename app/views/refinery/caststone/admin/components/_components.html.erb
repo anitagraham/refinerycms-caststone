@@ -1,2 +1,8 @@
 <%= will_paginate @components if Refinery::Caststone::Admin::ComponentsController.pageable? %>
+<div class ='components list_header'>
+  <span class='title'>Name</span>
+  <span class="hasdrawing">Drawing</span>
+  <span class="series">Series</span>
+  <span class='actions'>Actions</span>
+</div>
 <%= render 'sortable_list' %>

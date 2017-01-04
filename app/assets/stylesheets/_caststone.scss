@@ -1,0 +1,130 @@
+
+#photo_details {
+  @include column(12);
+}
+
+section#records {
+  .list_header {font-weight:bold}
+  div.photo {float:left}
+
+}
+ul.components {
+  .title {@include column(8)}
+  .hasDrawing {@include column(1)}
+  .series {@include column(3)}
+  .actions {}
+}
+span {
+  &.title {
+    min-width:250px;
+    color:#2d3d4d;
+    text-transform:capitalize;
+    display:inline-table;
+  }
+  &.components {width:5em}
+  &.ready, &.wall {@include column(1)}
+}
+
+img.popup {
+  position: fixed;
+  left:950px;
+  top: 350px;
+  z-index:10000;
+  box-shadow: 4px 4px 4px black;
+}
+.photo_checkbox {
+  @include column(2);
+}
+
+
+form {
+  div.row {
+    @include clearfix;
+  }
+
+  div#fields {
+    @include column(5);
+    float:left;
+    span.checkbox {
+      label {
+        display:inline-block;
+        margin-right:1em;
+      }
+    }
+  }
+
+  div#drawing {
+    @include column(4);
+    float:left;
+    img.drawing {float:left}
+  }
+
+  div.drawing img {
+    position: absolute;
+    right: 750px;
+    top: 150px;
+    background-color:#aaa;
+  }
+
+  #selectComponents {
+    // @include column(12);
+    fieldset.component_type {
+      border-radius:4px;
+      @include column(3,40);
+      float:left;
+      legend {font-weight:bold;}
+      span {
+        display:block;
+        label {display:inline;}
+      }
+      a.clearRadioSet {margin-top:10px;}
+    }
+  }
+
+  &#selectPhotos input#submit.button {
+    font-size:1.2em;
+    background-color:$csGreen;
+  }
+}
+
+// Handles the drawings of pillars and other things made up of components
+
+img.drawing {
+  background:$adminBlue url('metre.png');
+  float:right;
+  border: 1px solid $csGreen;
+}
+img.photo {
+  padding:5px;
+  background-color:$adminBlue;
+  max-width:700px;
+  float:left;
+}
+
+select.multiselect {
+  height:300px;
+  width:600px;
+}
+// div#drawing  {
+// img {
+// padding:20px;
+// &.saved   {background:url('metre.png') $adminBlue; }
+// &.guessed {background:url('metre.png') $warningColour;}
+// }
+// }
+label abbr[title="required"] {color: rgb(255,50, 34)}
+
+input:required:invalid, input:focus:invalid {
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-color: rgba(255, 50, 34, 0.2);
+  box-shadow: none; }
+
+input:required:valid {
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 255, 0, 0.2) }
+
+#page_photo_picker {
+  padding: 5px;
+}
