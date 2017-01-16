@@ -8,16 +8,10 @@
     <%= link_to t('.create_new'), refinery.new_caststone_admin_photo_path,
                  :class => "add_icon" %>
   </li>
-<% if !searching? && ::Refinery::Caststone::Admin::PhotosController.sortable? && ::Refinery::Caststone::Photo.any? %>
-  <% other_photo_views.each do |photo_view| %>
-    <li>
-      <%= action_label :"switch_view_#{photo_view}",
-        refinery.caststone_admin_photos_path(view: photo_view, page: params[:page]),
-        t('switch_to', scope: 'refinery.caststone.admin.photos.index.view', view_name: t("#{photo_view}", scope: 'refinery.caststone.admin.photos.index.view'))
-      %>
-    </li>
-  <% end %>
-<% end %>
-
+  <%= render partial: 'refinery/caststone/admin/shared/switch_views',
+            locals: {
+              name: 'Refinery::Caststone::Photos',
+              scope: 'refinery.caststone.admin.photos.index.view'}
+  %>
 
 </ul>

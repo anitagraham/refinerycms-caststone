@@ -1,0 +1,78 @@
+.photosView_icon {@include icon('photo', blue)}
+.drawingsView_icon {@include icon('pencil', blue)}
+.listView_icon {@include icon('list', blue)}
+.hasDrawingtrue {@include icon('check', green)}
+.hasDrawingfalse {@include icon('times', red)}
+.list_header {font-weight:bold}
+.actions {width: auto}
+
+//list view
+#list_view
+ td, th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+  .title {
+    @include column(2);
+    color: $textColour;
+    text-transform:capitalize;
+    text-overflow: ellipsis;
+  }
+  // component attributes
+  .series {@include column(1)}
+  .height {@include column(1)}
+  [class^="hasDrawing"] {@include column(1); width: 2rem;}
+
+  //photo attributes
+  .components { @include column(1);   width: 2rem; }
+  .ready {@include column(1); width: 2rem;}
+  .assigned_page {@include column(3)}
+
+  .warning {
+    color: red
+  }
+
+ // grid views
+
+ul#photos_view, ul#drawings_view {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .brokenImage {
+    background-color: #888;
+    img::before {color:#ff530D;}
+    a.preview_icon {
+      pointer-events: none !important;
+      cursor: default;
+      &::before {color:#aaa;}
+    }
+    a.edit_icon::before {color:#ff530D; text-decoration: blink;}
+  }
+  li {
+    flex: 1;
+    position: relative;
+    margin:10px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: #C9DAE2;
+
+    border: 1px solid #555;
+    min-height:140px;
+    min-width: 140px;
+    box-shadow: 2px 2px 2px #888;
+    img {
+      flex: 0 1 auto;
+      display:block;
+    }
+    span.actions {
+      top: auto;
+      bottom: -5px;
+    }
+  }
+}
+

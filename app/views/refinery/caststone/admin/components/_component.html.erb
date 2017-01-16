@@ -1,22 +1,18 @@
-<li class='clearfix record  <%=component.type.demodulize%> <%= cycle("on", "on-hover") %>' id="<%= dom_id(component) %>">
-	
-  <span class='title'>
-    <%= component.name %>
-  </span>
 
-  <span class="hasdrawing">
- 		<%= component.ready ?  refinery_icon_tag("tick.png") : refinery_icon_tag("cross.png") %>
-	</span>
-  <span class="series"><%= component.products.to_sentence %></span>
-  <span class='actions'>
-    
-    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_caststone_admin_component_path(component),
-         :title => t('.edit') %>
-    <%= link_to refinery_icon_tag("delete.png"), refinery.caststone_admin_component_path(component),
-        :class => "cancel confirm-delete",
-        :title => t('.delete'),
-        :confirm => t('message', :scope => 'refinery.admin.delete', :title => component.name),
-        :method => :delete %>
-  </span>
-</li>
-  
+<tr id="<%= dom_id(component)-%>" class="<%= component.type.demodulize %>">
+
+  <%= image_tag component.drawing.thumb('140x140^').url, title:  component.name, alt: component.name unless listView %>
+
+    <td class="title"><%= component.name %> </td>
+    <td class="height"><%= component.height%></td>
+    <td class="series"><%= component.products.to_sentence %></td>
+    <% if Refinery::Caststone::Components.preferred_view == 'list' %>
+      <td class="hasDrawing<%= component.ready %>"></td>
+    <%end%>
+    <td class='actions'>
+      <%= action_icon :edit,    refinery.edit_caststone_admin_component_path(component), t('.edit') %>
+      <%= action_icon :delete,  refinery.caststone_admin_component_path(component),  t('.delete'), class: 'cancel confirm-delete',
+                      data: { confirm: t('message', scope: 'refinery.admin.delete', title: component.name)} %>
+  </td>
+
+</tr>

@@ -1,3 +1,0 @@
-collection @components
-	attributes :name
-	

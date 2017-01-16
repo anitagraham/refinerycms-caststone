@@ -1,26 +1,21 @@
 <ul>
   <% if ::Refinery::Caststone::Admin::ComponentsController.searchable? %>
-    <li>
-      <%= render '/refinery/admin/search', :url => refinery.caststone_admin_components_path %>
-    </li>
+      <li>
+        <%= render '/refinery/admin/search', :url => refinery.caststone_admin_components_path %>
+      </li>
   <% end %>
+  <!--TODO Add sorting and filtering code-->
+  <!--<li>-->
+    <!--Sort and Filter Coming Soon-->
+  <!--</li>-->
   <li>
     <%= link_to t('.create_new'), refinery.new_caststone_admin_component_path,
-                 :class => "add_icon" %>
+                :class => "add_icon" %>
   </li>
-<% if !searching? && ::Refinery::Caststone::Admin::ComponentsController.sortable? && ::Refinery::Caststone::Component.any? %>
-  <li>
-    <%= link_to t('.reorder', :what => "Components"),
-                 refinery.caststone_admin_components_path,
-                 :id => "reorder_action",
-                 :class => "reorder_icon" %>
-
-    <%= link_to t('.reorder_done', :what => "Components"),
-                 refinery.caststone_admin_components_path,
-                 :id => "reorder_action_done",
-                 :style => "display: none;",
-                 :class => "reorder_icon" %>
-  </li>
-<% end %>
- 
-</ul>
+  <%=
+  render partial: 'refinery/caststone/admin/shared/switch_views',
+    locals: {
+    name: 'Refinery::Caststone::Components',
+    scope: 'refinery.caststone.admin.components.index.view'}
+  %>
+ </ul>

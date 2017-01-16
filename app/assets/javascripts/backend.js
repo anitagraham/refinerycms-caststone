@@ -5,7 +5,7 @@
       redrawButton = $('a#redraw_button'),
       copyrightButton = $('a#copyright_button'),
       clearRadioButton = $('a.clearRadioSet'),
-      photoGrid = $('#grid_view');
+      photoGrid = $('#photos_view, #drawings_view');
 
 
  if (seriesSelect.length)  {

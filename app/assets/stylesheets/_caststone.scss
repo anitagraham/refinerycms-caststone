@@ -8,22 +8,6 @@ section#records {
   div.photo {float:left}
 
 }
-ul.components {
-  .title {@include column(8)}
-  .hasDrawing {@include column(1)}
-  .series {@include column(3)}
-  .actions {}
-}
-span {
-  &.title {
-    min-width:250px;
-    color:#2d3d4d;
-    text-transform:capitalize;
-    display:inline-table;
-  }
-  &.components {width:5em}
-  &.ready, &.wall {@include column(1)}
-}
 
 img.popup {
   position: fixed;
@@ -105,13 +89,7 @@ select.multiselect {
   height:300px;
   width:600px;
 }
-// div#drawing  {
-// img {
-// padding:20px;
-// &.saved   {background:url('metre.png') $adminBlue; }
-// &.guessed {background:url('metre.png') $warningColour;}
-// }
-// }
+
 label abbr[title="required"] {color: rgb(255,50, 34)}
 
 input:required:invalid, input:focus:invalid {

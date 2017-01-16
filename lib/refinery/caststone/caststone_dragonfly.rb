@@ -12,11 +12,11 @@ module CaststoneDragonfly
       app.configure do
         plugin :imagemagick
         datastore :file, {
-          :root_path => Refinery::Core.datastore_root_path
+          :root_path => Refinery::Images.datastore_root_path
         }
-        url_host   Refinery::Core.dragonfly_url_host
+        url_host   Refinery::Images.dragonfly_url_host
         url_format "/system/refinery/#{url_segment}/:job/:basename.:ext"
-        secret     Refinery::Core.dragonfly_secret
+        secret     Refinery::Images.dragonfly_secret
         dragonfly_url nil
 
         define_url do | app, job, opts|
@@ -51,7 +51,7 @@ module CaststoneDragonfly
       # Logger
       Dragonfly.logger = Rails.logger
 
-      if ::Refinery::Core.custom_backend?
+      if ::Refinery::Images.custom_backend?
         app.datastore = Images.custom_backend_class.new(Images.custom_backend_opts)
       end
     end

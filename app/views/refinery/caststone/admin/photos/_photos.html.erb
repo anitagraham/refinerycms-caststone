@@ -1,4 +1,13 @@
 <%= will_paginate @photos if Refinery::Caststone::Admin::PhotosController.pageable? %>
-  <ul id=<%="#{Refinery::Caststone::Photos.preferred_photo_view}_view"%> class="<%= ['clearfix', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
-    <%= render partial: 'refinery/caststone/admin/photos/photo', collection: @photos, locals: {view: Refinery::Caststone::Photos.preferred_photo_view } %>
+<% this_view = Refinery::Caststone::Photos.preferred_view.to_s
+  if this_view == 'list' %>
+    <div class ='photos list_header'>
+      <span class='title'>Name</span>
+      <span class="components">Parts</span>
+      <span class="assigned_page">Page</span>
+      <span class='actions'>Actions</span>
+    </div>
+<%end%>
+  <ul id=<%="#{this_view}_view"%> class="<%= ['clearfix', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
+    <%= render partial: 'refinery/caststone/admin/photos/photo', collection: @photos, locals: {view: this_view } %>
   </ul>

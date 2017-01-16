@@ -1,9 +1,7 @@
-<%
-  classes = view == 'list' ? [:clearfix, :record, cycle('on', 'on-hover'), photo.status('record')].join(' ') : photo.status('record')
-%>
-<li class="<%= classes %>" id="<%= dom_id(photo) -%>">
 
-  <% case Refinery::Caststone::Photos.preferred_photo_view %>
+<li class="<%= photo.status('record') %>" id="<%= dom_id(photo) -%>">
+
+  <% case Refinery::Caststone::Photos.preferred_view %>
   <% when 'list' %>
     <span class="title"><%= photo.name %> </span>
     <span class="components <%= photo.status('components')%>"><%=photo.components.count%></span>

@@ -1,8 +1,19 @@
 <%= will_paginate @components if Refinery::Caststone::Admin::ComponentsController.pageable? %>
-<div class ='components list_header'>
-  <span class='title'>Name</span>
-  <span class="hasdrawing">Drawing</span>
-  <span class="series">Series</span>
-  <span class='actions'>Actions</span>
-</div>
-<%= render 'sortable_list' %>
+<%	 listView = Refinery::Caststone::Components.preferred_view.to_s == 'list'
+
+  if listView %>
+  <table id=<%="#{Refinery::Caststone::Components.preferred_view.to_s}_view"%> class="<%= ['components', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
+  <thead>
+    <tr class="header">
+      <th class='title'>Name</th>
+      <th class="height">Height(<i>mm</i>)</th>
+      <th class="series">Series</th>
+      <th class="hasDrawing">Drawing</th>
+      <th class='actions'>Actions</th>
+    </tr>
+  </thead>
+<%end%>
+  <tbody>
+    <%= render partial: 'refinery/caststone/admin/components/component', collection: @components, locals: {listView: listView } %>
+  </tbody>
+  </table>

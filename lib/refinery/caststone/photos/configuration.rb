@@ -7,7 +7,7 @@ module Refinery
                     :dragonfly_insert_before, :dragonfly_secret, :dragonfly_url_format, :dragonfly_url_host,
                     :max_image_size, :pages_per_dialog, :pages_per_admin_index,
                     :pages_per_dialog_that_have_size_options, :sizes,
-                    :photo_views, :preferred_photo_view, :datastore_root_path,
+                    :defined_views, :preferred_view, :datastore_root_path,
                     :s3_backend, :s3_bucket_name, :s3_region,
                     :s3_access_key_id, :s3_secret_access_key, :trust_file_extensions,
                     :whitelisted_mime_types,
@@ -40,10 +40,10 @@ module Refinery
         photowallThumb: 'x150'
       }
 
-			self.photo_views = [:grid, :list]
-			self.preferred_photo_view = :grid
+    self.defined_views = [:photos, :list]
+    self.preferred_view = :photos
 
-      config.captions = true
+    config.captions = true
 
     # We have to configure these settings after Rails is available.
     # But a non-nil custom option can still be provided

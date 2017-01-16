@@ -72,7 +72,7 @@ module Refinery
 #     expects components to be in drawing order, from bottom to top
 
         require 'rvg/rvg'
-        require 'RMagick'
+        require 'rmagick'
         include Magick
 
         Magick::RVG.dpi = 90

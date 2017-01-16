@@ -7,7 +7,8 @@ module Refinery
                       :dragonfly_datastore_root_path, :whitelisted_mime_types, :dragonfly_trust_file_extensios,
                       :dragonfly_allow_fetch_file, :dragonfly_protect_from_dos_attacks,
                       :s3_backend, :s3_bucket_name, :s3_region,
-                      :s3_access_key_id, :s3_secret_access_key
+                      :s3_access_key_id, :s3_secret_access_key,
+                      :defined_views, :preferred_view
 
       config.captions = true
       config.dragonfly_insert_before = 'ActionDispatch::Callbacks'
@@ -18,6 +19,8 @@ module Refinery
       config.whitelisted_mime_types = %w[image/png]
       config.dragonfly_url_format = '/system/refinery/drawings/:job/:basename.:ext'
 
+      self.defined_views = [:drawings, :list]
+	  self.preferred_view = :drawings
 
       # We have to configure these settings after Rails is available.
       # But a non-nil custom option can still be provided
