@@ -53,16 +53,16 @@
        }));
       return false;
     });
-  };
+  }
 
   if (copyrightButton.length) {
     $('form.edit_photo').on('click', 'a#copyright_button', function() {
       $.when( $.ajax({'url': '/refinery/caststone/photos/' + copyrightButton.data('photoid') + '/add_copyright.js'}))
        .then( function(data) {
-        $('#photo.img').attr('src', data)  // replace the photo with the new copyright showing.
+        $('#photo.img').attr('src', data)
       })
     })
-  };
+  }
 
   jQuery.fn.extend({
     disablePreview: function() {
@@ -78,14 +78,15 @@
   });
 
   if (photoGrid.length) {
-    photoGrid.imagesLoaded().always(function (instance){
-      photoList = photoGrid.find('>li');
-      // detect which images are broken
-      for ( var i = 0, len = instance.images.length; i < len; i++ ) {
-        if (!instance.images[i].isLoaded) {
-          $(photoList[i]).addClass('brokenImage').warnBrokenImage('Warning: this image is broken. Please edit and add a photo.').disablePreview();
+    photoGrid.imagesLoaded()
+      .always(function (instance){
+        photoList = photoGrid.find('>li');
+        // detect which images are broken
+        for ( var i = 0, len = instance.images.length; i < len; i++ ) {
+          if (!instance.images[i].isLoaded) {
+            $(photoList[i]).addClass('brokenImage').warnBrokenImage('Warning: this image is broken. Please edit and add a photo.').disablePreview();
+          }
         }
-      }
     });
   };
   $('.multiselect').multiSelect();
