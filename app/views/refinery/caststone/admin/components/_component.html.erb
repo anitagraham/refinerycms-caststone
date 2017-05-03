@@ -1,7 +1,9 @@
 
 <tr id="<%= dom_id(component)-%>" class="<%= component.type.demodulize %>">
 
-  <%= image_tag component.drawing.thumb('140x140^').url, title:  component.name, alt: component.name unless listView %>
+  <% if component.drawing && gridView %>
+    <%= image_tag component.drawing.thumb('140x140^').url, title:  component.name, alt: component.name  %>
+  <%end %>
 
     <td class="title"><%= component.name %> </td>
     <td class="height"><%= component.height%></td>

@@ -1,5 +1,6 @@
 <%= will_paginate @components if Refinery::Caststone::Admin::ComponentsController.pageable? %>
-<%	 listView = Refinery::Caststone::Components.preferred_view.to_s == 'list'
+<%   listView = Refinery::Caststone::Components.preferred_view.to_s == 'list'
+     gridView = Refinery::Caststone::Components.preferred_view.to_s == 'grid'
 
   if listView %>
   <table id=<%="#{Refinery::Caststone::Components.preferred_view.to_s}_view"%> class="<%= ['components', 'pagination_frame', pagination_css_class].compact.join(' ') %>">

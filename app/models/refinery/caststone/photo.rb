@@ -44,22 +44,22 @@ module Refinery
         json
       end
 
-			def status(part)
-				case part
-					when 'components'
-						components.count > 0 ? 'OK' : 'warning'
-					when 'page'
-						page.present? ? 'OK' : 'warning'
-					when 'record'
-						components.count >0 && page.present? ? 'OK' : 'warning'
-					else
-						'OK'
-				end
-			end
+      def status(part)
+        case part
+          when 'components'
+            components.count > 0 ? 'OK' : 'warning'
+          when 'page'
+            page.present? ? 'OK' : 'warning'
+          when 'record'
+            components.count >0 && page.present? ? 'OK' : 'warning'
+          else
+            'OK'
+        end
+      end
 
-			def assigned_page_name
-				page.present? ? page.title : 'unassigned'
-			end
+      def assigned_page_name
+        page.present? ? page.title : 'unassigned'
+      end
 
       def height
         self.components.sum(:height)
@@ -85,7 +85,7 @@ module Refinery
 
       # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
       def thumbnail_dimensions(geometry)
-      	Rails.logger.debug "beginning thumbnail dimensions"
+        Rails.logger.debug "beginning thumbnail dimensions"
         dimensions = ThumbnailDimensions.new(geometry, image.width, image.height)
         Rails.logger.debug "Ended thumbnail dimensions"
         { :width => dimensions.width, :height => dimensions.height }

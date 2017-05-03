@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.date              = '2012-05-07'
   s.summary           = 'Caststone extension for Refinery CMS'
   s.require_paths     = %w(lib)
-	s.authors						= 'Anita Graham'
+  s.authors            = 'Anita Graham'
   s.licenses          = %q{MIT}
 
   s.files             = `git ls-files`.split("\n")
@@ -26,3 +26,4 @@ Gem::Specification.new do |s|
   # Development dependencies (usually used for testing)
   s.add_development_dependency 'refinerycms-testing'
 end
+
