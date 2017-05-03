@@ -1,20 +1,19 @@
 <%= will_paginate @components if Refinery::Caststone::Admin::ComponentsController.pageable? %>
-<%   listView = Refinery::Caststone::Components.preferred_view.to_s == 'list'
-     gridView = Refinery::Caststone::Components.preferred_view.to_s == 'grid'
+<% listView = Refinery::Caststone::Components.preferred_view.to_s == 'list'
 
-  if listView %>
-  <table id=<%="#{Refinery::Caststone::Components.preferred_view.to_s}_view"%> class="<%= ['components', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
-  <thead>
-    <tr class="header">
-      <th class='title'>Name</th>
-      <th class="height">Height(<i>mm</i>)</th>
-      <th class="series">Series</th>
-      <th class="hasDrawing">Drawing</th>
-      <th class='actions'>Actions</th>
-    </tr>
-  </thead>
-<%end%>
-  <tbody>
-    <%= render partial: 'refinery/caststone/admin/components/component', collection: @components, locals: {listView: listView } %>
-  </tbody>
-  </table>
+   if listView %>
+    <ul id=<%= "#{Refinery::Caststone::Components.preferred_view.to_s}_view" %> class="<%= ['components', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
+      <li class="header">
+        <span class="name">Name</span>
+        <span class="height">Height(<i>mm</i>)</span>
+        <span class="series">Series</span>
+        <span>Drawing</span>
+        <span class="actions">Actions</span>
+      </li>
+      <%= render partial: 'refinery/caststone/admin/components/component', collection: @components, locals: {view: 'list'} %>
+    </ul>
+<% else %>
+    <ul id= "grid_view" class='components' >
+      <%= render partial: 'refinery/caststone/admin/components/component', collection: @components, locals: {view: 'drawings'} %>
+    </ul>
+<% end %>

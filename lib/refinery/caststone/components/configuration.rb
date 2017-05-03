@@ -19,8 +19,8 @@ module Refinery
       config.whitelisted_mime_types = %w[image/png]
       config.dragonfly_url_format = '/system/refinery/drawings/:job/:basename.:ext'
 
-      self.defined_views = [:drawings, :list]
-	  self.preferred_view = :drawings
+      self.defined_views = [:grid, :list]
+      self.preferred_view = :grid
 
       # We have to configure these settings after Rails is available.
       # But a non-nil custom option can still be provided
