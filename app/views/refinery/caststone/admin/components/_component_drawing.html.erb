@@ -1,3 +1,5 @@
 <%if component.drawing_uid %>
+
   <%= image_tag component.drawing.url, :class=> [:drawing, :clearfix], :id=>component.id unless component.drawing.nil? %>
+
 <%end%>
