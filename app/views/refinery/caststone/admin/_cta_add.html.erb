@@ -1,0 +1,17 @@
+<div id="dialog_main">
+  <%= label 'Header' %>
+
+</div>
+
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      new ImageDialog({
+        callback: <%= @callback.present? ? "self.parent.#{h @callback}" : 'null' %>,
+        multiple: <%= @multiple == 'true' %>
+      }).create();
+
+      $('input[type=radio][value=upload_image]:checked').click();
+    });
+  </script>
+<% end %>

@@ -6,11 +6,12 @@ gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', :branch => '3
 
 end
 
-gem 'refinerycms-i18n',             git:'https://github.com/refinery/refinerycms-i18n'
-gem 'refinerycms-acts-as-indexed',  git:'https://github.com/refinery/refinerycms-acts-as-indexed'
-gem 'refinerycms-wymeditor',        git:'https://github.com/parndt/refinerycms-wymeditor'
+gem 'refinerycms-i18n',             git: 'https://github.com/refinery/refinerycms-i18n'
+gem 'refinerycms-acts-as-indexed',  git: 'https://github.com/refinery/refinerycms-acts-as-indexed'
+gem 'refinerycms-tinymce',          git: 'https://github.com/ghoppe/refinerycms-tinymce'
 gem "mime-types", "~> 1.25"
-
+gem 'mustache'
+gem 'stache'
 
 # Database Configuration
 unless ENV['TRAVIS']

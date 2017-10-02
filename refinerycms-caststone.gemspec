@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
   # Runtime dependencies
   s.add_dependency    'refinerycms-core'  #,    '~> 2.1.0'
   s.add_dependency    'rmagick'
+  s.add_dependency    'mustache'
+  s.add_dependency    'stache'
 
   # Development dependencies (usually used for testing)
   s.add_development_dependency 'refinerycms-testing'
