@@ -75,13 +75,14 @@ module Refinery
 
       # Get a thumbnail job object given a geometry and whether to strip image profiles and comments.
       def thumbnail(options = {})
-        options = { geometry: '600x400', :strip => false }.merge(options)
+        options = { :geometry => nil, :strip => false }.merge(options)
         geometry = convert_to_geometry(options[:geometry])
         thumbnail = image
         thumbnail = thumbnail.thumb(geometry) if geometry
         thumbnail = thumbnail.strip if options[:strip]
         thumbnail.url
       end
+
 
       # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
       def thumbnail_dimensions(geometry)

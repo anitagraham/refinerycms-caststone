@@ -1,9 +1,10 @@
 <%
   content = content_tag(:div, class: 'wym_skin_refinery page_part', id:'page_photo_picker') do
-    if @photos.nil?
+    if Refinery::Caststone::Photo.all.count == 0
       concat content_tag(:p, t('.no_photos_yet'))
     else
-      concat select :page, :photo_ids,@photos.map{ |p| [p.name, p.id, { 'data-url' => p.thumbnail('250x')} ] }, {},    {:multiple=>true, :class=>:multiselect, :id=>:photo_multiselect}
+      concat select :page, :photo_ids, Refinery::Caststone::Photo.all.map{ |p|
+        [p.name, p.id,  ] }, {}, {:multiple=>true, :class=>:multiselect, :id=>:photo_multiselect}
     end
   end
 %>

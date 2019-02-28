@@ -12,8 +12,7 @@
 
   <span class="actions">
     <%= action_icon :preview, photo.image.remote_url, t('view_live_html', scope: 'refinery.caststone.admin.photos') %>
-    <%= action_icon :delete,  refinery.caststone_admin_photo_path(photo, params.slice(:page)),  t('delete', scope: 'refinery.caststone.admin.photos'), class: 'confirm-delete',
-                       data: { confirm: t('.message', scope: 'refinery.admin.delete', title: photo.title) } %>
+    <%= action_icon :delete,  refinery.caststone_admin_photo_path(photo, params.slice(:page)),  t('delete', scope: 'refinery.caststone.admin.photos'), class: 'confirm-delete',                     data: { confirm: t('.message', scope: 'refinery.admin.delete', title: photo.title) } %>
     <%= action_icon :edit,    refinery.edit_caststone_admin_photo_path(photo), t('edit', scope: 'refinery.caststone.admin.photos') %>
     <%= action_icon :info,    '#', "#{photo.title} has #{photo.components.count} components and is shown on page #{photo.assigned_page_name}" %>
   </span>
