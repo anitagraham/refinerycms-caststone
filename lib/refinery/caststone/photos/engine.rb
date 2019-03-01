@@ -7,9 +7,10 @@ module Refinery
       engine_name :refinery_caststone
       config.autoload_paths += %W( #{config.root}/lib )
 
+
       initializer 'attach-caststone-photos-with-dragonfly', :before => :finisher_hook do |app|
-        ::CaststoneDragonfly.configure!(:caststone_photos, :photos)
-        ::CaststoneDragonfly.attach!(app, :caststone_photos)
+        ::Refinery::Dragonfly.configure!(::Refinery::Caststone::Photos)
+        ::Refinery::Dragonfly.attach!(app, ::Refinery::Caststone::Photos)
       end
 
       def self.register_photos(tab)
@@ -25,10 +26,6 @@ module Refinery
           plugin.menu_match = %r{refinery/caststone/photos(/.*)?$}
         end
       end
-
-      # config.to_prepare do
-        # ApplicationController.helper(Refinery::Caststone.PhotosHelper)
-      # end
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Caststone::Photos)

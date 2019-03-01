@@ -6,6 +6,7 @@ module Refinery
   module Caststone
     module Components
       require 'refinery/caststone/components/engine'
+      require 'refinery/dragonfly/extension_configuration'
       require 'refinery/caststone/components/configuration'
 
       class << self
