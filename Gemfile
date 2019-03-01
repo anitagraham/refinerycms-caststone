@@ -2,9 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', :branch => '3-0-stable' do
-
-end
+gem 'refinerycms', '~> 4.0', '>= 4.0.3'
 
 gem 'refinerycms-i18n',             git: 'https://github.com/refinery/refinerycms-i18n'
 gem 'refinerycms-acts-as-indexed',  git: 'https://github.com/refinery/refinerycms-acts-as-indexed'

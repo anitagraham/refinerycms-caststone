@@ -8,7 +8,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-caststone'
-  s.version           = '1.0.3'
+  s.version           = '2.0.0'
   s.description       = 'Ruby on Rails Caststone extension for Refinery CMS'
   s.date              = '2012-05-07'
   s.summary           = 'Caststone extension for Refinery CMS'
@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   # Runtime dependencies
-  s.add_dependency    'refinerycms-core'  #,    '~> 2.1.0'
+  s.add_dependency    'refinerycms-core'
   s.add_dependency    'rmagick'
   s.add_dependency    'mustache'
   s.add_dependency    'stache'

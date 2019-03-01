@@ -1,9 +1,9 @@
 module Refinery
   module Caststone
     class Version
-      @major = 1
+      @major = 2
       @minor = 0
-      @tiny  = 1
+      @tiny  = 0
 
       class << self
         attr_reader :major, :minor, :tiny
