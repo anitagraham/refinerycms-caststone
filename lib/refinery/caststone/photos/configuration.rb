@@ -15,6 +15,9 @@ module Refinery
                       :preferred_view,
                       :whitelisted_mime_types
 
+      config.captions = true
+      config.dragonfly_name = :caststone_photos
+      config.dragonfly_plugin = :imagemagick
       self.dragonfly_url_format = '/system/refinery/photos/:job/:basename.:ext'
       self.whitelisted_mime_types = %w[image/jpeg image/png image/gif image/tiff]
 

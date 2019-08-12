@@ -11,8 +11,8 @@ module Refinery
                       :defined_views, :preferred_view
 
       config.captions = true
-      config.dragonfly_name = :components
       config.dragonfly_plugin = :imagemagick
+      config.dragonfly_name = :caststone_components
       config.dragonfly_insert_before = 'ActionDispatch::Callbacks'
       config.dragonfly_secret = Refinery::Dragonfly.secret
       config.dragonfly_trust_file_extensions = true
