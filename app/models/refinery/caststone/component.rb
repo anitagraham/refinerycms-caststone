@@ -11,6 +11,7 @@ module Refinery
 
       validates :name, presence: true, uniqueness: true
       validates :type, presence: true
+      #alias :component_type :type
       validates :height, numericality: { only_integer: true, greater_than: 0}, :presence=> true
       validates_presence_of :product_ids, message: "You must choose a series"
       validates_associated :product
@@ -48,28 +49,12 @@ module Refinery
         ]
       end
 
-      def thumbnail(geometry = nil)
-        if drawing_uid
-          if geometry.is_a?(Symbol) and Refinery::Caststone::Photos.sizes.keys.include?(geometry)
-            geometry = Refinery::Caststone::Photos.sizes[geometry]
-          end
-
-          if geometry.present? && !geometry.is_a?(Symbol)
-            drawing.thumb(geometry).url
-          else
-            drawing.url
-          end
-        else
-          "No drawing found"
-        end
-    end
-
       def popup_image
          name self.thumbnail('250x')
       end
 
       def self.construct(component_list)
-#     expects components to be in drawing order, from bottom to top
+#    ￿ expects components to be in drawing order, from bottom to top
 
         require 'rvg/rvg'
         require 'rmagick'

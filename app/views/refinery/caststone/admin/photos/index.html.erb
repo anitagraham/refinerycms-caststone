@@ -1,7 +1,7 @@
-<section id='records' class="photosIndex">
-  <%= render 'records' %>
-</section>
+  <section id='records' class="photosIndex">
+    <%= render 'records' %>
+  </section>
 <aside id='actions'>
   <%= render 'actions' %>
 </aside>
-<%= render '/refinery/admin/make_sortable', :tree => false if !searching? and ::Refinery::Caststone::Admin::PhotosController.sortable? and ::Refinery::Caststone::Photo.count > 1 %>
+<%= render partial: '/refinery/admin/make_sortable', :tree => false if !searching? and ::Refinery::Caststone::Admin::PhotosController.sortable? and ::Refinery::Caststone::Photo.count > 1 %>

@@ -1,4 +1,4 @@
-class CreateCaststoneComponents < ActiveRecord::Migration
+class CreateCaststoneComponents < ActiveRecord::Migration[4.2]
 
   def up
     create_table :refinery_caststone_components do |t|

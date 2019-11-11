@@ -3,7 +3,7 @@ module Refinery
     module Admin
       class ProductsController < ::Refinery::AdminController
 
-				before_filter :list_components
+				#before_action :list_components
         crudify :'refinery/caststone/product',
                 :title_attribute => 'name'
 

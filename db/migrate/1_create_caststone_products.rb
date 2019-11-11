@@ -1,4 +1,4 @@
-class CreateCaststoneProducts < ActiveRecord::Migration
+class CreateCaststoneProducts < ActiveRecord::Migration[4.2]
 
   def up
     create_table :refinery_caststone_products do |t|

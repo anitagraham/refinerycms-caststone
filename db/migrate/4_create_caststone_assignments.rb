@@ -1,4 +1,4 @@
-class CreateCaststoneAssignments < ActiveRecord::Migration
+class CreateCaststoneAssignments < ActiveRecord::Migration[4.2]
 
   def change
     create_table :refinery_caststone_assignments do |t|

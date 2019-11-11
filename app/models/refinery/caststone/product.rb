@@ -3,7 +3,7 @@ module Refinery
     class Product < Refinery::Core::BaseModel
 
       acts_as_indexed :fields => [:name]
-
+      has_one :drawing, class_name: 'Refinery::Image'
       validates :name, :presence => true, :uniqueness => true
 
       has_many :compatibles

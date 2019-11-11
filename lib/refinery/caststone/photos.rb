@@ -6,7 +6,6 @@ module Refinery
   module Caststone
     module Photos
       require 'refinery/caststone/photos/engine'
-      require 'refinery/dragonfly/extension_configuration'
       require 'refinery/caststone/photos/configuration'
 
       class << self

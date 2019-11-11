@@ -1,4 +1,4 @@
-class CreateCaststonePhotos < ActiveRecord::Migration
+class CreateCaststonePhotos < ActiveRecord::Migration[4.2]
 
   def up
     create_table :refinery_caststone_photos do |t|

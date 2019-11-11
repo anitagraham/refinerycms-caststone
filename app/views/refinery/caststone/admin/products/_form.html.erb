@@ -3,7 +3,7 @@
               :object => @product,
               :include_object_name => true %>
 
-  
+
   <div class='field'>
     <%= f.label :name -%>
     <%= f.text_field :name, :class => 'larger widest'  -%>
@@ -11,10 +11,10 @@
   </div>
   <%= render :partial => '/refinery/caststone/admin/tabbed_fields',
       :locals => { :f => f,
-                   :tabbed_fields =>[:blurb],
+                   :tabbed_fields =>[:description],
                    :custom_fields => ["components"] } %>
 
-                        
+
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.products.admin.products.product'),
