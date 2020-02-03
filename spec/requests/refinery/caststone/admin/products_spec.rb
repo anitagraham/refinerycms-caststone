@@ -9,8 +9,8 @@
 #
         # describe "products list" do
           # before(:each) do
-            # FactoryGirl.create(:product, :name => "UniqueTitleOne")
-            # FactoryGirl.create(:product, :name => "UniqueTitleTwo")
+            # FactoryBot.create(:product, name: "UniqueTitleOne")
+            # FactoryBot.create(:product, name: "UniqueTitleTwo")
           # end
 #
           # it "shows two items" do
@@ -29,7 +29,7 @@
 #
           # context "valid data" do
             # it "should succeed" do
-              # fill_in "Name", :with => "This is a test of the first string field"
+              # fill_in "Name", with: "This is a test of the first string field"
               # click_button "Save"
 #
               # page.should have_content("'This is a test of the first string field' was successfully added.")
@@ -47,14 +47,14 @@
           # end
 #
           # context "duplicate" do
-            # before(:each) { FactoryGirl.create(:product, :name => "UniqueTitle") }
+            # before(:each) { FactoryBot.create(:product, name: "UniqueTitle") }
 #
             # it "should fail" do
               # visit refinery.caststone_admin_products_path
 #
               # click_link "Add New Product"
 #
-              # fill_in "Name", :with => "UniqueTitle"
+              # fill_in "Name", with: "UniqueTitle"
               # click_button "Save"
 #
               # page.should have_content("There were problems")
@@ -65,7 +65,7 @@
         # end
 #
         # describe "edit" do
-          # before(:each) { FactoryGirl.create(:product, :name => "A name") }
+          # before(:each) { FactoryBot.create(:product, name: "A name") }
 #
           # it "should succeed" do
             # visit refinery.caststone_admin_products_path
@@ -74,7 +74,7 @@
               # click_link "Edit this product"
             # end
 #
-            # fill_in "Name", :with => "A different name"
+            # fill_in "Name", with: "A different name"
             # click_button "Save"
 #
             # page.should have_content("'A different name' was successfully updated.")
@@ -83,7 +83,7 @@
         # end
 #
         # describe "destroy" do
-          # before(:each) { FactoryGirl.create(:product, :name => "UniqueTitleOne") }
+          # before(:each) { FactoryBot.create(:product, name: "UniqueTitleOne") }
 #
           # it "should succeed" do
             # visit refinery.caststone_admin_products_path

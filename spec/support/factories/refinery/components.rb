@@ -1,6 +1,5 @@
-
 FactoryBot.define do
-  factory :photo, class: Refinery::Caststone::Photo do
+  factory :component, class: Refinery::Caststone::Component do
     sequence(:name) { |n| "refinery#{n}" }
   end
 end

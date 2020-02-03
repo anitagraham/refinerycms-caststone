@@ -15,7 +15,7 @@ Refinery::Core::Engine.routes.draw do
         collection do
           post :update_positions
         end
-         resources :components,  :bases, :shafts, :capitals, :columns, :letterboxes
+        resources :components,  :bases, :shafts, :capitals, :columns, :letterboxes
       end
 
       # ------------- Components --------------
@@ -47,5 +47,3 @@ Refinery::Core::Engine.routes.draw do
   end
 
 end
-
-

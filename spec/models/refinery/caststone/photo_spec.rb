@@ -5,8 +5,8 @@
     # describe Photo do
       # describe "validations" do
         # subject do
-          # FactoryGirl.create(:photo,
-          # :name => "Refinery CMS")
+          # FactoryBot.create(:photo,
+          # name: "Refinery CMS")
         # end
 #
         # it { should be_valid }

@@ -14,7 +14,7 @@ class CreateCaststoneProducts < ActiveRecord::Migration[4.2]
 
   def down
     if defined?(::Refinery::UserPlugin)
-      ::Refinery::UserPlugin.destroy_all({:name => "refinerycms-caststone"})
+      ::Refinery::UserPlugin.destroy_all({name: "refinerycms-caststone"})
     end
 
     drop_table :refinery_caststone_products

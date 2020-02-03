@@ -7,7 +7,7 @@ module Refinery
       engine_name :refinery_caststone
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer 'attach-caststone-drawings-with-dragonfly', :before => :finisher_hook do |app|
+      initializer 'attach-caststone-drawings-with-dragonfly', before: :finisher_hook do |app|
         ::Refinery::Dragonfly.configure!(::Refinery::Caststone::Components)
         ::Refinery::Dragonfly.attach!(app, ::Refinery::Caststone::Components)
       end

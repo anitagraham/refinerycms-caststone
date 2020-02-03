@@ -38,6 +38,6 @@
 
 <%= render '/refinery/admin/form_actions', f: f,
   continue_editing: false,
-  delete_title: t('delete', scope: 'refinery.photos.admin.photos.photo'),
+  delete_title: t('.delete'),
   delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @photo.name) %>
 <% end %>

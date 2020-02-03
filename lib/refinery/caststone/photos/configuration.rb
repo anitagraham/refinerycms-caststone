@@ -19,9 +19,6 @@ module Refinery
 
       self.dragonfly_name         = :caststone_photos
       self.dragonfly_plugin       = :imagemagick
-      self.s3_datastore = true
-      self.s3_storage_path = ''
-      self.s3_root_path =''
 
       # Dragonfly processor to strip image of all profiles and comments
       # (imagemagick conversion -strip)
@@ -29,7 +26,8 @@ module Refinery
         name: :strip,
         block: ->(content) { content.process!(:convert, '-strip') }
       }]
-      self.dragonfly_url_format = Refinery::Dragonfly.url_format('photos')
+      config.dragonfly_url_format = '/system/refinery/photos/:job/:basename.:ext'
+      #self.dragonfly_url_format = Refinery::Dragonfly.url_format('photos')
 
       self.max_image_size = 5242880
       self.pages_per_dialog = 18

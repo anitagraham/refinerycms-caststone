@@ -4,21 +4,21 @@ module Refinery
 			class ComponentsController < ::Refinery::AdminController
 				helper CaststoneHelper
 
-				respond_to :png, :only => :draw
+				respond_to :png, only: :draw
 				respond_to :html, :js
 
 				before_action :set_view
 
 				crudify :'refinery/caststone/component',
-                :title_attribute => 'name',
-                :order => 'name ASC'
+                title_attribute: 'name',
+                order: 'name ASC'
 
 				def list_for_product
 					Refinery::Caststone::Component.filter_by_product(params[:id])
 				end
 
 				def draw
-					send_data  Refinery::Caststone::Component.construct(params[:list]), :type => 'image/png', :disposition => 'inline'
+					send_data  Refinery::Caststone::Component.construct(params[:list]), type: 'image/png', disposition: 'inline'
 				end
 
         protected

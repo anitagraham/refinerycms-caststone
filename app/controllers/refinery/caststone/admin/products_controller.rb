@@ -5,10 +5,10 @@ module Refinery
 
 				#before_action :list_components
         crudify :'refinery/caststone/product',
-                :title_attribute => 'name'
+                title_attribute: 'name'
 
 				def show
-					@series = Refinery::Caststone::Product.find(params[:id], :include => :components)
+					@series = Refinery::Caststone::Product.find(params[:id], include: :components)
 				end
 				protected
 
