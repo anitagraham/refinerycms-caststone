@@ -2,9 +2,9 @@ module Refinery
   module Caststone
     class Template < Refinery::Core::BaseModel
 
-      acts_as_indexed :fields => [:name]
+      acts_as_indexed fields: [:name]
 
-      validates :name, :presence => true, :uniqueness => true
+      validates :name, presence: true, uniqueness: true
 
       has_many :fields
 

@@ -3,26 +3,25 @@ require 'spec_helper'
 module Refinery
   module Caststone
     describe Component do
-      let(:component) {FactoryGirl::create(:component)}
+      let(:component) {FactoryBot::create(:component, name: "comp1", type: 'Shaft', height: 350)}
 
       describe "validations" do
-
         it "requires a name" do
-          expect(FactoryGirl.build(:component, :name => "")).to be_invalid
+          expect(FactoryBot.build(:component, name: "")).to be_invalid
         end
 
-        it "won't allow a duplicate name" do
-          expect(FactoryGirl.build(:component, :name => component.title)).to be_invalid
+        it "requires a unique name" do
+          expect(FactoryBot.build(:component, name: component.name)).to be_invalid
         end
 
         it "requires a valid type" do
-          expect(component.type).to be_in(COMP_TYPES)
-          expect(FactoryGirl.build(:component, :type => nil)).to be_invalid
+          expect(component.type).to be_in(::Refinery::Caststone::Component::COMP_TYPES)
+          expect(FactoryBot.build(:component, type: "Gadget")).to be_invalid
         end
 
         it "requires a numerical height" do
           expect(component.height).to be_an_integer
-          expect(FactoryGirl.build(:component, :height=>nil)).to be_invalid
+          expect(FactoryBot.build(:component, height:nil)).to be_invalid
         end
 
         describe "products association" do
@@ -34,26 +33,7 @@ module Refinery
       end
 
       describe '#ready' do
-
       end
-
-      describe '.filter_by_product' do
-        before do
-          @series = FactoryGirl.create(:series, :name=>'TestSeries')
-          FactoryGirl.create(:component)
-           @comp3  = FactoryGirl.create(:component, :name => 'comp3', :type => 'Shaft', :height =>300, :products=>[:NotherSeries])
-          @inTestSeries = described_class.filter_by_product(@series.id)
-        end
-        it 'returns all the components in a series' do
-          expect(@inTestSeries).to include('comp1', 'comp2')
-        end
-
-        it "doesn't return a component not in the series" do
-          expect(@inTestSeries).to not_include('comp3')
-        end
-
-      end
-
     end
   end
 end

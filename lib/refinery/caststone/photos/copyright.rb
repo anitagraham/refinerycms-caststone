@@ -5,12 +5,10 @@ class Copyright
   def copyright(source_image, notice = "(c)")
     opts = defaults.merge(opts)
 #TODO proper tempfile name
-    tempfile =Tempfile.new('ANITA')
+    tempfile =Tempfile.new('caststone')
     command = "convert  -fill white -pointsize 40 -annotate 0 'Hello Sailor' #{source_image.path} #{tempfile.path}"
     result = `#{command}`
     tempfile
-
-    # convert(source_image, " -fill white -pointsize 40 -annotate 0 'Hello Sailor'")
   end
 
     def defaults
@@ -21,7 +19,7 @@ class Copyright
       gravity: 'southwest',
       stroke: 'transparent',
       fill: 'white',
-      text: '"(c) Caststone  #{Time.now.year}"'
+      text: "\"(c) Caststone  #{Time.now.year}\""
     }
   end
 end

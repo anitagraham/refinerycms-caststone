@@ -7,9 +7,9 @@ module Refinery
       engine_name :refinery_caststone
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer 'attach-caststone-drawings-with-dragonfly', :before => :finisher_hook do |app|
-        ::CaststoneDragonfly.configure!(:caststone_components, :drawings)
-        ::CaststoneDragonfly.attach!(app, :caststone_components)
+      initializer 'attach-caststone-drawings-with-dragonfly', before: :finisher_hook do |app|
+        ::Refinery::Dragonfly.configure!(::Refinery::Caststone::Components)
+        ::Refinery::Dragonfly.attach!(app, ::Refinery::Caststone::Components)
       end
 
       def self.register_components(tab)
@@ -18,7 +18,7 @@ module Refinery
       end
 
       before_inclusion do
-         Refinery::Plugin.register do |plugin|
+        Refinery::Plugin.register do |plugin|
           plugin.name = "caststone.components"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.caststone_admin_components_path }
           plugin.pathname = root

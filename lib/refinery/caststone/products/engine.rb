@@ -6,6 +6,21 @@ module Refinery
 
       engine_name :refinery_caststone
 
+      config.after_initialize do
+        tabs = [
+          {title: 'Description', partial: 'visual_editor_text', fields: [:description]},
+          {title: 'Drawing',     partial: 'drawing', fields: [:drawing]}
+        ]
+
+        tabs.each do |t|
+          Refinery::Caststone::Products::Tab.register do |tab|
+            tab.name = t[:title]
+            tab.partial = "/refinery/caststone/admin/products/tabs/#{t[:partial]}"
+            tab.fields = t[:fields]
+          end
+        end
+      end
+
       initializer "register refinerycms_products plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.name = "caststone.products"

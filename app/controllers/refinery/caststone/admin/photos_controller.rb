@@ -6,17 +6,21 @@ module Refinery
         helper CaststoneHelper
         respond_to :html, :js
         respond_to :json
-        respond_to :png, only: :draw
+        # respond_to :png, only: :draw
 
         before_action :set_view, only: :index
         before_action :find_all_series, only: [:edit, :new]
 
         crudify :'refinery/caststone/photo',
-                title_attribute: 'name', paging: true
+                title_attribute: 'name', paging: true,
+                class_name: 'Refinery::Caststone::Photo',
+                singular_name: 'photo',
+                plural_name: 'photos'
 
         # Finds one single result based on the id params.
         def find_photo
           @photo = Refinery::Caststone::Photo.includes(product: :components).find(params[:id])
+          @components = @photo.product.components if @photo.product
         end
 
         def add_copyright
@@ -36,7 +40,7 @@ module Refinery
 
         def photo_params
           params.require(:photo).permit(:name, :caption, :page, :position, :drawing, :image, :page_id, :product_id,
-                                        component_ids: [], base_ids: [], shaft_ids: [], capital_ids: [], column_ids: [], letterbox_ids: [])
+            component_ids: [], base_ids: [], shaft_ids: [], capital_ids: [], column_ids: [], letterbox_ids: [])
         end
       end
     end
