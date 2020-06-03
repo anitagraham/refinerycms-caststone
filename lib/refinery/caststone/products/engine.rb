@@ -9,7 +9,7 @@ module Refinery
       config.after_initialize do
         tabs = [
           {title: 'Description', partial: 'visual_editor_text', fields: [:description]},
-          {title: 'Drawing', partial: 'drawing', fields: [:drawing]}
+          {title: 'Drawing',     partial: 'drawing', fields: [:drawing]}
         ]
 
         tabs.each do |t|

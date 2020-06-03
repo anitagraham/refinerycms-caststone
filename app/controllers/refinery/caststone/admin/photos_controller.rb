@@ -20,6 +20,7 @@ module Refinery
         # Finds one single result based on the id params.
         def find_photo
           @photo = Refinery::Caststone::Photo.includes(product: :components).find(params[:id])
+          @components = @photo.product.components if @photo.product
         end
 
         def add_copyright

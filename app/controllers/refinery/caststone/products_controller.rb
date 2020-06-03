@@ -1,7 +1,7 @@
 module Refinery
   module Caststone
       class ProductsController < ::ApplicationController
-       respond_to :json, only::list
+       respond_to :json
 
       def list
         series  = Refinery::Caststone::Product.find(params[:id])

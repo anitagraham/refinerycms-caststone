@@ -11,7 +11,7 @@ module Refinery
         if photo.components.empty?
         	render nothing: true, status: 204
         else
-          @photo = photo.as_json( include: :components)
+          @photo = photo
         end
       end
 

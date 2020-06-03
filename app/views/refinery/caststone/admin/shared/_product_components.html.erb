@@ -13,7 +13,8 @@
             <legend>
               <%= comp_type%>
             </legend>
-             <%= f.collection_check_boxes comp_ids, series.send(comp_type_method), :id, :name %>
+            <%#= f.collection_check_boxes, 'component_ids',  @components, :id, :name %>
+             <%= f.collection_check_boxes :component_ids, series.send(comp_type_method), :id, :name %>
              <%= link_to "Clear #{comp_type_name}", '#', :id => comp_type_name, :class=> 'button clearRadioSet'%>
           </fieldset>
         <%end%>

@@ -1,10 +1,9 @@
 Refinery::Core::Engine.routes.draw do
 
-  get '/system/drawings/*dragonfly', :to => Dragonfly.app(:caststone_drawings)
-  get '/system/photos/*dragonfly', :to => Dragonfly.app(:caststone_photos)
-  get '/templates/:path/:name', :to =>  "caststone/templates#serve"
-  get '/refinery/caststone/products/:id/:type/list', :to =>  "caststone/products#list"
-
+  get '/system/drawings/*dragonfly', to: Dragonfly.app(:caststone_drawings)
+  get '/system/photos/*dragonfly',   to: Dragonfly.app(:caststone_photos)
+  get '/templates/:path/:name',      to: "caststone/templates#serve"
+  get '/refinery/caststone/products/:id/:type/list', to: "caststone/products#list"
 
   # Admin routes
   namespace :caststone, :path => '' do
@@ -19,7 +18,8 @@ Refinery::Core::Engine.routes.draw do
       end
 
       # ------------- Components --------------
-      resources :components, :bases, :shafts, :capitals, :columns, :letterboxes,  :controller=>'components', :except => :show do
+      resources :components, :bases, :shafts, :capitals, :columns, :letterboxes,
+                controller: 'components', except: :show do
         collection do
           get :draw
           post :update_positions
@@ -27,10 +27,10 @@ Refinery::Core::Engine.routes.draw do
       end
 
       # ------------- Photos --------------
-      resources :photos, :except => :show do
-        get :view,  :on=> :member
-        post :update_positions, :on=>:collection
-        resources :components, :bases, :shafts, :capitals, :columns, :letterboxes, :controller=>'components'
+      resources :photos, except: :show do
+        get :view, on: :member
+        post :update_positions, on: :collection
+        resources :components, :bases, :shafts, :capitals, :columns, :letterboxes, controller: 'components'
       end
 
     end
@@ -38,12 +38,13 @@ Refinery::Core::Engine.routes.draw do
 
 
   # Frontend routes
-  namespace :caststone, :path=>'refinery/caststone' do
-    resources :photos, :only => [:draw, :details] do
+  namespace :caststone, path: 'refinery/caststone' do
+    resources :photos, only: [:draw, :details] do
       member do
         get :draw, :details
       end
     end
+    resources :products, only: :show
   end
 
 end

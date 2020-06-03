@@ -1,0 +1,14 @@
+<div class="field">
+  <h3>Keywords</h3>
+    <ul>
+    <% object.trait_list do |trait| %>
+        <li>
+          <%= trait.name %>
+          <%= action_icon :delete, refinery.remove_trait_caststone_admin_product_path, data:{trait_id: trait.id}, remote: true %>
+        </li>
+    <% end %>
+    </ul>
+  <h3>New Keyword</h3>
+    <%= f.text_field :trait %>
+    <%= action_icon :add, refinery.add_trait_caststone_admin_product_path, 'Add Keyword', remote: true %>
+</div>

@@ -1,25 +1,28 @@
-<%= form_for [refinery, :caststone_admin, @product] do |f| -%>
+<%= form_for [refinery, :caststone_admin, @product] do |f| %>
   <%= render '/refinery/admin/error_messages',
-              object:  @product,
-              include_object_name:  true %>
-￿
-
+    object: @product,
+    include_object_name: true
+  %>
+  ￿
   <div class='field'>
-    <%= f.label :name -%>
-    <%= f.text_field :name, class: 'larger widest'  -%>
-
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'larger widest' %>
   </div>
-  <div class="fyi">
-    This series includes <%= @product.component_count %>
-  </div>
-  <%= render partial:  '/refinery/caststone/admin/tabbed_fields',
-             locals: {f:  f,
-                      tabbed_fields:  [:description],
-                      custom_fields:  ["components"]} %>
+  <p class="fyi">
+    Series id: <%= @product.id %>
+    <%= @product.name %> has <%= @product.component_count %> components.
+  </p>
 
+  <%= render '/refinery/caststone/admin/tabbed_fields',
+    f: f, tabs: Refinery::Caststone::Products.tabs
+  %>
 
-  <%= render '/refinery/admin/form_actions', f:  f,
-             continue_editing:  false,
-             delete_title:  t('delete', scope:  'refinery.products.admin.products.product'),
-             delete_confirmation:  t('message', scope:  'refinery.admin.delete', title:  @product.name) %>
-<% end -%>
+  <%= render '/refinery/admin/form_actions', f: f,
+    continue_editing: false,
+    delete_title: t('delete', scope: 'refinery.products.admin.products.product'),
+    delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @product.name) %>
+<% end %>
+<hr>
+<%= form_for [refinery, :caststone_admin, @product] do |nf| %>
+  <%= render '/refinery/caststone/admin/products/traits', f: nf, object: @product %>
+<% end %>

@@ -35,7 +35,7 @@ module Refinery
       self.pages_per_admin_index = 20
       self.sizes = {
         #        % Interpret width and height as a percentage of the current size.
-        #        ! Resize to width and height exactly, loosing original aspect ratio.
+        #        ! Resize to width and height exactly, losing original aspect ratio.
         #        < Resize only if the image is smaller than the geometry specification.
         #        > Resize only if the image is greater than the geometry specification
         home: '980x680!',
@@ -45,6 +45,7 @@ module Refinery
         trim: '640x425>',
         edit: '500x500',
         small: '480x644',
+        large: '800x400',
         mini: 'x100',
         photowallThumb: 'x150'
       }

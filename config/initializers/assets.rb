@@ -6,4 +6,3 @@ Refinery::Core.configure do |config|
   config.register_stylesheet "refinerycms-caststone.css",media: 'screen'
 end
 Rails.application.config.assets.precompile += %w( refinerycms-caststone.css refinerycms-caststone.js )
-Rails.application.config.assets.precompile += %w( admin/caststone_admin.css )

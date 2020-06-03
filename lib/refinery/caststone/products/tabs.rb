@@ -21,6 +21,7 @@ module Refinery
           def initialize
             ::Refinery::Caststone::Products.tabs << self # add me to the collection of registered page tabs
           end
+
       end
     end
   end

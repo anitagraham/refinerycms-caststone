@@ -12,7 +12,7 @@
     </div>
     <div id='photo-and-drawing'>
       <%if @photo.image_uid %>
-        <%= image_tag @photo.thumbnail(geometry: :edit), class: :photo, id: @photo.id %>
+        <%= image_tag @photo.image.thumb(Refinery::Images::user_image_sizes[:edit]).url, class: :photo, id: @photo.id %>
       <%else%>
 
         <!-- # set up a place to put the photo -->
@@ -39,5 +39,5 @@
 <%= render '/refinery/admin/form_actions', f: f,
   continue_editing: false,
   delete_title: t('.delete'),
-  delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @photo.name) %>
+  delete_confirmation: "Really delete #{@photo.name}?" %>
 <% end %>
