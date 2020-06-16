@@ -10,6 +10,9 @@ git "https://github.com/refinery/refinerycms", branch: "master" do
   end
 end
 
+# vulnerability
+gem "activesupport", ">= 6.0.3.1"
+
 gem 'mime-types'
 gem 'mustache'
 gem 'stache'
