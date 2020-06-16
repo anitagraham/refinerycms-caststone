@@ -5,17 +5,14 @@ module Refinery
       extend Refinery::Dragonfly::ExtensionConfiguration
       include ActiveSupport::Configurable
 
-      config_accessor :captions,
+      config_accessor :defined_views,
                       :max_image_size,
-                      :pages_per_dialog,
                       :pages_per_admin_index,
+                      :pages_per_dialog,
                       :pages_per_dialog_that_have_size_options,
-                      :sizes,
-                      :defined_views,
+                      :permitted_mime_types
                       :preferred_view,
-                      :whitelisted_mime_types
-
-      config.captions = true
+                      :sizes
 
       self.dragonfly_name         = :caststone_photos
       self.dragonfly_plugin       = :imagemagick

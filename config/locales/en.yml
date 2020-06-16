@@ -9,12 +9,10 @@ en:
         product_id: Product
         type: Type
       refinery/caststone/display:
-        caption: Caption
         name: Name
         photo: Photo
         product_id: Product
       refinery/caststone/photo:
-        caption: Caption
         image_uid: Image Uid
         name: Name
         photo: Photo
@@ -172,7 +170,6 @@ en:
     js:
       admin:
         photos:
-          add_caption: Add Caption
           done: Done
     photos:
       admin:

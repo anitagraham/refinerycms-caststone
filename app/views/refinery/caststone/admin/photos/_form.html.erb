@@ -5,7 +5,6 @@
     <div id="fields">
       <%= f.input :image, as: :file  %>
       <%= f.input :name, class: 'larger widest'  %>
-      <%= f.input :caption, input_html: {size:40}  %>
       <%= f.association :page %>
       <%= f.association :product, collection: @products, prompt: 'Choose a Series', label: 'Series', include_blank: true %>
       <p>Total height of components <%= @photo.height%> mm</p>

@@ -54,8 +54,6 @@ $serifStack2:"Hoefler Text", Baskerville, Garamond, "Palatino Linotype", Georgia
 $serifStack3:Baskerville, "Baskerville old face", "Hoefler Text", Garamond, "Times New Roman", serif;
 $displayStack: Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif;
 $modernStack: Didot,"Bodoni MT", "Century Schoolbook", "Niagara Solid", Utopia, Georgia, Times, "Times New Roman", serif;
-
-//photo captions
 $fpSliderHeight: 355px;
 
 @mixin frame ($border: $textColour, $bg: white, $width:5px) {

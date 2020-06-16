@@ -6,7 +6,7 @@ module Refinery
 
       self.table_name = 'refinery_caststone_photos'
 
-      acts_as_indexed fields: %i[title caption]
+      acts_as_indexed fields: %i[title]
 
       validates :name, presence: true, uniqueness: true
       dragonfly_accessor :image, app: :caststone_photos
@@ -46,7 +46,7 @@ module Refinery
           id: id,
           url_large: url_large,
           url_small: thumbnail(geometry: options[:small_size]).url,
-          label: caption || name
+          label: name
         }
       end
 

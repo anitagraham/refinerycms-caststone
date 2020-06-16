@@ -11,7 +11,6 @@ module Refinery
       validates :name, presence: true, uniqueness: true
       validates :type, presence: true
       validates :height, numericality: { only_integer: true, greater_than: 0}, presence: true
-      #alias :component_type :type
 
       has_many :compatibles
       has_many :products, through: :compatibles, source: :product

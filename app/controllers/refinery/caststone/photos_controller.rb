@@ -9,7 +9,7 @@ module Refinery
       def details
         photo =  Refinery::Caststone::Photo.find(params[:id])
         if photo.components.empty?
-        	render nothing: true, status: 204
+          render nothing: true, status: 204
         else
           @photo = photo
         end
