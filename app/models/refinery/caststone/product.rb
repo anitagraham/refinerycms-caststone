@@ -5,7 +5,7 @@ module Refinery
       acts_as_indexed fields: [:name]
       # Gutentag::ActiveRecord.call self
 
-      belongs_to :drawing, class_name: 'Refinery::Image'
+      belongs_to :drawing, class_name: 'Refinery::Image', optional: true
       # dragonfly_accessor :drawing, app: :caststone_componentse
       validates :name, presence: true, uniqueness: true
 

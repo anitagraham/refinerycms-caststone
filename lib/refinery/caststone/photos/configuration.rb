@@ -10,7 +10,7 @@ module Refinery
                       :pages_per_admin_index,
                       :pages_per_dialog,
                       :pages_per_dialog_that_have_size_options,
-                      :permitted_mime_types
+                      :permitted_mime_types,
                       :preferred_view,
                       :sizes
 

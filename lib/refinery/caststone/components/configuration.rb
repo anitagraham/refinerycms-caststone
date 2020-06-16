@@ -8,7 +8,7 @@ module Refinery
       # config settings related to images/app interface
       config_accessor :permitted_mime_types,
                       :defined_views, :preferred_view
-      
+
       config.dragonfly_plugin = :imagemagick
       config.dragonfly_name = :caststone_components
       config.dragonfly_url_format = '/system/refinery/drawings/:job/:basename.:ext'

@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   module Caststone
     describe Component do
-      let(:component) {FactoryBot::create(:component, name: "comp1", type: 'Shaft', height: 350)}
+      let(:component) {FactoryBot::create(:component, type: 'Refinery::Caststone::Shaft', height: 350)}
 
       describe "validations" do
         it "requires a name" do
@@ -11,17 +11,17 @@ module Refinery
         end
 
         it "requires a unique name" do
-          expect(FactoryBot.build(:component, name: component.name)).to be_invalid
+          expect(FactoryBot.build(:component, name: component.name)).not_to be_valid
         end
 
         it "requires a valid type" do
-          expect(component.type).to be_in(::Refinery::Caststone::Component::COMP_TYPES)
-          expect(FactoryBot.build(:component, type: "Gadget")).to be_invalid
+          expect(component.type.demodulize).to be_in(::Refinery::Caststone::Component::COMP_TYPES)
+          expect(FactoryBot.build(:component, type: "Gadget")).not_to be_valid
         end
 
         it "requires a numerical height" do
           expect(component.height).to be_an_integer
-          expect(FactoryBot.build(:component, height:nil)).to be_invalid
+          expect(FactoryBot.build(:component, height:nil)).not_to be_valid
         end
 
         describe "products association" do
