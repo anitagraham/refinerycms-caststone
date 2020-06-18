@@ -3,8 +3,8 @@
     if Refinery::Caststone::Photo.all.count == 0
       concat content_tag(:p, t('.no_photos_yet'))
     else
-      concat select :page, :photo_ids, Refinery::Caststone::Photo.all.map{ |p|
-        [p.name, p.id,  ] }, {}, {:multiple=>true, :class=>:multiselect, :id=>:photo_multiselect}
+      concat select :page, :photo_ids, Refinery::Caststone::Photo.all.map{
+        |p|   [p.name, p.id,  ]},  {multiple: true, class: :multiselect, id: :photo_multiselect}
     end
   end
 %>

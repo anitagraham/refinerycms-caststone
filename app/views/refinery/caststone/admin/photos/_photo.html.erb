@@ -1,10 +1,10 @@
 <li class="photo" id="<%= dom_id(photo) -%>">
-
+  <% track_id = photo.track_id.presence || 'not set' %>
   <% case Refinery::Caststone::Photos.preferred_view %>
   <% when 'list' %>
-    <span class="title"><%= photo.name %> </span>
+    <span class="title"><%= photo.name %> (Track:<%= track_id %>)</span>
   <% else %>
-    <%= image_tag photo.image.thumb('140x140^').url, title:  photo.name, alt: photo.name %>
+    <%= image_tag photo.image.thumb(:index).url, title:  photo.name, alt: photo.name %>
   <%end%>
 
   <span class="actions">

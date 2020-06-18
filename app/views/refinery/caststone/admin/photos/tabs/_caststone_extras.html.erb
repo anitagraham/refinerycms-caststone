@@ -1,32 +1,22 @@
 <%= simple_form_for [refinery, :caststone_admin, @photo], html: {multipart: true} do |f| %>
-<!-- This part of the form is for the photo upload -->
-  <%= render '/refinery/admin/error_messages', object: @photo, include_object_name: true %>
-  <div class="row">
-    <div id="fields">
-      <%= f.input :image, as: :file  %>
-      <%= f.input :name, class: 'larger widest'  %>
+  <!-- This part of the form is for the photo upload -->
       <%= f.input :trackid %>
       <%= f.association :page %>
       <%= f.association :product, collection: @products, prompt: 'Choose a Series', label: 'Series', include_blank: true %>
       <p>Total height of components <%= @photo.height%> mm</p>
     </div>
     <div id='photo-and-drawing'>
+<!--      Just a reminder-->
       <%if @photo.image_uid %>
-        <%= image_tag @photo.image.thumbnail({geometry: :edit}).url, class: :photo, id: @photo.id %>
-      <%else%>
-        <!-- # set up a place to put the photo -->
-        <img alt = 'Photo'  class='photo'>
+        <%= image_tag @photo.image.thumbnail({geometry: :small}).url, class: :photo, id: @photo.id %>
       <%end%>
+
       <%if @photo.drawing %>
-
         <img src='data:image/png;base64,<%= @photo.drawing%>' alt = 'Drawing of <%= @photo.name%>' class='drawing' />
-
       <%else%>
-
-        <!-- # set up a place to put the drawing -->
         <img alt = 'Drawing of <%= @photo.name%>' class='drawing'>
-
       <%end%>
+
       <%= f.hidden_field :drawing, value: @photo.drawing, id: 'photo_drawing' %>
     </div>
   </div>
@@ -34,8 +24,9 @@
     <%= render  'refinery/caststone/admin/shared/product_components', series: @photo.product if @photo.product %>
   </div>
 
-<%= render '/refinery/admin/form_actions', f: f,
-  continue_editing: false,
-  delete_title: t('.delete'),
-  delete_confirmation: "Really delete #{@photo.name}?" %>
+<!--  <%= render '/refinery/admin/form_actions', f: f,-->
+<!--             continue_editing: false,-->
+<!--             delete_title: t('.delete'),-->
+             delete_confirmation: "Really delete #{@photo.name}?" %>
+
 <% end %>

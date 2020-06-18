@@ -34,17 +34,9 @@ module Refinery
         #        % Interpret width and height as a percentage of the current size.
         #        ! Resize to width and height exactly, losing original aspect ratio.
         #        < Resize only if the image is smaller than the geometry specification.
-        #        > Resize only if the image is greater than the geometry specification
-        home: '980x680!',
-        pillars: '780x520>',
-        columns: '890x600>',
-        letterboxes: '700x400>',
-        trim: '640x425>',
-        edit: '500x500',
-        small: '480x644',
-        large: '800x400',
-        mini: 'x100',
-        photowallThumb: 'x150'
+        #        > Resize only if the image is greater than the geometry specification,
+        index: '140x140',
+        edit: '500x500'
       }
 
       self.defined_views = %i[photos list]

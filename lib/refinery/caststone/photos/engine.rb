@@ -26,7 +26,20 @@ module Refinery
           plugin.menu_match = %r{refinery/caststone/photos(/.*)?$}
         end
       end
+      config.after_initialize do
+        tabs = [
+          {title: 'Image Upload', partial: 'refinery/admin/images/form'},
+          {title: 'Components and Drawing', partial: 'refinery/caststone/admin/photos/tabs/caststone_extras'}
+        ]
 
+        tabs.each do |t|
+          Refinery::Caststone::Photos::Tab.register do |tab|
+            tab.name = t[:title]
+            tab.partial = "/refinery/caststone/admin/products/tabs/#{t[:partial]}"
+            tab.fields = t[:fields] if t[:fields]
+          end
+        end
+      end
       config.after_initialize do
         Refinery.register_extension(Refinery::Caststone::Photos)
         Refinery::Pages::Tab.register do |tab|

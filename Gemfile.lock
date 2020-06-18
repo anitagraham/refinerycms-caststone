@@ -169,8 +169,10 @@ GEM
       request_store (~> 1.0)
     multi_json (1.14.1)
     mustache (1.1.1)
+    mysql2 (0.5.3)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    pg (1.2.3)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -264,6 +266,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
     stache (1.2.0)
     stringex (2.5.2)
     thor (1.0.1)
@@ -291,19 +294,26 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-jdbcmysql-adapter
+  activerecord-jdbcpostgresql-adapter
+  activerecord-jdbcsqlite3-adapter (>= 1.3.0.rc1)
   activesupport (>= 6.0.3.1)
   capybara-email (~> 3.0)
   coffee-rails
   gutentag (~> 2.5)
+  jdbc-mysql (= 5.1.13)
   listen
   mime-types
   mustache
+  mysql2
+  pg
   poltergeist
   refinerycms!
   refinerycms-acts-as-indexed
   refinerycms-caststone!
   refinerycms-testing!
   sass-rails
+  sqlite3
   stache
   uglifier
 

@@ -1,12 +1,12 @@
 <ul>
   <% if ::Refinery::Caststone::Admin::PhotosController.searchable? %>
     <li>
-      <%= render '/refinery/admin/search', :url => refinery.caststone_admin_photos_path %>
+      <%= render '/refinery/admin/search',   url: refinery.caststone_admin_photos_path %>
     </li>
   <% end %>
   <li>
     <%= link_to t('.create_new'), refinery.new_caststone_admin_photo_path,
-                 :class => "add_icon" %>
+                   class: "add_icon" %>
   </li>
   <%= render partial: 'refinery/caststone/admin/shared/switch_views',
             locals: {

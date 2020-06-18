@@ -4,15 +4,16 @@ module Refinery
   module Caststone
     class Photo < Refinery::Image
 
+      PERMITTED_CHARACTERS = "0-9A-Z -".freeze
       self.table_name = 'refinery_caststone_photos'
 
-      acts_as_indexed fields: %i[title]
+      acts_as_indexed fields: %i[title, :trackid]
 
       validates :name, presence: true, uniqueness: true
       dragonfly_accessor :image, app: :caststone_photos
 
       belongs_to :product
-      belongs_to :page, inverse_of: :photos, foreign_key: :page_id
+      belongs_to :page, inverse_of: :photos, foreign_key: :page_id, optional: true
 
       has_many :assignments
       has_many :components,   through: :assignments
@@ -29,9 +30,21 @@ module Refinery
       # has_many :letterboxes,  through: :assignments, foreign_key: 'component_id'
 
       before_destroy { |photo| photo.components.clear }
-      before_update :save_drawing
-      before_save :save_drawing
+      before_update :save_drawing, :update_tracking_id
+      before_save :save_drawing, :sanitize_name, :set_tracking_id
 
+      def sanitize_name
+        name.gsub(/.jpg$/i, '')
+        name.gsub(/.png$/i, '')
+        name.gsub(/\(\d{1,3}\)/, '')
+        name.gsub(/[^0-9A-Z -]/i, '_')
+      end
+      
+      def set_tracking_id
+        end_token = name.split.last.to_i
+        start_token = name.split.first.to_i
+        trackid = end_token || start_token
+      end
 
       def view(options={})
         default_options = {
