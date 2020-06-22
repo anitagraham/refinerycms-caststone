@@ -13,6 +13,8 @@ end
 # vulnerability
 gem "activesupport", ">= 6.0.3.1"
 
+gem 'responders'
+gem 'simple_form'
 gem 'mime-types'
 gem 'mustache'
 gem 'stache'

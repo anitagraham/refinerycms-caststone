@@ -1,7 +1,8 @@
 module CaststoneHelper
-  def other_views(name)
-    klass = name.constantize
-    klass.send(:defined_views).reject { |view| view.to_s == klass.send(:preferred_view.to_s) }
+  def other_photo_views
+    Refinery::Caststone::Photos.defined_views.reject do |image_view|
+      image_view.to_s == Refinery::Caststone::Photos.preferred_view.to_s
+    end
   end
 
   def drawing
@@ -37,6 +38,33 @@ module CaststoneHelper
   end
   def self.to_id(*segments)
     "#" << CaststoneHelper.to_slug(*segments)
+  end
+
+  def photo_index_view(photo, view)
+    image = view == 'list' ? list(photo) : grid(photo)
+    icons = tag.span actions(photo), class: :actions
+    tag.li class: 'photo', id: dom_id(photo) do
+      image << icons
+    end
+  end
+
+  def list(photo)
+    tag.span(photo.trackid.presence, class: :trackid) << tag.span(photo.name, class: :title)
+  end
+
+  def grid(photo)
+    if photo.image.present?
+      tag.img src: photo.image.thumbnail({geometry: :index}).url, title: photo.name, alt: photo.trackid
+    else
+      tag.p "Rebuild image"
+    end
+  end
+
+  def actions(photo)
+    preview = action_icon :preview, photo.image.url, t('view_live_html', scope: 'refinery.caststone.admin.photos') if photo.image.present?
+    edit = action_icon :edit, refinery.edit_caststone_admin_photo_path(photo), t('edit', scope: 'refinery.caststone.admin.photos')
+    info = action_icon :info, '#', "#{photo.name} has #{photo.components.count} components and is shown on page #{photo.assigned_page_name}"
+    edit << info <<  preview
   end
 end
 

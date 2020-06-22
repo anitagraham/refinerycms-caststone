@@ -2,7 +2,6 @@
   <h2><%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %></h2>
 <% end %>
 <div class='pagination_container'>
-  <pre>Looking for photos</pre>
   <% if @photos.any? %>
     <%= render 'photos' %>
   <% else %>

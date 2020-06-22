@@ -1,6 +1,7 @@
-  <% other_views(name).each do |view| %>
+  <% other_photo_views.each do |view| %>
     <li>
-      <%= link_to t('switch_to', scope: scope, view_name: t("#{view}", scope: scope)), "#{request.path}?view=#{view}", class: "#{view}View_icon"
+      <%= link_to t('switch_to', scope: scope, view_name: t("#{view}", scope: scope)),
+                  "#{request.path}?view=#{view}", class: "#{view}View_icon"
       %>
     </li>
 <% end %>

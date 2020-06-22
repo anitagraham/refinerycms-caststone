@@ -1,0 +1,16 @@
+<div class="field">
+
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :image_id,
+      :image => f.object.image,
+      :toggle_image_display => false
+    }
+    %>
+  <h3 >Click here to edit or crop this image
+    <%=   action_icon :edit, refinery.edit_admin_image_path(object.image.id), t('edit', scope: 'refinery.admin.images') %>
+  </h3 >
+
+</div >
+
+

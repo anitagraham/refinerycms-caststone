@@ -4,6 +4,7 @@ module Refinery
     module Admin
       class PhotosController < ::Refinery::AdminController
         helper CaststoneHelper
+
         respond_to :html, :js
         respond_to :json
         # respond_to :png, only: :draw
@@ -23,9 +24,10 @@ module Refinery
           @components = @photo.product.components if @photo.product
         end
 
-        def add_copyright
-          @photo = Refinery::Caststone::Photo.find(params[:id]).image.copyright("Hello Sailor")
-        end
+        # def add_copyright
+        #   @photo = Refinery::Caststone::Photo.find(params[:id]).image.copyright("Hello Sailor")
+        # end
+        #
 
         protected
         def find_all_series
@@ -39,7 +41,8 @@ module Refinery
         end
 
         def photo_params
-          params.require(:photo).permit(:name, :caption, :page, :position, :drawing, :image, :page_id, :product_id,
+          params.require(:photo).permit(
+            :name, :caption, :page, :position,:drawing, :image_id, :page_id, :product_id, :trackid,
             component_ids: [], base_ids: [], shaft_ids: [], capital_ids: [], column_ids: [], letterbox_ids: [])
         end
       end

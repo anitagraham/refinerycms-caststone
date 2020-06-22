@@ -1,0 +1,20 @@
+
+<%= f.association :product,
+                  collection: @products,
+                  prompt: 'Choose a Series',
+                  label: 'Series',
+                  include_blank: true %>
+
+<div id='components-drawing'>
+
+  <%if @photo.drawing %>
+    <img src='data:image/png;base64,<%= @photo.drawing%>' alt = 'Drawing of <%= @photo.name%>' class='drawing' />
+  <%else%>
+    <img alt = 'Drawing of <%= @photo.name%>' class='drawing'>
+  <%end%>
+
+  <%= f.hidden_field :drawing, value: @photo.drawing, id: 'photo_drawing' %>
+</div>
+<%= render  'refinery/caststone/admin/shared/product_components', series: @photo.product if @photo.product %>
+
+<p>Total height of components <%= @photo.height%> mm</p>

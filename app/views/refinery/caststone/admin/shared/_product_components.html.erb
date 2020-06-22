@@ -2,23 +2,34 @@
 <!-- series=product, photo -->
 <div id="selectComponents">
 
-  <%= simple_fields_for :photo	 do |f| %>
+  <%= simple_fields_for :photo   do |f| %>
     <h1> Select <%= series.name%> Components </h1>
-    <% Refinery::Caststone::Component::COMP_TYPES.each do |comp_type|
-        comp_type_name=comp_type.pluralize
-        comp_type_method = comp_type_name.downcase
-        comp_ids = "#{comp_type}_ids".downcase
-        if series.send(comp_type_method).any?  %>
-          <fieldset id="<%= comp_type%>" class="component_type">
-            <legend>
-              <%= comp_type%>
-            </legend>
-            <%#= f.collection_check_boxes, 'component_ids',  @components, :id, :name %>
-             <%= f.collection_check_boxes :component_ids, series.send(comp_type_method), :id, :name %>
-             <%= link_to "Clear #{comp_type_name}", '#', :id => comp_type_name, :class=> 'button clearRadioSet'%>
-          </fieldset>
-        <%end%>
-      <%end%>
+    <fieldset id="bases" class="component_type">
+      <legend>Bases</legend>
+      <%= f.collection_check_boxes :component_ids, series.bases, :id, :name %>
+      <%= link_to "Clear Bases", '#', id: 'bases', class: 'button clearRadioSet'%>
+    </fieldset>
+
+    <fieldset id="shafts" class="component_type">
+      <legend>Shafts</legend>
+      <%= f.collection_check_boxes :component_ids, series.shafts, :id, :name %>
+      <%= link_to "Clear Shafts", '#', id: 'shafts', class: 'button clearRadioSet'%>
+    </fieldset>
+    <fieldset id="capitals" class="component_type">
+      <legend>Capitals</legend>
+      <%= f.collection_check_boxes :component_ids, series.capitals, :id, :name %>
+      <%= link_to "Clear Capitals", '#', id: 'capitals', class: 'button clearRadioSet'%>
+    </fieldset>
+    <fieldset id="columns" class="component_type">
+      <legend>Columns</legend>
+      <%= f.collection_check_boxes :component_ids, series.columns, :id, :name %>
+      <%= link_to "Clear Columns", '#', id: 'columns', class: 'button clearRadioSet'%>
+    </fieldset>
+    <fieldset id="letterboxes" class="component_type">
+      <legend>Letterboxes</legend>
+      <%= f.collection_check_boxes :component_ids, series.letterboxes, :id, :name %>
+      <%= link_to "Clear Letterboxes", '#', id: 'letterboxes', class: 'button clearRadioSet'%>
+    </fieldset>
      <a id="redraw_button" class="button" href="#" tooltip="Redraw with the currently selected components ">Redraw</a>
   <%end%>
 </div>

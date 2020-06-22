@@ -72,7 +72,7 @@ $fpSliderHeight: 355px;
 }
 
 @mixin gridBackground {
-  background:$blueprintColour url('metre.png');
+  background:$blueprintColour;
 }
 
 @mixin bullets($bullet, $colour) {

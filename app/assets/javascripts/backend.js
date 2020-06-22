@@ -5,7 +5,7 @@
       redrawButton = $('a#redraw_button'),
       copyrightButton = $('a#copyright_button'),
       clearRadioButton = $('a.clearRadioSet'),
-      photoGrid = $('#photos_view, #drawings_view');
+      photoGrid = $('.photos_view, .drawings_view');
 
 
  if (seriesSelect.length)  {
@@ -89,10 +89,13 @@
         }
     });
   };
+  console.log("setting up multiselect")
   $('.multiselect').multiSelect();
+  console.log('done')
+  console.log('setting up dual listbox')
+  select = document.querySelector('.dual_listbox')
+  let dl = new DualListbox(select);
+  console.log(dl)
 
-  $('#page_photo_picker').on('multiselectChange', function(e,ui){
-    $('img.popup').hide().remove();
-  });
-  // $('form').validatr();
+
 });

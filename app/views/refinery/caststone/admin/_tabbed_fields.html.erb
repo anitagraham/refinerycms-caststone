@@ -11,8 +11,8 @@
 
     <div id='page_part_editors'>
       <% tabs.each do |tab| %>
-        <div class='page_part' id='<%= CaststoneHelper.to_slug(tab.name, "editor") %>'>
-          <%= render tab.partial, f:f, fields: tab.fields %>
+        <div class='page_part clearfix' id='<%= CaststoneHelper.to_slug(tab.name, "editor") %>'>
+          <%= render tab.partial, f:f, fields: tab.fields, object: object %>
         </div>
       <% end %>
     </div>

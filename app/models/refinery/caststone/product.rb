@@ -18,12 +18,12 @@ module Refinery
       has_many :letterboxes, through: :compatibles, foreign_key: :component_id, dependent: :destroy
       has_many :trims, through: :compatibles, foreign_key: :component_id, dependent: :destroy
 
-      accepts_nested_attributes_for :bases, reject_if: :blank_content, allow_destroy: true
+      accepts_nested_attributes_for :bases,       reject_if: :blank_content, allow_destroy: true
       accepts_nested_attributes_for :letterboxes, reject_if: :blank_content, allow_destroy: true
-      accepts_nested_attributes_for :capitals, reject_if: :blank_content, allow_destroy: true
-      accepts_nested_attributes_for :columns, reject_if: :blank_content, allow_destroy: true
-      accepts_nested_attributes_for :shafts, reject_if: :blank_content, allow_destroy: true
-      accepts_nested_attributes_for :trims, reject_if: :blank_content, allow_destroy: true
+      accepts_nested_attributes_for :capitals,    reject_if: :blank_content, allow_destroy: true
+      accepts_nested_attributes_for :columns,     reject_if: :blank_content, allow_destroy: true
+      accepts_nested_attributes_for :shafts,      reject_if: :blank_content, allow_destroy: true
+      accepts_nested_attributes_for :trims,       reject_if: :blank_content, allow_destroy: true
 
       scope :pillars, -> { where(product_type: 'pillars') }
       # def pillars

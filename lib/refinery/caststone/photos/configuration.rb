@@ -39,8 +39,8 @@ module Refinery
         edit: '500x500'
       }
 
-      self.defined_views = %i[photos list]
-      self.preferred_view = :photos
+      self.defined_views = %i[grid list]
+      self.preferred_view = :grid
 
     end
   end

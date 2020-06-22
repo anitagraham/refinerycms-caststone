@@ -86,14 +86,20 @@ input:required:valid {
 #page_photo_picker {
   padding: 5px;
 }
-
-
-
 img.popup {
   position: fixed;
   left:950px;
   top: 350px;
   z-index:10000;
   box-shadow: 4px 4px 4px black;
+}
+
+
+#page-tabs #page_part_editors .ui-corner-bottom  {
+
+      border: 1px solid #CCCCCC;
+      background: #F2F2F2;
+      padding: 5px 5px 0px 5px;
+
 }
 

@@ -18,6 +18,7 @@ module Refinery
         tab.partial = '/refinery/caststone/admin/photos/tabs/photos'
       end
 
+
       before_inclusion do
         Refinery::Plugin.register do |plugin|
           plugin.name = "caststone.photos"
@@ -28,14 +29,14 @@ module Refinery
       end
       config.after_initialize do
         tabs = [
-          {title: 'Image Upload', partial: 'refinery/admin/images/form'},
-          {title: 'Components and Drawing', partial: 'refinery/caststone/admin/photos/tabs/caststone_extras'}
+          {title: 'Image', partial: 'photo_select_image'},
+          {title: 'Components and Drawing', partial: 'photo_components'}
         ]
 
         tabs.each do |t|
           Refinery::Caststone::Photos::Tab.register do |tab|
             tab.name = t[:title]
-            tab.partial = "/refinery/caststone/admin/products/tabs/#{t[:partial]}"
+            tab.partial = "/refinery/caststone/admin/photos/tabs/#{t[:partial]}"
             tab.fields = t[:fields] if t[:fields]
           end
         end

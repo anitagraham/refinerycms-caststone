@@ -74,7 +74,7 @@ form {
 // Handles the drawings of pillars and other things made up of components
 
 img.drawing {
-  background:$adminBlue url('metre.png');
+  background:$adminBlue;
   float:right;
   border: 1px solid $csGreen;
 }

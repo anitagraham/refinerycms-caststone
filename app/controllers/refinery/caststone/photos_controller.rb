@@ -2,6 +2,7 @@
 module Refinery
   module Caststone
     class PhotosController < ::ApplicationController
+      before_action :get_products, only: [:new, :edit]
       respond_to :js, only: :details
       respond_to :png, only: :draw
       respond_to :json
@@ -14,7 +15,8 @@ module Refinery
           @photo = photo
         end
       end
-
+      private
+      
     end
   end
 end

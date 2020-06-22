@@ -215,6 +215,9 @@ GEM
     regexp_parser (1.7.1)
     request_store (1.5.0)
       rack (>= 1.4)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rmagick (4.1.2)
     routing-filter (0.6.3)
       actionpack (>= 4.2)
@@ -257,6 +260,9 @@ GEM
       rubyzip (>= 1.2.2)
     seo_meta (3.0.0)
       railties (>= 5.0.0)
+    simple_form (5.0.2)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     speakingurl-rails (8.0.2)
       railties (>= 3.1)
     sprockets (4.0.2)
@@ -312,7 +318,9 @@ DEPENDENCIES
   refinerycms-acts-as-indexed
   refinerycms-caststone!
   refinerycms-testing!
+  responders
   sass-rails
+  simple_form
   sqlite3
   stache
   uglifier

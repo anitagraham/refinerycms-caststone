@@ -8,6 +8,6 @@
       <span class='actions'>Actions</span>
     </div>
 <%end%>
-  <ul id=<%="#{this_view}_view"%> class="<%= ['clearfix', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
-    <%= render partial: 'refinery/caststone/admin/photos/photo', collection: @photos, locals: {view: this_view } %>
+  <ul class="<%= ['clearfix', 'pagination_frame', pagination_css_class, "#{this_view}_view"].compact.join(' ') %>">
+    <%= render partial: "refinery/caststone/admin/photos/photo", collection: @photos, locals: {view: this_view} %>
   </ul>

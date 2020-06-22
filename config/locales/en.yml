@@ -90,6 +90,7 @@ en:
             view:
               photos: photos
               list: list
+              grid: grid
               switch_to: Switch to %{view_name} view
           insert:
             existing_photo: Library
