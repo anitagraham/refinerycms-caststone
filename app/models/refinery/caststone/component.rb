@@ -17,7 +17,7 @@ module Refinery
       has_many :products, through: :compatibles, source: :product
 
       def ready
-        self.drawing.present? && self.product.present? && self.height.positive?
+        self.drawing.present?
       end
 
       def to_s

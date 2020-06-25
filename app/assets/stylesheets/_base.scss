@@ -2,7 +2,7 @@ $darkGrey:#535353;  /*rgb(83,83,83)*/
 $lightGrey:#999999; /*rgb(153,153,153)*/
 $csYellow:#fff100;  /*rgb(255,241,0)*/
 $csGreen:#8ac53f;  /*rgb(138,197,63)*/
-$csBlue:#4fc9ef;   /*rgb(79,201,239)*/
+$csBlue: #4fc9ef;   /*rgb(79,201,239)*/
 // $csBlue: #2ba6cb; /* rgb(43, 166, 203) Foundation blue */
 $csRed:#ed1f24;   /*rgb(237,31,36)*/
 $freightOrange: #D56100;
@@ -43,17 +43,17 @@ $menuTextColour:#EEE;
 $menuTextShadow:#FFF;
 //  Sans serif
 
-$humanistStack: Verdana, Tahoma, "Trebuchet MS", "DejuVu Sans", "Bitstream Vera Sans", sans-serif;
-$neoGrotesqueStack:Corbel, Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", sans-serif;
-$sansStack:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
-$geometricStack: "Century Gothic", "Tw Cen MT", Futura, "URW Gothic L", Arial, sans-serif;
+$humanistStack: Verdana, Tahoma, 'Trebuchet MS', 'DejuVu Sans', 'Bitstream Vera Sans', sans-serif;
+$neoGrotesqueStack:Corbel, Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', sans-serif;
+$sansStack:'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Verdana, Tahoma, sans-serif;
+$geometricStack: 'Century Gothic', 'Tw Cen MT', Futura, 'URW Gothic L', Arial, sans-serif;
 
 //  Serif
-$serifStack1:Baskerville, Garamond, Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", serif;
-$serifStack2:"Hoefler Text", Baskerville, Garamond, "Palatino Linotype", Georgia, "Times New Roman", serif;
-$serifStack3:Baskerville, "Baskerville old face", "Hoefler Text", Garamond, "Times New Roman", serif;
-$displayStack: Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif;
-$modernStack: Didot,"Bodoni MT", "Century Schoolbook", "Niagara Solid", Utopia, Georgia, Times, "Times New Roman", serif;
+$serifStack1:Baskerville, Garamond, Palatino, 'Palatino Linotype', 'Hoefler Text', 'Times New Roman', serif;
+$serifStack2:'Hoefler Text', Baskerville, Garamond, 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+$serifStack3:Baskerville, 'Baskerville old face', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+$displayStack: Perpetua, Baskerville, 'Big Caslon', 'Palatino Linotype', Palatino, 'URW Palladio L', 'Nimbus Roman No9 L', serif;
+$modernStack: Didot,'Bodoni MT', 'Century Schoolbook', 'Niagara Solid', Utopia, Georgia, Times, 'Times New Roman', serif;
 $fpSliderHeight: 355px;
 
 @mixin frame ($border: $textColour, $bg: white, $width:5px) {
