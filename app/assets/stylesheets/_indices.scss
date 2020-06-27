@@ -1,25 +1,25 @@
 .photosView_icon {
-  @include icon('photo', blue)
+  @include icon('photo', $indexIconColour)
 }
 
 .drawingsView_icon {
-  @include icon('pencil', blue)
+  @include icon('pencil', $indexIconColour)
 }
 
 .listView_icon {
-  @include icon('list', blue)
+  @include icon('list', $indexIconColour)
 }
 
 .gridView_icon {
-  @include icon('th', blue)
+  @include icon('th', $indexIconColour)
 }
 
 .hasDrawingtrue {
-  @include icon('check', green)
+  @include icon('check', $statusSuccess)
 }
 
 .hasDrawingfalse {
-  @include icon('times', red)
+  @include icon('times', $statusWarning)
 }
 
 .list_header {
@@ -68,7 +68,7 @@
   }
 
   .warning {
-    color : red
+    color : $statusWarning;
   }
 }
 
@@ -86,7 +86,7 @@ ul.grid_view {
     margin           : 10px;
     padding          : 0;
     overflow         : hidden;
-    background-color : #C9DAE2;
+    background-color : $indexBackground;
 
     border           : 1px solid #555;
     min-height       : 140px;
@@ -101,21 +101,21 @@ ul.grid_view {
     }
     .brokenImage {
       background-color : #888;
-      img::before { color : #ff530D;  }
+      img::before { color : $statusError;  }
       a.preview_icon {
         pointer-events : none !important;
         cursor         : default;
-        &::before {  color : #aaa;  }
+        &::before {  color : $lightgrey;  }
       }
       a.edit_icon::before {
-        color           : #ff530D;
+        color           : $statusError;
         text-decoration : blink;
       }
     }
 
     p.no-drawing { @include icon('times', red) }
     div.info {
-      @include icon('info-circle', blue)
+      @include icon('info-circle', $indexIconColour);
       span {   display : none}
       top    : auto;
       bottom : -5px;

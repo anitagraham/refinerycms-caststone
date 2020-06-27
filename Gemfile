@@ -12,6 +12,7 @@ end
 
 # vulnerability
 gem "activesupport", ">= 6.0.3.1"
+# gem "actionpack", ">= 6.0.3.2"  # CVE-2020-8185
 
 gem 'responders'
 gem 'simple_form'

@@ -1,48 +1,21 @@
-$darkGrey:  #535353;  /*rgb(83,83,83)*/
-$lightGrey: #999999;  /*rgb(153,153,153)*/
-$csYellow:  #fff100;  /*rgb(255,241,0)*/
-$csGreen:   #8ac53f;  /*rgb(138,197,63)*/
-$csBlue:    #4fc9ef;  /*rgb(79,201,239)*/
-$csRed:#ed1f24;       /*rgb(237,31,36)*/
+$adminBlue       : #22a7f2;
+$blueprintColour : #668CAF;
+$csBlue          : #4fc9ef; /*rgb(79,201,239)*/
+$csGreen         : #8ac53f; /*rgb(138,197,63)*/
+$csPanelBorder   : #ccc;
+$csRed           : #ed1f24; /*rgb(237,31,36)*/
+$csYellow        : #fff100; /*rgb(255,241,0)*/
+$darkGrey        : #535353; /*rgb(83,83,83)*/
+$lightGrey       : #999999; /*rgb(153,153,153)*/
 
-// $csBlue: #2ba6cb; /* rgb(43, 166, 203) Foundation blue */
-$menuBlue: #0272A7;
-
-$freightOrange: #D56100;
-
-$pinterestRed: #c92228;
-$houzzGreen: #7CC04D;
-$facebookBlue: #3765A3;
-
-$screenBackground: $darkGrey;
-$pageBackground: #e0e0e0;
-$panelBackground: linear-gradient(#eaeaea, #a7a7a7, #eaeaea);
-$rowBackground:   linear-gradient(#ddd 20%, #aaa, #ddd 80%);
-$sectionBackground: linear-gradient(#ddd, #eee, #ddd);
-
-$slideshow-image-margin: 0; //30px 0 10px 0;
-$csPanelBorder:#ccc;
-$textColour:rgba(45, 61, 79, .8);  /* #2d3d4d;  */
-
-$linkColour:#496989;
-$blueprintColour:#668CAF;
-$adminBlue:#22a7f2;
-$warningColour:#ffa829;
-$bgHighlightColour:$csGreen;
-
-
-// Menu Colours
-
-$menuGradient1:#084659;
-$menuGradient2:#0b5e78;
-$menuGradient3:#0e7797;
-$menuGradient4:#118fb7;
-
-$menuBackground:#014464;
-$menuBorder:#015b86;
-$menuBorderTop:#029feb;
-$menuHover1:#015b86;
-$menuHover2:#029feb;
-
-$menuTextColour:#EEE;
-$menuTextShadow:#FFF;
+$textColour: black;
+$linkColour      : #496989;
+$formRequired    : $statusError;
+$formInvalid     : rgba(255, 50, 34, 0.2);
+$formValid       : rgba(0, 255, 0, 0.2);
+$indexBackground : rgb(201,218,226);
+$indexIconColour  : slategray;
+$statusSuccess: $csGreen;
+$statusWarning: rgb(255, 191, 0); //amber
+$statusError: rgb(255, 50, 34);
+$imageBackground: lighten($adminBlue, 20%);
