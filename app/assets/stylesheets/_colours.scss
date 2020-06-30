@@ -1,21 +1,29 @@
 $adminBlue       : #22a7f2;
 $blueprintColour : #668CAF;
-$csBlue          : #4fc9ef; /*rgb(79,201,239)*/
-$csGreen         : #8ac53f; /*rgb(138,197,63)*/
+$csBlue          : #4fc9ef; /*rgba(79,201,239, 1)*/
+$csGreen         : #8ac53f; /*rgba(138,197,63, 1)*/
 $csPanelBorder   : #ccc;
-$csRed           : #ed1f24; /*rgb(237,31,36)*/
-$csYellow        : #fff100; /*rgb(255,241,0)*/
-$darkGrey        : #535353; /*rgb(83,83,83)*/
-$lightGrey       : #999999; /*rgb(153,153,153)*/
+$csRed           : #ed1f24; /*rgba(237,31,36, 1)*/
+$csYellow        : #fff100; /*rgba(255,241,0, 1)*/
+$darkGrey        : #535353; /*rgba(83,83,83, 1)*/
+$lightGrey       : #999999; /*rgba(153,153,153, 1)*/
 
-$textColour: black;
-$linkColour      : #496989;
-$formRequired    : $statusError;
-$formInvalid     : rgba(255, 50, 34, 0.2);
-$formValid       : rgba(0, 255, 0, 0.2);
-$indexBackground : rgb(201,218,226);
-$indexIconColour  : slategray;
-$statusSuccess: $csGreen;
-$statusWarning: rgb(255, 191, 0); //amber
-$statusError: rgb(255, 50, 34);
-$imageBackground: lighten($adminBlue, 20%);
+$textColour      : black;
+$linkColour      : rgba(75, 105, 137, 1);
+$iconColour      : slategrey;
+$errorColour     : rgba(255, 50, 34, 1);
+$errorBG         : scale_color($errorColour, $alpha: -80%);
+$warningColour   : rgba(255, 191, 0, 1);
+$warningBG       : scale_color($warningColour, $alpha: -80%);
+$successColour   : rgb(19, 208, 19);
+$successBG       : scale_color($successColour, $alpha: -80%);
+$formSectionBG   : rgba(201, 218, 226, 1);
+$statusWarning   : $warningColour;
+$statusError     : $errorColour;
+$formRequired    : $errorColour;
+$formInvalid     : $errorBG;
+$formValid       : $successBG;
+$indexBackground : $formSectionBG;
+$indexIconColour : $iconColour;
+$statusSuccess   : $successColour;
+$imageBackground : lighten($adminBlue, 20%);

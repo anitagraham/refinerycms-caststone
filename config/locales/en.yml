@@ -1,3 +1,4 @@
+---
 en:
   activerecord:
     attributes:
@@ -13,7 +14,7 @@ en:
         photo: Photo
         product_id: Product
       refinery/caststone/photo:
-        image_uid: Image Uid
+        image_uid: "Image Uid"
         name: Name
         photo: Photo
         product_id: Product
@@ -25,9 +26,9 @@ en:
     errors:
       models:
         refinery/caststone/photo:
-          blank: You must specify an photo for upload
-          incorrect_format: Your photo must be either a JPG, PNG or GIF
-          too_big: Photo should be smaller than %{size} bytes in size
+          blank: "You must specify a photo for upload"
+          incorrect_format: "Your photo must be either a JPG, PNG or GIF"
+          too_big: "Photo should be smaller than %{size} bytes in size"
     models:
       refinery/caststone/photo: photo
   refinery:
@@ -39,130 +40,109 @@ en:
         edit: Edit
         tabs:
           images_bar:
-            add: Add Image
+            add: "Add Image"
       search:
-        no_results: No results
-        results_for: Results for
+        no_results: "No results"
+        results_for: "Results for"
     caststone:
       admin:
         actions:
-          create_new_photo: Add new photo
+          create_new_photo: "Add new photo"
         components:
           actions:
-            create_new: Add New Component
-            reorder: Reorder Components
-            reorder_done: Done Reordering Components
+            create_new: "Add New Component"
+            reorder: "Reorder Components"
+            reorder_done: "Done Reordering Components"
           component:
-            delete: Remove this component forever
-            edit: Edit this component
-            view_live_html: View this component live <br/><em>(opens in a new window)</em>
-          records:
-            no_items_yet: There are no Components yet. Click "Add New Component" to
-              add your first component.
-            sorry_no_results: Sorry! There are no results found.
-            title: Components
+            delete: "Remove this component forever"
+            edit: "Edit this component"
+            view_live_html: "View this component live <br/><em>(opens in a new window)</em>"
           index:
             view:
               drawings: drawings
               list: list
-              switch_to: Switch to %{view_name} view
+              switch_to: "Switch to %{view_name} view"
+          records:
+            no_items_yet: "There are no Components yet. Click \"Add New Component\" to add your first component."
+            sorry_no_results: "Sorry! There are no results found."
+            title: Components
         photos:
-          delete: Remove this photo forever
-          edit: Edit this photo
+          actions:
+            create_new: "Add New Photo"
+            reorder: "Reorder Photos"
+            reorder_done: "Done Reordering Photos"
+          delete: "Remove this photo forever"
+          edit: "Edit this photo"
           existing_photo:
             button_text: Insert
-            resize_photo: Resize the photo?
+            resize_photo: "Resize the photo?"
             size: Size
           filter:
             button_text: Filter
           form:
-            current_photo: Current Photo
-            maximum_photo_size: The maximum photo size is %{bytes}.
+            current_photo: "Current Photo"
+            maximum_photo_size: "The maximum photo size is %{bytes}."
             or: or
             photo: Photo
             replace_photo: " replace it with this one..."
-            use_current_photo: Use current photo
+            use_current_photo: "Use current photo"
           grid_view:
-            view_live_html: View this photo
-          list_view:
-            view_live_html: View this photo
+            view_live_html: "View this photo"
           index:
             view:
-              photos: photos
-              list: list
               grid: grid
-              switch_to: Switch to %{view_name} view
+              list: list
+              photos: photos
+              switch_to: "Switch to %{view_name} view"
           insert:
             existing_photo: Library
             new_photo: Upload
-          actions:
-            create_new: Add New Photo
-            reorder: Reorder Photos
-            reorder_done: Done Reordering Photos
+          list_view:
+            view_live_html: "View this photo"
           photo:
-            delete: Remove this photo forever
-            edit: Edit this photo
-            view_live_html: View this photo live <br/><em>(opens in a new window)</em>
+            delete: "Remove this photo forever"
+            edit: "Edit this photo"
+            view_live_html: "View this photo live <br/><em>(opens in a new window)</em>"
           records:
-            no_items_yet: Er zijn nog geen Photos. Druk op 'Maak een nieuwe Photo'
-              om de eerste aan te maken.
-            no_photos_yet: There are no Photos yet. Click "Add New Photo" to add your
-              first photo.
-            sorry_no_results: Sorry! There are no results found.
+            no_photos_yet: "There are no Photos yet. Click \"Add New Photo\" to add your first photo."
+            sorry_no_results: "Sorry! There are no results found."
             title: Photos
           tabs:
             photos:
-              no_photos_yet: No photos yet
+              no_photos_yet: "No photos yet"
             photos_bar:
               add: Add
-          view_live_html: View live html
+          view_live_html: "View live html"
         products:
           actions:
-            create_new: Add New Series
-            reorder: Reorder Seriess
-            reorder_done: Done Reordering Seriess
+            create_new: "Add New Series"
+            reorder: "Reorder Seriess"
+            reorder_done: "Done Reordering Seriess"
           product:
-            delete: Remove this series forever
-            edit: Edit this series
-            view_live_html: View this series live <br/><em>(opens in a new window)</em>
+            delete: "Remove this series forever"
+            edit: "Edit this series"
+            view_live_html: "View this series live <br/><em>(opens in a new window)</em>"
           records:
-            no_items_yet: There are no Series yet. Click "Add New Series" to add your
-              first product.
-            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: "There are no Series yet. Click \"Add New Series\" to add your first product."
+            sorry_no_results: "Sorry! There are no results found."
             title: Series
         records:
-          no_photos_yet: There are no photos yet. Click "Add new photo" to add your
-            first photo.
-        tags:
-          actions:
-            create_new: Maak een nieuwe Tag
-            reorder: Wijzig de volgorde van de Tags
-            reorder_done: Klaar met het wijzingen van de volgorde van de Tags
-          records:
-            no_items_yet: Er zijn nog geen Tags. Druk op 'Maak een nieuwe Tag' om
-              de eerste aan te maken.
-            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
-            title: Tags
-          tag:
-            delete: Verwijder deze tag voor eeuwig
-            edit: Bewerk deze tag
-            view_live_html: Bekijk deze tag op de website <br/><em>(opent een nieuw
-              venster)</em>
+          no_photos_yet: "There are no photos yet. Click \"Add new photo\" to add your first photo."
       components:
         show:
-          other: Other Components
+          other: "Other Components"
       displays:
         show:
-          other: Other Displays
+          other: "Other Displays"
       photos:
         show:
-          other: Other Photos
+          other: "Other Photos"
       products:
         show:
-          other: Other Series
+          other: "Other Series"
       tags:
         show:
-          other: Other Tags
+          other: "Other Tags"
     components:
       admin:
         components:
@@ -182,7 +162,7 @@ en:
         components:
           title: Components
         photos:
-          description: Manage photos
+          description: "Manage photos"
           title: Photos
         products:
           title: Series
@@ -190,22 +170,21 @@ en:
         admin:
           photos:
             actions:
-              create_new: Add New Photo
-              reorder: Reorder Photos
-              reorder_done: Done Reordering Photos
+              create_new: "Add New Photo"
+              reorder: "Reorder Photos"
+              reorder_done: "Done Reordering Photos"
             photo:
-              delete: Remove this photo forever
-              edit: Edit this photo
-              view_live_html: View this photo live <br/><em>(opens in a new window)</em>
+              delete: "Remove this photo forever"
+              edit: "Edit this photo"
+              view_live_html: "View this photo live <br/><em>(opens in a new window)</em>"
             records:
-              no_photos_yet: There are no Photos yet. Click "Add New Photo" to add
-                your  first photo.
-              sorry_no_results: Sorry! There are no results found.
+              no_photos_yet: "There are no Photos yet. Click \"Add New Photo\" to add your  first photo."
+              sorry_no_results: "Sorry! There are no results found."
               title: Photos
         records:
-          no_photos_yet: There are no Photos yet. Click "Add New Photo" to add your
-            first photo.
-          sorry_no_results: Sorry! There are no results found.
+          no_photos_yet: "There are no Photos yet. Click \"Add New Photo\" to add your first photo."
+          no_items_yet: "There are no Photos yet. Click \"Add New Photo\" to add your first photo."
+          sorry_no_results: "Sorry! There are no results found."
           title: Photos
       components:
         title: Components

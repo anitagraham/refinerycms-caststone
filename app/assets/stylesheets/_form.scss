@@ -18,19 +18,20 @@ form {
         margin-right : 1em;
       }
     }
-
-    label abbr[title='required'] {color : $formRequired}
-
-    input:required:invalid, input:focus:invalid {
-      background-position : right top;
-      background-repeat   : no-repeat;
-      background-color    : $formValid;
-      box-shadow          : none; }
-
-    input:required:valid {
-      background-position : right top;
-      background-repeat   : no-repeat;
-      background-color    : $formValid }
-
   }
+
+  label.required abbr {color : $formRequired}
+
+  input:required:invalid, input:focus:invalid {
+    background-position : right top;
+    background-repeat   : no-repeat;
+    background-color    : $formValid;
+    box-shadow          : none; }
+
+  input:required:valid {
+    background-position : right top;
+    background-repeat   : no-repeat;
+    background-color    : $formValid }
+
 }
+

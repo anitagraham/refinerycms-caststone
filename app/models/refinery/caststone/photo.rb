@@ -70,9 +70,11 @@ module Refinery
       end
 
       def height
-        components.sum(:height)
+        components.sum(:height) if components.any?
       end
-
+      def component_count
+        components.any? ? components.count : 'None'
+      end
       def popup_image
         name thumb('250x')
       end
@@ -81,8 +83,10 @@ module Refinery
 
         def save_drawing
           # component_ids = base_ids + shaft_ids + column_ids + capital_ids + letterbox_ids
-          self.drawing = component_ids.present? ? Refinery::Caststone::Component.construct(component_ids) : nil
-          self.height = components.sum('height')
+          if components.present?
+            self.drawing = Refinery::Caststone::Component.construct(component_ids)
+            self.height = components.sum('height')
+          end
         end
     end
   end

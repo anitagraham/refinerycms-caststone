@@ -105,7 +105,7 @@ ul.grid_view {
       a.preview_icon {
         pointer-events : none !important;
         cursor         : default;
-        &::before {  color : $lightgrey;  }
+        &::before {  color : $lightGrey;  }
       }
       a.edit_icon::before {
         color           : $statusError;

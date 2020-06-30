@@ -30,7 +30,7 @@ module Refinery
         end
 
         def component_params
-          params.require(:component).permit(:type, :name, :note, :height, :drawing, :drawing_uid, product_ids: [])
+          params.require(:component).permit(:type, :name, :note, :height, :drawing, :drawing_uid, :position, product_ids: [])
         end
       end
     end

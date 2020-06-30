@@ -23,6 +23,6 @@
     delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @product.name) %>
 <% end %>
 <hr>
-<%= form_for [refinery, :caststone_admin, @product] do |nf| %>
-  <%= render '/refinery/caststone/admin/products/traits', f: nf, object: @product %>
-<% end %>
+<%#= form_for [refinery, :caststone_admin, @product] do |nf| %>
+  <%#= render '/refinery/caststone/admin/products/traits', f: nf, object: @product %>
+<%# end %>
