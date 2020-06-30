@@ -12,12 +12,15 @@ $textColour      : black;
 $linkColour      : rgba(75, 105, 137, 1);
 $iconColour      : slategrey;
 $errorColour     : rgba(255, 50, 34, 1);
+
 $errorBG         : scale_color($errorColour, $alpha: -80%);
 $warningColour   : rgba(255, 191, 0, 1);
 $warningBG       : scale_color($warningColour, $alpha: -80%);
 $successColour   : rgb(19, 208, 19);
 $successBG       : scale_color($successColour, $alpha: -80%);
+
 $formSectionBG   : rgba(201, 218, 226, 1);
+
 $statusWarning   : $warningColour;
 $statusError     : $errorColour;
 $formRequired    : $errorColour;
