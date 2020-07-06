@@ -11,7 +11,7 @@ $lightGrey       : #999999; /*rgba(153,153,153, 1)*/
 $textColour      : black;
 $linkColour      : rgba(75, 105, 137, 1);
 $iconColour      : slategrey;
-$errorColour     : rgba(255, 50, 34, 1);
+$errorColour     : rgb(255, 50, 34);
 
 $errorBG         : scale_color($errorColour, $alpha: -80%);
 $warningColour   : rgba(255, 191, 0, 1);
