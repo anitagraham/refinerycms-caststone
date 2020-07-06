@@ -89,8 +89,8 @@
         }
     });
   };
-  console.log("setting up multiselect")
-  $('.multiselect').multiSelect();
+  // console.log("setting up multiselect")
+  // $('.multiselect').multiSelect();
   console.log('done')
   console.log('setting up dual listbox')
   select = document.querySelector('.dual_listbox')
