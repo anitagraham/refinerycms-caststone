@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-caststone'
-  s.version           = '3.0.1'
+  s.version           = '3.1.0'
   s.description       = 'Ruby on Rails Caststone extension for Refinery CMS'
   s.date              = '2012-05-07'
   s.summary           = 'Caststone extension for Refinery CMS'
