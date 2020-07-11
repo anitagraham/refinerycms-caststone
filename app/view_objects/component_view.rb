@@ -1,25 +1,24 @@
-class ComponentView
+
+class ComponentView < SimpleDelegator
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::AssetTagHelper
+  include Refinery::TagHelper
+  include ViewHelpers
 
-  I18N_SCOPE = 'address_object'
-  attr_accessor :name, :type, :height, :drawing, :products, :output_buffer
+  attr_accessor :output_buffer
 
-  def initialize(component)
-    @name = component.name
-    @type = component.type
-    @height = component.height
-    @drawing = component.drawing.presence
-    @products = component.products
+  def initialize(collection, context)
+    @collection = collection
+    @context = context
   end
 
-
-  def to_html(view)
-    markup = case view
-      when 'list'
+  def to_html
+    view_name =  Refinery::Caststone::Components.preferred_view
+    markup = case view_name
+      when :list
         list_view
-      when 'grid'
+      when :grid
         grid_view
     end
     tag.li id: id, class: type.demodulize do
@@ -30,7 +29,7 @@ class ComponentView
   private
 
     def grid_view
-      image = drawing.present? ? image(drawing) : (tag.p "No Drawing")
+      # image = drawing ? image(drawing) : (tag.p "No Drawing")
       info = tag.span do
         "#{name} (#{height}mm), #{products}"
       end
@@ -46,9 +45,9 @@ class ComponentView
     end
 
     def actions
-      edit = action_icon :edit, refinery.edit_caststone_admin_component_path(id), t('.edit')
-      delete = action_icon :delete, refinery.caststone_admin_component_path(id), t('.delete'), class: 'cancel confirm-delete',
-                           data: {confirm: t('message', scope: 'refinery.admin.delete', title: component.name)}
+      edit = action_icon :edit, refinery.edit_caststone_admin_component_path(id), 'Edit'
+      delete = action_icon :delete, refinery.caststone_admin_component_path(id), "Delete", class: 'cancel confirm-delete',
+                           data: {confirm: "Do your really want to delete #{component.name}"}
       tag.div class: :actions do
         edit << delete
       end

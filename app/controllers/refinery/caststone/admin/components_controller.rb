@@ -12,7 +12,7 @@ module Refinery
         crudify :'refinery/caststone/component',
                 title_attribute: 'name',
                 order: 'name ASC'
-
+        
         def list_for_product
           Refinery::Caststone::Component.filter_by_product(params[:id])
         end

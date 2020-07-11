@@ -19,6 +19,17 @@ form {
       }
     }
   }
+  .fyi, .input.radio_buttons, .input.check_boxes {
+    background-color: #f3f4f5;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #444;
+    p, &>div {
+      display: inline-block;
+      margin-right: 1.5rem;
+      label {margin-top: 0.5rem}
+    }
+  }
 
   label.required abbr {color : $formRequired}
 

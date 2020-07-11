@@ -1,4 +1,4 @@
 //= require imagesLoaded
+//= require multi
 //= require backend
-//= require jquery.multi-select
-//= require dual-listbox
+

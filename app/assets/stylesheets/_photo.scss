@@ -3,92 +3,74 @@ form {
     div.photo {
       float : left;
     }
+  }
+}
 
-    span.ready, span.wall {
-      @include column(1)
+// override jquery-ui setting.
+.wym_skin_refinery .wym_html textarea {
+  font-size : 1.5em;
+}
+
+img.popup {
+  position   : fixed;
+  left       : 950px;
+  top        : 350px;
+  z-index    : 10000;
+  box-shadow : 4px 4px 4px black;
+}
+
+
+div#photo-and-drawing {
+
+  img {
+    vertical-align : bottom;
+    float          : left;
+  }
+}
+
+#selectComponents {
+  margin-top : 40px;
+
+  fieldset.component_type {
+    border-radius : 4px;
+
+    legend {font-weight : bold;}
+
+    span {
+      display : block;
+
+      label {display : inline;}
     }
+
+    a.clearRadioSet {margin-top : 10px;}
   }
+}
 
-  #photo_details {
-    @include column(12);
-  }
+&#selectPhotos input#submit.button { font-size : 1.2em; }
 
-  // override jquery-ui setting.
-  .wym_skin_refinery .wym_html textarea {
-    font-size : 1.5em;
-  }
+select.multiselect {
+  height : 300px;
+  width  : 600px;
+}
 
-  img.popup {
-    position   : fixed;
-    left       : 950px;
-    top        : 350px;
-    z-index    : 10000;
-    box-shadow : 4px 4px 4px black;
-  }
+#page_photo_picker {
+  padding : 5px;
+}
 
-  .photo_checkbox {
-    @include column(2);
-  }
+img.popup {
+  position   : fixed;
+  left       : 950px;
+  top        : 350px;
+  z-index    : 10000;
+  box-shadow : 4px 4px 4px black;
+}
 
-  div#photo-and-drawing {
-    @include columns(7);
-    float : left;
+#page-tabs #page_part_editors .ui-corner-bottom {
 
-    img {
-      &.photo {@include column(5); margin : 0;}
+  border     : 1px solid #CCCCCC;
+  background : #F2F2F2;
+  padding    : 5px 5px 0 5px;
 
-      &.drawing {@include column(1); margin : 0;}
+}
 
-      vertical-align : bottom;
-      float          : left;
-    }
-  }
-
-  #selectComponents {
-    @include columns(12);
-    margin-top : 40px;
-
-    fieldset.component_type {
-      border-radius : 4px;
-      @include column(3, 40);
-      float         : left;
-
-      legend {font-weight : bold;}
-
-      span {
-        display : block;
-
-        label {display : inline;}
-      }
-
-      a.clearRadioSet {margin-top : 10px;}
-    }
-  }
-
-  &#selectPhotos input#submit.button { font-size : 1.2em; }
-
-  select.multiselect {
-    height : 300px;
-    width  : 600px;
-  }
-
-  #page_photo_picker {
-    padding : 5px;
-  }
-
-  img.popup {
-    position   : fixed;
-    left       : 950px;
-    top        : 350px;
-    z-index    : 10000;
-    box-shadow : 4px 4px 4px black;
-  }
-
-  #page-tabs #page_part_editors .ui-corner-bottom {
-
-    border     : 1px solid #CCCCCC;
-    background : #F2F2F2;
-    padding    : 5px 5px 0 5px;
-
-  }
 }

@@ -5,15 +5,15 @@ module Refinery
       acts_as_indexed fields: [:name]
       # Gutentag::ActiveRecord.call self
 
-
       belongs_to :drawing, class_name: 'Refinery::Image', optional: true
       validates :name, presence: true, uniqueness: true
 
-      has_many :compatibles, inverse_of: :products
-      has_many :components,   through: :compatibles, dependent: :destroy
+      has_many :compatibles,  foreign_key: :product_id
+      has_many :components,   through: :compatibles,  inverse_of: :products, foreign_key: :component_id,  dependent: :destroy
+
       has_many :bases,        through: :compatibles, foreign_key: :component_id, dependent: :destroy, source: :base
       # Rails can't choose between base and basis
-      has_many :shafts,       through: :compatibles, foreign_key: :component_id, dependent: :destroy
+      has_many :shafts,       through: :compatibles, foreign_key: :component_id, dependent: :destroy, inverse_of: :products
       has_many :capitals,     through: :compatibles, foreign_key: :component_id, dependent: :destroy
       has_many :columns,      through: :compatibles, foreign_key: :component_id, dependent: :destroy
       has_many :letterboxes,  through: :compatibles, foreign_key: :component_id, dependent: :destroy

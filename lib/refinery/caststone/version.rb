@@ -1,8 +1,8 @@
 module Refinery
   module Caststone
     class Version
-      @major = 2
-      @minor = 0
+      @major = 3
+      @minor = 1
       @tiny  = 0
 
       class << self

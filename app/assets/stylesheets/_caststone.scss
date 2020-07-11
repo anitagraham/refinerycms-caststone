@@ -2,13 +2,20 @@
 // For drawings of pillars and other things made up of components
 
 img.drawing {
-  background: $imageBackground;
   float:right;
   border: 1px solid $adminBlue;
 }
 img.photo {
   padding:5px;
-  background-color: $imageBackground;
   max-width:700px;
   float:left;
+}
+#page_photo_picker.wym_skin_refinery {
+  font-size: 100%;
+  .multi-wrapper  {
+    .header {
+      background-color: $adminBlue;
+      color: white;
+    }
+  }
 }

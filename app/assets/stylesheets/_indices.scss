@@ -37,6 +37,10 @@
   li {
     overflow      : hidden;
     text-overflow : ellipsis;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    div.actions {position: unset}
   }
 
   .title {

@@ -67,6 +67,12 @@ module CaststoneHelper
            "#{photo.name}/(#{photo.trackid}) components: #{photo.component_count} Page: #{photo.assigned_page_name}"
     edit << info <<  preview
   end
+
+  def component_index_view(collection)
+    presenter = Refinery::Caststone::ComponentPresenter.new(collection, self)
+    presenter.to_html
+  end
+
 end
 
 

@@ -29,7 +29,7 @@ module Refinery
       end
       config.after_initialize do
         tabs = [
-          {title: 'Image', partial: 'photo_select_image'},
+          {title: 'Image', partial: 'photo_select_image', fields: [:image]},
           {title: 'Components and Drawing', partial: 'photo_components'}
         ]
 

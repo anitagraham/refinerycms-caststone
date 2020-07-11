@@ -24,7 +24,7 @@ module Refinery
       # has_many :columns, -> { where(component.type = "Refinery::Caststone::Column" ) }
       # has_many :letterboxes, -> { where(component.type = "Refinery::Caststone::Letterbox" ) }
       # has_many :trims, -> { where(component.type = "Refinery::Caststone::Trim" ) }
-      has_many :bases,        through: :assignments, foreign_key: 'component_id', foreign_type: 'Refinery::Caststone::Base'
+      has_many :bases,        through: :assignments, foreign_key: 'component_id'
       has_many :shafts,       through: :assignments, foreign_key: 'component_id'
       has_many :capitals,     through: :assignments, foreign_key: 'component_id'
       has_many :columns,      through: :assignments, foreign_key: 'component_id'

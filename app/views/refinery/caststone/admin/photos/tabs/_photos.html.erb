@@ -3,7 +3,7 @@
   nophotos = tag.p t('.no_photos_yet')
   photo_collection = collection_select :page, :photo_ids, photos, :id, :name, {},
                                        {multiple: true,
-                                        class: [:dual_listbox, :multiselect],
+                                        class:  :multiselect,
                                         id: :photo_multiselect}
   selection = photos.present? ? photo_collection : nophotos
 

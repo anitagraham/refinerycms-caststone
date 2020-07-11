@@ -89,13 +89,16 @@
         }
     });
   };
-  // console.log("setting up multiselect")
-  // $('.multiselect').multiSelect();
-  console.log('done')
-  console.log('setting up dual listbox')
-  select = document.querySelector('.dual_listbox')
-  let dl = new DualListbox(select);
-  console.log(dl)
-
-
+  let select = document.querySelector('.multiselect');
+  if (select) {
+    multi(select, {
+      "enable_search": true,
+      "search_placeholder": "Search...",
+      "non_selected_header": 'Available',
+      "selected_header": 'Selected',
+      "limit": -1,
+      "limit_reached": function () {
+      },
+    })
+  }
 });

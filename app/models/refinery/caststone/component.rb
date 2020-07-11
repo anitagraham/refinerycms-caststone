@@ -13,8 +13,8 @@ module Refinery
       validates :height, numericality: { only_integer: true, greater_than: 0}, presence: true
       #alias :component_type :type
 
-      has_many :compatibles
-      has_many :products, through: :compatibles, source: :product
+      has_many :compatibles, foreign_key: :product_id, inverse_of: :components
+      has_many :products, through: :compatibles, inverse_of: :components, foreign_key: :component_id
 
       def ready
         self.drawing.present?

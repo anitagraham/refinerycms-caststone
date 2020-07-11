@@ -1,4 +1,4 @@
-<%= form_for [refinery, :caststone_admin, @product] do |f| %>
+<%= simple_form_for [refinery, :caststone_admin, @product] do |f| %>
   <%= render '/refinery/admin/error_messages',
     object: @product,
     include_object_name: true
@@ -8,11 +8,15 @@
     <%= f.label :name %>
     <%= f.text_field :name, class: 'larger widest' %>
   </div>
-  <p class="fyi">
-    Series id: <%= @product.id %>
-    <%= @product.name %> has <%= @product.component_count %> components.
-  </p>
+  <div class="fyi">
+    <h3>Information Only</h3>
+    <li><em>Series id</em >: <%= @product.id %></li>
+    <li><em>Components</em >: <%= @product.component_count %> </li>
+  </div>
 
+  <div class="field">
+    <%= f.input :product_type, collection: %w(Pillar column Letterbox Trim), as: :radio_buttons %>
+  </div>
   <%= render '/refinery/caststone/admin/tabbed_fields',
     f: f, tabs: Refinery::Caststone::Products.tabs
   %>
