@@ -7,7 +7,7 @@ module Refinery
     module Products
       require 'refinery/caststone/products/engine'
       autoload :Tab, 'refinery/caststone/products/tabs'
-
+    
       class << self
         attr_writer :root
 
@@ -22,6 +22,7 @@ module Refinery
         def factory_paths
           @factory_paths ||= [root.join('spec', 'factories').to_s]
         end
+
       end
     end
   end

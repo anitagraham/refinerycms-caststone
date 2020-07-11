@@ -3,18 +3,19 @@
                   collection: @products,
                   prompt: 'Choose a Series',
                   label: 'Series',
+                  as: :radio_buttons,
                   include_blank: true %>
 
 <div id='components-drawing'>
-
+  <h1> Drawing </h1>
   <%if @photo.drawing %>
     <img src='data:image/png;base64,<%= @photo.drawing%>' alt = 'Drawing of <%= @photo.name%>' class='drawing' />
   <%else%>
     <img alt = 'Drawing of <%= @photo.name%>' class='drawing'>
   <%end%>
-
+  <a id="redraw_button" class="button" href="#" tooltip="Redraw with the currently selected components " >Redraw</a >
   <%= f.hidden_field :drawing, value: @photo.drawing, id: 'photo_drawing' %>
+  <p>Total height of components <%= @photo.height%>mm</p>
 </div>
-<%= render  'refinery/caststone/admin/shared/product_components', series: @photo.product if @photo.product %>
 
-<p>Total height of components <%= @photo.height%> mm</p>
+<%= render  'refinery/caststone/admin/shared/product_components', series: @photo.product if @photo.product %>

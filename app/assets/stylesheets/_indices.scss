@@ -41,6 +41,10 @@
     flex-direction: row;
     justify-content: space-between;
     div.actions {position: unset}
+    span {
+      background-color: lighten($adminBlue, 30%);
+      padding: 0.5rem
+    }
   }
 
   .title {

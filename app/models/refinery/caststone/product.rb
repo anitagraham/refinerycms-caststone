@@ -2,6 +2,13 @@ module Refinery
   module Caststone
     class Product < Refinery::Core::BaseModel
 
+      USES = {
+        # for each product type, valid component types
+        pillar: [:bases, :shafts, :capitals],
+        column: [:bases, :columns, :capitals],
+        letterbox: [:bases, :shafts, :capitals, :letterboxes],
+        trim: [:bases, :shafts, :trim]
+      }
       acts_as_indexed fields: [:name]
       # Gutentag::ActiveRecord.call self
 
@@ -34,6 +41,10 @@ module Refinery
         name
       end
 
+      def uses(component_type)
+        Refinery::Caststone::Product::USES[self.product_type.downcase.to_sym]&.include? component_type
+      end
+      
       def component_count
         components.count
       end

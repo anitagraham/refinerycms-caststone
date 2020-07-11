@@ -4,14 +4,7 @@ form {
     border : 2px solid $adminBlue;
   }
 
-  div.row {
-    @include clearfix;
-  }
-
   div#fields {
-    @include column(5);
-    float : left;
-
     span.checkbox {
       label {
         display      : inline-block;
@@ -45,4 +38,40 @@ form {
     background-color    : $formValid }
 
 }
+// photo component form
+#componentsanddrawing_editor {
+  display        : flex;
+  flex-direction : row;
+  flex-wrap      : wrap;
 
+  div.photo_product {width : 100%}
+
+  div#components-drawing {
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    img { width: 114px}
+    a#redraw_button {
+      max-width: 114px;
+      padding: 0.25rem 0 0.25rem 0.25rem;
+    }
+  }
+
+  div#selectComponents {
+    flex-grow : 1; ;
+    div.component_types {
+      flex-grow      : 1;
+      display        : flex;
+      flex-direction : row;
+
+      fieldset {
+        flex-grow : 1;
+
+        input[type='checkbox'] + label.collection_check_boxes {
+          display     : inline;
+          margin-left : 0.5rem
+        }
+      }
+    }
+  }
+}
