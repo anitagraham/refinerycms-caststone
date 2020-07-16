@@ -24,11 +24,11 @@ module Refinery
       # has_many :columns, -> { where(component.type = "Refinery::Caststone::Column" ) }
       # has_many :letterboxes, -> { where(component.type = "Refinery::Caststone::Letterbox" ) }
       # has_many :trims, -> { where(component.type = "Refinery::Caststone::Trim" ) }
-      has_many :bases,        through: :assignments, foreign_key: 'component_id'
-      has_many :shafts,       through: :assignments, foreign_key: 'component_id'
-      has_many :capitals,     through: :assignments, foreign_key: 'component_id'
-      has_many :columns,      through: :assignments, foreign_key: 'component_id'
-      has_many :letterboxes,  through: :assignments, foreign_key: 'component_id'
+      has_many :bases,        through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Base'
+      has_many :shafts,       through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Shaft'
+      has_many :capitals,     through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Capital'
+      has_many :columns,      through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Column'
+      has_many :letterboxes,  through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Letterbox'
 
       before_destroy { |photo| photo.components.clear }
       before_update :save_drawing, :set_track_id

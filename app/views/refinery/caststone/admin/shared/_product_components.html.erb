@@ -1,21 +1,22 @@
 <!-- shared a set of components for a series selected for a photo  -->
 <!-- series=product, photo -->
-<div id="selectComponents" >
-
   <%= simple_fields_for :photo do |f| %>
-    <h1 > Select <%= series.name %> Components </h1 >
-    <!--    Pillars, columns and letterboxes, have base, shaft, capital-->
-    <div class="component_types" >
-      <% [:bases, :shafts, :capitals, :columns, :letterboxes, :trim].each do |ct| %>
+    <div class="selectComponents">
+
+      <% Refinery::Caststone::Component::COMP_TYPES.each do |ct| %>
+        <%ct = ct.downcase
+          ct_plural = ct.pluralize
+        %>
         <% if series.uses(ct) %>
-          <fieldset id="<%= ct %>" class="<%= ct  %>">
-            <legend ><%= ct.capitalize %></legend >
-            <%= f.collection_check_boxes :component_ids, series.send(ct), :id, :name %>
-            <%= link_to "Clear #{ct}", '#', id: ct, class: 'button clearRadioSet' %>
+          <fieldset id="<%= ct %>" class="component_type <%= ct_plural  %>">
+            <legend ><%= ct_plural.capitalize %></legend >
+            <%= f.collection_check_boxes :"#{ct}_ids", series.send(ct_plural), :id, :name %>
+            <%= link_to "Clear #{ct_plural}", '#', id: ct_plural, class: 'button clearRadioSet' %>
           </fieldset >
+        <% else %>
+          <% Rails.logger.debug "#{series.name} (#{series.product_type}) doesn't use #{ct_plural}" %>
         <% end %>
       <% end %>
-    </div >
+   </div>
   <% end %>
-</div >
 

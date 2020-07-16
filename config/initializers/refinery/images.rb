@@ -23,7 +23,7 @@ Refinery::Images.configure do |config|
   # config.user_image_ratios = {:"16/9"=>"1.778", :"4/3"=>"1.333", :"1:1"=>1}
 
   # Configure allowed mime types for validation
-  # config.whitelisted_mime_types = ["image/jpeg", "image/png", "image/gif", "image/tiff"]
+  config.whitelisted_mime_types = ["image/jpeg", "image/png"]
 
   # Configure image view options
   # config.image_views = [:grid, :list]
@@ -36,33 +36,6 @@ Refinery::Images.configure do |config|
   # This includes all dragonfly config for Dragonfly v 1.1.1
 
   config.dragonfly_name = :refinery_images
-  # config.dragonfly_verify_urls = true
-  # config.dragonfly_secret = "28e61d4484d6145bfbade83ee7e71bf9d632090dbe650c7e"
-  # config.dragonfly_url_host = ""
-  # config.dragonfly_datastore_root_path = "/private/var/www/refinerycms-caststone/spec/dummy/public/system/refinery/images"
-  # config.dragonfly_url_format = "/system/refinery/images/:job/:basename.:ext"
 
-
-  # Configure Dragonfly custom datastore
-  # The custom_datastore setting by default defers to the Refinery::Images setting for this but can be set just for images.
-  # config.dragonfly_custom_datastore_class = nil
-  # config.dragonfly_custom_datastore_opts = {}
-
-  # Configure S3 (you can also use ENV for this)
-  # The s3_datastore setting by default defers to the Refinery::Dragonfly setting for this but can be set just for images.
-  # config.s3_datastore = Refinery::Dragonfly.s3_datastore
-  # config.s3_bucket_name = ENV['S3_BUCKET']
-  # config.s3_access_key_id = ENV['S3_KEY']
-  # config.s3_secret_access_key = ENV['S3_SECRET']
-  # config.s3_region = ENV['S3_REGION']
-  #
-  #  further S3 configuration options
-  # config.s3_fog_storage_options = nil
-  # config.s3_root_path = nil
-  # config.s3_storage_path = nil
-  # config.s3_storage_headers = nil
-  # config.s3_url_host = nil
-  # config.s3_url_scheme = nil
-  # config.s3_use_iam_profile = nil
 
 end

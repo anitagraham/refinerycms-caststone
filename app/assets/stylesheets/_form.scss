@@ -1,9 +1,11 @@
 form {
-
   input:focus {
     border : 2px solid $adminBlue;
   }
-
+  .field img {
+    width  : inherit;
+    height : inherit;
+  }
   div#fields {
     span.checkbox {
       label {
@@ -12,15 +14,18 @@ form {
       }
     }
   }
+
   .fyi, .input.radio_buttons, .input.check_boxes {
-    background-color: #f3f4f5;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    border: 1px solid #444;
-    p, &>div {
-      display: inline-block;
-      margin-right: 1.5rem;
-      label {margin-top: 0.5rem}
+    background-color : #f3f4f5;
+    padding          : 1rem;
+    margin           : 0.5rem 0;
+    border           : 1px solid #444;
+
+    p, & > div {
+      display      : inline-block;
+      margin-right : 1.5rem;
+
+      label {margin-top : 0.5rem}
     }
   }
 
@@ -37,41 +42,73 @@ form {
     background-repeat   : no-repeat;
     background-color    : $formValid }
 
-}
-// photo component form
-#componentsanddrawing_editor {
-  display        : flex;
-  flex-direction : row;
-  flex-wrap      : wrap;
-
-  div.photo_product {width : 100%}
-
-  div#components-drawing {
-    margin-right: 1rem;
-    display: flex;
-    flex-direction: column;
-    img { width: 114px}
-    a#redraw_button {
-      max-width: 114px;
-      padding: 0.25rem 0 0.25rem 0.25rem;
-    }
+  // photo component form
+  #image_editor, #componenetsanddrawing_editor {
+    border : 1px solid darkgray;
   }
 
-  div#selectComponents {
-    flex-grow : 1; ;
-    div.component_types {
-      flex-grow      : 1;
+  #componentsanddrawing_editor {
+    display        : flex;
+    flex-direction : row;
+    flex-wrap      : wrap;
+    align-items    : end;
+
+    .photo_product {
+      width : 100%;
+    }
+
+    section.components {
       display        : flex;
       flex-direction : row;
+      flex-grow      : 1;
 
-      fieldset {
-        flex-grow : 1;
+      fieldset.drawing {
+        width : 120px;
+      }
 
-        input[type='checkbox'] + label.collection_check_boxes {
-          display     : inline;
-          margin-left : 0.5rem
+      div.selectComponents {
+        display        : flex;
+        flex-direction : row;
+        flex-grow      : 1;
+
+        fieldset.component_type {
+          legend {font-weight : bold; font-size : larger;}
+
+          flex-grow      : 1;
+          display        : flex;
+          flex-direction : column;
+
+          span {
+            display : block;
+
+            label {
+              display    : inline;
+              margin-top : 0;
+            }
+          }
+
+          input[type='checkbox'] + label.collection_check_boxes {
+            display     : inline;
+            margin-left : 0.5rem
+          }
+
+          a {
+            margin-top : auto;
+            padding    : 0 0.5rem;
+          }
         }
       }
+
+      //div#selectComponents {
+      //  flex-grow : 1;
+      //}
+
+      //div.component_types {
+      //  flex-grow      : 1;
+      //  display        : flex;
+      //  flex-direction : row;
+      //}
     }
+
   }
 }

@@ -1,12 +1,4 @@
 <div class="field" >
-  <% if f.object.image %>
-    <%= image_fu f.object.image, :large %>
-   <% if action_name =~ /(edit)|(update)/ %>
-    <h3 >Click here to edit or crop this image
-      <%= action_icon :edit, refinery.edit_admin_image_path(f.object.image), "Edit this image" %>
-    </h3 >
-    <%end %>
-  <% else %>
     <%= render :partial => "/refinery/admin/image_picker", :locals => {
       :f => f,
       :field => :image_id,
@@ -14,5 +6,4 @@
       :toggle_image_display => false
     }
     %>
-  <% end %>
  </div>

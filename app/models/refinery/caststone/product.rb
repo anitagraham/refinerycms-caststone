@@ -4,10 +4,10 @@ module Refinery
 
       USES = {
         # for each product type, valid component types
-        pillar: [:bases, :shafts, :capitals],
-        column: [:bases, :columns, :capitals],
-        letterbox: [:bases, :shafts, :capitals, :letterboxes],
-        trim: [:bases, :shafts, :trim]
+        pillar: [:base, :shaft, :capital],
+        column: [:base, :column, :capital],
+        letterbox: [:base, :shaft, :capital, :letterbox],
+        trim: [:base, :shaft, :trim]
       }
       acts_as_indexed fields: [:name]
       # Gutentag::ActiveRecord.call self
@@ -20,7 +20,7 @@ module Refinery
 
       has_many :bases,        through: :compatibles, foreign_key: :component_id, dependent: :destroy, source: :base
       # Rails can't choose between base and basis
-      has_many :shafts,       through: :compatibles, foreign_key: :component_id, dependent: :destroy, inverse_of: :products
+      has_many :shafts,       through: :compatibles, foreign_key: :component_id, dependent: :destroy
       has_many :capitals,     through: :compatibles, foreign_key: :component_id, dependent: :destroy
       has_many :columns,      through: :compatibles, foreign_key: :component_id, dependent: :destroy
       has_many :letterboxes,  through: :compatibles, foreign_key: :component_id, dependent: :destroy
@@ -34,17 +34,15 @@ module Refinery
       accepts_nested_attributes_for :trims,       reject_if: :blank_content, allow_destroy: true
 
       scope :pillars, -> { where(product_type: 'pillars') }
-      # def pillars
-      #   product_type == 'pillars'
-      # end
+    
       def to_s
         name
       end
 
       def uses(component_type)
-        Refinery::Caststone::Product::USES[self.product_type.downcase.to_sym]&.include? component_type
+        Refinery::Caststone::Product::USES[self.product_type.downcase.to_sym]&.include? component_type.downcase.to_sym
       end
-      
+
       def component_count
         components.count
       end

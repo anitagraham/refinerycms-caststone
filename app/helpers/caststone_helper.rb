@@ -41,6 +41,7 @@ module CaststoneHelper
   end
 
   def photo_index_view(photo, view)
+    Rails.logger.debug(". . . . #{__FILE__}/#{__method__}/#{__LINE__} #{view} view of photo #{photo.id}")
     image = view == 'list' ? list(photo) : grid(photo)
     icons = tag.span actions(photo), class: :actions
     tag.li class: 'photo', id: dom_id(photo) do
@@ -54,7 +55,7 @@ module CaststoneHelper
 
   def grid(photo)
     if photo.image.present?
-      tag.img src: photo.image.thumbnail({geometry: :index}).url, title: photo.name, alt: photo.trackid
+      tag.img src: photo.image.thumbnail({geometry: :index}).url, title: "#{photo.name} (#{photo.image&.trackingId})", alt: photo&.trackid
     else
       tag.p "Rebuild image"
     end

@@ -2,10 +2,12 @@ module Refinery
   module Caststone
     module Photos
 
-      extend Refinery::Dragonfly::ExtensionConfiguration
+      # extend Refinery::Dragonfly::ExtensionConfiguration
       include ActiveSupport::Configurable
 
       config_accessor :defined_views,
+                      # :dragonfly_name,
+                      # :dragonfly_plugin,
                       :max_image_size,
                       :pages_per_admin_index,
                       :pages_per_dialog,
@@ -14,16 +16,16 @@ module Refinery
                       :preferred_view,
                       :sizes
 
-      self.dragonfly_name         = :caststone_photos
-      self.dragonfly_plugin       = :imagemagick
+      # self.dragonfly_name         = :refinery_images
+      # self.dragonfly_plugin       = :imagemagick
 
       # Dragonfly processor to strip image of all profiles and comments
       # (imagemagick conversion -strip)
-      self.dragonfly_processors = [{
-        name: :strip,
-        block: ->(content) { content.process!(:convert, '-strip') }
-      }]
-      config.dragonfly_url_format = '/system/refinery/photos/:job/:basename.:ext'
+      # self.dragonfly_processors = [{
+      #   name: :strip,
+      #   block: ->(content) { content.process!(:convert, '-strip') }
+      # }]
+      # config.dragonfly_url_format = '/system/refinery/photos/:job/:basename.:ext'
       #self.dragonfly_url_format = Refinery::Dragonfly.url_format('photos')
 
       self.max_image_size = 5242880

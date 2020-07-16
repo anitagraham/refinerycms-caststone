@@ -8,10 +8,10 @@ module Refinery
       config.autoload_paths += %W( #{config.root}/lib )
 
 
-      initializer 'attach-caststone-photos-with-dragonfly', before: :finisher_hook do |app|
-        ::Refinery::Dragonfly.configure!(::Refinery::Caststone::Photos)
-        ::Refinery::Dragonfly.attach!(app, ::Refinery::Caststone::Photos)
-      end
+      # initializer 'attach-caststone-photos-with-dragonfly', before: :finisher_hook do |app|
+      #   ::Refinery::Dragonfly.configure!(::Refinery::Caststone::Photos)
+      #   ::Refinery::Dragonfly.attach!(app, ::Refinery::Caststone::Photos)
+      # end
 
       def self.register_photos(tab)
         tab.name = 'photos'

@@ -3,12 +3,12 @@ class Copyright
   include Dragonfly::ImageMagick::Utils
 
   def copyright(source_image, notice = "(c)")
-    opts = defaults.merge(opts)
-#TODO proper tempfile name
-    tempfile =Tempfile.new('caststone')
-    command = "convert  -fill white -pointsize 40 -annotate 0 'Hello Sailor' #{source_image.path} #{tempfile.path}"
-    result = `#{command}`
-    tempfile
+#     opts = defaults.merge(opts)
+# #TODO proper tempfile name
+#     tempfile =Tempfile.new('caststone')
+#     command = "convert  -fill white -pointsize 40 -annotate 0 'Hello Sailor' #{source_image.path} #{tempfile.path}"
+#     result = `#{command}`
+#     tempfile
   end
 
     def defaults
