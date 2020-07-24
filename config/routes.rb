@@ -29,6 +29,7 @@ Refinery::Core::Engine.routes.draw do
       # ------------- Photos --------------
       resources :photos, except: :show do
         get :view, on: :member
+        get :draw, on: :member
         post :update_positions, on: :collection
         resources :components, :bases, :shafts, :capitals, :columns, :letterboxes, controller: 'components'
       end

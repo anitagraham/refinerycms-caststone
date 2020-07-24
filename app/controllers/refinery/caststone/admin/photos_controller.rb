@@ -7,7 +7,7 @@ module Refinery
 
         respond_to :html, :js
         respond_to :json
-        # respond_to :png, only: :draw
+        respond_to :png, only: :draw
 
         before_action :set_view, only: :index
         before_action :find_all_series, only: [:edit, :new]
@@ -22,6 +22,10 @@ module Refinery
         def find_photo
           @photo = Refinery::Caststone::Photo.includes(product: :components).find(params[:id])
           @components = @photo.product.components if @photo.product
+        end
+
+        def draw
+          send_data  CaststoneHelper.drawing(params[:list]), type: 'image/png', disposition: 'inline'
         end
 
         # def add_copyright
@@ -42,7 +46,7 @@ module Refinery
 
         def photo_params
           params.require(:photo).permit(
-            :name, :caption, :page, :position,:drawing, :image, :image_id, :page_id, :product_id, :trackid,
+            :name, :caption, :page, :position, :drawing, :image, :image_id, :page_id, :product_id, :trackid,
             component_ids: [], base_ids: [], shaft_ids: [], capital_ids: [], column_ids: [], letterbox_ids: [])
         end
       end

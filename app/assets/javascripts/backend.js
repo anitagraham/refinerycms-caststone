@@ -37,15 +37,14 @@
 
   if (redrawButton.length) {
 
-    $('form.edit_photo').on('click', 'a#redraw_button', function() {
-
-      var componentList = $('input:checked').map(function() { return this.value;});
+    $('form.edit_photo').on('click', 'a#redraw_button', function(event) {
+      let photo_id = event.target.dataset.photoId
+      var componentList = $('.selectComponents').find('input:checked').map(function() { return this.value;});
       $.when(
         $.ajax({
-        'url': '/refinery/caststone/components/draw.png',
-        'data': {list : $.makeArray(componentList) }
+          'url':`/refinery/caststone/photos/${photo_id}/draw.png`,
+          'data': {component_list : $.makeArray(componentList) }
       })
-
        .then(function( data){
          $('img.drawing').attr('src', 'data:image/png;base64,' + data);
          // this second copy is used to save the latest drawing back to the db

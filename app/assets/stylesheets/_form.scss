@@ -14,8 +14,9 @@ form {
       }
     }
   }
+  // photo component form
 
-  .fyi, .input.radio_buttons, .input.check_boxes {
+  .fyi, .input.radio_buttons, .input.check_boxes, [id^="image_picker_container_"] {
     background-color : #f3f4f5;
     padding          : 1rem;
     margin           : 0.5rem 0;
@@ -42,11 +43,6 @@ form {
     background-repeat   : no-repeat;
     background-color    : $formValid }
 
-  // photo component form
-  #image_editor, #componenetsanddrawing_editor {
-    border : 1px solid darkgray;
-  }
-
   #componentsanddrawing_editor {
     display        : flex;
     flex-direction : row;
@@ -63,7 +59,13 @@ form {
       flex-grow      : 1;
 
       fieldset.drawing {
-        width : 120px;
+        display:flex;
+        flex-direction: column;
+        aside {  margin-top: auto; }
+        img.drawing {
+          width: unset;
+          height: unset;
+        }
       }
 
       div.selectComponents {
@@ -98,16 +100,6 @@ form {
           }
         }
       }
-
-      //div#selectComponents {
-      //  flex-grow : 1;
-      //}
-
-      //div.component_types {
-      //  flex-grow      : 1;
-      //  display        : flex;
-      //  flex-direction : row;
-      //}
     }
 
   }

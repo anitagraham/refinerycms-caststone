@@ -13,8 +13,8 @@
     <% else %>
       <img alt='Drawing of <%= @photo.name %>' class='drawing' >
     <% end %>
-    <aside >Total height of components <%= @photo.height %>mm</aside >
-    <a id="redraw_button" class="button" href="#" tooltip="Redraw with the currently selected components " >Redraw</a >
+    <aside >Height: <%= @photo.height.to_i %>mm</aside >
+    <a id="redraw_button" class="button" href="#" tooltip="Redraw with the currently selected components" data-photo-id="<%= @photo.id %>" >Redraw</a >
     <%= f.hidden_field :drawing, value: @photo.drawing, id: 'photo_drawing' %>
   </fieldset >
   <%= render 'refinery/caststone/admin/shared/product_components', series: @photo.product if @photo.product %>

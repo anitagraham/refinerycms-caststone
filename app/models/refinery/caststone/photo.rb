@@ -17,22 +17,22 @@ module Refinery
       belongs_to :page, inverse_of: :photos, foreign_key: :page_id, optional: true
 
       has_many :assignments
-      has_many :components,   through: :assignments
+      has_many :components, through: :assignments
       # has_many :bases, -> { where(component.type = "Refinery::Caststone::Base" ) }
       # has_many :shafts, -> { where(component.type = "Refinery::Caststone::Shaft" ) }
       # has_many :capitals, -> { where(component.type = "Refinery::Caststone::Capital" ) }
       # has_many :columns, -> { where(component.type = "Refinery::Caststone::Column" ) }
       # has_many :letterboxes, -> { where(component.type = "Refinery::Caststone::Letterbox" ) }
       # has_many :trims, -> { where(component.type = "Refinery::Caststone::Trim" ) }
-      has_many :bases,        through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Base'
-      has_many :shafts,       through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Shaft'
-      has_many :capitals,     through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Capital'
-      has_many :columns,      through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Column'
-      has_many :letterboxes,  through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Letterbox'
+      has_many :bases, through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Base'
+      has_many :shafts, through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Shaft'
+      has_many :capitals, through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Capital'
+      has_many :columns, through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Column'
+      has_many :letterboxes, through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Letterbox'
 
       before_destroy { |photo| photo.components.clear }
-      before_update :save_drawing, :set_track_id
-      before_save :save_drawing, :sanitize_name, :set_track_id
+      # before_update :save_drawing, :set_track_id
+      # before_save :save_drawing, :sanitize_name, :set_track_id
 
       def sanitize_name
         name.gsub(/.jpg$/i, '')
@@ -47,7 +47,7 @@ module Refinery
         trackid = end_token || start_token
       end
 
-      def view(options={})
+      def view(options = {})
         default_options = {
           small_size: :small,
           large_size: ''
@@ -55,7 +55,7 @@ module Refinery
         options = default_options.merge(options)
         # large image can be the original, full size image
 
-        url_large = options[:large_size].blank? ? image.url : thumbnail(geometry: options[:large_size] ).url
+        url_large = options[:large_size].blank? ? image.url : thumbnail(geometry: options[:large_size]).url
         {
           id: id,
           url_large: url_large,
@@ -72,19 +72,20 @@ module Refinery
       def height
         components.sum(:height) if components.any?
       end
+
       def component_count
         components.any? ? components.count : 'None'
       end
+
       def popup_image
         name thumb('250x')
       end
 
       private
-
         def save_drawing
-          # component_ids = base_ids + shaft_ids + column_ids + capital_ids + letterbox_ids
+
           if components.present?
-            self.drawing = Refinery::Caststone::Component.construct(component_ids)
+            self.drawing = CaststoneHelper.(component_ids)
             self.height = components.sum('height')
           end
         end
