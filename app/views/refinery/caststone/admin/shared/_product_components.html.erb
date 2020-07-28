@@ -13,8 +13,6 @@
             <%= f.collection_check_boxes :"#{ct}_ids", series.send(ct_plural), :id, :name %>
             <%= link_to "Clear #{ct_plural}", '#', id: ct_plural, class: 'button clearRadioSet' %>
           </fieldset >
-        <% else %>
-          <% Rails.logger.debug "#{series.name} (#{series.product_type}) doesn't use #{ct_plural}" %>
         <% end %>
       <% end %>
    </div>
