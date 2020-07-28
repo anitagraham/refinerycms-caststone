@@ -9,7 +9,8 @@ module Refinery
         letterbox: [:base, :shaft, :capital, :letterbox],
         trim: [:base, :shaft, :trim]
       }
-      acts_as_indexed fields: [:name]
+      acts_as_indexed fields: [:name, :description]
+      is_seo_meta
       # Gutentag::ActiveRecord.call self
 
       belongs_to :drawing, class_name: 'Refinery::Image', optional: true
@@ -34,7 +35,7 @@ module Refinery
       accepts_nested_attributes_for :trims,       reject_if: :blank_content, allow_destroy: true
 
       scope :pillars, -> { where(product_type: 'pillars') }
-    
+
       def to_s
         name
       end

@@ -1,32 +1,35 @@
 <%= simple_form_for [refinery, :caststone_admin, @product] do |f| %>
   <%= render '/refinery/admin/error_messages',
-    object: @product,
-    include_object_name: true
+             object: @product,
+             include_object_name: true
   %>
-  ￿
-  <div class='field'>
+  <aside>
+    <h4 >Note</h4 >
+    <ul >
+      <li ><em >Series id</em >: <%= @product.id %></li >
+      <li ><em >Components</em >: <%= @product.component_count %> </li >
+    </ul >
+  </aside>
+
+  <div class='field' >
     <%= f.label :name %>
     <%= f.text_field :name, class: 'larger widest' %>
-  </div>
-  <div class="fyi">
-    <h3>Information Only</h3>
-    <li><em>Series id</em >: <%= @product.id %></li>
-    <li><em>Components</em >: <%= @product.component_count %> </li>
-  </div>
+  </div >
 
-  <div class="field">
-    <%= f.input :product_type, collection: %w(Pillar Column Letterbox Trim), as: :radio_buttons %>
-  </div>
+    <div class="field" >
+      <%= f.input :product_type, collection: %w(Pillar Column Letterbox Trim), as: :radio_buttons %>
+    </div >
+
   <%= render '/refinery/caststone/admin/tabbed_fields',
-    f: f, tabs: Refinery::Caststone::Products.tabs
+             f: f, tabs: Refinery::Caststone::Products.tabs, object: @product
   %>
 
   <%= render '/refinery/admin/form_actions', f: f,
-    continue_editing: false,
-    delete_title: t('delete', scope: 'refinery.products.admin.products.product'),
-    delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @product.name) %>
+             continue_editing: false,
+             delete_title: t('delete', scope: 'refinery.products.admin.products.product'),
+             delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @product.name) %>
 <% end %>
-<hr>
+<hr >
 <%#= form_for [refinery, :caststone_admin, @product] do |nf| %>
-  <%#= render '/refinery/caststone/admin/products/traits', f: nf, object: @product %>
+<%#= render '/refinery/caststone/admin/products/traits', f: nf, object: @product %>
 <%# end %>
