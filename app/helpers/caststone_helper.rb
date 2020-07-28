@@ -7,6 +7,7 @@ module CaststoneHelper
 
   def self.drawing(component_ids)
     return if component_ids.count.zero?
+    
     maxh = 600
     maxw = 200
     # scalex = 200
@@ -15,9 +16,9 @@ module CaststoneHelper
     Magick::RVG.dpi = 90
 
     components = Refinery::Caststone::Component.find(component_ids)
-    height = components.map(&:height).reduce(:+)
+    height = components.map(&:height).reduce(:+) * scaley
 
-    #   set up our canvas. Use max width, actual height in mm => pixels
+    #   set up our canvas. Use max width, actual height in mm => pixels, scaled down
     rvg = Magick::RVG.new(maxw, height).viewbox(0, 0, maxw, height) do |canvas|
       canvas.g do |grp|
         ypos = height

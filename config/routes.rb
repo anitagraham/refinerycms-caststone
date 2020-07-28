@@ -22,7 +22,6 @@ Refinery::Core::Engine.routes.draw do
       resources :components, :bases, :shafts, :capitals, :columns, :letterboxes,
                 controller: 'components', except: :show do
         collection do
-          get :draw
           post :update_positions
         end
       end

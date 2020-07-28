@@ -6,17 +6,8 @@
       copyrightButton = $('a#copyright_button'),
       clearRadioButton = $('a.clearRadioSet'),
       photoGrid = $('.photos_view, .drawings_view');
-      
- if (seriesSelect.length)  {
-    $('div.fields').on('click', 'a#redraw_button', function (){
-      updateDrawing();
-      return false; });
-    $('select#photo_product_id').change(function() {
-      $.get('/refinery/caststone/products/' + this.value + '.js');
-    });
-  }
 
-  $('.component_type').find("input:checkbox").click(function() {
+   $('.component_type').find("input:checkbox").click(function() {
       if ($(this).is(":checked")) {
           var group = "input:checkbox[name='" + $(this).attr("name") + "']";
           $(group).prop("checked", false);
@@ -34,8 +25,13 @@
     });
   }
 
-  if (redrawButton.length) {
+    if (seriesSelect.length)  {
+      $('select#photo_product_id').change(function() {
+        $.get('/refinery/caststone/products/' + this.value + '.js');
+      });
+    }
 
+  if (redrawButton.length) {
     $('form.edit_photo').on('click', 'a#redraw_button', function(event) {
       let photo_id = event.target.dataset.photoId
       var componentList = $('.selectComponents').find('input:checked').map(function() { return this.value;});
@@ -87,16 +83,16 @@
         }
     });
   };
-  
+
   const showTrackingId = image => {
     trackingId = image.dataset.trackingid
     let span = document.createElement('span')
     span.innerText = trackingId
     span.classList.add('trackingId')
   }
-  let gridImages = document.querySelectorAll(('#image_grid li > img');
-  gridImages.forEach(showTrackingId))
-  
+  let gridImages = document.querySelectorAll(('#image_grid li > img'))
+  gridImages.forEach(showTrackingId)
+
   let select = document.querySelector('.multiselect');
   if (select) {
     multi(select, {

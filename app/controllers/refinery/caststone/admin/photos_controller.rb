@@ -25,7 +25,7 @@ module Refinery
         end
 
         def draw
-          send_data  CaststoneHelper.drawing(params[:list]), type: 'image/png', disposition: 'inline'
+          send_data  CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
         end
 
         # def add_copyright

@@ -7,6 +7,10 @@ module Refinery
       respond_to :png, only: :draw
       respond_to :json
 
+      def draw
+        send_data  CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
+      end
+      
       def details
         photo =  Refinery::Caststone::Photo.find(params[:id])
         if photo.components.empty?
@@ -16,7 +20,7 @@ module Refinery
         end
       end
       private
-      
+
     end
   end
 end
