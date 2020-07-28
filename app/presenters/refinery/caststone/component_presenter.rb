@@ -28,10 +28,9 @@ module Refinery
       def to_html
         view_name = Refinery::Caststone::Components.preferred_view
         list_classes.push view_name
-        html = tag.ul class: list_classes do
+        tag.ul class: list_classes do
           render_components(collection, view_name)
         end
-        html
       end
 
       def render_components(components, view_name)

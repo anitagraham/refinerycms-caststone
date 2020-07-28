@@ -1,0 +1,14 @@
+#image_grid li  {
+  img {
+    height : inherit;
+    width  : inherit;
+  }
+  .actions {
+    background-color: rgba(255, 255, 255, 0.6)
+  }
+}
+
+#existing_image_area li img {
+  height : inherit;
+  width  : inherit;
+}

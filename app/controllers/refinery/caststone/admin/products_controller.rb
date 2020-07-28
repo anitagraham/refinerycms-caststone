@@ -13,6 +13,7 @@ module Refinery
 
         def list_components
           @components = Refinery::Caststone::Component.order(:name)
+          respond_to :html, :json
         end
 
         def product_params

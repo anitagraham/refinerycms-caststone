@@ -6,8 +6,7 @@
       copyrightButton = $('a#copyright_button'),
       clearRadioButton = $('a.clearRadioSet'),
       photoGrid = $('.photos_view, .drawings_view');
-
-
+      
  if (seriesSelect.length)  {
     $('div.fields').on('click', 'a#redraw_button', function (){
       updateDrawing();
@@ -88,6 +87,16 @@
         }
     });
   };
+  
+  const showTrackingId = image => {
+    trackingId = image.dataset.trackingid
+    let span = document.createElement('span')
+    span.innerText = trackingId
+    span.classList.add('trackingId')
+  }
+  let gridImages = document.querySelectorAll(('#image_grid li > img');
+  gridImages.forEach(showTrackingId))
+  
   let select = document.querySelector('.multiselect');
   if (select) {
     multi(select, {

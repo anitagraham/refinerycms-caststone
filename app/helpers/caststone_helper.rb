@@ -13,9 +13,9 @@ module CaststoneHelper
     scaley = 0.3
     require 'rvg/rvg'
     Magick::RVG.dpi = 90
-    output = [1,2,3].reduce {|result, current| result += current }
+
     components = Refinery::Caststone::Component.find(component_ids)
-    height = components.map(&:height).reduce(:+) * scaley
+    height = components.map(&:height).reduce(:+)
 
     #   set up our canvas. Use max width, actual height in mm => pixels
     rvg = Magick::RVG.new(maxw, height).viewbox(0, 0, maxw, height) do |canvas|
@@ -46,7 +46,6 @@ module CaststoneHelper
   end
 
   def photo_index_view(photo, view)
-    Rails.logger.debug(". . . . #{__FILE__}/#{__method__}/#{__LINE__} #{view} view of photo #{photo.id}")
     image = view == 'list' ? list(photo) : grid(photo)
     icons = tag.span actions(photo), class: :actions
     tag.li class: 'photo', id: dom_id(photo) do

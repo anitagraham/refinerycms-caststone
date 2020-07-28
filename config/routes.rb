@@ -1,9 +1,10 @@
 Refinery::Core::Engine.routes.draw do
 
   get '/system/drawings/*dragonfly', to: Dragonfly.app(:caststone_drawings)
-  get '/system/photos/*dragonfly',   to: Dragonfly.app(:caststone_photos)
-  get '/templates/:path/:name',      to: "caststone/templates#serve"
+  get '/system/photos/*dragonfly', to: Dragonfly.app(:caststone_photos)
+  get '/templates/:path/:name', to: "caststone/templates#serve"
   get '/refinery/caststone/products/:id/:type/list', to: "caststone/products#list"
+  get '/refinery/caststone/products/:id/components', to: 'caststone/products#components'
 
   # Admin routes
   namespace :caststone, :path => '' do
@@ -14,7 +15,7 @@ Refinery::Core::Engine.routes.draw do
         collection do
           post :update_positions
         end
-        resources :components,  :bases, :shafts, :capitals, :columns, :letterboxes
+        resources :components, :bases, :shafts, :capitals, :columns, :letterboxes
       end
 
       # ------------- Components --------------
@@ -38,6 +39,7 @@ Refinery::Core::Engine.routes.draw do
   end
 
 
+
   # Frontend routes
   namespace :caststone, path: 'refinery/caststone' do
     resources :photos, only: [:draw, :details] do
@@ -45,7 +47,11 @@ Refinery::Core::Engine.routes.draw do
         get :draw, :details
       end
     end
-    resources :products, only: :show
+    # resources :products do
+    #   member do
+    #     get :components
+    #   end
+    # end
   end
 
 end

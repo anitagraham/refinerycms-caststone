@@ -1,2 +1,2 @@
-collection @components 
-	attributes :type, :name	
+collection @components
+	attributes :type, :name, :height, :drawing_uid
