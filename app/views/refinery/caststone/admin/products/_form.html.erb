@@ -17,8 +17,7 @@
   <div class="field">
     <%= f.input :product_type, collection: %w(Pillar Column Letterbox Trim), as: :radio_buttons %>
   </div>
-  <%= render '/refinery/caststone/admin/tabbed_fields',
-    f: f, tabs: Refinery::Caststone::Products.tabs
+  <%= render '/refinery/caststone/admin/tabbed_fields', f: f, tabs: Refinery::Caststone::Products.tabs, object: @product
   %>
 
   <%= render '/refinery/admin/form_actions', f: f,
