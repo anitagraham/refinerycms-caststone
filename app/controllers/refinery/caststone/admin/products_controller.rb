@@ -17,7 +17,8 @@ module Refinery
         end
 
         def product_params
-          params.require(:product).permit(:name, :description, :position, :drawing_id, :trait_list, :product_type, component_ids:[])
+          params.require(:product).permit(
+            :name, :description, :browser_title, :meta_description, :features, :measurements, :position, :drawing_id, :trait_list, :product_type, component_ids:[])
         end
       end
     end
