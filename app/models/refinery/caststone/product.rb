@@ -1,20 +1,23 @@
 module Refinery
   module Caststone
     class Product < Refinery::Core::BaseModel
+      extend FriendlyId
 
-      USES = {
-        # for each product type, valid component types
-        pillar: [:base, :shaft, :capital],
-        column: [:base, :column, :capital],
-        letterbox: [:base, :shaft, :capital, :letterbox],
-        trim: [:base, :shaft, :trim]
-      }
+      friendly_id :name, use: [:slugged]
+
       acts_as_indexed fields: [:name, :description]
       is_seo_meta
+
       # Gutentag::ActiveRecord.call self
 
       belongs_to :drawing, class_name: 'Refinery::Image', optional: true
+      belongs_to :image, class_name: 'Refinery::Image', optional: true
+      belongs_to :brochure, class_name: 'Refinery::Resource', optional: true
+      belongs_to :brochure_cover, class_name: 'Refinery::Image', optional: true
+
       validates :name, presence: true, uniqueness: true
+
+      has_many :photos, -> {includes :components}, inverse_of: :product
 
       has_many :compatibles,  foreign_key: :product_id
       has_many :components,   through: :compatibles,  inverse_of: :products, foreign_key: :component_id,  dependent: :destroy
@@ -34,14 +37,26 @@ module Refinery
       accepts_nested_attributes_for :shafts,      reject_if: :blank_content, allow_destroy: true
       accepts_nested_attributes_for :trims,       reject_if: :blank_content, allow_destroy: true
 
-      scope :pillars, -> { where(product_type: 'pillars') }
+      warning do |product|
+        product.warnings.add(:components, ": No components defined") unless product.components.any?
+        product.warnings.add(:image, ": No image loaded") unless product.image.present?
+        product.warnings.add(:brochure, ": No Brochure loaded") unless product.brochure.present?
+        [:description, :summary, :features, :measurements].each do |field|
+          product.warnings.add(field, " not filled in") unless product.send(field).present?
+        end
+      end
 
       def to_s
         name
       end
-
+      def all_text_fields_filled_in
+        description.present? && summary.present? && features.present? && measurements.present?
+      end
+      def pillar?
+        product_type.downcase =='pillar'
+      end
       def uses(component_type)
-        Refinery::Caststone::Product::USES[self.product_type.downcase.to_sym]&.include? component_type.downcase.to_sym
+        Refinery::Caststone::Products::USES[self.product_type.downcase.to_sym]&.include? component_type.downcase.to_sym
       end
 
       def component_count
@@ -49,7 +64,7 @@ module Refinery
       end
 
       def is_a_pillar?
-        self.product_type.present? & self.product_type == 'pillar'
+        self&.product_type == 'pillar'
       end
 
       # borrowed from Refinery::Page
@@ -60,10 +75,6 @@ module Refinery
             use: [ :reserved],
             reserved_words: Refinery::Pages.friendly_id_reserved_words
           }
-          # if ::Refinery::Pages.scope_slug_by_parent
-          #   friendly_id_options[:use] << :scoped
-          #   friendly_id_options.merge!(scope: :parent)
-          # end
           friendly_id_options
         end
       end
@@ -71,6 +82,9 @@ module Refinery
       extend FriendlyId
       friendly_id :name, FriendlyIdOptions.options
 
+      def should_generate_new_friendly_id?
+        name_changed? || super
+      end
     end
   end
 end

@@ -1,0 +1,13 @@
+<%
+  header = "Select photos to be used in the slider/carousel for #{object.name}".html_safe
+  photos =  object.photos
+  nophotos = tag.p t('.no_photos_yet')
+  photo_collection = collection_select :product, :photo_ids, photos, :id, :name, {},
+                                       {multiple: true,
+                                        class:  :multiselect,
+                                        id: :photo_multiselect}
+  selection = photos.present? ? photo_collection : nophotos
+
+  content = tag.div header << selection, class: 'wym_skin_refinery page_part', id: 'product_photo_picker'
+%>
+<%= content %>

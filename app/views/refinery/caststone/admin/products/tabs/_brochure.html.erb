@@ -1,0 +1,22 @@
+<div id="product_brochure" class="field">
+  <%= f.label :brochure %>
+  <%= render partial: "/refinery/admin/resource_picker",
+             locals: {
+               f: f,
+               field: :brochure_id,
+               resource: f.object.brochure
+             }
+  %>
+</div>
+<div id="product_brochure_cover" class="field">
+  <%= f.label :brochure_cover %>
+  <%= render partial: "/refinery/admin/image_picker",
+             locals: {
+               f: f,
+               field: :brochure_cover_id,
+               image: f.object.brochure_cover,
+               toggle_image_display: false
+             }
+  %>
+
+</div>

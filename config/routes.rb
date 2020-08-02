@@ -40,17 +40,13 @@ Refinery::Core::Engine.routes.draw do
 
 
   # Frontend routes
-  namespace :caststone, path: 'refinery/caststone' do
+  namespace :caststone, path: 'caststone' do
     resources :photos, only: [:draw, :details] do
       member do
         get :draw, :details
       end
     end
-    # resources :products do
-    #   member do
-    #     get :components
-    #   end
-    # end
+    resources :products, only: [:index, :show]
   end
 
 end

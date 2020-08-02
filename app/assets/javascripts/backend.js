@@ -100,6 +100,10 @@
       "search_placeholder": "Search...",
       "non_selected_header": 'Available',
       "selected_header": 'Selected',
+       addButtonText: '>',
+       removeButtonText: '<',
+       addAllButtonText: '>>',
+       removeAllButtonText: '<<',
       "limit": -1,
       "limit_reached": function () {
       },

@@ -10,9 +10,10 @@ module Refinery
       acts_as_indexed fields: %i[name trackid]
 
       validates :name, presence: true, uniqueness: true
+      validates :image, presence: true
       # dragonfly_accessor :image, app: :caststone_photos
 
-      belongs_to :product
+      belongs_to :product, inverse_of: :photos, optional: true
       belongs_to :image
       belongs_to :page, inverse_of: :photos, foreign_key: :page_id, optional: true
 
@@ -33,6 +34,12 @@ module Refinery
       before_destroy { |photo| photo.components.clear }
       # before_update :save_drawing, :set_track_id
       # before_save :save_drawing, :sanitize_name, :set_track_id
+      #
+      warning do |photo|
+        photo.warnings.add(:components, ": No components defined") unless photo.components.any?
+        photo.warnings.add(:image, ": No image loaded") unless photo.image.present?
+        photo.warnings.add(:trackid, "No tracking id assigned") unless photo.trackid.present?
+      end
 
       def sanitize_name
         name.gsub(/.jpg$/i, '')
@@ -45,6 +52,11 @@ module Refinery
         end_token = name.split.last.to_i
         start_token = name.split.first.to_i
         trackid = end_token || start_token
+      end
+
+
+      def complete?
+        trackid.present? && image_id.present? && components.any?
       end
 
       def view(options = {})

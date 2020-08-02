@@ -7,7 +7,15 @@ module Refinery
     module Products
       require 'refinery/caststone/products/engine'
       autoload :Tab, 'refinery/caststone/products/tabs'
-    
+
+      USES = {
+        # for each product type, valid component types
+        pillar: [:base, :shaft, :capital],
+        column: [:base, :column, :capital],
+        letterbox: [:base, :shaft, :capital, :letterbox],
+        trim: [:base, :shaft, :trim]
+      }
+
       class << self
         attr_writer :root
 

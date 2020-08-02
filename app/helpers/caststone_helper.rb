@@ -7,7 +7,7 @@ module CaststoneHelper
 
   def self.drawing(component_ids)
     return if component_ids.count.zero?
-    
+
     maxh = 600
     maxw = 200
     # scalex = 200
@@ -47,31 +47,41 @@ module CaststoneHelper
   end
 
   def photo_index_view(photo, view)
-    image = view == 'list' ? list(photo) : grid(photo)
-    icons = tag.span actions(photo), class: :actions
-    tag.li class: 'photo', id: dom_id(photo) do
-      image << icons
+    link = edit_link(photo, view)
+    trackid = photo.trackid.present? ? (tag.span photo.trackid, class: :trackid) : nil
+    actions = tag.span actions(photo), class: :actions
+    status = photo.complete? ? "ok" : "warning"
+    tag.li class: "photo #{status}", id: dom_id(photo) do
+      [trackid, link, actions].join(' ').html_safe
     end
   end
 
+  def edit_link(photo, view)
+    image = view == 'list' ? list(photo) : grid(photo)
+    link = link_to image, refinery.edit_caststone_admin_photo_path(photo), class: :edit, title: 'Click to edit'
+  end
+
   def list(photo)
-    tag.span(photo.trackid.presence, class: :trackid) << tag.span(photo.name, class: :title)
+    tag.span(photo.name, class: :title)
   end
 
   def grid(photo)
+
     if photo.image.present?
-      tag.img src: photo.image.thumbnail({geometry: :index}).url, title: "#{photo.name} (#{photo.image&.trackingId})", alt: photo&.trackid
+      tag.img src: photo.image.thumbnail({geometry: :index}).url, title: "#{photo.name} (#{photo.image&.trackingId})", alt: photo.trackid
     else
-      tag.p "Rebuild image"
+      tag.p "No image attached"
     end
   end
 
   def actions(photo)
-    preview = action_icon :preview, photo.image.url, t('view_live_html', scope: 'refinery.caststone.admin.photos') if photo.image.present?
+    preview = action_icon :preview, photo.image.url, t('view_live_html', scope: 'refinery.caststone.admin.photos') if photo.complete?
+    warning = "<span class='warning'>&#9888;</span>".html_safe
     edit = action_icon :edit, refinery.edit_caststone_admin_photo_path(photo), t('edit', scope: 'refinery.caststone.admin.photos')
     info = action_icon :info, '#',
            "#{photo.name}/(#{photo.trackid}) components: #{photo.component_count} Page: #{photo.assigned_page_name}"
-    edit << info <<  preview
+    final_icon = photo.complete? ? preview : warning
+    edit << info <<  final_icon
   end
 
   def component_index_view(collection)

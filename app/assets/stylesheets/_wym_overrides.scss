@@ -1,0 +1,15 @@
+// override jquery-ui setting.
+.wym_skin_refinery .wym_html textarea {
+  font-size : 1rem;
+}
+
+[id$="_photo_picker"].wym_skin_refinery {
+  font-size: 1rem;
+  .multi-wrapper  {
+    .header {
+      background-color: $adminBlue;
+      color: white;
+    }
+  }
+}
+

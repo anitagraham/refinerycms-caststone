@@ -1,6 +1,7 @@
 <%= simple_form_for [refinery, :caststone_admin, @photo], html: {multipart: true} do |f| %>
   <%= render '/refinery/admin/error_messages', object: @photo, include_object_name: true %>
-
+  <%= render '/refinery/admin/warning_messages', object: @photo, include_object_name: true unless @photo.sensible?
+  %>
       <div class="field">
         <%= f.label :name %>
         <%= f.text_field :name, class: "larger widest" %>

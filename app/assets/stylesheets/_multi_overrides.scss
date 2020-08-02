@@ -1,0 +1,8 @@
+.multi-wrapper .non-selected-wrapper,
+.multi-wrapper .selected-wrapper {
+    padding: 0 10px 10px;
+}
+
+.multi-wrapper .selected-wrapper a.item:nth-child(even) { background-color: aliceblue}
+.multi-wrapper .non-selected-wrapper a.item:nth-child(odd)  { background-color:aliceblue}
+

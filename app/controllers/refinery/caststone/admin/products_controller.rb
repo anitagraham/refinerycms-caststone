@@ -2,8 +2,7 @@ module Refinery
   module Caststone
     module Admin
       class ProductsController < ::Refinery::AdminController
-
-        #before_action :list_components
+        
         crudify :'refinery/caststone/product',
                 title_attribute: 'name'
 
@@ -18,7 +17,10 @@ module Refinery
 
         def product_params
           params.require(:product).permit(
-            :name, :description, :browser_title, :meta_description, :features, :measurements, :position, :drawing_id, :trait_list, :product_type, component_ids:[])
+            :name, :tag_line, :description, :summary, :features, :measurements, :product_type,
+            :brochure_id, :brochure_cover_id, :image_id, :drawing_id,
+            :browser_title, :meta_description, :position, component_ids: [], photo_ids: []
+          )
         end
       end
     end

@@ -3,25 +3,35 @@
     object: @product,
     include_object_name: true
   %>
-  ￿
+
+  <%= render '/refinery/admin/warning_messages',
+    object: @product,
+    include_object_name: true unless @product.sensible?
+  %>
+  <aside class="fyi">
+    <p>FYI:
+      <span class="dbId">
+        <em>Series #</em >: <%= @product.id %>
+      </span>
+      <span class="components">Components</em >: <%= @product.component_count %></span>
+    </p>
+  </aside>
+
   <div class='field'>
     <%= f.label :name %>
-    <%= f.text_field :name, class: 'larger widest' %>
-  </div>
-  <div class="fyi">
-    <h3>Information Only</h3>
-    <li><em>Series id</em >: <%= @product.id %></li>
-    <li><em>Components</em >: <%= @product.component_count %> </li>
+    <%= f.text_field :name, class: 'larger' %>
+
+    <%= f.label :tag_line %>
+    <%= f.text_field :tag_line, class: 'larger widest' %>
   </div>
 
   <div class="field">
     <%= f.input :product_type, collection: %w(Pillar Column Letterbox Trim), as: :radio_buttons %>
   </div>
-  <%= render '/refinery/caststone/admin/tabbed_fields', f: f, tabs: Refinery::Caststone::Products.tabs, object: @product
-  %>
+  <%= render '/refinery/caststone/admin/tabbed_fields', f: f, tabs: Refinery::Caststone::Products.tabs, object: @product  %>
 
   <%= render '/refinery/admin/form_actions', f: f,
-    continue_editing: false,
+    continue_editing: true,
     delete_title: t('delete', scope: 'refinery.products.admin.products.product'),
     delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @product.name) %>
 <% end %>

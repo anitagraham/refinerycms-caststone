@@ -1,4 +1,4 @@
-<div class="field">
+<div id="product_drawing" class="field">
   <%= f.label :drawing %>
   <%= render partial: "/refinery/admin/image_picker",
              locals: {
@@ -8,4 +8,16 @@
                toggle_image_display: false
              }
   %>
+</div>
+<div id="product_image" class="field">
+  <%= f.label :image %>
+  <%= render partial: "/refinery/admin/image_picker",
+             locals: {
+               f: f,
+               field: :image_id,
+               image: f.object.image,
+               toggle_image_display: false
+             }
+  %>
+
 </div>

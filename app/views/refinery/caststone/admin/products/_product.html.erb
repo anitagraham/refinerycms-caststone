@@ -1,12 +1,14 @@
-<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(product) -%>">
+
+<% state = product.sensible? ? "good" : "warning" %>
+<li class='clearfix record <%= cycle("on", "on-hover") %> <%= state %>' id="<%= dom_id(product) -%>">
   <span class='title'>
     <%= product.name %>
-
   </span>
+
   <span class='actions'>
 
-    <%= action_icon :edit,    refinery.edit_caststone_admin_product_path(product), t('edit') %>
-    <%= action_icon :delete,  refinery.caststone_admin_product_path(product),  t('delete'), class: 'cancel confirm-delete',
+    <%= action_icon :edit,    refinery.edit_caststone_admin_product_path(product), t('.edit') %>
+    <%= action_icon :delete,  refinery.caststone_admin_product_path(product),  t('.delete'), class: 'cancel confirm-delete',
                     data: { confirm: t('message', scope: 'refinery.admin.delete', title: product.name)} %>
 
   </span>

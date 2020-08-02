@@ -1,5 +1,40 @@
-@import "colours";
+@import 'colours';
+ul.list_view {
+  span.trackid {
+    font-style: italic;
+    margin-right: 1rem;
+  }
+  span.warning {color: darkorange}
+  li.warning {
+    .title {
+      background-color: cornsilk;
+      &::before {
+        content : '\0026A0';
+        color   : darkorange;
+      }
+    }
+  }
+}
+ul.grid_view {
+  li.warning {
+    box-shadow: 2px 2px 2px darkorange;
+  }
+  span.warning {font-size: 2rem; color: darkorange}
+  span.trackid {
+    font-size: 1rem;
+    position : absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    padding:2px;
+  }
+}
 
+
+.warningExplanation {
+  .error_icon:before {color: darkorange}
+}
 .photosView_icon {
   @include icon('photo', $indexIconColour)
 }
@@ -35,15 +70,17 @@
 //list view
 #list_view {
   li {
-    overflow      : hidden;
-    text-overflow : ellipsis;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    div.actions {position: unset}
+    overflow        : hidden;
+    text-overflow   : ellipsis;
+    display         : flex;
+    flex-direction  : row;
+    justify-content : space-between;
+
+    div.actions {position : unset}
+
     span {
-      background-color: lighten($adminBlue, 30%);
-      padding: 0.5rem
+      background-color : lighten($adminBlue, 30%);
+      padding          : 0.5rem
     }
   }
 
@@ -109,14 +146,19 @@ ul.grid_view {
       width   : 140px;
       height  : 140px;
     }
+
     .brokenImage {
       background-color : #888;
-      img::before { color : $statusError;  }
+
+      img::before { color : $statusError; }
+
       a.preview_icon {
         pointer-events : none !important;
         cursor         : default;
-        &::before {  color : $lightGrey;  }
+
+        &::before { color : $lightGrey; }
       }
+
       a.edit_icon::before {
         color           : $statusError;
         text-decoration : blink;
@@ -124,11 +166,15 @@ ul.grid_view {
     }
 
     p.no-drawing { @include icon('times', red) }
+
     div.info {
       @include icon('info-circle', $indexIconColour);
-      span {   display : none}
+
+      span { display : none}
+
       top    : auto;
       bottom : -5px;
+
       &:hover {
         span {
           display          : inline;
