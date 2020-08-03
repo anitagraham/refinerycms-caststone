@@ -44,6 +44,12 @@ module Refinery
         ]
       end
 
+      def detail
+        {
+          name: name,
+          height: height
+        }
+      end
       def popup_image
          name self.thumbnail('250x')
       end

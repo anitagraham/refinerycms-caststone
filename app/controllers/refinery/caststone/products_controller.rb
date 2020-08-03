@@ -10,7 +10,7 @@ module Refinery
       end
 
       def index
-        @products = Refinery::Caststone::Product.all
+        @products = Refinery::Caststone::Product.order(:position)
       end
 
       def show
