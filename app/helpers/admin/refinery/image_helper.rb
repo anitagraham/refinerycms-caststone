@@ -2,6 +2,7 @@ module Refinery
   module ImageHelper
     TRACKING_ID = /\d{4}$/
     def image_fu(image, geometry = nil, options = {})
+
       return nil if image.blank?
 
       thumbnail_args = options.slice(:strip)
@@ -14,7 +15,7 @@ module Refinery
 
     def tracking_id(image)
       tid = [image.title, image.alt, image.image_name.split('.').first].find{ |name| name.match(TRACKING_ID)}
-      tid.blank? ? tid : span.tag(tid, class: 'tracking_id')
+      tid.blank? ? tid : tag.span(tid, class: 'tracking_id')
     end
   end
 end
