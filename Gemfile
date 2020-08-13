@@ -24,7 +24,7 @@ gem 'mime-types'
 gem 'mustache'
 gem 'stache'
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed', branch: 'master'
-gem 'gutentag', '~> 2.5'
+# gem 'gutentag', '~> 2.5'
 
 group :development do
   gem 'listen'
@@ -53,11 +53,10 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
 end
 
 # Refinery/rails should pull in the proper versions of these
-group :assets do
-  gem "sass-rails"
-  gem "coffee-rails"
-  gem "uglifier"
-end
+gem "sass-rails"
+gem "coffee-rails"
+gem "uglifier"
+
 
 # Load local gems according to Refinery developer preference.
 if File.exist? local_gemfile = File.expand_path('../.gemfile', __FILE__)

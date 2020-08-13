@@ -6,12 +6,12 @@ module PhotoView
   end
 
   def list(photo)
-    tag.span(photo.trackid.presence, class: :trackid) << tag.span(photo.name, class: :title)
+    tag.span(photo.tracking_id.presence, class: :tracking_id) << tag.span(photo.name, class: :title)
   end
 
   def grid(photo)
     if photo.image.present?
-      tag.img photo.image.thumbnail({geometry: :index}).url, itle: photo.name, alt: photo.trackid
+      tag.img photo.image.thumbnail({geometry: :index}).url, itle: photo.name, alt: photo.tracking_id
     else
       tag.p "Rebuild image"
     end

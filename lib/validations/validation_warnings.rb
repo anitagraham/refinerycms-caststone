@@ -16,6 +16,7 @@
 #   my_object.description = 'Fred'
 #   my_object.sensible? # => false
 #   my_object.warnings.full_messages # => ["Description should be 'bob'"]
+
 module Warnings
   module Validations
     extend ActiveSupport::Concern

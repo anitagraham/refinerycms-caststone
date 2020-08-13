@@ -1,5 +1,5 @@
 require 'refinerycms-core'
-require 'dragonfly'
+# require 'dragonfly'
 
 module Refinery
   autoload :CaststoneGenerator, 'generators/refinery/caststone_generator'

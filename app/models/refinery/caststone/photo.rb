@@ -7,7 +7,7 @@ module Refinery
       PERMITTED_CHARACTERS = "0-9A-Z -".freeze
       self.table_name = 'refinery_caststone_photos'
 
-      acts_as_indexed fields: %i[name trackid]
+      acts_as_indexed fields: %i[name tracking_id]
 
       validates :name, presence: true, uniqueness: true
       validates :image, presence: true
@@ -38,7 +38,7 @@ module Refinery
       warning do |photo|
         photo.warnings.add(:components, ": No components defined") unless photo.components.any?
         photo.warnings.add(:image, ": No image loaded") unless photo.image.present?
-        photo.warnings.add(:trackid, "No tracking id assigned") unless photo.trackid.present?
+        photo.warnings.add(:tracking_id, "No tracking id assigned") unless photo.tracking_id.present?
       end
 
       def sanitize_name
@@ -51,12 +51,12 @@ module Refinery
       def set_track_id
         end_token = name.split.last.to_i
         start_token = name.split.first.to_i
-        trackid = end_token || start_token
+        tracking_id = end_token || start_token
       end
 
 
       def complete?
-        trackid.present? && image_id.present? && components.any?
+        tracking_id.present? && image_id.present? && components.any?
       end
 
       def view(options = {})

@@ -48,11 +48,11 @@ module CaststoneHelper
 
   def photo_index_view(photo, view)
     link = edit_link(photo, view)
-    trackid = photo.trackid.present? ? (tag.span photo.trackid, class: :trackid) : nil
+    tracking_id = photo.tracking_id.present? ? (tag.span photo.tracking_id, class: :tracking_id) : nil
     actions = tag.span actions(photo), class: :actions
     status = photo.complete? ? "ok" : "warning"
     tag.li class: "photo #{status}", id: dom_id(photo) do
-      [trackid, link, actions].join(' ').html_safe
+      [tracking_id, link, actions].join(' ').html_safe
     end
   end
 
@@ -68,7 +68,7 @@ module CaststoneHelper
   def grid(photo)
 
     if photo.image.present?
-      tag.img src: photo.image.thumbnail({geometry: :index}).url, title: "#{photo.name} (#{photo.image&.trackingId})", alt: photo.trackid
+      tag.img src: photo.image.thumbnail({geometry: :index}).url, title: "#{photo.name} (#{photo.image&.tracking_id})", alt: photo.tracking_id
     else
       tag.p "No image attached"
     end
@@ -79,7 +79,7 @@ module CaststoneHelper
     warning = "<span class='warning'>&#9888;</span>".html_safe
     edit = action_icon :edit, refinery.edit_caststone_admin_photo_path(photo), t('edit', scope: 'refinery.caststone.admin.photos')
     info = action_icon :info, '#',
-           "#{photo.name}/(#{photo.trackid}) components: #{photo.component_count} Page: #{photo.assigned_page_name}"
+           "#{photo.name}/(#{photo.tracking_id}) components: #{photo.component_count} Page: #{photo.assigned_page_name}"
     final_icon = photo.complete? ? preview : warning
     edit << info <<  final_icon
   end

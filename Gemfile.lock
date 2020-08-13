@@ -62,8 +62,7 @@ GIT
 PATH
   remote: .
   specs:
-    refinerycms-caststone (3.1.0)
-      gutentag
+    refinerycms-caststone (3.2.1)
       mime-types
       mustache
       refinerycms-acts-as-indexed
@@ -150,8 +149,6 @@ GEM
     friendly_id-mobility (0.5.4)
       friendly_id (>= 5.0.0, <= 5.3.0)
       mobility (>= 0.5.1, < 1.0)
-    gutentag (2.5.2)
-      activerecord (>= 3.2.0)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.4.0)
@@ -312,7 +309,6 @@ DEPENDENCIES
   activesupport (>= 6.0.3.1)
   capybara-email (~> 3.0)
   coffee-rails
-  gutentag (~> 2.5)
   jdbc-mysql (= 5.1.13)
   listen
   mime-types

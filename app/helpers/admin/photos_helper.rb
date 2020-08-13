@@ -2,19 +2,18 @@ module AdminPhotosHelper
 
   def index_view(photo, view)
     status = photo.complete ? 'good' : 'warning'
-    Rails.logger.debug "............................#{status}"
     tag.li class: "photo #{status}" , id: dom_id(photo) do
       photo.send view <<  actions(photo)
     end
   end
 
   def list(photo)
-    [tag.span(photo.trackid.presence, class: :trackid), tag.span(photo.name, class: :title)].join('/').html_safe
+    [tag.span(photo.tracking_id.presence, class: :tracking_id), tag.span(photo.name, class: :title)].join('/').html_safe
   end
 
   def grid(photo)
     if photo.image.present?
-      tag.img photo.image.thumbnail({geometry: :index}).url, itle: photo.name, alt: photo.trackid
+      tag.img photo.image.thumbnail({geometry: :index}).url, itle: photo.name, alt: photo.tracking_id
     else
       tag.p "Rebuild image"
     end

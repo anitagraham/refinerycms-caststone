@@ -45,7 +45,7 @@ Thumbs.db
 nbproject
 
 # Eclipse
-.project
+
 
 # Redcar
 .redcar
@@ -58,7 +58,7 @@ nbproject
 *.swo
 
 # RubyMine
-.idea
+#.idea
 
 # E-texteditor
 .eprj

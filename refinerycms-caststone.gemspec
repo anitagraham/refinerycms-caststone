@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency    'mime-types'
   s.add_dependency    'mustache'
   s.add_dependency    'stache'
-  s.add_dependency    'gutentag'
 
 end
 

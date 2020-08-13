@@ -7,15 +7,18 @@
         <%= f.text_field :name, class: "larger widest" %>
       </div>
       <div class="field">
-        <%= f.label :trackid %>
-        <%= f.text_field :trackid, class: "larger" %>
+        <%= f.label :tracking_id %>
+        <%= f.text_field :tracking_id, class: "larger" %>
       </div>
       <div class="field">
         <%= f.association :page,
             label_method: :title, value_method: :id,
             prompt: "Assign this photo to a page" %>
       </div>
-
+      <% product = @photo.product.presence %>
+      <% if product %>
+        <p>Belongs to <%= @photo.product.name %></p>
+      <% end %>
   <%= render '/refinery/caststone/admin/tabbed_fields',
       f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo
   %>

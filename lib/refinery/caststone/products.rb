@@ -14,7 +14,7 @@ module Refinery
         column: [:base, :column, :capital],
         letterbox: [:base, :shaft, :capital, :letterbox],
         trim: [:base, :shaft, :trim]
-      }
+      }.freeze
 
       class << self
         attr_writer :root
