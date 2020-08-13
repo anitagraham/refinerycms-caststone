@@ -14,7 +14,7 @@ module Refinery
 
     def tracking_id(image)
       tid = [image.title, image.alt, image.image_name.split('.').first].find{ |name| name.match(TRACKING_ID)}
-      tid.nil? ? tid : span.tag tid, class: 'tracking_id'
+      tid.blank? ? tid : span.tag(tid, class: 'tracking_id')
     end
   end
 end

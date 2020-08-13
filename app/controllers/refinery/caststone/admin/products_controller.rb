@@ -2,7 +2,8 @@ module Refinery
   module Caststone
     module Admin
       class ProductsController < ::Refinery::AdminController
-        
+        respond_to :html, :json
+
         crudify :'refinery/caststone/product',
                 title_attribute: 'name'
 
