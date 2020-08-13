@@ -1,5 +1,5 @@
 # Encoding: UTF-8
-require File.expand_path('lib/refinery/caststone/version', __FILE__)
+require File.expand_path('lib/refinery/caststone/version', __dir__)
 version =  Refinery::Caststone::Version.to_s
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
