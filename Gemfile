@@ -12,14 +12,18 @@ end
 
 # vulnerability
 gem "activesupport", ">= 6.0.3.1"
+
+
 # gem "actionpack", ">= 6.0.3.2"  # CVE-2020-8185
+# Refinery locked down to actionpack 6.0.3.1, use recommended action in config/environemnts/production.rb
+# config.middleware.delete ActionDispatch::ActionableExceptions
 
 gem 'responders'
 gem 'simple_form'
 gem 'mime-types'
 gem 'mustache'
 gem 'stache'
-gem 'refinerycms-acts-as-indexed'
+gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed', branch: 'master'
 gem 'gutentag', '~> 2.5'
 
 group :development do

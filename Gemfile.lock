@@ -48,6 +48,17 @@ GIT
       rspec-rails (~> 4.0.0.beta2)
       webdrivers (~> 4.0)
 
+GIT
+  remote: https://github.com/refinery/refinerycms-acts-as-indexed.git
+  revision: bbcf57a59096fd5befbce751364372ce85c291a1
+  branch: master
+  specs:
+    refinerycms-acts-as-indexed (4.0.0)
+      acts_as_indexed (~> 0.8)
+      decorators (~> 2.0)
+      refinerycms-core (>= 4.0.0, < 5.0)
+      stringex (~> 2.5)
+
 PATH
   remote: .
   specs:
@@ -203,11 +214,6 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    refinerycms-acts-as-indexed (3.0.0)
-      acts_as_indexed (~> 0.8.0)
-      decorators (~> 2.0)
-      refinerycms-core (>= 3.0.0, < 5.0)
-      stringex (~> 2.5.2)
     refinerycms-i18n (5.0.1)
       mobility (~> 0.8.8)
       rails-i18n (>= 5.0)
@@ -274,7 +280,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
     stache (1.2.0)
-    stringex (2.5.2)
+    stringex (2.8.5)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -315,7 +321,7 @@ DEPENDENCIES
   pg
   poltergeist
   refinerycms!
-  refinerycms-acts-as-indexed
+  refinerycms-acts-as-indexed!
   refinerycms-caststone!
   refinerycms-testing!
   responders
