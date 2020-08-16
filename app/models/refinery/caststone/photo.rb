@@ -11,7 +11,6 @@ module Refinery
 
       validates :name, presence: true, uniqueness: true
       validates :image, presence: true
-      # dragonfly_accessor :image, app: :caststone_photos
 
       belongs_to :product, inverse_of: :photos, optional: true
       belongs_to :image
@@ -46,12 +45,6 @@ module Refinery
         name.gsub(/.png$/i, '')
         name.gsub(/\(\d{1,3}\)/, '')
         name.gsub(/[^0-9A-Z -]/i, '_')
-      end
-
-      def set_track_id
-        end_token = name.split.last.to_i
-        start_token = name.split.first.to_i
-        tracking_id = end_token || start_token
       end
 
 
@@ -95,7 +88,6 @@ module Refinery
 
       private
         def save_drawing
-
           if components.present?
             self.drawing = CaststoneHelper.(component_ids)
             self.height = components.sum('height')

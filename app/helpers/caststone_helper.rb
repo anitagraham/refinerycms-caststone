@@ -78,10 +78,12 @@ module CaststoneHelper
     preview = action_icon :preview, photo.image.url, t('view_live_html', scope: 'refinery.caststone.admin.photos') if photo.complete?
     warning = "<span class='warning'>&#9888;</span>".html_safe
     edit = action_icon :edit, refinery.edit_caststone_admin_photo_path(photo), t('edit', scope: 'refinery.caststone.admin.photos')
+    delete = action_icon :delete, refinery.caststone_admin_component_path(photo), "Delete", class: 'cancel confirm-delete',
+      data: {confirm: "Do your really want to delete #{photo.name}"}
     info = action_icon :info, '#',
            "#{photo.name}/(#{photo.tracking_id}) components: #{photo.component_count} Page: #{photo.assigned_page_name}"
     final_icon = photo.complete? ? preview : warning
-    edit << info <<  final_icon
+    edit << info << delete << final_icon
   end
 
   def component_index_view(collection)
