@@ -65,6 +65,7 @@ PATH
     refinerycms-caststone (3.2.1)
       mime-types
       mustache
+      rabl
       refinerycms-acts-as-indexed
       refinerycms-core
       rmagick
@@ -186,6 +187,8 @@ GEM
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
     public_suffix (4.0.5)
+    rabl (0.14.3)
+      activesupport (>= 2.3.14)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -316,6 +319,7 @@ DEPENDENCIES
   mysql2
   pg
   poltergeist
+  rabl
   refinerycms!
   refinerycms-acts-as-indexed!
   refinerycms-caststone!

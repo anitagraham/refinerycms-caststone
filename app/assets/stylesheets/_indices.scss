@@ -1,16 +1,24 @@
 @import 'colours';
+$warningSymbol: '\0026A0';
+$okSymbol: '\002713';
+
 ul.list_view {
   span.trackid {
     font-style: italic;
     margin-right: 1rem;
   }
-  span.warning {color: darkorange}
-  li.warning {
-    .title {
-      background-color: cornsilk;
+  li {
+    &.warning {
+      background-color : cornsilk;
       &::before {
-        content : '\0026A0';
+        content : $warningSymbol;
         color   : darkorange;
+      }
+    }
+    &.ok {
+      &:before {
+        content : $okSymbol;
+        color   : #8ac53f;
       }
     }
   }

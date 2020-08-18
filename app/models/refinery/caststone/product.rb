@@ -10,10 +10,10 @@ module Refinery
 
       # Gutentag::ActiveRecord.call self
 
-      belongs_to :drawing, class_name: 'Refinery::Image', optional: true
-      belongs_to :image, class_name: 'Refinery::Image', optional: true
-      belongs_to :brochure, class_name: 'Refinery::Resource', optional: true
+      belongs_to :brochure,       class_name: 'Refinery::Resource', optional: true
       belongs_to :brochure_cover, class_name: 'Refinery::Image', optional: true
+      belongs_to :drawing,        class_name: 'Refinery::Image', optional: true
+      belongs_to :image,          class_name: 'Refinery::Image', optional: true
 
       validates :name, presence: true, uniqueness: true
 
@@ -49,24 +49,24 @@ module Refinery
       def to_s
         name
       end
+
       def all_text_fields_filled_in
         description.present? && summary.present? && features.present? && measurements.present?
       end
-      def pillar?
-        product_type.downcase =='pillar'
-      end
+
       def uses(component_type)
-        Refinery::Caststone::Products::USES[self.product_type.downcase.to_sym]&.include? component_type.downcase.to_sym
+        Refinery::Caststone::Products::USES[product_type.downcase.to_sym]&.include? component_type.downcase.to_sym
       end
 
       def component_count
         components.count
       end
-
-      def is_a_pillar?
-        self&.product_type == 'pillar'
+      def pillar?
+        product_type.downcase == 'pillar'
       end
-
+      def group_entry?
+        product_type.downcase == 'group'
+      end
       # borrowed from Refinery::Page
       class FriendlyIdOptions
         def self.options

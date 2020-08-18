@@ -1,15 +1,19 @@
 form {
   label {margin-top : 0.5rem}
+
   input:focus {
     border : 2px solid $adminBlue;
   }
+
   aside > * {
-    display: inline;
+    display : inline;
   }
+
   .field img {
     width  : inherit;
     height : inherit;
   }
+
   div#fields {
     span.checkbox {
       label {
@@ -18,9 +22,10 @@ form {
       }
     }
   }
+
   // photo component form
 
-  .fyi, .input.radio_buttons, .input.check_boxes, [id^="image_picker_container_"] {
+  .fyi, .input.radio_buttons, .input.check_boxes, [id^='image_picker_container_'] {
     background-color : #f3f4f5;
     padding          : 0.5rem;
     margin           : 0.5rem 0;
@@ -29,6 +34,31 @@ form {
     p, & > div {
       display      : inline-block;
       margin-right : 1.5rem;
+    }
+  }
+
+  section#selectSeries {
+    border          : 1px solid darkgray;
+    padding         : 0.5rem;
+    display         : flex;
+    flex-direction  : row;
+    flex-wrap       : wrap;
+    gap             : 1rem;
+    justify-content : space-between;
+    // each radio button
+    span {
+
+      background-color : $adminBlue;
+      color            : white;
+      padding          : 0 2px;
+      //margin: 0 0.2rem;
+      border-radius    : 50px;
+      border           : 1px solid $adminBlue;
+
+      > label {
+        margin : 0;
+        input, label {display : inline-block;}
+      }
     }
   }
 
@@ -61,12 +91,14 @@ form {
       flex-grow      : 1;
 
       fieldset.drawing {
-        display:flex;
-        flex-direction: column;
-        aside {  margin-top: auto; }
+        display        : flex;
+        flex-direction : column;
+
+        aside { margin-top : auto; }
+
         img.drawing {
-          width: unset;
-          height: unset;
+          width  : unset;
+          height : unset;
         }
       }
 

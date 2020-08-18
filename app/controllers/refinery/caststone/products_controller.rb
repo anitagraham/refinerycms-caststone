@@ -1,12 +1,10 @@
 module Refinery
   module Caststone
     class ProductsController < ::ApplicationController
-      respond_to :json, :html
+      respond_to :json, :js, :html
 
       def components
-        respond_to :json
-        series = Refinery::Caststone::Product.friendly.find(params[:id])
-        @components = series.components
+        @series = Refinery::Caststone::Product.friendly.find(params[:id])
       end
 
       def index

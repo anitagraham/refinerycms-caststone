@@ -47,18 +47,19 @@ module CaststoneHelper
   end
 
   def photo_index_view(photo, view)
+    status = photo.complete? ? "ok" : "warning"
     link = edit_link(photo, view)
     tracking_id = photo.tracking_id.present? ? (tag.span photo.tracking_id, class: :tracking_id) : nil
-    actions = tag.span actions(photo), class: :actions
-    status = photo.complete? ? "ok" : "warning"
-    tag.li class: "photo #{status}", id: dom_id(photo) do
+    actions = tag.span actions(photo), class: [:actions, status]
+
+    tag.li class: ["photo", status], id: dom_id(photo) do
       [tracking_id, link, actions].join(' ').html_safe
     end
   end
 
   def edit_link(photo, view)
     image = view == 'list' ? list(photo) : grid(photo)
-    link = link_to image, refinery.edit_caststone_admin_photo_path(photo), class: :edit, title: 'Click to edit'
+    link_to image, refinery.edit_caststone_admin_photo_path(photo), class: :edit, title: 'Click to edit'
   end
 
   def list(photo)
@@ -68,22 +69,23 @@ module CaststoneHelper
   def grid(photo)
 
     if photo.image.present?
-      tag.img src: photo.image.thumbnail({geometry: :index}).url, title: "#{photo.name} (#{photo.image&.tracking_id})", alt: photo.tracking_id
+      tag.img src: photo.image.thumbnail({geometry: :index}).url,
+              title: "#{photo.name} (#{photo.image&.tracking_id})",
+              alt: photo.tracking_id
     else
       tag.p "No image attached"
     end
   end
 
   def actions(photo)
-    preview = action_icon :preview, photo.image.url, t('view_live_html', scope: 'refinery.caststone.admin.photos') if photo.complete?
-    warning = "<span class='warning'>&#9888;</span>".html_safe
-    edit = action_icon :edit, refinery.edit_caststone_admin_photo_path(photo), t('edit', scope: 'refinery.caststone.admin.photos')
-    delete = action_icon :delete, refinery.caststone_admin_component_path(photo), "Delete", class: 'cancel confirm-delete',
+    preview_link = ''
+    preview_link = action_icon :preview, photo.image.url, t('view_live_html', scope: 'refinery.caststone.admin.photos') if photo.complete?
+    edit_link = action_icon :edit, refinery.edit_caststone_admin_photo_path(photo), t('edit', scope: 'refinery.caststone.admin.photos')
+    delete_link = action_icon :delete, refinery.caststone_admin_photo_path(photo), "Delete", class: 'cancel confirm-delete',
       data: {confirm: "Do your really want to delete #{photo.name}"}
-    info = action_icon :info, '#',
+    info_icon = action_icon :info, '#',
            "#{photo.name}/(#{photo.tracking_id}) components: #{photo.component_count} Page: #{photo.assigned_page_name}"
-    final_icon = photo.complete? ? preview : warning
-    edit << info << delete << final_icon
+    edit_link << info_icon << delete_link << preview_link
   end
 
   def component_index_view(collection)

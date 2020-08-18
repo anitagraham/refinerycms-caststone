@@ -10,10 +10,11 @@ module Refinery
 
       USES = {
         # for each product type, valid component types
-        pillar: [:base, :shaft, :capital],
         column: [:base, :column, :capital],
+        group: [],
         letterbox: [:base, :shaft, :capital, :letterbox],
-        trim: [:base, :shaft, :trim]
+        pillar: [:base, :shaft, :capital],
+        trim: [:base, :shaft, :trim],
       }.freeze
 
       class << self

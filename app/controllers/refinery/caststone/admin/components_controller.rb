@@ -13,7 +13,8 @@ module Refinery
                 title_attribute: 'name',
                 order: 'name ASC'
 
-        def list_for_product
+        def index
+          respond_to :js
           Refinery::Caststone::Component.filter_by_product(params[:id])
         end
 

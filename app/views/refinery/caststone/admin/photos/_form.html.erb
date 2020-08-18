@@ -19,12 +19,13 @@
       <% if product %>
         <p>Belongs to <%= @photo.product.name %></p>
       <% end %>
+
   <%= render '/refinery/caststone/admin/tabbed_fields',
       f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo
   %>
 
 <%= render '/refinery/admin/form_actions', f: f,
-  continue_editing: false,
+  continue_editing: true,
   delete_title: t('.delete'),
   delete_confirmation: "Really delete #{@photo.name}?" %>
 <% end %>

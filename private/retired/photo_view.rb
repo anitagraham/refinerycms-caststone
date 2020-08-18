@@ -14,7 +14,7 @@ class ProductView < SimpleDelegator
   end
 
   def to_html
-    view_name =  Refinery::Caststone::Components.preferred_view
+    view_name =  Refinery::Caststone::Photos.preferred_view
     markup = case view_name
       when :list
         list_view
@@ -45,9 +45,9 @@ class ProductView < SimpleDelegator
     end
 
     def actions
-      edit = action_icon :edit, refinery.edit_caststone_admin_component_path(id), 'Edit'
-      delete = action_icon :delete, refinery.caststone_admin_component_path(id), "Delete", class: 'cancel confirm-delete',
-                           data: {confirm: "Do your really want to delete #{component.name}"}
+      edit = action_icon :edit, refinery.edit_caststone_admin_photo_path(id), 'Edit'
+      delete = action_icon :delete, refinery.caststone_admin_photo_path(id), "Delete", class: 'cancel confirm-delete',
+                           data: {confirm: "Do your really want to delete #{photo.name}"}
       tag.div class: :actions do
         edit << delete
       end

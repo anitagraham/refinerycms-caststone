@@ -21,6 +21,7 @@ gem "activesupport", ">= 6.0.3.1"
 gem 'responders'
 gem 'simple_form'
 gem 'mime-types'
+gem 'rabl'
 gem 'mustache'
 gem 'stache'
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed', branch: 'master'

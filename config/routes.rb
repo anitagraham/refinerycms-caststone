@@ -16,6 +16,7 @@ Refinery::Core::Engine.routes.draw do
           post :update_positions
         end
         resources :components, :bases, :shafts, :capitals, :columns, :letterboxes
+      #  /refinery/caststone/products/:product_id/components(.:format)
       end
 
       # ------------- Components --------------

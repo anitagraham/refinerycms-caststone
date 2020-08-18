@@ -1,12 +1,16 @@
-<%= f.association :product,
-                  collection: @products,
-                  prompt: 'Choose a Series',
-                  label: 'Series',
-                  as: :radio_buttons,
-                  include_blank: true %>
+<% real_products = @products.reject(&:group_entry?) %>
+
+<section id="selectSeries" >
+  <%= f.collection_radio_buttons :product_id, real_products, :id, :name,
+                                 data: {
+                                   remote: true,
+                                   url: refinery.caststone_admin_product_components_path(:id)
+                                 } %>
+</section >
+<hr >
 <!--<h1 > Select Components </h1 >-->
 <section class='components' >
-  <fieldset class="drawing">
+  <fieldset class="drawing" >
     <legend > Drawing</legend >
     <% if @photo.drawing %>
       <img src='data:image/png;base64,<%= @photo.drawing %>' alt='Drawing of <%= @photo.name %>' class='drawing' />
@@ -17,5 +21,8 @@
     <a id="redraw_button" class="button" href="#" tooltip="Redraw with the currently selected components" data-photo-id="<%= @photo.id %>" >Redraw</a >
     <%= f.hidden_field :drawing, value: @photo.drawing, id: 'photo_drawing' %>
   </fieldset >
-  <%= render 'refinery/caststone/admin/shared/product_components', series: @photo.product if @photo.product %>
-</section>
+  <% if @photo.product %>
+    <%= render 'refinery/caststone/admin/photos/tabs/product_components', product: @photo.product %>
+  <% end %>
+
+</section >

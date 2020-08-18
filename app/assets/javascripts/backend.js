@@ -1,7 +1,6 @@
   $(function() {
 
-  var seriesSelect = $('#photo_product_id'),
-      uploadButton = $('#drawing'),
+  var uploadButton = $('#drawing'),
       redrawButton = $('a#redraw_button'),
       copyrightButton = $('a#copyright_button'),
       clearRadioButton = $('a.clearRadioSet'),
@@ -25,11 +24,11 @@
     });
   }
 
-    if (seriesSelect.length)  {
-      $('select#photo_product_id').change(function() {
-        $.get('/refinery/caststone/products/' + this.value + '.js');
-      });
-    }
+    // if (seriesSelect.length)  {
+    //   $('select#photo_product_id').change(function() {
+    //     $.get('/refinery/caststone/products/' + this.value + '.js');
+    //   });
+    // }
 
   if (redrawButton.length) {
     $('form.edit_photo').on('click', 'a#redraw_button', function(event) {
