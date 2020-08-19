@@ -25,9 +25,12 @@ ul.list_view {
 }
 ul.grid_view {
   li.warning {
-    box-shadow: 2px 2px 2px darkorange;
+    border: 1px darkorange;
   }
-  span.warning {font-size: 2rem; color: darkorange}
+  li.ok {
+    border: 1px yellowgreen;
+  }
+  span.warning {color: darkorange}
   span.tracking_id {
     font-size: 1rem;
     position : absolute;
@@ -129,41 +132,41 @@ ul.grid_view {
 
 //  grid views
 ul.grid_view {
-  width           : 100%;
-  display         : flex;
-  align-items     : flex-end;
-  flex-wrap       : wrap;
-  justify-content : space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 1rem;
+  //width           : 100%;
+  //display         : flex;
+  //align-items     : flex-end;
+  //flex-wrap       : wrap;
+  //justify-content : space-between;
 
   li {
-    flex             : 1;
+    //flex             : 1;
     position         : relative;
-    margin           : 10px;
-    padding          : 0;
-    overflow         : hidden;
+    width: 149px;
+    height: 149px;
+    max-width: 149px;
+    max-height: 149px;
+    text-align: center;
+    overflow: hidden;
     background-color : $indexBackground;
 
     border           : 1px solid #555;
     min-height       : 140px;
     min-width        : 140px;
-    box-shadow       : 2px 2px 2px #888;
+    //box-shadow       : 2px 2px 2px #888;
 
     img {
-      flex    : 0 1 auto;
-      display : block;
-      width   : 140px;
-      height  : 140px;
+      width: inherit;
+      height: inherit;
     }
-
     .brokenImage {
       background-color : #888;
-
       img::before { color : $statusError; }
-
       a.preview_icon {
         pointer-events : none !important;
         cursor         : default;
-
         &::before { color : $lightGrey; }
       }
 
@@ -194,7 +197,13 @@ ul.grid_view {
         }
       }
     }
+
   }
 }
-
-section#records.photosIndex .grid_view span.actions { width : 40px}
+#records.photosIndex .grid_view span.actions {
+  top: auto;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255,255,255, 0.6);
+}
+//section#records.photosIndex .grid_view span.actions { width : 40px}

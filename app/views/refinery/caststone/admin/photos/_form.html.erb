@@ -2,30 +2,52 @@
   <%= render '/refinery/admin/error_messages', object: @photo, include_object_name: true %>
   <%= render '/refinery/admin/warning_messages', object: @photo, include_object_name: true unless @photo.sensible?
   %>
-      <div class="field">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "larger widest" %>
-      </div>
-      <div class="field">
-        <%= f.label :tracking_id %>
-        <%= f.text_field :tracking_id, class: "larger" %>
-      </div>
-      <div class="field">
-        <%= f.association :page,
-            label_method: :title, value_method: :id,
-            prompt: "Assign this photo to a page" %>
-      </div>
-      <% product = @photo.product.presence %>
-      <% if product %>
-        <p>Belongs to <%= @photo.product.name %></p>
-      <% end %>
 
+  <div class="field" >
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "larger widest" %>
+  </div >
+
+  <div class="field_group" >
+    <div class="field" >
+      <%= f.label :tracking_id %>
+      <%= f.text_field :tracking_id, class: "larger" %>
+    </div >
+    <div class="field" >
+      <%= f.association :page,
+                        label_method: :title, value_method: :id,
+                        prompt: "Assign this photo to a page"
+      %>
+    </div >
+  </div >
+  <section id="selectSeries" >
+    <% product = @photo.product.presence %>
+    <% if product %>
+      <h3>Series: <%= product.name %></h3>
+    <% end %>
+    <h4 >Select or change the Series shown in the photo.</h4 >
+    <div class="radio_buttons">
+
+      <%
+        real_products = @products.reject(&:group_entry?)
+      %>
+      <%= f.collection_radio_buttons :product_id, real_products, :id, :name,
+                                   html: {
+                                     data: {
+                                       remote: true,
+                                       url: refinery.caststone_admin_product_components_path(:id) }
+                                   }
+      %>
+    </div>
+  </section >
   <%= render '/refinery/caststone/admin/tabbed_fields',
-      f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo
+             f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo
   %>
 
-<%= render '/refinery/admin/form_actions', f: f,
-  continue_editing: true,
-  delete_title: t('.delete'),
-  delete_confirmation: "Really delete #{@photo.name}?" %>
+  <%= render '/refinery/admin/form_actions', f: f,
+             continue_editing: true,
+             delete_title: t('.delete'),
+             delete_confirmation: "Really delete #{@photo.name}?" %>
 <% end %>
+
+

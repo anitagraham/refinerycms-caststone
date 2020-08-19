@@ -1,0 +1,17 @@
+<!--< Expects to be inserted into #selectComponents >-->
+  <%= simple_fields_for :photo do |f| %>
+    <% Refinery::Caststone::Component::COMP_TYPES.each do |ct| %>
+      <% ct_plural = ct.pluralize
+         comps = components[ct_plural.to_sym].presence
+         if comps %>
+          <fieldset id="<%= ct_plural.downcase %>" class="component_type" >
+            <legend ><%= ct_plural %></legend >
+            <%= f.collection_check_boxes :"#{ct.downcase}_ids", comps, :id, :name %>
+            <%= link_to "Clear #{ct_plural}", '#', id: ct_plural, class: 'button clearRadioSet' %>
+          </fieldset >
+      <% end %>
+    <% end %>
+  <% end %>
+
+<!--</div >-->
+

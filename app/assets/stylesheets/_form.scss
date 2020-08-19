@@ -1,3 +1,4 @@
+//@import 'select_css';
 form {
   label {margin-top : 0.5rem}
 
@@ -23,6 +24,12 @@ form {
     }
   }
 
+  div.field_group {
+    margin-bottom: 1rem;
+    .field {
+      display : inline-block
+    }
+  }
   // photo component form
 
   .fyi, .input.radio_buttons, .input.check_boxes, [id^='image_picker_container_'] {
@@ -38,26 +45,27 @@ form {
   }
 
   section#selectSeries {
-    border          : 1px solid darkgray;
-    padding         : 0.5rem;
-    display         : flex;
-    flex-direction  : row;
-    flex-wrap       : wrap;
-    gap             : 1rem;
-    justify-content : space-between;
-    // each radio button
-    span {
+    border  : 1px solid darkgray;
+    padding : 0.5rem;
 
-      background-color : $adminBlue;
-      color            : white;
-      padding          : 0 2px;
-      //margin: 0 0.2rem;
-      border-radius    : 50px;
-      border           : 1px solid $adminBlue;
-
-      > label {
-        margin : 0;
-        input, label {display : inline-block;}
+    div.radio_buttons {
+      display        : flex;
+      flex-direction : row;
+      flex-wrap      : wrap;
+      gap            : 1rem;
+      // each radio button
+      span {
+        color            : $adminBlue;
+        background-color : #f3f4f5;
+        padding          : 0 2px;
+        margin           : 0 0.2rem;
+        border-radius    : 1rem;
+        border           : 1px solid $adminBlue;
+        .collection_radio_buttons {margin: 0}
+        > label {
+          margin : 0;
+          input, label {display : inline-block;}
+        }
       }
     }
   }
@@ -102,7 +110,7 @@ form {
         }
       }
 
-      div.selectComponents {
+      div#selectComponents {
         display        : flex;
         flex-direction : row;
         flex-grow      : 1;

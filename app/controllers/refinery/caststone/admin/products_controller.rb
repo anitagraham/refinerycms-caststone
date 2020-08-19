@@ -12,7 +12,14 @@ module Refinery
         end
 
         def list_components
-          @components = Refinery::Caststone::Component.order(:name)
+          series = Refinery::Caststone::Product.find(params[:id])
+          @components = {
+            bases: series.bases,
+            shafts: series.capitals,
+            capitals: series.capitals,
+            letterboxes: series.letterboxes,
+            trim: series.trims
+          }
           respond_to :html, :js
         end
 

@@ -1,7 +1,7 @@
 <!-- shared a set of components for a series selected for a photo  -->
 <!-- series=product, photo -->
 <%= simple_fields_for :photo do |f| %>
-  <div class="selectComponents">
+  <div id="selectComponents">
 
     <% Refinery::Caststone::Component::COMP_TYPES.each do |ct| %>
       <%ct = ct.downcase
@@ -10,6 +10,7 @@
       <% if product.uses(ct) %>
         <fieldset id="<%= ct %>" class="component_type <%= ct_plural  %>">
           <legend ><%= ct_plural.capitalize %></legend >
+
           <%= f.collection_check_boxes :"#{ct}_ids", product.send(ct_plural), :id, :name %>
           <%= link_to "Clear #{ct_plural}", '#', id: ct_plural, class: 'button clearRadioSet' %>
         </fieldset >

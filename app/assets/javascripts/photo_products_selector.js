@@ -1,16 +1,17 @@
-// let seriesChange = function (event){
-//   .ajax({
-//     url: `/refinery/caststone/products/${event.target.value}/components.js`,
-//     type: 'get',
-//     success: data => $('.selectComponents').innerHTML = data.html
-//   })
-// }
-// $(function() {
-//   let seriesSelect = document.querySelector('.radio_buttons.photo_product')
-//   if (seriesSelect) {
-//     seriesSelect.addEventListener('change', seriesChange)
-//   }
-// })
-
-
-
+let seriesChange = function (series_id){
+  $.ajax({
+    url: `/refinery/caststone/products/${series_id}/list_components.js`,
+    type: 'get',
+    success: data => $('.selectComponents').innerHTML = data.html
+  })
+}
+$(function() {
+  let seriesSelect = document.querySelector('.radio_buttons')
+  if (seriesSelect) {
+    seriesSelect.addEventListener('change', e => {
+      if (e.target.closest('[name="photo[product_id]"')) {
+        seriesChange(e.target.value)
+      }
+    })
+  }
+})

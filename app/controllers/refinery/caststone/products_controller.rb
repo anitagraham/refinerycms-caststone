@@ -5,6 +5,7 @@ module Refinery
 
       def components
         @series = Refinery::Caststone::Product.friendly.find(params[:id])
+        render 'refinery/caststone/admin/products/components', @series
       end
 
       def index

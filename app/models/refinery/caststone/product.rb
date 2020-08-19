@@ -1,4 +1,4 @@
-module Refinery
+ module Refinery
   module Caststone
     class Product < Refinery::Core::BaseModel
       extend FriendlyId
