@@ -62,7 +62,7 @@ GIT
 PATH
   remote: .
   specs:
-    refinerycms-caststone (3.2.1)
+    refinerycms-caststone (3.2.2)
       mime-types
       mustache
       rabl

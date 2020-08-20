@@ -1,4 +1,3 @@
-#require "#{Rails.root}/vendor/extensions/caststone/app/models/refinery/caststone/photo.rb"
 module Refinery
   module Caststone
     module Admin
