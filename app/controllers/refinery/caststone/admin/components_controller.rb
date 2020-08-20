@@ -11,12 +11,7 @@ module Refinery
 
         crudify :'refinery/caststone/component',
                 title_attribute: 'name',
-                order: 'name ASC'
-
-        def index
-          respond_to :js
-          Refinery::Caststone::Component.filter_by_product(params[:id])
-        end
+                order: 'type ASC'
 
         # def draw
         #   send_data  Refinery::Caststone::Component.construct(params[:list]), type: 'image/png', disposition: 'inline'

@@ -1,4 +1,5 @@
 let seriesChange = function (series_id){
+
   $.ajax({
     url: `/refinery/caststone/products/${series_id}/list_components.js`,
     type: 'get',

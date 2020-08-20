@@ -5,7 +5,8 @@ module Refinery
         respond_to :html, :json
 
         crudify :'refinery/caststone/product',
-                title_attribute: 'name'
+                title_attribute: 'name',
+                include: [:components]
 
         def show
           @series = Refinery::Caststone::Product.find(params[:id], include: :components)

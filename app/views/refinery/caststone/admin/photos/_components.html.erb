@@ -2,8 +2,11 @@
   <%= simple_fields_for :photo do |f| %>
     <% Refinery::Caststone::Component::COMP_TYPES.each do |ct| %>
       <% ct_plural = ct.pluralize
-         comps = components[ct_plural.to_sym].presence
-         if comps %>
+         Rails.logger.debug components
+         comps = components[ct_plural.downcase.to_sym].presence
+         found = comps.nil? ? "Nothing" : comps.count
+         comps.each{ |comp| Rails.logger.debug "#{comp.name} #{comp.type}"}
+         if comps.present? %>
           <fieldset id="<%= ct_plural.downcase %>" class="component_type" >
             <legend ><%= ct_plural %></legend >
             <%= f.collection_check_boxes :"#{ct.downcase}_ids", comps, :id, :name %>

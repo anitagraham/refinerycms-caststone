@@ -1,9 +1,15 @@
 //@import 'select_css';
+@mixin refinery_skin {
+    border     : 1px solid #CCCCCC;
+    padding    : 5px 5px 0 5px;
+}
+$focusedElement:  2px solid $adminBlue;
+//1. any form
 form {
   label {margin-top : 0.5rem}
 
   input:focus {
-    border : 2px solid $adminBlue;
+    border : $focusedElement;
   }
 
   aside > * {
@@ -24,19 +30,19 @@ form {
     }
   }
 
+  // field groups should display side by side
   div.field_group {
+    @include refinery_skin;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-bottom: 1rem;
-    .field {
-      display : inline-block
-    }
   }
-  // photo component form
 
   .fyi, .input.radio_buttons, .input.check_boxes, [id^='image_picker_container_'] {
-    background-color : #f3f4f5;
+    @include refinery_skin;
     padding          : 0.5rem;
     margin           : 0.5rem 0;
-    border           : 1px solid #444;
 
     p, & > div {
       display      : inline-block;
@@ -45,8 +51,7 @@ form {
   }
 
   section#selectSeries {
-    border  : 1px solid darkgray;
-    padding : 0.5rem;
+    @include refinery_skin;
 
     div.radio_buttons {
       display        : flex;
@@ -54,17 +59,26 @@ form {
       flex-wrap      : wrap;
       gap            : 1rem;
       // each radio button
+
       span {
-        color            : $adminBlue;
-        background-color : #f3f4f5;
-        padding          : 0 2px;
         margin           : 0 0.2rem;
-        border-radius    : 1rem;
-        border           : 1px solid $adminBlue;
+        border           : $focusedElement;
+        input[type="radio"] { display: none;   }
+
         .collection_radio_buttons {margin: 0}
         > label {
-          margin : 0;
-          input, label {display : inline-block;}
+          margin: 0;
+          padding: 0;
+          font-size: 16px;
+          cursor: pointer;
+        }
+        input[type="radio"]+label {
+          padding: 4px 11px;
+          background-color: white;
+        }
+        input[type="radio"]:checked+label {
+          background-color: $adminBlue;
+          color: white;
         }
       }
     }
@@ -143,6 +157,22 @@ form {
         }
       }
     }
-
+  }
+}
+.edit_product {
+  #showComponents {
+    @include refinery_skin;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    div {
+      @include refinery_skin;
+      ul {
+        margin-top: 0;
+        list-style-type: none;
+        padding-left: 0;
+      }
+    }
   }
 }

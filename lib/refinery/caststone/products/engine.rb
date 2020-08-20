@@ -15,7 +15,8 @@ module Refinery
           {title: 'Image & Drawing',  partial: 'drawing', fields: [:drawing, :image]},
           {title: 'Brochure',         partial: 'brochure', fields: [:brochure, :brochure_cover]},
           {title: 'Photos',           partial: 'product_photos', fields: :photos},
-          {title: 'SEO',              partial: 'seo'}
+          {title: 'SEO',              partial: 'seo'},
+          {title: 'Components',       partial: 'components', fields: :components}
         ]
 
         tabs.each do |t|

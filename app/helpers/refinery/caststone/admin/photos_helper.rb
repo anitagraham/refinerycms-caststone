@@ -28,4 +28,37 @@ module AdminPhotosHelper
     state = get_status(photo)
     edit << info << delete << preview
   end
+
+#  ------------------------------------------
+
+  def for_component_types
+    Refinery::Caststone::Component::COMP_TYPES.each do |type|
+      #  get some inflections
+      model_class = "Refinery::Caststone::#{type}"
+      plural_type = type.pluralize
+      yield
+    end
+  end
+
+  def by_type(components)
+    current_type = components.select { |component| model_class === component.type }
+    if current_type.any?
+      yield
+    end
+  end
+
+  def show_names(components)
+    html = []
+    html.push tag.h3 plural_type
+    html.push tag.ul do
+      components.reduce(ActiveSupport::SafeBuffer.new) do |buffer, component|
+        buffer << li.tag(component.name)
+      end
+    end
+    html.join(' ').html_safe
+  end
+
+  def list_component_names(components)
+    for_component_types { by_type(components) { show_names(components) }}
+  end
 end
