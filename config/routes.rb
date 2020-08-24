@@ -22,7 +22,7 @@ Refinery::Core::Engine.routes.draw do
       end
 
       # ------------- Components --------------
-      resources :components, :bases, :shafts, :capitals, :columns, :letterboxes,
+      resources :components, :bases, :shafts, :capitals, :columns, :letterboxes, :trims,
                 controller: 'components', except: :show do
         collection do
           post :update_positions
