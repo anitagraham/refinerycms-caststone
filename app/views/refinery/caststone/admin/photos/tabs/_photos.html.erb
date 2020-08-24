@@ -1,5 +1,5 @@
 <%
-  photos = Refinery::Caststone::Photo.all
+  photos = Refinery::Caststone::Photo.complete
   nophotos = tag.p t('.no_photos_yet')
   photo_collection = collection_select :page, :photo_ids, photos, :id, :name, {},
                                        {multiple: true,

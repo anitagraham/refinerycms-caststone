@@ -4,16 +4,16 @@ module Refinery
   module Caststone
     class Photo < Refinery::Core::BaseModel
 
-      PERMITTED_CHARACTERS = "0-9A-Z -".freeze
+      PERMITTED_CHARACTERS = '0-9A-Z -'.freeze
       self.table_name = 'refinery_caststone_photos'
 
-      acts_as_indexed fields: %i[name tracking_id]
+      acts_as_indexed fields: %i[name photo_number]
 
       validates :name, presence: true, uniqueness: true
       validates :image, presence: true
 
-      belongs_to :product, inverse_of: :photos, optional: true
       belongs_to :image
+      belongs_to :product, inverse_of: :photos, optional: true
       belongs_to :page, inverse_of: :photos, foreign_key: :page_id, optional: true
 
       has_many :assignments
@@ -35,9 +35,9 @@ module Refinery
       # before_save :save_drawing, :sanitize_name, :set_track_id
       #
       warning do |photo|
-        photo.warnings.add(:components, ": No components defined") unless photo.components.any?
-        photo.warnings.add(:image, ": No image loaded") unless photo.image.present?
-        photo.warnings.add(:tracking_id, "No tracking id assigned") unless photo.tracking_id.present?
+        photo.warnings.add(:components, ': No components defined') unless photo.components.any?
+        photo.warnings.add(:image, ': No image loaded') unless photo.image
+        photo.warnings.add(:photo_number, 'No tracking id assigned') unless photo.photo_number
       end
 
       def sanitize_name
@@ -49,8 +49,14 @@ module Refinery
 
 
       def complete?
-        tracking_id.present? && image_id.present? && components.any?
+        image.present? &&
+        photo_number.present?
       end
+
+      scope :image_present, ->  { where.not(image_id: nil) }
+      scope :tracking_added, -> { where.not(photo_number: nil) }
+      scope :components_added, -> {where('components_count>0')}
+      scope :complete, -> { image_present.tracking_added }
 
       def view(options = {})
         default_options = {

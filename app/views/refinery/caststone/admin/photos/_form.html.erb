@@ -10,8 +10,8 @@
 
   <div class="field_group" >
     <div class="field" >
-      <%= f.label :tracking_id %>
-      <%= f.text_field :tracking_id, class: "larger" %>
+      <%= f.label :photo_number %>
+      <%= f.text_field :photo_number, class: "larger" %>
     </div >
     <div class="field" >
       <%= f.association :page,
@@ -40,7 +40,7 @@
              f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo
   %>
 
-  <%= render '/refinery/admin/form_actions', f: f,
+  <%= render partial: '/refinery/admin/form_actions', f: f,
              continue_editing: true,
              delete_title: t('.delete'),
              delete_confirmation: "Really delete #{@photo.name}?" %>

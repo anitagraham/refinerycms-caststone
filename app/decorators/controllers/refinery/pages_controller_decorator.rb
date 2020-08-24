@@ -5,6 +5,5 @@ Refinery::Admin::PagesController.prepend(
       super <<  [photo_ids: []]
     end
 
-    protected
   end
 )

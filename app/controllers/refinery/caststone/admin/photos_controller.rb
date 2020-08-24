@@ -45,7 +45,7 @@ module Refinery
 
         def photo_params
           params.require(:photo).permit(
-            :name, :caption, :page, :position, :drawing, :image, :image_id, :page_id, :product_id, :tracking_id,
+            :name, :caption, :page, :position, :drawing, :image, :image_id, :page_id, :product_id, :photo_number,
             component_ids: [], base_ids: [], shaft_ids: [], capital_ids: [], column_ids: [], letterbox_ids: [])
         end
       end

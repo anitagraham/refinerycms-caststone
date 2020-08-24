@@ -1,4 +1,4 @@
- module Refinery
+module Refinery
   module Caststone
     class Product < Refinery::Core::BaseModel
       extend FriendlyId
@@ -19,16 +19,16 @@
 
       has_many :photos, -> {includes :components}, inverse_of: :product
 
-      has_many :compatibles,  foreign_key: :product_id
-      has_many :components,   through: :compatibles,  inverse_of: :products, foreign_key: :component_id,  dependent: :destroy
+      has_many :compatibles,  foreign_key: :product_id, inverse_of: :products
+      has_many :components,   through: :compatibles, foreign_key: :component_id, inverse_of: :products,  dependent: :destroy
 
-      has_many :bases,        through: :compatibles, foreign_key: :component_id, dependent: :destroy, source: :base
+      has_many :bases,        through: :compatibles, foreign_key: :component_id, inverse_of: :products, dependent: :destroy, source: :base
       # Rails can't choose between base and basis
-      has_many :shafts,       through: :compatibles, foreign_key: :component_id, dependent: :destroy
-      has_many :capitals,     through: :compatibles, foreign_key: :component_id, dependent: :destroy
-      has_many :columns,      through: :compatibles, foreign_key: :component_id, dependent: :destroy
-      has_many :letterboxes,  through: :compatibles, foreign_key: :component_id, dependent: :destroy
-      has_many :trims,        through: :compatibles, foreign_key: :component_id, dependent: :destroy
+      has_many :shafts,       through: :compatibles, foreign_key: :component_id, inverse_of: :products, dependent: :destroy
+      has_many :capitals,     through: :compatibles, foreign_key: :component_id, inverse_of: :products, dependent: :destroy
+      has_many :columns,      through: :compatibles, foreign_key: :component_id, inverse_of: :products, dependent: :destroy
+      has_many :letterboxes,  through: :compatibles, foreign_key: :component_id, inverse_of: :products, dependent: :destroy
+      has_many :trims,        through: :compatibles, foreign_key: :component_id, inverse_of: :products, dependent: :destroy
 
       accepts_nested_attributes_for :bases,       reject_if: :blank_content, allow_destroy: true
       accepts_nested_attributes_for :letterboxes, reject_if: :blank_content, allow_destroy: true

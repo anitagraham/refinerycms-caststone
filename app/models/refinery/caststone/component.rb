@@ -1,6 +1,7 @@
 module Refinery
   module Caststone
     class Component < Refinery::Core::BaseModel
+
       include Rails.application.routes.url_helpers
 
       dragonfly_accessor :drawing, app: :caststone_components
@@ -11,10 +12,9 @@ module Refinery
       validates :name, presence: true, uniqueness: true
       validates :type, presence: true
       validates :height, numericality: { only_integer: true, greater_than: 0}, presence: true
-      #alias :component_type :type
 
       has_many :compatibles, foreign_key: :product_id, inverse_of: :components
-      has_many :products, through: :compatibles, inverse_of: :components, foreign_key: :component_id
+      has_many :products, through: :compatibles, inverse_of: :components, foreign_key: :product_id
 
       def ready
         self.drawing.present?
@@ -40,7 +40,8 @@ module Refinery
           ["Capital","Refinery::Caststone::Capital"],
           ["Column","Refinery::Caststone::Column"],
           ["Letterbox","Refinery::Caststone::Letterbox"],
-          ["Shaft","Refinery::Caststone::Shaft"]
+          ["Shaft","Refinery::Caststone::Shaft"],
+          ["Trim", "Refinery::Caststone::Trim"]
         ]
       end
 

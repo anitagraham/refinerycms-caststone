@@ -13,9 +13,7 @@ module Refinery
       end
 
       def show
-        @product = Refinery::Caststone::Product.friendly.find(params[:id])
-        # use for submenu
-        @products = Refinery::Caststone::Product.order(:position)
+        @product = products.friendly.find(params[:id])
       end
 
       def list

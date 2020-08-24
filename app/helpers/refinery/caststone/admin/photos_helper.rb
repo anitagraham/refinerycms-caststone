@@ -10,12 +10,12 @@ module Refinery
         end
 
         def list(photo)
-          [tag.span(photo.tracking_id.presence, class: :tracking_id), tag.span(photo.name, class: :title)].join('/').html_safe
+          [tag.span(photo.photo_number.presence, class: :photo_number), tag.span(photo.name, class: :title)].join('/').html_safe
         end
 
         def grid(photo)
           if photo.image.present?
-            tag.img photo.image.thumbnail({geometry: :index}).url, itle: photo.name, alt: photo.tracking_id
+            tag.img photo.image.thumbnail({geometry: :index}).url, itle: photo.name, alt: photo.photo_number
           else
             tag.p "Rebuild image"
           end
