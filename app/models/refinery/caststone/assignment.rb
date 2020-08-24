@@ -10,6 +10,7 @@ module Refinery
       belongs_to :capital, foreign_key: :component_id, class_name: 'Refinery::Caststone::Capital', optional: true
       belongs_to :column, foreign_key: :component_id, class_name: 'Refinery::Caststone::Column', optional: true
       belongs_to :letterbox, foreign_key: :component_id, class_name: 'Refinery::Caststone::Letterbox', optional: true
+      belongs_to :trim, foreign_key: :component_id, class_name: 'Refinery::Caststone::Trim', optional: true
     end
   end
 end
