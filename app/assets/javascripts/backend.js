@@ -84,14 +84,14 @@
     });
   };
 
-  const showTrackingId = image => {
-    trackingId = image.dataset.trackingid
+  const showphoto_number = image => {
+    photo_number = image.dataset.photo_number
     let span = document.createElement('span')
-    span.innerText = trackingId
-    span.classList.add('trackingId')
+    span.innerText = photo_number
+    span.classList.add('photo_number')
   }
   let gridImages = document.querySelectorAll(('#image_grid li > img'))
-  gridImages.forEach(showTrackingId)
+  gridImages.forEach(showphoto_number)
 
   let select = document.querySelector('.multiselect');
   if (select) {
