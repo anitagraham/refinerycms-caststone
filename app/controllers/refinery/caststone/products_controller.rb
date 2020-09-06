@@ -13,7 +13,7 @@ module Refinery
       end
 
       def show
-        @product = products.friendly.find(params[:id])
+        @product = Refinery::Caststone::Product.friendly.find(params[:id])
       end
 
       def list
