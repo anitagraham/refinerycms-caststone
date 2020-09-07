@@ -9,6 +9,7 @@ module Refinery
         respond_to :png, only: :draw
 
         before_action :set_view, only: :index
+        before_action :test_exception, only: :index
         before_action :find_all_series, only: [:edit, :new]
 
         crudify :'refinery/caststone/photo',
@@ -24,7 +25,7 @@ module Refinery
         end
 
         def draw
-          send_data  CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
+          send_data CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
         end
 
         # def add_copyright
@@ -33,6 +34,7 @@ module Refinery
         #
 
         protected
+
         def find_all_series
           @products = Refinery::Caststone::Product.all
         end
@@ -40,6 +42,12 @@ module Refinery
         def set_view
           if action_name == 'index' && params[:view].present? && Refinery::Caststone::Photos.defined_views.include?(params[:view].to_sym)
             Refinery::Caststone::Photos.preferred_view = params[:view]
+          end
+        end
+
+        def test_exception
+          if action_name == 'index' && params[:exception].present?
+            raise "Testing Exceptions"
           end
         end
 
