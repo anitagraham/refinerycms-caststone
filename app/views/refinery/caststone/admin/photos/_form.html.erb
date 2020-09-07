@@ -1,7 +1,6 @@
 <%= simple_form_for [refinery, :caststone_admin, @photo], html: {multipart: true} do |f| %>
   <%= render '/refinery/admin/error_messages', object: @photo, include_object_name: true %>
-  <%= render '/refinery/admin/warning_messages', object: @photo, include_object_name: true unless @photo.sensible?
-  %>
+  <%= render '/refinery/admin/warning_messages', object: @photo, include_object_name: true unless @photo.sensible?  %>
 
   <div class="field" >
     <%= f.label :name %>
@@ -20,30 +19,37 @@
       %>
     </div >
   </div >
-  <section id="selectSeries" >
-    <h4 >Select or change the Series shown in the photo.</h4 >
-    <div class="radio_buttons">
 
-      <%
-        real_products = @products.reject(&:group_entry?)
-      %>
+  <section id="selectSeries" >
+    <% verb = @photo.product.present? ? 'Change' : 'Select' %>
+    <h4 ><%= verb %> the Series shown in the photo.</h4 >
+    <div class="radio_buttons">
+      <% real_products = @products.reject(&:group_entry?)   %>
       <%= f.collection_radio_buttons :product_id, real_products, :id, :name,
-                                   html: {
-                                     data: {
-                                       remote: true,
-                                       url: refinery.caststone_admin_product_components_path(:id) }
-                                   }
+             html: {
+               data: {
+                 remote: true,
+                 url: refinery.caststone_admin_product_components_path(:id) }
+             }
       %>
     </div>
   </section >
-  <%= render '/refinery/caststone/admin/tabbed_fields',
-             f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo
-  %>
 
-  <%= render partial: '/refinery/admin/form_actions', f: f,
+  <%= render '/refinery/caststone/admin/tabbed_fields', f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo  %>
+
+  <%= render  '/refinery/admin/form_actions',  f: f,
              continue_editing: true,
              delete_title: t('.delete'),
              delete_confirmation: "Really delete #{@photo.name}?" %>
+
 <% end %>
 
-
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      if (!page_options.initialised) {
+        page_options.init(false, '', '');
+      }
+    });
+  </script>
+<% end %>

@@ -19,7 +19,7 @@ module Refinery
 
       has_many :photos, -> {includes :components}, inverse_of: :product
 
-      has_many :compatibles,  foreign_key: :product_id, inverse_of: :products
+      has_many :compatibles,  foreign_key: :product_id, inverse_of: :product
       has_many :components,   through: :compatibles, foreign_key: :component_id, inverse_of: :products,  dependent: :destroy
 
       has_many :bases,        through: :compatibles, foreign_key: :component_id, inverse_of: :products, dependent: :destroy, source: :base
