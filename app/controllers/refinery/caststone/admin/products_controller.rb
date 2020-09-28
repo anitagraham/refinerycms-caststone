@@ -17,7 +17,7 @@ module Refinery
           series = Refinery::Caststone::Product.where(id: params[:id]).includes(:components).first
           @components = {
             bases: series.bases,
-            shafts: series.capitals,
+            shafts: series.shafts,
             capitals: series.capitals,
             letterboxes: series.letterboxes,
             trim: series.trims
