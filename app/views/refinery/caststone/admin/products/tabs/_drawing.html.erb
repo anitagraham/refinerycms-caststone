@@ -1,23 +1,38 @@
-<div id="product_drawing" class="field">
-  <%= f.label :drawing %>
-  <%= render partial: "/refinery/admin/image_picker",
-             locals: {
-               f: f,
-               field: :drawing_id,
-               image: f.object.drawing,
-               toggle_image_display: false
-             }
-  %>
-</div>
-<div id="product_image" class="field">
-  <%= f.label :image %>
-  <%= render partial: "/refinery/admin/image_picker",
-             locals: {
-               f: f,
-               field: :image_id,
-               image: f.object.image,
-               toggle_image_display: false
-             }
-  %>
-
-</div>
+<%
+  # Image picker options/defaults
+  # { thumbnail: 'medium',
+  #  field: '#image',
+  #  image_display: '.current_picked_image',
+  #  no_image_message: '.no_picked_image_selected',
+  #  image_container: '.current_image_container',
+  #  remove_image_button: '.remove_picked_image',
+  #  picker_container: '.image_picker_container',
+  #  image_link: '.current_image_link',
+  #  image_toggler: null}
+%>
+<div class="field_group" >
+  <div id="product_drawing" class="field" >
+    <%= f.label :drawing %>
+    <%= render partial: "/refinery/admin/image_picker",
+               locals: {
+                 f: f,
+                 thumbnail: 'medium',
+                 field: :drawing_id,
+                 image: f.object.drawing,
+                 toggle_image_display: false
+               }
+    %>
+  </div >
+  <div id="product_image" class="field" >
+    <%= f.label :image %>
+    <%= render partial: "/refinery/admin/image_picker",
+               locals: {
+                 f: f,
+                 thumbnail: 'medium',
+                 field: :image_id,
+                 image: f.object.image,
+                 toggle_image_display: false
+               }
+    %>
+  </div >
+</div >

@@ -3,6 +3,7 @@
     border     : 1px solid #CCCCCC;
     padding    : 5px 5px 0 5px;
 }
+
 $focusedElement:  2px solid $adminBlue;
 //1. any form
 form {
@@ -37,10 +38,14 @@ form {
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 1rem;
+   .field:not(last-child) {
+      margin-right: 1rem;
+    }
   }
-
   .fyi, .input.radio_buttons, .input.check_boxes, [id^='image_picker_container_'] {
     @include refinery_skin;
+  }
+ .input.radio_buttons, .input.check_boxes, [id^='image_picker_container_'] {
     padding          : 0.5rem;
     margin           : 0.5rem 0;
 
@@ -49,7 +54,18 @@ form {
       margin-right : 1.5rem;
     }
   }
+  .fyi {
+    background-color: $adminGrey;
+    width: 25%;
+    float: right;
+    p {margin: 0}
+  }
 
+  // = = = = = = = = = = = = = = = Picking images= = = = = = = = = = = = = = = = = = = = =
+ div#page_part_editors  [id^=image_picker_container] img.current_picked_image {
+   min-height: 255px;
+ }
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
   section#selectSeries {
     @include refinery_skin;
 

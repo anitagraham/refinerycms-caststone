@@ -65,8 +65,11 @@ module Refinery
         product_type.downcase == 'pillar'
       end
       def group_entry?
-        product_type.downcase == 'group'
+        slug.downcase == 'group'
       end
+
+      scope :pillars, -> { where( product_type:  'Pillar') }
+
       # borrowed from Refinery::Page
       class FriendlyIdOptions
         def self.options

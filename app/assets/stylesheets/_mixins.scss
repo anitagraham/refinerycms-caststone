@@ -1,21 +1,3 @@
-@mixin frame ($border: $textColour, $bg: white, $width:5px) {
-  border: $width solid $border;
-  background-color: $bg;
-  padding:10px !important;
-}
-
-@mixin polaroidFrame () {
-  padding:5px;
-  padding-bottom:40px;
-  background:#ddd;
-  border: solid 1px #aaa;
-  @include box-shadow(1px 1px 5px #555);
-  @include border-radius(4px);
-}
-
-@mixin gridBackground {
-  background:$blueprintColour;
-}
 
 @mixin bullets($bullet, $colour) {
   list-style: none inside none;

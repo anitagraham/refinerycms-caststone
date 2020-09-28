@@ -12,7 +12,7 @@ module Refinery
       validates :name, presence: true, uniqueness: true
       validates :image, presence: true
 
-      belongs_to :image
+      belongs_to :image, dependent: :destroy
       belongs_to :product, inverse_of: :photos, optional: true
       belongs_to :page, inverse_of: :photos, foreign_key: :page_id, optional: true
 
