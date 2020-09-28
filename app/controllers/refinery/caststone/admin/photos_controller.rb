@@ -28,15 +28,10 @@ module Refinery
           send_data CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
         end
 
-        # def add_copyright
-        #   @photo = Refinery::Caststone::Photo.find(params[:id]).image.copyright("Hello Sailor")
-        # end
-        #
-
         protected
 
         def find_all_series
-          @products = Refinery::Caststone::Product.all
+          @products = Refinery::Caststone::Product.where.not( slug:'group')
         end
 
         def set_view

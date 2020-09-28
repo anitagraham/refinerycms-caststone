@@ -3,7 +3,7 @@
   <%= simple_fields_for :photo do |f| %>
     <div class="selectComponents">
 
-      <% Refinery::Caststone::Component::COMP_TYPES.each do |ct| %>
+      <% Refinery::Caststone::Components::COMP_TYPES.each do |ct| %>
         <%ct = ct.downcase
           ct_plural = ct.pluralize
         %>

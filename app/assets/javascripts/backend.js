@@ -34,7 +34,6 @@
     $('form.edit_photo').on('click', 'a#redraw_button', function(event) {
       let photo_id = event.target.dataset.photoId
       var componentList = $('#selectComponents').find('input:checked').map(function() { return this.value;});
-      console.log(componentList)
       $.when(
         $.ajax({
           'url':`/refinery/caststone/photos/${photo_id}/draw.png`,

@@ -33,7 +33,7 @@ module Refinery
 
           def for_component_types(components)
             lists = []
-            Refinery::Caststone::Component::COMP_TYPES.each do |type|
+            Refinery::Caststone::Components::COMP_TYPES.each do |type|
               lists << yield(type, components)
             end
             lists.join(' ').html_safe

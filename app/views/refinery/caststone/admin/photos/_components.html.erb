@@ -1,13 +1,12 @@
 <!--< Expects to be inserted into #selectComponents >-->
 
   <%= simple_fields_for :photo do |f| %>
-  <%= (@product.components) %>
-    <% Refinery::Caststone::Component::COMP_TYPES.each do |ct| %>
+
+    <% Refinery::Caststone::Components::COMP_TYPES.each do |ct| %>
       <% ct_plural = ct.pluralize
-         Rails.logger.debug components
-         comps = components[ct_plural.downcase.to_sym].presence
+         comps = @components[ct_plural.downcase.to_sym].presence
+
          found = comps.nil? ? "Nothing" : comps.count
-         comps.each{ |comp| Rails.logger.debug "#{comp.name} #{comp.type}"}
          if comps.present? %>
           <fieldset id="<%= ct_plural.downcase %>" class="component_type" >
             <legend ><%= ct_plural %></legend >

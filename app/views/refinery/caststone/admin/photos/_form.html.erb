@@ -1,7 +1,8 @@
 <%= simple_form_for [refinery, :caststone_admin, @photo], html: {multipart: true} do |f| %>
   <%= render '/refinery/admin/error_messages', object: @photo, include_object_name: true %>
-  <%= render '/refinery/admin/warning_messages', object: @photo, include_object_name: true unless @photo.sensible?  %>
+  <%= render '/refinery/admin/warning_messages', object: @photo, include_object_name: true unless @photo.sensible? %>
 
+  <% Rails.logger.debug ".......... Products to choose from: #{@products.count}" %>
   <div class="field" >
     <%= f.label :name %>
     <%= f.text_field :name, class: "larger widest" %>
@@ -23,21 +24,24 @@
   <section id="selectSeries" >
     <% verb = @photo.product.present? ? 'Change' : 'Select' %>
     <h4 ><%= verb %> the Series shown in the photo.</h4 >
-    <div class="radio_buttons">
-      <% real_products = @products.reject(&:group_entry?)   %>
-      <%= f.collection_radio_buttons :product_id, real_products, :id, :name,
+    <div class="radio_buttons" >
+      <% if @products.many? %>
+        <%= f.collection_radio_buttons :product_id, @products, :id, :name,
              html: {
                data: {
                  remote: true,
-                 url: refinery.caststone_admin_product_components_path(:id) }
+                 url: refinery.caststone_admin_product_components_path(:id)}
              }
-      %>
-    </div>
+        %>
+        <%else %>
+      <h4>No products to choose from.</h4>
+      <% end %>
+    </div >
   </section >
 
-  <%= render '/refinery/caststone/admin/tabbed_fields', f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo  %>
+  <%= render '/refinery/caststone/admin/tabbed_fields', f: f, tabs: Refinery::Caststone::Photos.tabs, object: @photo %>
 
-  <%= render  '/refinery/admin/form_actions',  f: f,
+  <%= render '/refinery/admin/form_actions', f: f,
              continue_editing: true,
              delete_title: t('.delete'),
              delete_confirmation: "Really delete #{@photo.name}?" %>

@@ -9,6 +9,8 @@ module Refinery
       require 'refinery/dragonfly/extension_configuration'
       require 'refinery/caststone/components/configuration'
 
+      COMP_TYPES = %w(Base Shaft Column Capital Letterbox Trim).freeze
+
       class << self
         def root
           @root ||= Pathname.new(File.expand_path('../../../', __FILE__))

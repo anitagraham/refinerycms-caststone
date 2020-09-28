@@ -15,7 +15,7 @@ module Refinery
         end
 
         it "requires a valid type" do
-          expect(component.type.demodulize).to be_in(::Refinery::Caststone::Component::COMP_TYPES)
+          expect(component.type.demodulize).to be_in(::Refinery::Caststone::Components::COMP_TYPES)
           expect(FactoryBot.build(:component, type: "Gadget")).not_to be_valid
         end
 

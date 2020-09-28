@@ -8,15 +8,15 @@ module Refinery
 
       config.after_initialize do
         tabs = [
-          {title: 'Description',      partial: 'visual_editor_text', fields: :description},
-          {title: 'Summary',          partial: 'visual_editor_text', fields: :summary},
-          {title: 'Features',         partial: 'visual_editor_text', fields: :features},
-          {title: 'Measurements',     partial: 'visual_editor_text', fields: :measurements},
-          {title: 'Image & Drawing',  partial: 'drawing', fields: [:drawing, :image]},
-          {title: 'Brochure',         partial: 'brochure', fields: [:brochure, :brochure_cover]},
-          {title: 'Photos',           partial: 'product_photos', fields: :photos},
-          {title: 'SEO',              partial: 'seo'},
-          {title: 'Components',       partial: 'components', fields: :components}
+          { title: 'Description',      partial: 'visual_editor_text', fields: :description },
+          { title: 'Summary',          partial: 'visual_editor_text', fields: :summary },
+          { title: 'Features',         partial: 'visual_editor_text', fields: :features },
+          { title: 'Measurements',     partial: 'visual_editor_text', fields: :measurements },
+          { title: 'Image & Drawing',  partial: 'drawing', fields: [:drawing, :image] },
+          { title: 'Brochure',         partial: 'brochure', fields: [:brochure, :brochure_cover] },
+          { title: 'Photos',           partial: 'product_photos', fields: :photos },
+          { title: 'SEO',              partial: 'seo' },
+          { title: 'Components',       partial: 'components', fields: :components }
         ]
 
         tabs.each do |t|

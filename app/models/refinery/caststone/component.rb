@@ -7,8 +7,6 @@ module Refinery
       dragonfly_accessor :drawing, app: :caststone_components
       acts_as_indexed fields: [:name]
 
-      COMP_TYPES = %w(Base Shaft Column Capital Letterbox Trim)
-
       validates :name, presence: true, uniqueness: true
       validates :type, presence: true
       validates :height, numericality: { only_integer: true, greater_than: 0}, presence: true

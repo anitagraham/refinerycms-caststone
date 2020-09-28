@@ -10,11 +10,15 @@
     <aside >Height: <%= @photo.height.to_i %>mm</aside >
     <a id="redraw_button" class="button" href="#" tooltip="Redraw with the currently selected components" data-photo-id="<%= @photo.id %>" >
       Redraw
-    </a>
+    </a >
     <%= f.hidden_field :drawing, value: @photo.drawing, id: 'photo_drawing' %>
   </fieldset >
-  <% if @photo.product %>
-    <%= render 'refinery/caststone/admin/photos/tabs/product_components', product: @photo.product %>
-  <% end %>
 
+  <div id="selectComponents" >
+    <% if @photo.product %>
+      <%= render 'refinery/caststone/admin/photos/tabs/product_components', product: @photo.product %>
+    <% else %>
+      <p >Can't add components until a Series has been selected and saved.</p >
+    <% end %>
+  </div >
 </section >

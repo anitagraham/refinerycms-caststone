@@ -1,9 +1,9 @@
 <!-- shared a set of components for a series selected for a photo  -->
 <!-- series=product, photo -->
-<%= simple_fields_for :photo do |f| %>
-  <div id="selectComponents">
 
-    <% Refinery::Caststone::Component::COMP_TYPES.each do |ct| %>
+<%= simple_fields_for :photo do |f| %>
+
+    <% Refinery::Caststone::Components::COMP_TYPES.each do |ct| %>
       <%ct = ct.downcase
         ct_plural = ct.pluralize
       %>
@@ -16,6 +16,5 @@
         </fieldset >
       <% end %>
     <% end %>
-  </div>
 <% end %>
 
