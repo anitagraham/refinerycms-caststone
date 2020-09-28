@@ -20,9 +20,16 @@ Refinery::Images.configure do |config|
   config.user_image_sizes = {
     small:"110x110>",
     medium:"225x255>",
-    index: "149x149#c",
-    large:"450x450>"}
 
+    large:"450x450>"}
+  config.backend_image_sizes = {
+    mediumh: "x255>",
+    index: "149x149#c"
+  }
+  #        % Interpret width and height as a percentage of the current size.
+  #        ! Resize to width and height exactly, losing original aspect ratio.
+  #        < Resize only if the image is smaller than the geometry specification.
+  #        > Resize only if the image is greater than the geometry specification,
   # Configure image ratios
   # config.user_image_ratios = {:"16/9"=>"1.778", :"4/3"=>"1.333", :"1:1"=>1}
 

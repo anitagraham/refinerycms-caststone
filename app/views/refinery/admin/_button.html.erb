@@ -1,0 +1,62 @@
+<%
+  description ||= 'button'
+  title ||= ''
+  randomiser = rand(Time.now.yesterday.to_i * Time.now.to_i)
+  button_types ||= Refinery::Caststone::Button::BUTTON_TYPES
+  -%>
+
+<div id='add_button_container_<%= randomiser %>'>
+    <h2>Add a button</h2>
+
+    <div class="field" >
+      <%= f.label :name %>
+      <%= f.text_field :title, class: "larger wider" %>
+    </div >
+
+  <div class="field" >
+    <%= f.label :button_type %>
+    <%= f.radio_button :title, class: "larger wider" %>
+    <%= f.collection_radio_buttons :button_type, button_types, :type, :title %>
+  </div >
+
+  <div class="field" >
+    <%= f.label :link %>
+    <%=  %>
+    <%=  %>
+  </div >
+  button_text(words)
+  button_action(cta_link, download_link)
+  button_type (cta, download)
+  button_text_color
+  button_background_color
+  button_text_size(sml)
+</div>
+
+<% content_for :javascripts do -%>
+  <script>
+    var image_picker_<%= randomiser %> = {};
+    $(document).ready(function(e) {
+      $.extend(true, image_picker_<%= randomiser %>, image_picker)
+      image_picker_<%= randomiser %> = image_picker_<%= randomiser %>.init({
+        thumbnail: '<%= thumbnail.html_safe %>'
+        , image_toggler: '<%= toggle_image_display ? ".current_image_toggler" : "null" %>'
+        , description: '<%= description %>'
+        , field: '.current_image_id'
+        , image_display: '.current_picked_image'
+        , no_image_message: '.no_picked_image_selected'
+        , remove_image_button: '.remove_picked_image'
+        , picker_container: '#image_picker_container_<%= (lambda {randomiser}).call %>'
+        , image_container: '.current_image_container'
+        , image_link: '.current_image_link'
+      });
+    });
+
+    image_picker_<%= randomiser %>_changed = function(args){
+      $.proxy(image_picker_<%= randomiser %>.changed, {
+        container: '#image_picker_container_<%= randomiser %>'
+        , picker: image_picker_<%= randomiser %>
+        , image: args
+      })();
+    };
+  </script>
+<% end %>
