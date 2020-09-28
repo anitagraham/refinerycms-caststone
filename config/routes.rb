@@ -31,8 +31,7 @@ Refinery::Core::Engine.routes.draw do
 
       # ------------- Photos --------------
       resources :photos, except: :show do
-        get :view,      on: :member
-        get :exception, on: :member
+        get :view, :exception, :draw,  on: :member
         post :update_positions, on: :collection
         resources :components, :bases, :shafts, :capitals, :columns, :letterboxes, controller: 'components'
       end
@@ -44,9 +43,9 @@ Refinery::Core::Engine.routes.draw do
 
   # Frontend routes
   namespace :caststone, path: 'caststone' do
-    resources :photos, only: [:draw, :details] do
+    resources :photos, only: :details do
       member do
-        get :draw, :details
+        get :details
       end
     end
     resources :products, only: [:index, :show]
