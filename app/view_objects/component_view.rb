@@ -1,4 +1,3 @@
-
 class ComponentView < SimpleDelegator
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::UrlHelper
@@ -14,22 +13,25 @@ class ComponentView < SimpleDelegator
   end
 
   def to_html
-    view_name =  Refinery::Caststone::Components.preferred_view
+    view_name = Refinery::Caststone::Components.preferred_view
     markup = case view_name
       when :list
         list_view
       when :grid
         grid_view
+      else
+        list_view
     end
-    tag.li id: id, class: type.demodulize do
-      markup << actions
-    end
+
+    # tag.tr id: id, class: type.demodulize do
+    #   markup << actions
+    # end
   end
 
   private
 
   def grid_view
-    # image = drawing ? image(drawing) : (tag.p "No Drawing")
+    image = drawing ? image(drawing) : (tag.p "No Drawing")
     info = tag.span do
       "#{name} (#{height}mm), #{products}"
     end
@@ -37,7 +39,17 @@ class ComponentView < SimpleDelegator
   end
 
   def list_view
-    %w[name height products].map { |attr| tag.span self.attr }.join(' ')
+    # table
+    #   thead
+    #    tr
+    #     th
+    tag.table do
+      tag.thead do
+        tag.tr do
+          %w[name height products].map { |attr| tag.th self.attr }.join(' ')
+        end
+      end
+    end
   end
 
   def image(drawing)
