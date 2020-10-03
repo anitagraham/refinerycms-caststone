@@ -4,9 +4,9 @@ module Refinery
 
       # extend Refinery::Dragonfly::ExtensionConfiguration
       include ActiveSupport::Configurable
-      config_accessor :copyright_embed_start_date, :defined_views, :preferred_view
+      config_accessor :embed_start_date, :defined_views, :preferred_view
 
-      self.copyright_embed_start_date = Date.strptime("20/09/2020", "%d/%m/%Y")
+      self.embed_start_date = Date.strptime("20/09/2020", "%d/%m/%Y")
       self.defined_views = %i[grid list]
       self.preferred_view = :grid
 
