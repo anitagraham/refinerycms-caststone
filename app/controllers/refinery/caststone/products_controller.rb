@@ -9,7 +9,8 @@ module Refinery
       end
 
       def index
-        @products = Refinery::Caststone::Product.order(:position)
+        products = Refinery::Caststone::Product.order(:position)
+        @products = Refinery::Caststone::ProductView.new(product, view_context)
       end
 
       def show
