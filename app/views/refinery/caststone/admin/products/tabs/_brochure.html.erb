@@ -1,4 +1,4 @@
-<div id="product_brochure" class="field">
+<div id="product_brochure" class="field" >
   <%= f.label :brochure %>
   <%= render partial: "/refinery/admin/resource_picker",
              locals: {
@@ -7,8 +7,19 @@
                resource: f.object.brochure
              }
   %>
-</div>
-<div id="product_brochure_cover" class="field">
+</div >
+<div class="field_group" >
+  <div class="field" >
+    <%= f.label :download_text %>
+    <%= f.text_field :download_text %>
+  </div >
+  <div class="field" >
+    <%= f.label :download_title %>
+    <%= f.text_field :download_title %>
+  </div >
+</div >
+
+<div id="product_brochure_cover" class="field" >
   <%= f.label :brochure_cover %>
   <%= render partial: "/refinery/admin/image_picker",
              locals: {
@@ -19,4 +30,4 @@
              }
   %>
 
-</div>
+</div >

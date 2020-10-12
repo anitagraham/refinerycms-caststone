@@ -1,8 +1,8 @@
 <div class='wym_skin_refinery page_part' id='product_components_picker'>
-	<%= select :product, :component_ids,
-			@components.map{ |c| [c.name, c.id, { 'data-url' => c.thumbnail }] },
-			{},
-			{:multiple=>true, :class=>:multiselect, :id=>:component_multiselect}
+  <%= select :product, :component_ids,
+      @components.map{ |c| [c.name, c.id, { 'data-url' => c.thumbnail }] },
+      {},
+      {:multiple=>true, :class=>:multiselect, :id=>:component_multiselect}
    %>
 </div>
 

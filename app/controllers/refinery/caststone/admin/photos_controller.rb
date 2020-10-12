@@ -40,12 +40,6 @@ module Refinery
           end
         end
 
-        def test_exception
-          if action_name == 'index' && params[:exception].present?
-            raise "Testing Exceptions"
-          end
-        end
-
         def photo_params
           params.require(:photo).permit(
             :name, :caption, :page, :position, :drawing, :image, :image_id, :page_id, :product_id, :photo_number,
