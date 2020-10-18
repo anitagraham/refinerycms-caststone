@@ -9,7 +9,6 @@ module Refinery
         respond_to :png, only: :draw
 
         before_action :set_view, only: :index
-        before_action :test_exception, only: :index
         before_action :find_all_series, only: [:edit, :new]
 
         crudify :'refinery/caststone/photo',

@@ -69,7 +69,7 @@ module Refinery
       def group_entry?
         slug.downcase == 'group'
       end
-      
+
       scope :single_product, -> { where.not( slug:'group') }
       scope :pillars, -> { where( product_type:  'Pillar') }
 
