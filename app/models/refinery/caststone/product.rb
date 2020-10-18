@@ -61,13 +61,15 @@ module Refinery
       def component_count
         components.count
       end
+
       def pillar?
         product_type.downcase == 'pillar'
       end
+
       def group_entry?
         slug.downcase == 'group'
       end
-
+      
       scope :single_product, -> { where.not( slug:'group') }
       scope :pillars, -> { where( product_type:  'Pillar') }
 
