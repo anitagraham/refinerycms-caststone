@@ -8,8 +8,6 @@ module Refinery
       acts_as_indexed fields: [:name, :description]
       is_seo_meta
 
-      # Gutentag::ActiveRecord.call self
-
       belongs_to :brochure,       class_name: 'Refinery::Resource', optional: true
       belongs_to :brochure_cover, class_name: 'Refinery::Image', optional: true
       belongs_to :drawing,        class_name: 'Refinery::Image', optional: true
