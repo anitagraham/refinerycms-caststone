@@ -137,8 +137,13 @@ form {
         img.drawing {
           width  : unset;
           height : unset;
+          &.warning {
+            color: $warningColour;
+          }
         }
       }
+
+      section.components fieldset.drawing img.drawing.warning
 
       div#selectComponents {
         display        : flex;

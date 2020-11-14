@@ -19,9 +19,6 @@ div#photo-and-drawing {
   img {
     vertical-align : bottom;
     float          : left;
-    &.warning {
-      color: $warningColour;
-    }
   }
 }
 
