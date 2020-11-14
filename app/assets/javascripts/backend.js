@@ -33,7 +33,17 @@
   if (redrawButton.length) {
     $('form.edit_photo').on('click', 'a#redraw_button', function(event) {
       let photo_id = event.target.dataset.photoId
-      var componentList = $('#selectComponents').find('input:checked').map(function() { return this.value;});
+      let componentList = $('#selectComponents').find('input:checked').map(function() { return this.value;});
+
+      if (componentList.length === 0) {
+        let drawing = document.querySelector('img.drawing')
+        // clear both the drawing displayed and the hidden input field
+        drawing.src=''
+        drawing.alt = "No components selected. Select components and Redraw"
+        drawing.classList.add('warning')
+        document.querySelector('input#photo_drawing').value=''
+        return;
+      }
       $.when(
         $.ajax({
           'url':`/refinery/caststone/photos/${photo_id}/draw.png`,

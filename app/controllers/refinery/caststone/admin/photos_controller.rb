@@ -24,7 +24,11 @@ module Refinery
         end
 
         def draw
-          send_data CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
+          if params[:component_list].nil?
+            flash.alert = "No components selected. Can't draw anything"
+          else
+            send_data CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
+          end
         end
 
         protected

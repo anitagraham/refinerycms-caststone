@@ -6,7 +6,7 @@ module CaststoneHelper
   end
 
   def self.drawing(component_ids)
-    return if component_ids.count.zero?
+    return if component_ids.nil? || component_ids.count.zero?
 
     maxh = 600
     maxw = 200
