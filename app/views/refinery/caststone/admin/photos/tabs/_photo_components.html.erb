@@ -5,7 +5,7 @@
     <% if @photo.drawing %>
       <img src='data:image/png;base64,<%= @photo.drawing %>' alt='Drawing of <%= @photo.name %>' class='drawing' />
     <% else %>
-      <img alt='No drawing of <%= @photo.name available. Select components and redraw %>' class='drawing warning' >
+      <img alt='No drawing of <%= @photo.name%> available. Select components and redraw' class='drawing warning' >
     <% end %>
     <aside >Height: <%= @photo.height.to_i %>mm</aside >
     <a id="redraw_button" class="button" href="#" tooltip="Redraw with the selected components" data-photo-id="<%= @photo.id %>" >
