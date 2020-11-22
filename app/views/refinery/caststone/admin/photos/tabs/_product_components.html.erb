@@ -11,9 +11,9 @@
         <fieldset id="<%= ct %>" class="component_type <%= ct_plural  %>">
           <legend ><%= ct_plural.capitalize %></legend >
 
-          <%= f.collection_radio_buttons :"#{ct}_ids", product.send(ct_plural), :id, :uc_name  %>
+          <%= f.collection_check_boxes :component_ids, product.send(ct_plural), :id, :uc_name  %>
 
-          <%= link_to "Clear #{ct_plural}", '#', id: ct_plural, class: 'button clearRadioSet' %>
+          <%= link_to "Clear #{ct_plural}", '#', id: ct_plural, class: 'button clearComponentSet' %>
         </fieldset >
       <% end %>
     <% end %>

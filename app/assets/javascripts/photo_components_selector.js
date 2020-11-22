@@ -1,5 +1,5 @@
 
-const clearRadioButtons = event => {
+const clearComponentButtons = event => {
   buttonSet = event.target.parentNode
   let buttons =buttonSet.getElementsByTagName('input')
   for(let button of buttons){ button.checked =false }
@@ -25,7 +25,7 @@ const redrawHandler = async event => {
   let redraw = event.target
 
   let photoId = redraw.dataset.photoId
-  let componentList = document.querySelectorAll('#selectComponents input[type=radio]:checked')
+  let componentList = document.querySelectorAll('#selectComponents input[type=checkbox]:checked')
   let components = [...componentList].map(el => el.value);
   let drawing = document.querySelector('img.drawing')
   let drawingFormField = document.getElementById('photo_drawing')
@@ -60,7 +60,7 @@ const redrawHandler = async event => {
 
 const photoEditorInit = () => {
   document.addEventListener('click', redrawHandler)
-  radioButtons = document.querySelectorAll('a.clearRadioSet')
-  radioButtons.forEach( button => button.addEventListener('click', clearRadioButtons))
+  clearButtons = document.querySelectorAll('a.clearComponentSet')
+  clearButtons.forEach( button => button.addEventListener('click', clearComponentButtons))
 }
 
