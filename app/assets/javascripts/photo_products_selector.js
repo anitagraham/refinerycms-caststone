@@ -7,7 +7,7 @@ let seriesChange = function (series_id){
   })
 }
 $(function() {
-  let seriesSelect = document.querySelector('.radio_buttons')
+  let seriesSelect = document.querySelector('#selectSeries .radio_buttons')
   if (seriesSelect) {
     seriesSelect.addEventListener('change', e => {
       if (e.target.closest('[name="photo[product_id]"')) {

@@ -24,11 +24,7 @@ module Refinery
         end
 
         def draw
-          if params[:component_list].nil?
-            flash.alert = "No components selected. Can't draw anything"
-          else
-            send_data CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
-          end
+          send_data CaststoneHelper.drawing(params[:component_ids]), type: 'image/png', disposition: 'inline'
         end
 
         protected
@@ -46,7 +42,7 @@ module Refinery
         def photo_params
           params.require(:photo).permit(
             :name, :caption, :page, :position, :drawing, :image, :image_id, :page_id, :product_id, :photo_number,
-            component_ids: [], base_ids: [], shaft_ids: [], capital_ids: [], column_ids: [], letterbox_ids: [])
+            base_ids: [],  capital_ids: [], column_ids: [], component_ids: [], letterbox_ids: [], shaft_ids: [],  trim_ids:[])
         end
       end
     end

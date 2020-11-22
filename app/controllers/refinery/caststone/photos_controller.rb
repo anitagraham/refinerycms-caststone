@@ -1,4 +1,3 @@
-# require "#{Rails.root}/vendor/extensions/caststone/app/models/refinery/caststone/Photo.rb"
 module Refinery
   module Caststone
     class PhotosController < ::ApplicationController
@@ -10,7 +9,7 @@ module Refinery
       def draw
         send_data  CaststoneHelper.drawing(params[:component_list]), type: 'image/png', disposition: 'inline'
       end
-      
+
       def details
         photo =  Refinery::Caststone::Photo.find(params[:id])
         if photo.components.empty?

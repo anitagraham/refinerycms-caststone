@@ -5,7 +5,7 @@ module Refinery
       include Rails.application.routes.url_helpers
 
       dragonfly_accessor :drawing, app: :caststone_components
-      acts_as_indexed fields: [:name]
+      acts_as_indexed fields: [:name, :type]
 
       validates :name, presence: true, uniqueness: true
       validates :type, presence: true
