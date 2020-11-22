@@ -19,8 +19,10 @@ module Refinery
       end
 
       def to_s
-        name
+        name.capitalize
       end
+
+      alias uc_name to_s
       def kind
         self.type.demodulize
       end
