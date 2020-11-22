@@ -21,7 +21,9 @@ module Refinery
       def to_s
         name
       end
-
+      def kind
+        self.type.demodulize
+      end
       def self.inherited(child)
       child.instance_eval do
         alias :original_model_name :model_name

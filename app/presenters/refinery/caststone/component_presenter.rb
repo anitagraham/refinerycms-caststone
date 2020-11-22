@@ -54,14 +54,20 @@ module Refinery
         def header_element(attribute)
           tag.span attribute.capitalize, class: attribute
         end
+
         def entry(component, attribute)
           tag.span component.send(attribute), class: attribute
+        end
+
+        def list_of(component, attribute)
+          tag.span component.send(attribute).map(&:name).join(', '), class: attribute
         end
         def get_header(view_name)
           return ''.html_safe if view_name == :grid
 
           tag.li class: 'header' do
-            [header_element("name"),
+            [header_element("kind"),
+             header_element("name"),
              header_element("height"),
              header_element("series"),
              header_element("actions")].join(' ').html_safe
@@ -75,14 +81,15 @@ module Refinery
 
         def grid_view(component)
           image = component.drawing.presence || (tag.p "No Drawing")
-          info = [entry(component, 'name'), entry(component, 'height'), entry(component, 'products')].join(' ')
+          info = [entry(component, 'name'), entry(component, 'height'), list_of(component, 'products')].join(' ')
           image << info << actions(component)
         end
 
         def list_view(component)
-          info = [entry(component, 'name'),
+          info = [entry(component, 'kind'),
+                  entry(component, 'name'),
                   entry(component, 'height'),
-                  entry(component, 'products')].join(' ')
+                  list_of(component, 'products')].join(' ')
           info << actions(component)
         end
         def products_list(component)

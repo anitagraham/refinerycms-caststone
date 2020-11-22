@@ -1,0 +1,19 @@
+ul.components.list {
+  li {
+    display        : flex;
+    flex-direction: row;
+    flex-wrap      : wrap;
+    &.header {
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-decoration: underline;
+    }
+
+    span {
+      &.kind,&.height, &.actions {flex-basis : 15%}
+      &.name, &.series {flex-basis: 23%}
+      &.kind {color: #8ac53f; font-style: italic}
+    }
+  }
+
+}
