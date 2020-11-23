@@ -11,11 +11,7 @@ module Refinery
 
         crudify :'refinery/caststone/component',
                 title_attribute: 'name',
-                order: 'type ASC'
-
-        # def draw
-        #   send_data  Refinery::Caststone::Component.construct(params[:list]), type: 'image/png', disposition: 'inline'
-        # end
+                order: 'type ASC, name ASC'
 
         protected
 

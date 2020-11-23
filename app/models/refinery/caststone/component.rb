@@ -23,9 +23,11 @@ module Refinery
       end
 
       alias uc_name to_s
+
       def kind
         self.type.demodulize
       end
+
       def self.inherited(child)
       child.instance_eval do
         alias :original_model_name :model_name
@@ -79,8 +81,6 @@ module Refinery
        #   set up our canvas.
        rvg = Magick::RVG.new(width, height).viewbox(0,0,width,height) do |canvas|
          canvas.g do |grp|
-           # canvas.text(10, height-20,
-             # "(c) CastStone #{Time.now.year}".styles(font_family:'Verdana', font_size:55, fill:'blue', font_weight:'normal', font_style:'normal'))
            ypos = height
            list.each do |i|
              xpos = (width - i.columns)/2
