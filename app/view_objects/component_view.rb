@@ -22,10 +22,6 @@ class ComponentView < SimpleDelegator
       else
         list_view
     end
-
-    # tag.tr id: id, class: type.demodulize do
-    #   markup << actions
-    # end
   end
 
   private

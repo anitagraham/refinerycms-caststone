@@ -61,7 +61,10 @@ en:
             view:
               drawings: drawings
               list: list
-              switch_to: "Switch to %{view_name} view"
+              grid: grid
+              action:
+                switch: "Switch to %{view_name} view"
+                using: "Using %{view_name} view"
           records:
             no_items_yet: "There are no Components yet. Click \"Add New Component\" to add your first component."
             sorry_no_results: "Sorry! There are no results found."

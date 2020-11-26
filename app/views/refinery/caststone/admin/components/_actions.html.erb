@@ -4,18 +4,15 @@
         <%= render '/refinery/admin/search', :url => refinery.caststone_admin_components_path %>
       </li>
   <% end %>
-  <!--TODO Add sorting and filtering code-->
-  <!--<li>-->
-    <!--Sort and Filter Coming Soon-->
-  <!--</li>-->
   <li>
     <%= link_to t('.create_new'), refinery.new_caststone_admin_component_path,
                 :class => "add_icon" %>
   </li>
-  <%=
-  render partial: 'refinery/caststone/admin/shared/switch_views',
+  <%=   render partial: 'refinery/caststone/admin/shared/switch_views',
     locals: {
-    name: 'Refinery::Caststone::Components',
-    scope: 'refinery.caststone.admin.components.index.view'}
+      views: Refinery::Caststone::Components.defined_views,
+      current_view: Refinery::Caststone::Components.preferred_view,
+      name: 'Refinery::Caststone::Components',
+      scope: 'refinery.caststone.admin.components.index.view'}
   %>
  </ul>

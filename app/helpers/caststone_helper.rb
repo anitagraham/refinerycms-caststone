@@ -9,47 +9,6 @@ module CaststoneHelper
     end
   end
 
-  def self.drawing(component_ids)
-    return if component_ids.nil? || component_ids.count.zero?
-
-    maxh = 600
-    maxw = 200
-    # scalex = 200
-    scaley = 0.3
-    require 'rvg/rvg'
-    Magick::RVG.dpi = 90
-
-    components = Refinery::Caststone::Component.find(component_ids)
-    height = components.map(&:height).reduce(:+) * scaley
-
-    #   set up our canvas. Use max width, actual height in mm => pixels, scaled down
-    rvg = Magick::RVG.new(maxw, height).viewbox(0, 0, maxw, height) do |canvas|
-      canvas.g do |grp|
-        ypos = height
-
-        components.each do |comp|
-          begin
-            drawing = comp.drawing
-            raise NoDrawing if drawing.nil?
-            img = Magick::Image.read(drawing.file)[0]
-            xpos = (maxw - img.columns) / 2
-            ypos -= img.rows
-            grp.image(img, img.columns, img.rows, xpos, ypos)
-          rescue
-            NoDrawing
-            Rails.logger.error "Component #{comp.name} has no drawing"
-            next
-          end
-        end #of list.each do
-      end # canvas.g do
-    end # rvg.new do
-
-    png = rvg.draw
-    png.format = "png"
-    Base64.encode64(png.to_blob) #spit out the png as a base64 encoded string
-  end
-
-  # drawing
 
   def self.to_slug(*segments)
     [segments].join('_').gsub(/\W/, '').downcase

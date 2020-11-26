@@ -10,6 +10,7 @@ module Refinery
         photo_number = tag.span image.photo_number, class: photo_number
       end
 
+
       thumbnail_args = options.slice(:strip)
       thumbnail_args[:geometry] = geometry if geometry
       image_tag_args = (image.thumbnail_dimensions(geometry) rescue {})
@@ -19,9 +20,5 @@ module Refinery
 
     end
 
-    # def photo_number(image)
-    #   tid = [image.title, image.alt, image.image_name.split('.').first].find{ |name| name.match(photo_number)}
-    #   tid.blank? ? tid : tag.span(tid, class: 'photo_number')
-    # end
   end
 end

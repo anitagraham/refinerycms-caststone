@@ -1,7 +1,12 @@
-<% other_photo_views.each do |view| %>
+<% views.each do |view|
+  view = view.to_s
+  this_view = current_view === view
+  classes = "#{view}View_icon #{this_view ? 'disabled' : "enabled"}"
+  url = "#{request.path}?view=#{view}"
+  text = "#{this_view ? "Using" : "Switch to"} #{view.capitalize} view"
+
+%>
   <li>
-    <%= link_to t('switch_to', scope: scope, view_name: t("#{view}", scope: scope)),
-                "#{request.path}?view=#{view}", class: "#{view}View_icon"
-    %>
+    <%= link_to text, url,  class: classes  %>
   </li>
 <% end %>

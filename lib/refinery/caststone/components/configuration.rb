@@ -16,7 +16,7 @@ module Refinery
       config.whitelisted__mime_types = %w['image/png', 'image/svg']
 
       self.defined_views = [:grid, :list]
-      self.preferred_view = :grid
+      self.preferred_view = :list
 
     end
   end

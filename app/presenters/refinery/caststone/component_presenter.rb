@@ -8,13 +8,13 @@ module Refinery
       include ActionView::Helpers::TranslationHelper
       include Refinery::TagHelper
 
-
-      attr_accessor :context, :collection
+      GRID_VIEW_NAME = 'grid_view'
+      attr_accessor :context, :collection, :grid
       delegate :output_buffer, :output_buffer=, to: :context
 
       config_accessor :group_tag, :list_classes
       self.group_tag = :ul
-      self.list_classes = ['components', 'pagination_frame', 'frame_center']
+      self.list_classes = %w[components pagination_frame frame_center]
 
       def initialize(collection, context)
         @collection = collection
@@ -26,28 +26,29 @@ module Refinery
       end
 
       def to_html
-        view_name = Refinery::Caststone::Components.preferred_view
-        list_classes |= [view_name]
-        tag.ul class: list_classes do
-          render_components(collection, view_name)
+        view_name = "#{Refinery::Caststone::Components.preferred_view}_view"
+        self.grid = view_name === GRID_VIEW_NAME
+        self.list_classes |= [view_name]
+        tag.ul class: self.list_classes do
+          render_components(collection, view_name).html_safe
         end
       end
 
       def render_components(components, view_name)
-        header = get_header(view_name)
+        header = grid ? '' : get_header(view_name)
         markup = components.each.reduce(ActiveSupport::SafeBuffer.new) do |buffer, component|
           buffer << render_list_item(component) {
-            view_name == "grid" ? grid_view(component).html_safe : list_view(component).html_safe
+            grid ? grid_view(component).html_safe : list_view(component).html_safe
           }
         end
-        header << markup
+        [header, markup].join(' ').html_safe
       end
 
       private
 
         def render_list_item(component)
-          tag.li id: component.id, class: component.type.demodulize do
-            yield (component)
+          tag.li id: component.id, class: component.type.demodulize.downcase do
+            yield component
           end
         end
 
@@ -63,7 +64,6 @@ module Refinery
           tag.span component.send(attribute).map(&:name).join(', '), class: attribute
         end
         def get_header(view_name)
-          return ''.html_safe if view_name == :grid
 
           tag.li class: 'header' do
             [header_element("kind"),
@@ -75,14 +75,24 @@ module Refinery
         end
 
         def image(drawing)
-          tag.img src: drawing.thumb({geometry: :index}).url, title: name, alt: name
+          tag.img( src: drawing.thumb({geometry: :index}).url, title: drawing.name, alt: drawing.name )
+
         end
 
 
         def grid_view(component)
-          image = component.drawing.presence || (tag.p "No Drawing")
-          info = [entry(component, 'name'), entry(component, 'height'), list_of(component, 'products')].join(' ')
-          image << info << actions(component)
+
+          if component.drawing.present?
+            image(component.drawing)
+          else
+            Rails.logger.info "No drawing for component #{name}"
+            image = tag.p "No Drawing available"
+          end
+          info = [entry(component, 'kind'),
+                  entry(component, 'name'),
+                  entry(component, 'height'),
+                  list_of(component, 'products')].join(' ').html_safe
+          [image, info,  actions(component)].join(' ').html_safe
         end
 
         def list_view(component)
@@ -90,7 +100,7 @@ module Refinery
                   entry(component, 'name'),
                   entry(component, 'height'),
                   list_of(component, 'products')].join(' ')
-          info << actions(component)
+          [info,  actions(component)].join(' ')
         end
         def products_list(component)
           component.products.map(&:name).join(',')
