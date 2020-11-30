@@ -1,22 +1,19 @@
+require "sql_spy"
+require "amazing_print"
 module Refinery
   module Caststone
     class ProductsController < ::ApplicationController
       respond_to :json, :js, :html
 
-      def components
-        @series = Refinery::Caststone::Product.friendly.find(params[:id])
-        render 'refinery/caststone/admin/products/components', @series
-      end
-
       def index
-        products = Refinery::Caststone::Product.order(:position)
-        @products = products.map { |product|
-          Refinery::Caststone::ProductView.new(product, view_context)
-        }
+          products = Refinery::Caststone::Product.order(:position).includes(:image, :drawing)
+          @products = products.map { |product|
+            Refinery::Caststone::ProductView.new(product, view_context)
+          }
       end
 
       def show
-        product = Refinery::Caststone::Product.friendly.find(params[:id])
+        product = Refinery::Caststone::Product.friendly.find(params[:id]).includes(:photos)
         @product = Refinery::Caststone::ProductView.new(product, view_context)
         @related_pages = Refinery::Caststone::Product.where.not(slug: :group)
       end

@@ -13,7 +13,6 @@ module Refinery
         end
 
         def list_components
-          Rails.logger.debug "Finding components for Series #{params[:id]}"
           series = Refinery::Caststone::Product.where(id: params[:id]).includes(:components).first
           @components = {
             bases: series.bases,
