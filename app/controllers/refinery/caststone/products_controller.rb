@@ -6,14 +6,14 @@ module Refinery
       respond_to :json, :js, :html
 
       def index
-          products = Refinery::Caststone::Product.order(:position).includes(:image, :drawing)
-          @products = products.map { |product|
-            Refinery::Caststone::ProductView.new(product, view_context)
-          }
+        products = Refinery::Caststone::Product.order(:position).includes(:image, :drawing)
+        @products = products.map { |product|
+          Refinery::Caststone::ProductView.new(product, view_context)
+        }
       end
 
       def show
-        product = Refinery::Caststone::Product.friendly.find(params[:id]).includes(:photos)
+        product = Refinery::Caststone::Product.where(slug: params[:id]).includes(:photos).first
         @product = Refinery::Caststone::ProductView.new(product, view_context)
         @related_pages = Refinery::Caststone::Product.where.not(slug: :group)
       end

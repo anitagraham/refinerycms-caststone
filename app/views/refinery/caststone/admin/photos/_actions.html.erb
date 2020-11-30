@@ -8,8 +8,14 @@
     <%= link_to t('.create_new'), refinery.new_caststone_admin_photo_path,
                    class: "add_icon" %>
   </li>
-  <%= render partial: 'refinery/caststone/admin/shared/switch_views',
-            locals: { scope: 'refinery.caststone.admin.photos.index.view'}
+  <%=
+    render partial: 'refinery/caststone/admin/shared/switch_views',
+            locals: {
+              views: Refinery::Caststone::Photos.defined_views,
+              current_view: Refinery::Caststone::Photos.preferred_view,
+              name: 'Refinery::Caststone::Photos',
+              scope: 'refinery.caststone.admin.photos.index.view'
+            }
   %>
 
 </ul>

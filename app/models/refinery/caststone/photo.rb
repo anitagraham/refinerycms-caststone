@@ -41,13 +41,6 @@ module Refinery
         photo.warnings.add(:photo_number, 'No tracking id assigned') unless photo.photo_number
       end
 
-      def sanitize_name
-        name.gsub(/.jpg$/i, '')
-        name.gsub(/.png$/i, '')
-        name.gsub(/\(\d{1,3}\)/, '')
-        name.gsub(/[^0-9A-Z -]/i, '_')
-      end
-
 
       def complete?
         image.present? &&
