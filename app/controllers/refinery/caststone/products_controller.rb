@@ -1,5 +1,3 @@
-require "sql_spy"
-require "amazing_print"
 module Refinery
   module Caststone
     class ProductsController < ::ApplicationController
