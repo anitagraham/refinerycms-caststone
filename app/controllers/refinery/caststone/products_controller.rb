@@ -13,7 +13,7 @@ module Refinery
       def show
         product = Refinery::Caststone::Product.where(slug: params[:id]).includes(:photos).first
         @product = Refinery::Caststone::ProductView.new(product, view_context)
-        @related_pages = Refinery::Caststone::Product.where.not(slug: :group)
+        @related_pages = Refinery::Caststone::Product.where.not(slug: :group).order(:position)
       end
 
       def list

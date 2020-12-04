@@ -42,8 +42,8 @@ const redrawHandler = async event => {
   if (response.ok) {
 
     let drawingInfo = await response.blob()
-    if (drawingInfo.type === "image/png") {
 
+    if (drawingInfo.type === "image/png") {
       drawingData = await drawingInfo.text()
       setDrawing(drawing, drawingData)
       drawingFormField.value = drawingData
