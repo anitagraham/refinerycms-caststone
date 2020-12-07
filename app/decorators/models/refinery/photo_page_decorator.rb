@@ -6,7 +6,7 @@ Refinery::Page.class_eval do
 
   def photos_from_cache
     Rails.cache.fetch([self, 'photos']) do
-      photos.includes(:image, :product, :components)
+      photos.includes(:image, :product, :components).all
     end
   end
 end
