@@ -12,9 +12,9 @@ module Refinery
       validates :name, presence: true, uniqueness: true
       validates :image, presence: true
 
-      belongs_to :image, dependent: :destroy
-      belongs_to :product, inverse_of: :photos, optional: true
-      belongs_to :page, inverse_of: :photos, foreign_key: :page_id, optional: true
+      belongs_to :image, dependent: :destroy, touch: true
+      belongs_to :product, inverse_of: :photos, optional: true, touch: true
+      belongs_to :page, inverse_of: :photos, foreign_key: :page_id, optional: true, touch: true
 
       has_many :assignments
       has_many :components, through: :assignments
@@ -32,15 +32,12 @@ module Refinery
       has_many :trims, through: :assignments, foreign_key: 'component_id', class_name: 'Refinery::Caststone::Trim'
 
       before_destroy { |photo| photo.components.clear }
-      # before_update :save_drawing, :set_track_id
-      # before_save :save_drawing, :sanitize_name, :set_track_id
-      #
+
       warning do |photo|
-        photo.warnings.add(:components, ': No components defined') unless photo.components.any?
-        photo.warnings.add(:image, ': No image loaded') unless photo.image
+        photo.warnings.add(:components, 'No components defined') unless photo.components.any?
+        photo.warnings.add(:image, 'No image loaded') unless photo.image
         photo.warnings.add(:photo_number, 'No tracking id assigned') unless photo.photo_number
       end
-
 
       def complete?
         image.present? &&
