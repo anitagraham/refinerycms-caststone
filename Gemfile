@@ -20,12 +20,7 @@ gem "activesupport", ">= 6.0.3.1"
 
 gem 'responders'
 gem 'simple_form'
-gem 'mime-types'
-gem 'rabl'
-gem 'mustache'
-gem 'stache'
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed', branch: 'master'
-# gem 'gutentag', '~> 2.5'
 
 group :development do
   gem 'listen'
@@ -52,12 +47,6 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   gem 'activerecord-jdbcpostgresql-adapter', platform: :jruby
   gem 'pg', platform: :ruby
 end
-
-# Refinery/rails should pull in the proper versions of these
-gem "sass-rails"
-gem "coffee-rails"
-gem "uglifier"
-
 
 # Load local gems according to Refinery developer preference.
 if File.exist? local_gemfile = File.expand_path('../.gemfile', __FILE__)

@@ -23,6 +23,9 @@ ul.grid_view {
   }
   li.ok {
     border: 1px yellowgreen;
+    &:before {
+      position: absolute;
+    }
   }
   span.warning {color: darkorange}
   span.photo_number {

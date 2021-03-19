@@ -19,10 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency    'refinerycms-core'
   s.add_dependency    'refinerycms-acts-as-indexed'
   s.add_dependency    'rmagick'
-  s.add_dependency    'mime-types'
-  s.add_dependency    'rabl'
-  s.add_dependency    'mustache'
-  s.add_dependency    'stache'
 
 end
 
