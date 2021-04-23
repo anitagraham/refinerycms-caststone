@@ -14,7 +14,7 @@ module Refinery
         group: [],
         letterbox: [:base, :shaft, :capital, :letterbox],
         pillar: [:base, :shaft, :capital],
-        trim: [:base, :shaft, :trim],
+        trim: [:base, :shaft, :capital, :trim],
       }.freeze
 
       class << self
